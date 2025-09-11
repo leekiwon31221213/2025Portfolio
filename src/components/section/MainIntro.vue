@@ -18,7 +18,7 @@
           </div>
           <div class="dev-icon"></div>
           <div class="circle">
-            <img src="/assets/image/profile_img" alt="프로필 이미지" />
+            <img src="@/assets/image/profile_img" alt="프로필 이미지" />
           </div>
 
           <div class="design-icon"></div>
@@ -143,7 +143,7 @@ export default {
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('/assets/image/intro/dev_icon.png') no-repeat center center;
+            background: url('@/assets/image/intro/dev_icon.png') no-repeat center center;
           }
         }
         .design-icon {
@@ -162,7 +162,7 @@ export default {
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('/assets/image/intro/figma_icon.png') no-repeat center center;
+            background: url('@/assets/image/intro/figma_icon.png') no-repeat center center;
           }
         }
       }
