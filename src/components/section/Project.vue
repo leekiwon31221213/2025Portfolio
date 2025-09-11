@@ -76,7 +76,7 @@ export default {
           hashTag: ['브릿지 개발', '기획', '디자인', '앱 등록'],
           google: 'https://play.google.com/store/apps/details?id=com.pravang.mobile.prod&hl=ko',
           apple: 'https://apps.apple.com/kr/app/%ED%94%84%EB%9D%BC%EB%B1%85/id6749530870',
-          // icon: '@/assets/image/project/arrow_right_icon.svg',
+          icon: '@/assets/image/project/arrow_right_icon.svg',
         },
         {
           img: '@/assets/image/project/pravang_web.jpg',
@@ -88,7 +88,7 @@ export default {
           moTxt: 'mo View',
           tabletTxt: 'tablet View',
           link: 'https://www.pravang.com/',
-          // icon: '@/assets/image/project/arrow_right_icon.svg',
+          icon: '@/assets/image/project/arrow_right_icon.svg',
         },
         {
           img: '@/assets/image/project/muskdas.png',
@@ -100,7 +100,7 @@ export default {
           moTxt: 'mo View',
           tabletTxt: 'tablet View',
           link: 'https://modunet1.cafe24.com/',
-          // icon: '@/assets/image/project/arrow_right_icon.svg',
+          icon: '@/assets/image/project/arrow_right_icon.svg',
         },
         {
           img: '@/assets/image/project/coincident.png',
@@ -112,7 +112,7 @@ export default {
           moTxt: 'mo View',
           tabletTxt: 'tablet View',
           link: 'https://coincidentventuresnuxttest.netlify.app/',
-          // icon: '@/assets/image/project/arrow_right_icon.svg',
+          icon: '@/assets/image/project/arrow_right_icon.svg',
         },
 
         {
@@ -125,7 +125,7 @@ export default {
           moTxt: 'mo View',
           tabletTxt: 'tablet View',
           link: 'https://leekiwon31221213.github.io/time_project_complete/',
-          // icon: '@/assets/image/project/arrow_right_icon.svg',
+          icon: '@/assets/image/project/arrow_right_icon.svg',
         },
 
         {
@@ -138,7 +138,7 @@ export default {
           moTxt: 'mo View',
           tabletTxt: 'tablet View',
           link: '',
-          // icon: '@/assets/image/project/arrow_right_icon.svg',
+          icon: '@/assets/image/project/arrow_right_icon.svg',
         },
         {
           img: '@/assets/image/project/daki.jpg',
@@ -150,7 +150,7 @@ export default {
           moTxt: 'mo View',
           tabletTxt: 'tablet View',
           link: 'https://dakistore.co.kr/',
-          // icon: '@/assets/image/project/arrow_right_icon.svg',
+          icon: '@/assets/image/project/arrow_right_icon.svg',
         },
         {
           img: '@/assets/image/project/lemon.jpg',
@@ -162,7 +162,7 @@ export default {
           moTxt: 'mo View',
           tabletTxt: 'tablet View',
           link: '',
-          // icon: '@/assets/image/project/arrow_right_icon.svg',
+          icon: '@/assets/image/project/arrow_right_icon.svg',
         },
 
         {
@@ -175,7 +175,7 @@ export default {
           moTxt: 'mo View',
           tabletTxt: 'tablet View',
           link: 'http://cute0231.dothome.co.kr/',
-          // icon: '@/assets/image/project/arrow_right_icon.svg',
+          icon: '@/assets/image/project/arrow_right_icon.svg',
         },
         {
           img: '@/assets/image/project/bn.png',
@@ -187,7 +187,7 @@ export default {
           moTxt: 'mo View',
           tabletTxt: 'tablet View',
           link: 'http://cute0232.dothome.co.kr/',
-          // icon: '@/assets/image/project/arrow_right_icon.svg',
+          icon: '@/assets/image/project/arrow_right_icon.svg',
         },
       ],
     }
