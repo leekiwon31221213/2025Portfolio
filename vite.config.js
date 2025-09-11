@@ -1,11 +1,12 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import svgLoader from 'vite-svg-loader'
+import svgr from 'vite-plugin-svgr'
 import path from 'path'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
 export default defineConfig({
-  plugins: [vue(), svgLoader(), vueDevTools()],
+  plugins: [vue(), svgLoader(), svgr(), vueDevTools()],
 
   resolve: {
     extensions: ['.js', '.vue', '.scss', '.css', '.png', '.jpg', '.jpeg', '.svg'],
