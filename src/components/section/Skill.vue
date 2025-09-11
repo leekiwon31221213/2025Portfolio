@@ -82,7 +82,7 @@ export default {
       // 프론트엔드
       front: {
         title: 'Frontend',
-        icon: '@/assets/image/skill/front_icon.svg',
+        icon: 'src/assets/image/skill/front_icon.svg',
         alt: '',
         skills: [
           { name: 'Html', level: 90, type: 'markup' },
@@ -97,21 +97,21 @@ export default {
       // 디자인
       design: {
         title: 'Design',
-        icon: '@/assets/image/skill/design_icon.svg',
+        icon: 'src/assets/image/skill/design_icon.svg',
         alt: '',
         skills: [{ name: 'Photoshop' }, { name: 'Figma' }],
       },
       // 협업툴
       collaboration: {
         title: 'Collaboration',
-        icon: '@/assets/image/skill/collaboration_icon.svg',
+        icon: 'src/assets/image/skill/collaboration_icon.svg',
         alt: '',
         skills: [{ name: 'GitHub & GitLab' }, { name: 'Jira' }],
       },
       // 기타
       etc: {
         title: 'Etc',
-        icon: '@/assets/image/skill/etc_icon.svg',
+        icon: 'src/assets/image/skill/etc_icon.svg',
         alt: '',
         skills: [{ name: 'React' }],
       },
