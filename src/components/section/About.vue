@@ -39,9 +39,14 @@
 </template>
 
 <script>
+// 이미지 경로를 import로 가져와서 빌드 시 경로 문제를 해결
+import settingIcon from '@/assets/image/about/setting_icon.svg'
+import userIcon from '@/assets/image/about/user_icon.svg'
+import optimizeIcon from '@/assets/image/about/optimize_icon.svg'
+import growthIcon from '@/assets/image/about/growth_icon.svg'
+
 export default {
   data() {
-    /* About 소개 */
     return {
       about: {
         title: '직관적인 경험을 구현하는 프론트엔드 개발자',
@@ -56,16 +61,15 @@ export default {
       },
       // 경험 설계
       settingCard: {
-        icon: '/assets/image/about/setting_icon.svg',
+        icon: settingIcon.default || settingIcon, // 객체일 경우 .default로 경로 추출
         title: '프론트엔드 경험 설계',
         description:
           '사용자 인터페이스와 경험을 세심하게 설계하여, 직관적이고 반응성이 뛰어난 웹 환경을 구현합니다.',
         alt: '경험설계 아이콘',
       },
-
-      // 사용자중심
+      // 사용자 중심
       userCard: {
-        icon: '/assets/image/about/user_icon.svg',
+        icon: userIcon.default || userIcon, // 객체일 경우 .default로 경로 추출
         title: '사용자 중심',
         description:
           '사용자의 관점에서 생각하고, 문제를 해결할 수 있는 최적의 솔루션을 만드는 것을 최우선으로 합니다.',
@@ -73,15 +77,15 @@ export default {
       },
       // SEO 최적화
       optimizeCard: {
-        icon: '/assets/image/about/optimize_icon.svg',
+        icon: optimizeIcon.default || optimizeIcon, // 객체일 경우 .default로 경로 추출
         title: 'SEO 최적화',
         description:
-          '시멘틱 마크업과 최적화된 구조를 통해 검색 엔진 노출 효과를 높이고,사용자가 쉽게 찾을 수 있는 웹을 만듭니다.',
+          '시멘틱 마크업과 최적화된 구조를 통해 검색 엔진 노출 효과를 높이고, 사용자가 쉽게 찾을 수 있는 웹을 만듭니다.',
         alt: 'SEO 최적화 아이콘',
       },
       // 지속적 성장
       growthCard: {
-        icon: '/assets/image/about/growth_icon.svg',
+        icon: growthIcon.default || growthIcon, // 객체일 경우 .default로 경로 추출
         title: '지속적인 성장',
         description:
           '끊임없이 변화하는 기술과 트렌드를 따라가며, 새로운 도구와 방법을 학습하고 프로젝트에 적극 반영합니다.',
