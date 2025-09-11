@@ -39,7 +39,6 @@
 </template>
 
 <script>
-import settionIcon from '/src/assets/image/about/setting_icon.svg'
 export default {
   data() {
     /* About 소개 */
@@ -57,7 +56,7 @@ export default {
       },
       // 경험 설계
       settingCard: {
-        icon: settionIcon,
+        icon: '/src/assets/image/about/setting_icon.svg',
         title: '프론트엔드 경험 설계',
         description:
           '사용자 인터페이스와 경험을 세심하게 설계하여, 직관적이고 반응성이 뛰어난 웹 환경을 구현합니다.',
