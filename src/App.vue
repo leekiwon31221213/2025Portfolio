@@ -6,6 +6,7 @@
     <Career></Career>
     <Skill></Skill>
     <Project></Project>
+    <Footer></Footer>
   </div>
 </template>
 <script setup>
@@ -15,6 +16,7 @@ import About from './components/section/About'
 import Career from './components/section/Career'
 import Skill from './components/section/Skill'
 import Project from './components/section/Project'
+import Footer from './components/section/Footer'
 </script>
 
 <style lang="scss">

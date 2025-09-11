@@ -65,8 +65,18 @@
               </div>
               <h3>{{ etc.title }}</h3>
             </li>
-            <li v-for="(skill, index) in etc.skills" :key="index">
+            <li
+              v-for="(skill, index) in etc.skills"
+              :key="index"
+              v-bind="skill.name === 'Php' ? { class: 'php-li' } : ''"
+            >
               <p class="skill-name" lang="en">{{ skill.name }}</p>
+
+              <div class="php-tab" v-if="skill.name === 'Php'">
+                <a href="http://cute01232.dothome.co.kr/" target="_blank">투두리스트 </a>
+                <a href="https://cute01233.dothome.co.kr/" target="_blank">게시판 만들기</a>
+                <a href="https://cute01234.dothome.co.kr/" target="_blank">PHP공부 리스트</a>
+              </div>
             </li>
           </ul>
         </li>
@@ -91,7 +101,6 @@ export default {
           { name: 'Vue', level: 70, type: 'framework' },
           { name: 'Seo', level: 60, type: 'concept' },
           { name: 'Semantic', level: 65, type: 'concept' },
-          { name: 'Php', level: 30, type: 'backend' },
         ],
       },
       // 디자인
@@ -112,8 +121,8 @@ export default {
       etc: {
         title: 'Etc',
         icon: '/assets/image/skill/etc_icon.svg',
-        alt: '',
-        skills: [{ name: 'React' }],
+        alt: '그 외 공부',
+        skills: [{ name: 'React' }, { name: 'Php' }],
       },
     }
   },
@@ -162,6 +171,24 @@ export default {
           margin-bottom: 15px;
           display: flex;
           width: 100%;
+          &.php-li {
+            display: flex;
+            flex-direction: column;
+            .php-tab {
+              font-size: 1.3rem;
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+              gap: 1rem;
+              margin-top: 0.5rem;
+              a {
+                padding: 1rem;
+                border: 1px solid $border;
+                border-radius: 0.5rem;
+                text-align: center;
+              }
+            }
+          }
           &:first-child {
             flex-direction: column;
             h3 {
