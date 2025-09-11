@@ -61,10 +61,10 @@ export default {
     width: 90%;
     margin: 0 auto;
     h2 {
-      font-size: 5rem;
+      font-size: clamp(3rem, 2.93vw, 5rem);
       font-weight: 500;
       strong {
-        font-size: 8rem;
+        font-size: clamp(5rem, 4.883vw, 8rem);
         color: $white;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -76,7 +76,7 @@ export default {
     }
     p {
       color: $dec;
-      font-size: 2.8rem;
+      font-size: clamp(2.2rem, 2.148vw, 2.8rem);
       font-weight: 200;
       margin: 4.5rem auto 5.6rem;
       line-height: 1.3;
@@ -85,57 +85,60 @@ export default {
     .section__inner-content {
       display: flex;
       margin: 165px 0;
+      justify-content: space-between;
       li {
-        width: calc(100% / 2);
       }
       .img-box {
         position: relative;
         display: flex;
-        justify-content: flex-end;
         .circle {
           position: relative;
-          width: 100%;
-          max-width: 575px;
-          height: 575px;
+          width: clamp(325px, 31.738vw, 450px);
+          height: clamp(325px, 31.738vw, 450px);
           background-color: #eaeaea;
           border-radius: 50%;
           overflow: hidden;
 
           img {
             position: absolute;
-            left: 10%;
-            max-width: 400px;
-            top: 36px;
+            left: clamp(58px, 5.664vw, 65px);
+            max-width: clamp(200px, 19.531vw, 295px);
+            top: 55px;
           }
         }
 
         .font-end-info-icon {
-          position: absolute;
+          position: relative;
           z-index: 1;
-          left: 25%;
+          left: clamp(90px, 8.789vw, 130px);
           top: 30px;
+          &.glass {
+            font-size: clamp(1.6rem, 1.563vw, 2rem);
+            width: clamp(170px, 16.602vw, 220px);
+            height: clamp(40px, 3.906vw, 60px);
+          }
           span {
             &::before {
               content: '';
               position: absolute;
               left: 20px;
-              top: 22px;
-              width: 15px;
-              height: 15px;
+              top: clamp(13px, 1.27vw, 20px);
+              width: clamp(11px, 1.074vw, 15px);
+              height: clamp(11px, 1.074vw, 15px);
               background-color: #0a9356;
               border-radius: 50%;
             }
           }
         }
         .dev-icon {
-          width: 130px;
-          height: 130px;
+          width: clamp(80px, 7.813vw, 100px);
+          height: clamp(80px, 7.813vw, 100px);
           display: inline-block;
           background: $gradient-blue;
           border-radius: 50%;
           position: absolute;
           top: -50px;
-          right: -50px;
+          right: -25px;
           &::before {
             content: '';
             position: absolute;
@@ -144,17 +147,18 @@ export default {
             width: 100%;
             height: 100%;
             background: url('/assets/image/intro/dev_icon.png') no-repeat center center;
+            background-size: 60%;
           }
         }
         .design-icon {
-          width: 110px;
-          height: 110px;
+          width: clamp(65px, 6.348vw, 85px);
+          height: clamp(65px, 6.348vw, 85px);
           display: inline-block;
           background: $gradient-purple-blue;
           border-radius: 50%;
           position: absolute;
-          bottom: 15px;
-          left: 30%;
+          bottom: 40px;
+          left: 205px;
           &::before {
             content: '';
             position: absolute;
@@ -163,6 +167,7 @@ export default {
             width: 100%;
             height: 100%;
             background: url('/assets/image/intro/figma_icon.png') no-repeat center center;
+            background-size: 40%;
           }
         }
       }
