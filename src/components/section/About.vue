@@ -39,58 +39,42 @@
 </template>
 
 <script>
-// 이미지 파일을 모듈로 불러오기
-import settingIcon from '@/assets/image/about/setting_icon.svg'
-import userIcon from '@/assets/image/about/user_icon.svg'
-import optimizeIcon from '@/assets/image/about/optimize_icon.svg'
-import growthIcon from '@/assets/image/about/growth_icon.svg'
+// 시작 주석: SVG를 URL로 import
+import settingIconUrl from '@/assets/image/about/setting_icon.svg?url'
+import userIconUrl from '@/assets/image/about/user_icon.svg?url'
+import optimizeIconUrl from '@/assets/image/about/optimize_icon.svg?url'
+import growthIconUrl from '@/assets/image/about/growth_icon.svg?url'
 
 export default {
   data() {
-    // 이미지 경로는 문자열이 아니라 import한 모듈을 넣기
     return {
-      about: {
-        title: '직관적인 경험을 구현하는 프론트엔드 개발자',
-        description: `
-        웹퍼블리셔로 첫 발을 내딛은 이후,
-        <strong>사용자 경험</strong>에 대한 깊은 이해를 바탕으로 프론트엔드 개발자로 성장해 왔습니다.
-        단순한 마크업을 넘어, 사용자와 자연스럽게 소통하는
-        <strong>인터랙티브한 웹 경험</strong>을 만들어 가고 있습니다.
-        깔끔하고 직관적인 디자인 속에 복잡한 기능을 담아, 누구나 쉽게 사용할 수 있는 환경을 만드는 것이 저의 철학입니다.
-        매일 새로운 기술을 배우고 적용하며, 더 나은 개발자로 나아가기 위해 끊임없이 노력하고 있습니다.
-      `,
-      },
-
       // 경험 설계
       settingCard: {
-        icon: settingIcon,
+        icon: settingIconUrl,
         title: '프론트엔드 경험 설계',
         description:
           '사용자 인터페이스와 경험을 세심하게 설계하여, 직관적이고 반응성이 뛰어난 웹 환경을 구현합니다.',
         alt: '경험설계 아이콘',
       },
-
-      // 사용자중심
+      // 사용자 중심
       userCard: {
-        icon: userIcon,
+        icon: userIconUrl,
         title: '사용자 중심',
         description:
           '사용자의 관점에서 생각하고, 문제를 해결할 수 있는 최적의 솔루션을 만드는 것을 최우선으로 합니다.',
         alt: '사용자 중심 아이콘',
       },
-
       // SEO 최적화
       optimizeCard: {
-        icon: optimizeIcon,
+        icon: optimizeIconUrl,
         title: 'SEO 최적화',
         description:
           '시멘틱 마크업과 최적화된 구조를 통해 검색 엔진 노출 효과를 높이고,사용자가 쉽게 찾을 수 있는 웹을 만듭니다.',
         alt: 'SEO 최적화 아이콘',
       },
-
-      // 지속적 성장
+      // 지속적인 성장
       growthCard: {
-        icon: growthIcon,
+        icon: growthIconUrl,
         title: '지속적인 성장',
         description:
           '끊임없이 변화하는 기술과 트렌드를 따라가며, 새로운 도구와 방법을 학습하고 프로젝트에 적극 반영합니다.',
