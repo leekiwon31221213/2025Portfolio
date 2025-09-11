@@ -53,14 +53,14 @@ export default {
       visibledCount: 2,
       education: [
         {
-          logo: '/assets/image/career/ez_logo.jpg',
+          logo: '@/assets/image/career/ez_logo.jpg',
           alt: '이젠아카데미',
           edu: '이젠 아카데미(종각)',
           study: '모바일 UI/UX 웹&앱디자인(웹퍼블리셔)',
           span: '2022.07 ~ 2022.12 / 5개월',
         },
         {
-          logo: '/assets/image/career/silla_logo.jpg',
+          logo: '@/assets/image/career/silla_logo.jpg',
           alt: '신라대학교',
           edu: '신라대학교(부산)',
           study: '음악학과 피아노 전공',
@@ -70,7 +70,7 @@ export default {
 
       career: [
         {
-          logo: '/assets/image/career/pravang_logo.jpg',
+          logo: '@/assets/image/career/pravang_logo.jpg',
           alt: '프라뱅 로고',
           companyName: '(주)프라뱅',
           business: '블록체인 및 가상화폐 거래소 전문 개발사',
@@ -80,7 +80,7 @@ export default {
             '프론트엔드 개발 · 퍼블리싱 및 하이브리드 앱 기획·디자인/브릿지 개발 · REST API 비동기 통신 기반 데이터 연동',
         },
         {
-          logo: '/assets/image/career/fastlabs_logo.jpg',
+          logo: '@/assets/image/career/fastlabs_logo.jpg',
           alt: '패스트랩스 로고',
           companyName: '패스트랩스',
           business: '콘텐츠 중심 브랜드 마케팅 솔루션 기업',
@@ -90,7 +90,7 @@ export default {
           work2: 'PHP include를 통한 반복 코드 효율화 및 게시판 연동, SQL 활용 학습 및 적용',
         },
         {
-          logo: '/assets/image/career/bn_logo.jpg',
+          logo: '@/assets/image/career/bn_logo.jpg',
           alt: '비엔시스템 로고',
           companyName: '비엔시스템',
           business: '웹·솔루션 개발 및 IT 아웃소싱 기업(웹에이전시)',
@@ -99,7 +99,7 @@ export default {
           work2: '현대 산업개발, 짐싸, 자사 홈페이지 서브 페이지 리뉴얼 작업',
         },
         {
-          logo: '/assets/image/career/dispis_logo.jpg',
+          logo: '@/assets/image/career/dispis_logo.jpg',
           alt: '디스피스 로고',
           companyName: '디스피스',
           business: '자사몰 및 온라인 마케팅 전문 기업',
@@ -107,7 +107,7 @@ export default {
           work1: '홈쇼핑, 스마트스토어 운영 지원 / 자사몰 마케팅, 고객관리, 바이럴마케팅 등',
         },
         {
-          logo: '/assets/image/career/jc_logo.jpg',
+          logo: '@/assets/image/career/jc_logo.jpg',
           alt: '증산클라비어',
           companyName: '증산클라비어',
           business: '피아노 학원',
