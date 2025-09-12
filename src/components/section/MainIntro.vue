@@ -86,8 +86,7 @@ export default {
       display: flex;
       margin: 165px 0;
       justify-content: space-between;
-      li {
-      }
+
       .img-box {
         position: relative;
         display: flex;

@@ -141,7 +141,7 @@ export default {
     padding: 145px 0 35px 0;
     text-align: center;
     margin: 0 auto;
-    font-size: 8rem;
+    font-size: clamp(5rem, 4.883vw, 8rem);
     font-weight: 600;
     letter-spacing: 5px;
   }
@@ -159,7 +159,7 @@ export default {
       background: linear-gradient(0deg, #818cf8, #c084fc, #60a5fa);
       position: absolute;
       top: 20px;
-      left: -40px;
+      left: -23px;
     }
 
     li {
@@ -212,7 +212,7 @@ export default {
             border-radius: 50%;
             background-color: nth($circleColor, $i);
             position: absolute;
-            left: -72px;
+            left: -55px;
             top: 0;
           }
           &:last-child {

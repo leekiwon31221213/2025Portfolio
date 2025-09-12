@@ -109,21 +109,21 @@ export default {
         justify-content: space-between;
         .about-content {
           letter-spacing: 2px;
-          line-height: 40px;
+          line-height: clamp(3rem, 2.93vw, 4rem);
           margin-right: 3rem;
           width: calc(100% / 0.47);
           h2 {
-            font-size: 3rem;
+            font-size: clamp(2.3rem, 2.246vw, 3rem);
             margin-bottom: 1rem;
             font-weight: 600;
           }
           p {
-            font-size: 2.3rem;
+            font-size: clamp(1.8rem, 1.758vw, 2.3rem);
             color: $dec;
             font-weight: 200;
             strong {
               color: $white;
-              font-size: 2.6rem;
+              font-size: clamp(2.1rem, 2.051vw, 2.6rem);
               font-weight: 600;
             }
           }
@@ -132,15 +132,15 @@ export default {
           width: 100%;
           li {
             h3 {
-              font-size: 2.1rem;
+              font-size: clamp(1.9rem, 1.855vw, 2.1rem);
               font-weight: 600;
               margin-bottom: 2rem;
             }
             p {
-              font-size: 1.8rem;
+              font-size: clamp(1.6rem, 1.563vw, 1.8rem);
               font-weight: 200;
               color: $dec;
-              line-height: 25px;
+              line-height: clamp(20px, 1.953vw, 25px);
             }
             .img-box {
               background-color: $icon-bg1;
@@ -162,15 +162,15 @@ export default {
             margin-right: 0;
           }
           h3 {
-            font-size: 2.1rem;
+            font-size: clamp(1.9rem, 1.855vw, 2.1rem);
             font-weight: 600;
             margin-bottom: 2rem;
           }
           p {
-            font-size: 1.8rem;
+            font-size: clamp(1.6rem, 1.563vw, 1.8rem);
             font-weight: 200;
             color: $dec;
-            line-height: 25px;
+            line-height: clamp(20px, 1.953vw, 25px);
           }
         }
         @for $i from 1 through 3 {
@@ -186,7 +186,7 @@ export default {
       padding: 145px 0 100px;
       text-align: center;
       margin: 0 auto;
-      font-size: 8rem;
+      font-size: clamp(5rem, 4.883vw, 8rem);
       font-weight: 600;
       letter-spacing: 5px;
     }
@@ -199,8 +199,8 @@ export default {
     padding-left: 3rem;
   }
   .img-box {
-    width: 70px;
-    height: 70px;
+    width: clamp(6rem, 5.859vw, 7rem);
+    height: clamp(6rem, 5.859vw, 7rem);
     border-radius: 18px;
     display: flex;
     align-items: center;

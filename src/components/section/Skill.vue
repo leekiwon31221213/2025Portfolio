@@ -142,14 +142,14 @@ export default {
     padding: 145px 0 35px 0;
     text-align: center;
     margin: 0 auto;
-    font-size: 8rem;
+    font-size: clamp(5rem, 4.883vw, 8rem);
     font-weight: 600;
     letter-spacing: 5px;
   }
   p.desc {
     text-align: center;
-    line-height: 3.5rem;
-    font-size: 2rem;
+    line-height: clamp(3rem, 2.93vw, 3.5rem);
+    font-size: clamp(1.6rem, 1.563vw, 1.8rem);
     color: $dec;
     font-weight: 200;
     margin-bottom: 12.8rem;
@@ -158,6 +158,9 @@ export default {
     display: flex;
     justify-content: space-evenly;
     gap: 2rem;
+    @media (max-width: 1024px) {
+      flex-direction: column;
+    }
     li {
       display: flex;
       width: calc(100% / 4);
@@ -178,7 +181,7 @@ export default {
               font-size: 1.3rem;
               width: 100%;
               display: flex;
-              justify-content: space-between;
+              flex-wrap: wrap;
               gap: 1rem;
               margin-top: 0.5rem;
               a {
@@ -192,7 +195,7 @@ export default {
           &:first-child {
             flex-direction: column;
             h3 {
-              font-size: 2.1rem;
+              font-size: clamp(1.8rem, 1.758vw, 2.1rem);
               font-weight: 600;
               margin-bottom: 1.5rem;
             }
@@ -200,8 +203,8 @@ export default {
               padding: 1.3rem;
               border-radius: 0.8rem;
               margin-bottom: 1.5rem;
-              width: 60px;
-              height: 60px;
+              width: clamp(50px, 4.883vw, 60px);
+              height: clamp(50px, 4.883vw, 60px);
               display: flex;
               justify-content: center;
 
@@ -226,7 +229,7 @@ export default {
             margin-bottom: 1rem;
             width: 200px;
             color: $dec;
-            font-size: 1.7rem;
+            font-size: clamp(1.5rem, 1.465vw, 1.7rem);
           }
 
           .skill-level {
