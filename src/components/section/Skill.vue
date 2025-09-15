@@ -137,6 +137,9 @@ export default {
     width: 90%;
     margin: 0 auto;
     padding-bottom: 25rem;
+    @media (max-width: 1024px) {
+      padding-bottom: clamp(15rem, 19.531vw, 25rem);
+    }
   }
   h1 {
     padding: 145px 0 35px 0;
@@ -145,6 +148,9 @@ export default {
     font-size: clamp(5rem, 4.883vw, 8rem);
     font-weight: 600;
     letter-spacing: 5px;
+    @media (max-width: 1024px) {
+      font-size: clamp(3rem, 3.906vw, 5rem);
+    }
   }
   p.desc {
     text-align: center;
@@ -153,6 +159,9 @@ export default {
     color: $dec;
     font-weight: 200;
     margin-bottom: 12.8rem;
+    @media (max-width: 1024px) {
+      margin-bottom: clamp(6rem, 7.813vw, 12.8rem);
+    }
   }
   .skills-box {
     display: flex;
@@ -160,11 +169,15 @@ export default {
     gap: 2rem;
     @media (max-width: 1024px) {
       flex-direction: column;
+      gap: 5rem;
     }
     li {
       display: flex;
       width: calc(100% / 4);
       align-items: flex-start;
+      @media (max-width: 1024px) {
+        width: 100%;
+      }
     }
     .skill__inner {
       .skill-list {

@@ -102,25 +102,41 @@ export default {
       width: 90%;
       padding: 0 0 250px;
       margin: 0 auto;
+      @media (max-width: 1024px) {
+        padding: 0 0 150px;
+      }
       .about-content-tie {
         margin-bottom: 5.5rem;
         display: flex;
         width: 100%;
         justify-content: space-between;
+        @media (max-width: 1024px) {
+          flex-direction: column;
+        }
         .about-content {
           letter-spacing: 2px;
           line-height: clamp(3rem, 2.93vw, 4rem);
           margin-right: 3rem;
           width: calc(100% / 0.47);
+          @media (max-width: 1024px) {
+            width: unset;
+          }
           h2 {
-            font-size: clamp(2.3rem, 2.246vw, 3rem);
+            font-size: clamp(2.4rem, 2.344vw, 3rem);
             margin-bottom: 1rem;
             font-weight: 600;
+            @media (max-width: 1024px) {
+              text-align: center;
+            }
           }
           p {
             font-size: clamp(1.8rem, 1.758vw, 2.3rem);
             color: $dec;
             font-weight: 200;
+            @media (max-width: 1024px) {
+              margin-bottom: 3rem;
+              text-align: center;
+            }
             strong {
               color: $white;
               font-size: clamp(2.1rem, 2.051vw, 2.6rem);
@@ -131,6 +147,9 @@ export default {
         .setting-card {
           width: 100%;
           li {
+            @media (max-width: 1024px) {
+              width: 100%;
+            }
             h3 {
               font-size: clamp(1.9rem, 1.855vw, 2.1rem);
               font-weight: 600;
@@ -152,12 +171,19 @@ export default {
       .about-cards {
         display: flex;
         justify-content: space-between;
+        @media (max-width: 1024px) {
+          flex-direction: column;
+        }
 
         li {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
           margin-right: 30px;
+          @media (max-width: 1024px) {
+            width: 100%;
+            margin-bottom: 5rem;
+          }
           &:last-child {
             margin-right: 0;
           }
@@ -189,6 +215,9 @@ export default {
       font-size: clamp(5rem, 4.883vw, 8rem);
       font-weight: 600;
       letter-spacing: 5px;
+      @media (max-width: 1024px) {
+        font-size: clamp(3rem, 3.906vw, 5rem);
+      }
     }
   }
 

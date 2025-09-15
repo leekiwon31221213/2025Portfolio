@@ -63,6 +63,10 @@ export default {
     h2 {
       font-size: clamp(3rem, 2.93vw, 5rem);
       font-weight: 500;
+      @media (max-width: 1024px) {
+        text-align: center;
+        font-size: clamp(2.4rem, 3.125vw, 3rem);
+      }
       strong {
         font-size: clamp(5rem, 4.883vw, 8rem);
         color: $white;
@@ -72,6 +76,9 @@ export default {
         font-weight: 700;
         margin: 2rem 0;
         display: inline-block;
+        @media (max-width: 1024px) {
+          font-size: clamp(3rem, 3.906vw, 5rem);
+        }
       }
     }
     p {
@@ -80,16 +87,37 @@ export default {
       font-weight: 200;
       margin: 4.5rem auto 5.6rem;
       line-height: 1.3;
+      @media (max-width: 1024px) {
+        font-size: clamp(1.8rem, 2.344vw, 2.2rem);
+        text-align: center;
+      }
     }
 
     .section__inner-content {
       display: flex;
       margin: 165px 0;
       justify-content: space-between;
-
+      @media (max-width: 1024px) {
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: unset;
+      }
+      li {
+        &:first-child {
+          @media (max-width: 1024px) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+        }
+      }
       .img-box {
         position: relative;
         display: flex;
+        @media (max-width: 1024px) {
+          display: unset;
+          margin-bottom: 5rem;
+        }
         .circle {
           position: relative;
           width: clamp(325px, 31.738vw, 450px);
@@ -111,6 +139,9 @@ export default {
           z-index: 1;
           left: clamp(90px, 8.789vw, 130px);
           top: 30px;
+          @media (max-width: 1024px) {
+            left: -50px;
+          }
           &.glass {
             font-size: clamp(1.6rem, 1.563vw, 2rem);
             width: clamp(170px, 16.602vw, 220px);
@@ -138,6 +169,9 @@ export default {
           position: absolute;
           top: -50px;
           right: -25px;
+          @media (max-width: 1024px) {
+            top: 0;
+          }
           &::before {
             content: '';
             position: absolute;
@@ -158,6 +192,9 @@ export default {
           position: absolute;
           bottom: 40px;
           left: 205px;
+          @media (max-width: 1024px) {
+            left: -50px;
+          }
           &::before {
             content: '';
             position: absolute;

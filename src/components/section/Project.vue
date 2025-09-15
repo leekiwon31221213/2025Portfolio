@@ -224,15 +224,19 @@ export default {
     padding: 145px 0 35px 0;
     text-align: center;
     margin: 0 auto;
-    font-size: 8rem;
+    font-size: clamp(5rem, 4.883vw, 8rem);
     font-weight: 600;
     letter-spacing: 5px;
+    @media (max-width: 1024px) {
+      font-size: clamp(3rem, 3.906vw, 5rem);
+    }
   }
   .dec {
     margin-bottom: 7rem;
     color: $dec;
     font-size: 2rem;
     text-align: center;
+    font-size: clamp(1.6rem, 1.563vw, 1.8rem);
   }
   #project-swiper {
     width: 90%;
@@ -240,6 +244,9 @@ export default {
     .project-img {
       width: 50rem;
       border-radius: 2rem;
+      @media (max-width: 1024px) {
+        width: clamp(40rem, 52.083vw, 50rem);
+      }
     }
 
     .project-list {
@@ -248,6 +255,9 @@ export default {
       align-items: center;
       list-style: none;
       width: 580px;
+      @media (max-width: 1024px) {
+        width: unset;
+      }
       li {
         display: flex;
         flex-direction: column;
@@ -255,13 +265,13 @@ export default {
 
         h3 {
           margin: 4rem 0 1rem;
-          font-size: 2.1rem;
+          font-size: clamp(1.8rem, 1.758vw, 2.1rem);
           font-weight: 600;
         }
         p {
           color: $dec;
           font-weight: 400;
-          font-size: 1.8rem;
+          font-size: clamp(1.6rem, 1.563vw, 1.8rem);
         }
         .hashtags {
           display: flex;
@@ -299,6 +309,9 @@ export default {
         }
       }
     }
+  }
+  .swiper-slide {
+    width: clamp(460px, 44.922vw, 518.333px) !important;
   }
 }
 </style>

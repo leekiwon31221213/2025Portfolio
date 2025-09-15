@@ -144,6 +144,9 @@ export default {
     font-size: clamp(5rem, 4.883vw, 8rem);
     font-weight: 600;
     letter-spacing: 5px;
+    @media (max-width: 1024px) {
+      font-size: clamp(3rem, 3.906vw, 5rem);
+    }
   }
   .career__inner,
   .education__inner {
@@ -165,17 +168,23 @@ export default {
     li {
       p {
         color: $dec;
-        font-size: 1.8rem;
+        font-size: clamp(1.6rem, 1.563vw, 1.8rem);
         font-weight: 400;
         line-height: 1.4;
       }
       .img-box {
         img {
           border-radius: 6px;
+          @media (max-width: 1024px) {
+            width: clamp(40px, 5.208vw, 59px);
+          }
         }
         &.jc {
           img {
             width: 59px;
+            @media (max-width: 1024px) {
+              width: clamp(40px, 5.208vw, 59px);
+            }
           }
         }
       }
@@ -183,7 +192,7 @@ export default {
       .educatio-business-box {
         display: flex;
         h3 {
-          font-size: 2.1rem;
+          font-size: clamp(1.9rem, 1.855vw, 2.1rem);
           font-weight: 600;
         }
         p {
@@ -214,6 +223,11 @@ export default {
             position: absolute;
             left: -55px;
             top: 0;
+            @media (max-width: 1024px) {
+              width: 20px;
+              height: 20px;
+              left: -52px;
+            }
           }
           &:last-child {
             margin-bottom: 0;
