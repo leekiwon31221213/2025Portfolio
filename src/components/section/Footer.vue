@@ -35,11 +35,19 @@ export default {
   img {
     width: 190px;
     margin-right: 2rem;
+    @media (max-width: 1024px) {
+      margin-right: unset;
+      margin-bottom: 3rem;
+    }
   }
   .footer__inner {
     display: flex;
     align-items: center;
     justify-content: center;
+    @media (max-width: 1024px) {
+      flex-direction: column;
+      text-align: center;
+    }
     &::before {
       content: '';
       position: absolute;
@@ -53,18 +61,20 @@ export default {
     }
     ul {
       li {
-        font-size: 2.5rem;
+        font-size: clamp(2.1rem, 2.734vw, 2.5rem);
         font-weight: 600;
+
         &.title {
           margin-bottom: 1rem;
         }
         &.dec {
           color: $dec;
-          font-size: 1.7rem;
+          font-size: clamp(1.6rem, 2.083vw, 1.7rem);
           font-weight: 400;
           line-height: 1.5;
+
           strong {
-            font-size: 1.9rem;
+            font-size: clamp(1.7rem, 2.214vw, 1.9rem);
             color: #fff;
           }
         }
