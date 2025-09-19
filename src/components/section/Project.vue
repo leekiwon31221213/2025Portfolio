@@ -11,6 +11,18 @@
       @swiper="onSwiper"
       @slideChange="onSlideChange"
       id="project-swiper"
+      :breakpoints="{
+        0: {
+          // 화면이 0px 이상일 때
+          slidesPerView: 2,
+          spaceBetween: 10,
+        },
+        1024: {
+          // 화면이 768px 이상일 때 (예: 태블릿/PC)
+          slidesPerView: 3,
+          spaceBetween: 80,
+        },
+      }"
     >
       <!-- 각 프로젝트를 별도의 SwiperSlide로 렌더링 -->
       <SwiperSlide v-for="(project, index) in project" :key="index">
