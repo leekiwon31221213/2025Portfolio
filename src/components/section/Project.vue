@@ -311,7 +311,7 @@ export default {
     }
   }
   .swiper-slide {
-    width: inherit !important;
+    width: clamp(460px, 44.922vw, 518.333px) !important;
   }
 }
 </style>
