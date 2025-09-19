@@ -151,6 +151,9 @@ export default {
     @media (max-width: 1024px) {
       font-size: clamp(3rem, 3.906vw, 5rem);
     }
+    @media (max-width: 768px) {
+      font-size: clamp(2.4rem, 4.364vw, 3rem);
+    }
   }
   p.desc {
     text-align: center;
@@ -161,6 +164,9 @@ export default {
     margin-bottom: 12.8rem;
     @media (max-width: 1024px) {
       margin-bottom: clamp(6rem, 7.813vw, 12.8rem);
+    }
+    @media (max-width: 768px) {
+      font-size: clamp(1.4rem, 2.545vw, 1.6rem);
     }
   }
   .skills-box {
@@ -211,6 +217,9 @@ export default {
               font-size: clamp(1.8rem, 1.758vw, 2.1rem);
               font-weight: 600;
               margin-bottom: 1.5rem;
+              @media (max-width: 768px) {
+                font-size: clamp(1.6rem, 2.909vw, 1.8rem);
+              }
             }
             .icon-box {
               padding: 1.3rem;
@@ -243,6 +252,9 @@ export default {
             width: 200px;
             color: $dec;
             font-size: clamp(1.5rem, 1.465vw, 1.7rem);
+            @media (max-width: 768px) {
+              font-size: clamp(1.4rem, 2.545vw, 1.5rem);
+            }
           }
 
           .skill-level {
@@ -273,7 +285,12 @@ export default {
           }
         }
       }
-
+      &.design-skill,
+      &.collaboration-skill {
+        @media (max-width: 1024px) {
+          height: 300px;
+        }
+      }
       &.design-skill,
       &.collaboration-skill,
       &.etc-skill {
@@ -288,6 +305,7 @@ export default {
       }
     }
   }
+
   .glass {
     @include glass(100%, 485px, 4px, 180%, 2rem, #fff);
     border-radius: 30px;

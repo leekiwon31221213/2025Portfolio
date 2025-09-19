@@ -67,6 +67,9 @@ export default {
         text-align: center;
         font-size: clamp(2.4rem, 3.125vw, 3rem);
       }
+      @media (max-width: 768px) {
+        font-size: clamp(2rem, 3.636vw, 2.4rem);
+      }
       strong {
         font-size: clamp(5rem, 4.883vw, 8rem);
         color: $white;
@@ -78,6 +81,9 @@ export default {
         display: inline-block;
         @media (max-width: 1024px) {
           font-size: clamp(3rem, 3.906vw, 5rem);
+        }
+        @media (max-width: 768px) {
+          font-size: clamp(2.4rem, 4.364vw, 3rem);
         }
       }
     }
@@ -91,6 +97,9 @@ export default {
         font-size: clamp(1.8rem, 2.344vw, 2.2rem);
         text-align: center;
       }
+      @media (max-width: 768px) {
+        font-size: clamp(1.6rem, 2.909vw, 1.8rem);
+      }
     }
 
     .section__inner-content {
@@ -101,6 +110,9 @@ export default {
         flex-direction: column-reverse;
         align-items: center;
         justify-content: unset;
+      }
+      @media (max-width: 768px) {
+        margin: clamp(100px, 18.182vw, 165px) 0;
       }
       li {
         &:first-child {
@@ -125,12 +137,20 @@ export default {
           background-color: #eaeaea;
           border-radius: 50%;
           overflow: hidden;
-
+          @media (max-width: 768px) {
+            width: clamp(250px, 45.455vw, 325px);
+            height: clamp(250px, 45.455vw, 325px);
+          }
           img {
             position: absolute;
             left: clamp(58px, 5.664vw, 65px);
             max-width: clamp(200px, 19.531vw, 295px);
             top: 55px;
+            @media (max-width: 768px) {
+              left: clamp(30px, 5.455vw, 58px);
+              max-width: clamp(170px, 30.909vw, 200px);
+              top: clamp(30px, 5.455vw, 55px);
+            }
           }
         }
 
@@ -172,6 +192,11 @@ export default {
           @media (max-width: 1024px) {
             top: 0;
           }
+          @media (max-width: 768px) {
+            width: clamp(55px, 10vw, 65px);
+            height: clamp(55px, 10vw, 65px);
+            right: clamp(1px, 0.182vw, -25px);
+          }
           &::before {
             content: '';
             position: absolute;
@@ -195,6 +220,12 @@ export default {
           @media (max-width: 1024px) {
             left: -50px;
           }
+          @media (max-width: 768px) {
+            width: clamp(40px, 7.273vw, 65px);
+            height: clamp(40px, 7.273vw, 65px);
+            bottom: clamp(1px, 0.182vw, 40px);
+            left: -18px;
+          }
           &::before {
             content: '';
             position: absolute;
@@ -212,5 +243,10 @@ export default {
 }
 .glass {
   @include glass(220px, 60px, 4px, 180%, 2rem, #fff);
+  @media (max-width: 768px) {
+    width: clamp(180px, 32.727vw, 220px);
+    height: clamp(45px, 8.182vw, 60px);
+    font-size: clamp(1.6rem, 2.909vw, 2rem);
+  }
 }
 </style>

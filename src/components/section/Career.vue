@@ -147,6 +147,9 @@ export default {
     @media (max-width: 1024px) {
       font-size: clamp(3rem, 3.906vw, 5rem);
     }
+    @media (max-width: 768px) {
+      font-size: clamp(2.4rem, 4.364vw, 3rem);
+    }
   }
   .career__inner,
   .education__inner {
@@ -163,6 +166,9 @@ export default {
       position: absolute;
       top: 20px;
       left: -23px;
+      @media (max-width: 768px) {
+        display: none;
+      }
     }
 
     li {
@@ -171,6 +177,9 @@ export default {
         font-size: clamp(1.6rem, 1.563vw, 1.8rem);
         font-weight: 400;
         line-height: 1.4;
+        @media (max-width: 768px) {
+          font-size: clamp(1.4rem, 2.545vw, 1.6rem);
+        }
       }
       .img-box {
         img {
@@ -194,6 +203,9 @@ export default {
         h3 {
           font-size: clamp(1.9rem, 1.855vw, 2.1rem);
           font-weight: 600;
+          @media (max-width: 768px) {
+            font-size: clamp(1.6rem, 2.909vw, 1.9rem);
+          }
         }
         p {
           margin-left: 1rem;
@@ -212,6 +224,12 @@ export default {
           flex-direction: column;
           margin: 2rem;
           padding: 4rem 3rem;
+          @media (max-width: 768px) {
+            margin: 0 0 2rem 0;
+            &:last-child {
+              margin-bottom: 0;
+            }
+          }
 
           &::before {
             content: '';
@@ -227,6 +245,9 @@ export default {
               width: 20px;
               height: 20px;
               left: -52px;
+            }
+            @media (max-width: 768px) {
+              display: none;
             }
           }
           &:last-child {
@@ -245,6 +266,9 @@ export default {
     display: flex;
     justify-content: center;
     margin: 0 auto 120px;
+    @media (max-width: 768px) {
+      margin: 0 auto clamp(100px, 13.333vw, 120px);
+    }
     #more-btn {
       color: #fff;
       max-width: 225px;
@@ -255,6 +279,11 @@ export default {
       font-size: 1.7rem;
       transition: 0.3s ease-in-out;
       font-weight: 600;
+      @media (max-width: 768px) {
+        max-width: clamp(180px, 32.727vw, 225px);
+        padding: 1.5rem;
+        font-size: 1.55rem;
+      }
 
       &:hover {
         border: unset;

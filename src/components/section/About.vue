@@ -105,6 +105,9 @@ export default {
       @media (max-width: 1024px) {
         padding: 0 0 150px;
       }
+      @media (max-width: 768px) {
+        padding: 0 0 clamp(100px, 18.182vw, 150px);
+      }
       .about-content-tie {
         margin-bottom: 5.5rem;
         display: flex;
@@ -120,6 +123,7 @@ export default {
           width: calc(100% / 0.47);
           @media (max-width: 1024px) {
             width: unset;
+            margin-right: 0;
           }
           h2 {
             font-size: clamp(2.4rem, 2.344vw, 3rem);
@@ -127,6 +131,9 @@ export default {
             font-weight: 600;
             @media (max-width: 1024px) {
               text-align: center;
+            }
+            @media (max-width: 768px) {
+              font-size: clamp(1.9rem, 3.455vw, 2.4rem);
             }
           }
           p {
@@ -137,10 +144,16 @@ export default {
               margin-bottom: 3rem;
               text-align: center;
             }
+            @media (max-width: 768px) {
+              font-size: clamp(1.6rem, 2.909vw, 1.8rem);
+            }
             strong {
               color: $white;
               font-size: clamp(2.1rem, 2.051vw, 2.6rem);
               font-weight: 600;
+              @media (max-width: 768px) {
+                font-size: clamp(1.8rem, 3.273vw, 2.1rem);
+              }
             }
           }
         }
@@ -218,6 +231,10 @@ export default {
       @media (max-width: 1024px) {
         font-size: clamp(3rem, 3.906vw, 5rem);
       }
+      @media (max-width: 768px) {
+        padding: 145px 0 clamp(45px, 8.182vw, 100px);
+        font-size: clamp(2.4rem, 4.364vw, 3rem);
+      }
     }
   }
 
@@ -234,6 +251,13 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    @media (max-width: 768px) {
+      width: clamp(5rem, 9.091vw, 6rem);
+      height: clamp(5rem, 9.091vw, 6rem);
+      img {
+        width: clamp(20px, 3.636vw, 27px);
+      }
+    }
   }
 }
 </style>

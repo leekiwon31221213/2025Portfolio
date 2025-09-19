@@ -159,7 +159,6 @@ header {
     }
   }
 
-  // 오버레이: 배경 효과
   &::before {
     content: '';
     position: absolute;

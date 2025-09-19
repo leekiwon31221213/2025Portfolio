@@ -6,7 +6,7 @@
     <Career></Career>
     <Skill></Skill>
     <Project></Project>
-    <Footer></Footer>
+    <!-- <Footer></Footer> -->
   </div>
 </template>
 <script setup>
