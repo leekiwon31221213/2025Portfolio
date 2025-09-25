@@ -6,25 +6,33 @@
     <Swiper
       :modules="modules"
       :slides-per-view="3"
-      :space-between="80"
       :loop="true"
       @swiper="onSwiper"
       @slideChange="onSlideChange"
       id="project-swiper"
       :breakpoints="{
         0: {
-          // 화면이 0px 이상일 때
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+        550: {
           slidesPerView: 2,
-          spaceBetween: 10,
+          spaceBetween: 30,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 30,
         },
         1024: {
-          // 화면이 768px 이상일 때 (예: 태블릿/PC)
+          slidesPerView: 2,
+          spaceBetween: 80,
+        },
+        1025: {
           slidesPerView: 3,
           spaceBetween: 80,
         },
       }"
     >
-      <!-- 각 프로젝트를 별도의 SwiperSlide로 렌더링 -->
       <SwiperSlide v-for="(project, index) in project" :key="index">
         <ul class="project-list">
           <li>
@@ -244,11 +252,14 @@ export default {
     }
   }
   .dec {
-    margin-bottom: 7rem;
     color: $dec;
-    font-size: 2rem;
     text-align: center;
     font-size: clamp(1.6rem, 1.563vw, 1.8rem);
+    width: 90%;
+    margin: 0 auto 7rem auto;
+    @media (max-width: 550px) {
+      font-size: clamp(1.4rem, 3.889vw, 1.6rem);
+    }
   }
   #project-swiper {
     width: 90%;
@@ -258,6 +269,13 @@ export default {
       border-radius: 2rem;
       @media (max-width: 1024px) {
         width: clamp(40rem, 52.083vw, 50rem);
+      }
+
+      @media (max-width: 768px) {
+        width: clamp(33rem, 60vw, 40rem);
+      }
+      @media (max-width: 550px) {
+        width: clamp(29rem, 80.556vw, 33rem);
       }
     }
 
@@ -270,10 +288,20 @@ export default {
       @media (max-width: 1024px) {
         width: unset;
       }
+      @media (max-width: 768px) {
+        width: 90%;
+      }
+      @media (max-width: 550px) {
+        width: 100%;
+      }
       li {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        width: 100%;
+        @media (max-width: 550px) {
+          align-items: center;
+        }
 
         h3 {
           margin: 4rem 0 1rem;
@@ -284,11 +312,19 @@ export default {
           color: $dec;
           font-weight: 400;
           font-size: clamp(1.6rem, 1.563vw, 1.8rem);
+          @media (max-width: 550px) {
+            text-align: center;
+          }
         }
         .hashtags {
           display: flex;
           gap: 1rem;
           margin: 2rem 0 3rem;
+          @media (max-width: 768px) {
+            flex-direction: column;
+            width: 90%;
+          }
+
           span {
             border: 1px solid $border;
             padding: 1rem;
@@ -299,8 +335,10 @@ export default {
         .btn-box {
           display: flex;
           width: 100%;
+          @media (max-width: 550px) {
+            justify-content: center;
+          }
         }
-
         .project-btn {
           display: flex;
           align-items: center;
@@ -310,8 +348,15 @@ export default {
           &.glass {
             width: fit-content;
             height: 40px;
+            line-height: 40px;
             font-size: 1.5rem;
             margin-right: 1rem;
+            @media (max-width: 1024px) {
+              font-size: clamp(1.3rem, 2.364vw, 1.5rem);
+            }
+            @media (max-width: 768px) {
+              padding: 0.9rem clamp(1rem, 1.818vw, 1.6rem);
+            }
           }
         }
 
@@ -322,8 +367,25 @@ export default {
       }
     }
   }
+  /* 스와이프 전환 이징을 더 부드럽게 */
+  #project-swiper .swiper-wrapper {
+    /* //부드러운 커스텀 이징(오버슈트 없이 자연) */
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1) !important;
+  }
+
   .swiper-slide {
-    width: clamp(460px, 44.922vw, 518.333px) !important;
+    @media (min-width: 1025px) {
+      width: clamp(520px, 50.781vw, 560px) !important;
+    }
+    @media (max-width: 1024px) {
+      width: clamp(430px, 55.99vw, 520px) !important;
+    }
+    @media (max-width: 768px) {
+      width: clamp(365px, 66.364vw, 430px) !important;
+    }
+    @media (max-width: 550px) {
+      width: 100% !important;
+    }
   }
 }
 </style>

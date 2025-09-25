@@ -151,6 +151,13 @@ export default {
       font-size: clamp(2.4rem, 4.364vw, 3rem);
     }
   }
+  #career {
+    h1 {
+      @media (max-width: 550px) {
+        padding: clamp(60px, 16.667vw, 145px) 0 35px 0;
+      }
+    }
+  }
   .career__inner,
   .education__inner {
     position: relative;
@@ -200,16 +207,16 @@ export default {
       .company-business-box,
       .educatio-business-box {
         display: flex;
+        flex-wrap: wrap;
         h3 {
           font-size: clamp(1.9rem, 1.855vw, 2.1rem);
           font-weight: 600;
+          margin-right: 1rem;
           @media (max-width: 768px) {
             font-size: clamp(1.6rem, 2.909vw, 1.9rem);
           }
         }
-        p {
-          margin-left: 1rem;
-        }
+
         margin: 1.2rem 0 1rem 0;
       }
 

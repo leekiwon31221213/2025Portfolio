@@ -229,6 +229,10 @@ export default {
               height: clamp(50px, 4.883vw, 60px);
               display: flex;
               justify-content: center;
+              @media (max-width: 550px) {
+                width: clamp(4rem, 11.111vw, 5rem);
+                height: clamp(4rem, 11.111vw, 5rem);
+              }
 
               &.front {
                 background: linear-gradient(133deg, #faab89 0%, #f54a00 100%);

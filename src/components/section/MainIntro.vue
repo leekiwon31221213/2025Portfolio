@@ -31,7 +31,6 @@
 <script>
 export default {
   data() {
-    /* About 소개 */
     return {
       mainIntro: {
         title: `
@@ -166,6 +165,10 @@ export default {
             font-size: clamp(1.6rem, 1.563vw, 2rem);
             width: clamp(170px, 16.602vw, 220px);
             height: clamp(40px, 3.906vw, 60px);
+            @media (max-width: 550px) {
+              font-size: clamp(1.4rem, 3.889vw, 1.6rem);
+              width: clamp(150px, 41.667vw, 170px);
+            }
           }
           span {
             &::before {
@@ -177,6 +180,9 @@ export default {
               height: clamp(11px, 1.074vw, 15px);
               background-color: #0a9356;
               border-radius: 50%;
+              @media (max-width: 550px) {
+                left: clamp(13px, 3.611vw, 20px);
+              }
             }
           }
         }

@@ -38,6 +38,7 @@ export default {
     @media (max-width: 1024px) {
       margin-right: unset;
       margin-bottom: 3rem;
+      width: clamp(150px, 27.273vw, 190px);
     }
   }
   .footer__inner {
@@ -47,6 +48,8 @@ export default {
     @media (max-width: 1024px) {
       flex-direction: column;
       text-align: center;
+      width: 90%;
+      margin: 0 auto;
     }
     &::before {
       content: '';
@@ -63,6 +66,9 @@ export default {
       li {
         font-size: clamp(2.1rem, 2.734vw, 2.5rem);
         font-weight: 600;
+        @media (max-width: 768px) {
+          font-size: clamp(1.8rem, 3.273vw, 2.1rem);
+        }
 
         &.title {
           margin-bottom: 1rem;
@@ -72,10 +78,16 @@ export default {
           font-size: clamp(1.6rem, 2.083vw, 1.7rem);
           font-weight: 400;
           line-height: 1.5;
+          @media (max-width: 768px) {
+            font-size: clamp(1.4rem, 2.545vw, 1.6rem);
+          }
 
           strong {
             font-size: clamp(1.7rem, 2.214vw, 1.9rem);
             color: #fff;
+            @media (max-width: 768px) {
+              font-size: clamp(1.5rem, 2.727vw, 1.7rem);
+            }
           }
         }
       }

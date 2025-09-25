@@ -3,9 +3,14 @@
     <h1 lang="en">About Me</h1>
     <article class="section__inner">
       <div class="about-content-tie">
-        <div class="about-content">
+        <div class="about-content pc">
           <h2>{{ about.title }}</h2>
           <p v-html="about.description"></p>
+        </div>
+
+        <div class="about-content mo">
+          <h2 v-html="about.moTitle"></h2>
+          <p v-html="about.moDesCription"></p>
         </div>
 
         <ul class="setting-card glass">
@@ -46,13 +51,26 @@ export default {
       about: {
         title: '직관적인 경험을 구현하는 프론트엔드 개발자',
         description: `
-        웹퍼블리셔로 첫 발을 내딛은 이후,
+        웹퍼블리셔로 첫 발을 내딛고,
         <strong>사용자 경험</strong>에 대한 깊은 이해를 바탕으로 프론트엔드 개발자로 성장해 왔습니다.
         단순한 마크업을 넘어, 사용자와 자연스럽게 소통하는
         <strong>인터랙티브한 웹 경험</strong>을 만들어 가고 있습니다.
         깔끔하고 직관적인 디자인 속에 복잡한 기능을 담아, 누구나 쉽게 사용할 수 있는 환경을 만드는 것이 저의 철학입니다.
         매일 새로운 기술을 배우고 적용하며, 더 나은 개발자로 나아가기 위해 끊임없이 노력하고 있습니다.
       `,
+
+        moTitle: '직관적인 경험을 구현하는 <br/> 프론트엔드 개발자',
+        moDesCription: `
+        웹퍼블리셔로 시작해,  
+        <strong>사용자 경험</strong>을 깊이 이해하며  
+        프론트엔드 개발자로 성장했습니다. 
+        단순한 마크업을 넘어  
+        <strong>인터랙티브한 웹 경험</strong>을 만들고,  
+        누구나 쉽게 사용할 수 있는 환경을 추구합니다. 
+        매일 배우고 적용하며  
+        더 나은 개발자로 나아가고 있습니다.
+
+        `,
       },
       // 경험 설계
       settingCard: {
@@ -125,15 +143,32 @@ export default {
             width: unset;
             margin-right: 0;
           }
+          &.pc {
+            display: block;
+            @media (max-width: 1024px) {
+              display: none;
+            }
+          }
+
+          &.mo {
+            display: none;
+            @media (max-width: 1024px) {
+              display: block;
+            }
+          }
           h2 {
             font-size: clamp(2.4rem, 2.344vw, 3rem);
             margin-bottom: 1rem;
             font-weight: 600;
             @media (max-width: 1024px) {
               text-align: center;
+              margin-bottom: 2rem;
             }
             @media (max-width: 768px) {
               font-size: clamp(1.9rem, 3.455vw, 2.4rem);
+            }
+            @media (max-width: 550px) {
+              font-size: clamp(1.7rem, 4.722vw, 1.9rem);
             }
           }
           p {
@@ -147,12 +182,18 @@ export default {
             @media (max-width: 768px) {
               font-size: clamp(1.6rem, 2.909vw, 1.8rem);
             }
+            @media (max-width: 550px) {
+              font-size: clamp(1.4rem, 3.889vw, 1.6rem);
+            }
             strong {
               color: $white;
               font-size: clamp(2.1rem, 2.051vw, 2.6rem);
               font-weight: 600;
               @media (max-width: 768px) {
                 font-size: clamp(1.8rem, 3.273vw, 2.1rem);
+              }
+              @media (max-width: 550px) {
+                font-size: clamp(1.5rem, 4.167vw, 1.8rem);
               }
             }
           }
@@ -167,12 +208,18 @@ export default {
               font-size: clamp(1.9rem, 1.855vw, 2.1rem);
               font-weight: 600;
               margin-bottom: 2rem;
+              @media (max-width: 550px) {
+                font-size: clamp(1.7rem, 4.722vw, 1.9rem);
+              }
             }
             p {
               font-size: clamp(1.6rem, 1.563vw, 1.8rem);
               font-weight: 200;
               color: $dec;
               line-height: clamp(20px, 1.953vw, 25px);
+              @media (max-width: 550px) {
+                font-size: clamp(1.5rem, 4.167vw, 1.6rem);
+              }
             }
             .img-box {
               background-color: $icon-bg1;
@@ -204,12 +251,18 @@ export default {
             font-size: clamp(1.9rem, 1.855vw, 2.1rem);
             font-weight: 600;
             margin-bottom: 2rem;
+            @media (max-width: 550px) {
+              font-size: clamp(1.7rem, 4.722vw, 1.9rem);
+            }
           }
           p {
             font-size: clamp(1.6rem, 1.563vw, 1.8rem);
             font-weight: 200;
             color: $dec;
             line-height: clamp(20px, 1.953vw, 25px);
+            @media (max-width: 550px) {
+              font-size: clamp(1.5rem, 4.167vw, 1.6rem);
+            }
           }
         }
         @for $i from 1 through 3 {
@@ -230,6 +283,7 @@ export default {
       letter-spacing: 5px;
       @media (max-width: 1024px) {
         font-size: clamp(3rem, 3.906vw, 5rem);
+        padding-bottom: 3rem;
       }
       @media (max-width: 768px) {
         padding: 145px 0 clamp(45px, 8.182vw, 100px);
@@ -254,6 +308,11 @@ export default {
     @media (max-width: 768px) {
       width: clamp(5rem, 9.091vw, 6rem);
       height: clamp(5rem, 9.091vw, 6rem);
+      border-radius: clamp(8px, 2.222vw, 18px);
+      @media (max-width: 550px) {
+        width: clamp(4rem, 11.111vw, 5rem);
+        height: clamp(4rem, 11.111vw, 5rem);
+      }
       img {
         width: clamp(20px, 3.636vw, 27px);
       }
