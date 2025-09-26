@@ -77,11 +77,9 @@
 </template>
 
 <script>
-// Swiper 모듈 및 컴포넌트 가져오기
 import { Pagination, A11y } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 
-// Swiper 스타일 가져오기
 import 'swiper/css'
 
 export default {
@@ -367,9 +365,7 @@ export default {
       }
     }
   }
-  /* 스와이프 전환 이징을 더 부드럽게 */
   #project-swiper .swiper-wrapper {
-    /* //부드러운 커스텀 이징(오버슈트 없이 자연) */
     transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1) !important;
   }
 
