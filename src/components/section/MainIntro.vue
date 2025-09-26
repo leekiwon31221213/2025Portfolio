@@ -195,6 +195,7 @@ export default {
           position: absolute;
           top: -50px;
           right: -25px;
+          animation: devIcon 2s ease-in-out forwards infinite;
           @media (max-width: 1024px) {
             top: 0;
           }
@@ -223,6 +224,7 @@ export default {
           position: absolute;
           bottom: 40px;
           left: 205px;
+          animation: designIcon 2s ease-in-out forwards infinite;
           @media (max-width: 1024px) {
             left: -50px;
           }
@@ -253,6 +255,30 @@ export default {
     width: clamp(180px, 32.727vw, 220px);
     height: clamp(45px, 8.182vw, 60px);
     font-size: clamp(1.6rem, 2.909vw, 2rem);
+  }
+}
+
+@keyframes devIcon {
+  0% {
+    transform: translateY(-20px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes designIcon {
+  0% {
+    transform: translateY(-7px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-7px);
   }
 }
 </style>

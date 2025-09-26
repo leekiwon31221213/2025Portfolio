@@ -14,7 +14,7 @@
         </div>
 
         <ul class="setting-card glass">
-          <li>
+          <li class="reveal">
             <div class="img-box"><img :src="settingCard.icon" :alt="settingCard.alt" /></div>
             <h3>{{ settingCard.title }}</h3>
             <p>{{ settingCard.description }}</p>
@@ -23,17 +23,17 @@
       </div>
 
       <ul class="about-cards">
-        <li class="user-card glass">
+        <li class="user-card glass reveal">
           <div class="img-box"><img :src="userCard.icon" :alt="userCard.alt" /></div>
           <h3>{{ userCard.title }}</h3>
           <p>{{ userCard.description }}</p>
         </li>
-        <li class="optimize-card glass">
+        <li class="optimize-card glass reveal">
           <div class="img-box"><img :src="optimizeCard.icon" :alt="optimizeCard.alt" /></div>
           <h3>{{ optimizeCard.title }}</h3>
           <p>{{ optimizeCard.description }}</p>
         </li>
-        <li class="growth-card glass">
+        <li class="growth-card glass reveal">
           <div class="img-box"><img :src="growthCard.icon" :alt="growthCard.alt" /></div>
           <h3>{{ growthCard.title }}</h3>
           <p>{{ growthCard.description }}</p>
@@ -44,6 +44,10 @@
 </template>
 
 <script>
+// GSAP과 ScrollTrigger 가져오기
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
 export default {
   data() {
     /* About 소개 */
@@ -58,7 +62,6 @@ export default {
         깔끔하고 직관적인 디자인 속에 복잡한 기능을 담아, 누구나 쉽게 사용할 수 있는 환경을 만드는 것이 저의 철학입니다.
         매일 새로운 기술을 배우고 적용하며, 더 나은 개발자로 나아가기 위해 끊임없이 노력하고 있습니다.
       `,
-
         moTitle: '직관적인 경험을 구현하는 <br/> 프론트엔드 개발자',
         moDesCription: `
         웹퍼블리셔로 시작해,  
@@ -69,10 +72,8 @@ export default {
         누구나 쉽게 사용할 수 있는 환경을 추구합니다. 
         매일 배우고 적용하며  
         더 나은 개발자로 나아가고 있습니다.
-
         `,
       },
-      // 경험 설계
       settingCard: {
         icon: '/assets/image/about/setting_icon.svg',
         title: '프론트엔드 경험 설계',
@@ -80,8 +81,6 @@ export default {
           '사용자 인터페이스와 경험을 세심하게 설계하여, 직관적이고 반응성이 뛰어난 웹 환경을 구현합니다.',
         alt: '경험설계 아이콘',
       },
-
-      // 사용자중심
       userCard: {
         icon: '/assets/image/about/user_icon.svg',
         title: '사용자 중심',
@@ -89,7 +88,6 @@ export default {
           '사용자의 관점에서 생각하고, 문제를 해결할 수 있는 최적의 솔루션을 만드는 것을 최우선으로 합니다.',
         alt: '사용자 중심 아이콘',
       },
-      // SEO 최적화
       optimizeCard: {
         icon: '/assets/image/about/optimize_icon.svg',
         title: 'SEO 최적화',
@@ -97,7 +95,6 @@ export default {
           '시멘틱 마크업과 최적화된 구조를 통해 검색 엔진 노출 효과를 높이고,사용자가 쉽게 찾을 수 있는 웹을 만듭니다.',
         alt: 'SEO 최적화 아이콘',
       },
-      // 지속적 성장
       growthCard: {
         icon: '/assets/image/about/growth_icon.svg',
         title: '지속적인 성장',
@@ -106,6 +103,76 @@ export default {
         alt: '지속적인 성장 아이콘',
       },
     }
+  },
+
+  mounted() {
+    gsap.registerPlugin(ScrollTrigger)
+
+    // 이미지 로딩 이후 계산 정확히 하기
+    const afterImagesLoaded = () =>
+      new Promise((resolve) => {
+        const imgs = Array.from(this.$el.querySelectorAll('img'))
+        if (imgs.length === 0) return resolve()
+        let loaded = 0
+        imgs.forEach((img) => {
+          if (img.complete) {
+            loaded++
+            if (loaded === imgs.length) resolve()
+          } else {
+            img.addEventListener('load', () => {
+              loaded++
+              if (loaded === imgs.length) resolve()
+            })
+            img.addEventListener('error', () => {
+              loaded++
+              if (loaded === imgs.length) resolve()
+            })
+          }
+        })
+      })
+
+    const revealPerCard = (selector, startFn) => {
+      const cards = Array.from(this.$el.querySelectorAll(selector))
+      if (!cards.length) return
+      gsap.set(cards, { opacity: 0, y: 40 })
+
+      cards.forEach((card, idx) => {
+        gsap.to(card, {
+          opacity: 1,
+          y: 0,
+          ease: 'power2.out',
+          duration: 0.6,
+          scrollTrigger: {
+            trigger: card,
+            start: startFn(idx),
+            end: 'bottom 60%',
+            toggleActions: 'play none none reverse',
+          },
+        })
+      })
+    }
+
+    this.$nextTick(async () => {
+      await afterImagesLoaded()
+
+      revealPerCard('.setting-card .reveal', () => 'top 80%')
+
+      ScrollTrigger.matchMedia({
+        '(min-width: 1025px)': () => {
+          const pxGap = 140
+          revealPerCard('.about-cards .reveal', (idx) => `top+=${idx * pxGap} 80%`)
+        },
+        '(max-width: 1024px)': () => {
+          revealPerCard('.about-cards .reveal', () => 'top 80%')
+        },
+      })
+
+      ScrollTrigger.refresh()
+    })
+  },
+
+  beforeDestroy() {
+    ScrollTrigger.getAll().forEach((st) => st.kill())
   },
 }
 </script>
@@ -318,5 +385,9 @@ export default {
       }
     }
   }
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
 }
 </style>

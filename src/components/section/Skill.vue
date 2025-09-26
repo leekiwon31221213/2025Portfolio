@@ -10,7 +10,7 @@
 
       <ul class="skills-box">
         <!-- 스킬 -->
-        <li class="skill__inner front-skill glass glass">
+        <li class="skill__inner front-skill glass reveal">
           <ul class="skill-list">
             <li>
               <div class="icon-box front">
@@ -29,7 +29,7 @@
           </ul>
         </li>
         <!-- 디자인 -->
-        <li class="skill__inner design-skill glass">
+        <li class="skill__inner design-skill glass reveal">
           <ul class="skill-list">
             <li>
               <div class="icon-box design">
@@ -43,7 +43,7 @@
           </ul>
         </li>
         <!-- 협업 -->
-        <li class="skill__inner collaboration-skill glass">
+        <li class="skill__inner collaboration-skill glass reveal">
           <ul class="skill-list">
             <li>
               <div class="icon-box collaboration">
@@ -57,7 +57,7 @@
           </ul>
         </li>
         <!-- 기타 -->
-        <li class="skill__inner etc-skill glass">
+        <li class="skill__inner etc-skill glass reveal">
           <ul class="skill-list">
             <li>
               <div class="icon-box etc">
@@ -86,10 +86,13 @@
 </template>
 
 <script>
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
 export default {
+  // 스킬 데이터
   data() {
     return {
-      // 프론트엔드
       front: {
         title: 'Frontend',
         icon: '/assets/image/skill/front_icon.svg',
@@ -103,21 +106,18 @@ export default {
           { name: 'Semantic', level: 65, type: 'concept' },
         ],
       },
-      // 디자인
       design: {
         title: 'Design',
         icon: '/assets/image/skill/design_icon.svg',
         alt: '',
         skills: [{ name: 'Photoshop' }, { name: 'Figma' }],
       },
-      // 협업툴
       collaboration: {
         title: 'Collaboration',
         icon: '/assets/image/skill/collaboration_icon.svg',
         alt: '',
         skills: [{ name: 'GitHub & GitLab' }, { name: 'Jira' }],
       },
-      // 기타
       etc: {
         title: 'Etc',
         icon: '/assets/image/skill/etc_icon.svg',
@@ -125,6 +125,135 @@ export default {
         skills: [{ name: 'React' }, { name: 'Php' }],
       },
     }
+  },
+
+  mounted() {
+    // GSAP 플러그인 등록
+    gsap.registerPlugin(ScrollTrigger)
+
+    // 이미지 로드 후 실행
+    const afterImagesLoaded = () =>
+      new Promise((resolve) => {
+        const imgs = Array.from(this.$el.querySelectorAll('#skill img'))
+        if (imgs.length === 0) return resolve()
+        let loaded = 0
+        const done = () => {
+          loaded++
+          if (loaded === imgs.length) resolve()
+        }
+        imgs.forEach((img) => {
+          if (img.complete) done()
+          else {
+            img.addEventListener('load', done)
+            img.addEventListener('error', done)
+          }
+        })
+      })
+
+    // 스킬바 채우기
+    const animateBars = (bars) => {
+      bars.forEach((bar) => {
+        const target = bar.style.getPropertyValue('--target-width') || '0%'
+        gsap.fromTo(bar, { width: 0 }, { width: target, duration: 2, ease: 'power2.out' })
+      })
+    }
+
+    // 스킬바 초기화
+    const resetBars = (bars) => {
+      bars.forEach((bar) => gsap.set(bar, { width: 0 }))
+    }
+
+    // 카드별 개별 트리거 (카드 + 내부 li + 스킬바 동작)
+    const revealPerCard = (selector, startFn) => {
+      const cards = Array.from(this.$el.querySelectorAll(selector))
+      if (!cards.length) return
+
+      // ★ 초기 상태: 섹션 위에 있을 때는 카드/내부 li 모두 숨김
+      gsap.set(cards, { opacity: 0, y: 40 })
+      cards.forEach((card) => {
+        const innerLis = card.querySelectorAll('.skill-list > li')
+        gsap.set(innerLis, { opacity: 0, y: 20 })
+      })
+
+      cards.forEach((card, idx) => {
+        const bars = card.querySelectorAll('.skill-bar')
+        const innerLis = card.querySelectorAll('.skill-list > li')
+
+        // 카드 페이드업 + 내부 li 순차 등장 + 스킬바 재생
+        gsap.fromTo(
+          card,
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: card,
+              start: startFn(idx),
+              end: 'bottom 60%',
+              toggleActions: 'play none none reverse', // 위로 가면 다시 숨김
+              onEnter: () => {
+                // 내부 li 순차 등장
+                gsap.to(innerLis, {
+                  opacity: 1,
+                  y: 0,
+                  duration: 0.5,
+                  ease: 'power2.out',
+                  stagger: 0.05,
+                })
+                // 스킬바 재생
+                animateBars(bars)
+              },
+              onEnterBack: () => {
+                // 다시 내려올 때도 동일하게 실행
+                gsap.to(innerLis, {
+                  opacity: 1,
+                  y: 0,
+                  duration: 0.5,
+                  ease: 'power2.out',
+                  stagger: 0.05,
+                })
+                animateBars(bars)
+              },
+              onLeaveBack: () => {
+                // 섹션 '위'로 벗어나면 전부 초기화(안 보이게 + 바 0%)
+                gsap.set(card, { opacity: 0, y: 40 })
+                gsap.set(innerLis, { opacity: 0, y: 20 })
+                resetBars(bars)
+              },
+            },
+          },
+        )
+      })
+    }
+
+    // 실행
+    this.$nextTick(async () => {
+      await afterImagesLoaded()
+
+      ScrollTrigger.matchMedia({
+        // PC: 카드 간 오프셋으로 ‘차례대로’
+        '(min-width: 1025px)': () => {
+          const pxGap = 120
+          revealPerCard(
+            '#skill .skills-box .skill__inner.reveal',
+            (idx) => `top+=${idx * pxGap} 60%`,
+          )
+        },
+        // 태블릿/모바일: 뷰포트 진입 시 즉시
+        '(max-width: 1024px)': () => {
+          revealPerCard('#skill .skills-box .skill__inner.reveal', () => 'top 80%')
+        },
+      })
+
+      ScrollTrigger.refresh()
+    })
+  },
+
+  // 정리
+  beforeDestroy() {
+    ScrollTrigger.getAll().forEach((st) => st.kill())
   },
 }
 </script>
@@ -279,7 +408,6 @@ export default {
               justify-content: flex-end;
               padding-right: 5px;
               color: #fff;
-              animation: fillBar 2.3s ease-in-out forwards;
 
               .skill-text {
                 font-size: 1.3rem;
@@ -324,5 +452,14 @@ export default {
   to {
     width: var(--target-width);
   }
+}
+
+#skill .skill__inner.run .skill-bar {
+  animation: fillBar 2.5s ease-in-out;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
 }
 </style>

@@ -2,10 +2,14 @@
   <footer id="footer" class="footer-wrap">
     <div class="footer__inner">
       <img src="/src/assets/image/profile_img.png" alt="프로필 이미지" />
-      <ul class="ddd">
+      <ul>
         <li class="title">{{ footer.title }}</li>
         <li v-html="footer.dec" class="dec"></li>
         <li class="dec">{{ footer.copy }}</li>
+        <li class="btn-box">
+          <a class="glass" href="mailto:cute02364@gmail.com">이메일 보내기</a>
+          <a class="glass" href="tel:01068650947">전화하기</a>
+        </li>
       </ul>
     </div>
   </footer>
@@ -87,6 +91,24 @@ export default {
             color: #fff;
             @media (max-width: 768px) {
               font-size: clamp(1.5rem, 2.727vw, 1.7rem);
+            }
+          }
+        }
+
+        &.btn-box {
+          margin-top: 2rem;
+          a {
+            &:first-child {
+              margin-right: 1.5rem;
+            }
+          }
+          .glass {
+            height: 40px;
+            width: 180px;
+            font-size: clamp(1.5rem, 1.953vw, 1.6rem);
+            @media (max-width: 550px) {
+              width: clamp(120px, 33.333vw, 180px);
+              font-size: clamp(1.4rem, 3.889vw, 1.5rem);
             }
           }
         }
