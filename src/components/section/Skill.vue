@@ -2,11 +2,6 @@
   <section id="skill" class="section4">
     <div class="skill__inner">
       <h1 lang="en">Skill & Tool</h1>
-      <p class="desc">
-        웹퍼블리싱 기초부터 모던 프론트엔드 기술까지 <br />
-        시멘틱 태그를 활용한 기본에 충실한 마크업과 스타일링부터, 최신 프레임워크와 렌더링 기법을
-        적용한 현대적인 웹 개발까지 폭넓게 다룹니다.
-      </p>
 
       <ul class="skills-box">
         <!-- 스킬 -->
