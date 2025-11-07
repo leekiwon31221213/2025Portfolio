@@ -34,8 +34,8 @@ export default {
     return {
       mainIntro: {
         title: `
-            창의적이고 감각적인 <br />
-            <strong>프론트엔드 개발자</strong> <br />
+            감각으로 설계하고, 디테일로 완성하는<br />
+            <strong>ISFJ 프론트엔드 개발자</strong> <br />
             이기원 입니다.
         `,
         description: `
