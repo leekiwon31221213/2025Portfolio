@@ -3,6 +3,7 @@
     <ul class="intro-text-box">
       <li>
         <h2 ref="el"></h2>
+        <p>Vue.js로 만들어진 포트폴리오 입니다.</p>
       </li>
     </ul>
     <div class="progress">
@@ -22,7 +23,6 @@ const emit = defineEmits(['finished'])
 const el = ref(null)
 const bar = ref(null)
 let typed = null
-
 onMounted(() => {
   typed = new Typed(el.value, {
     strings: ['2025 LEE KIWON PORTFOLIO'],
@@ -55,6 +55,7 @@ onBeforeUnmount(() => {
   text-align: center;
   li {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     h2 {
@@ -67,6 +68,10 @@ onBeforeUnmount(() => {
       @media (max-width: 768px) {
         font-size: clamp(2rem, 3.636vw, 2.2rem);
       }
+    }
+    p {
+      margin-top: 1rem;
+      font-size: clamp(1.4rem, 3.889vw, 1.6rem);
     }
   }
 }
