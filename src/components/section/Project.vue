@@ -179,7 +179,7 @@ export default {
           pcTxt: 'pc View',
           moTxt: 'mo View',
           tabletTxt: 'tablet View',
-          link: 'cute0237.dothome.co.kr',
+          link: 'http://cute0237.dothome.co.kr/',
           icon: '/assets/image/project/arrow_right_icon.svg',
         },
 
