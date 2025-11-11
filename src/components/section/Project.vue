@@ -155,7 +155,7 @@ export default {
           pcTxt: 'pc View',
           moTxt: 'mo View',
           tabletTxt: 'tablet View',
-          link: '',
+          link: 'https://cute0239.dothome.co.kr/',
           icon: '/assets/image/project/arrow_right_icon.svg',
         },
         {
@@ -179,7 +179,7 @@ export default {
           pcTxt: 'pc View',
           moTxt: 'mo View',
           tabletTxt: 'tablet View',
-          link: '',
+          link: 'cute0237.dothome.co.kr',
           icon: '/assets/image/project/arrow_right_icon.svg',
         },
 
