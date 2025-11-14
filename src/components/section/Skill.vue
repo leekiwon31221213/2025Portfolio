@@ -54,23 +54,37 @@
         <!-- 기타 -->
         <li class="skill__inner etc-skill glass reveal">
           <ul class="skill-list">
-            <li>
-              <div class="icon-box etc">
-                <img :src="etc.icon" :alt="etc.alt" />
-              </div>
-              <h3>{{ etc.title }}</h3>
-            </li>
             <li
               v-for="(skill, index) in etc.skills"
               :key="index"
-              v-bind="skill.name === 'Php' ? { class: 'php-li' } : ''"
+              class="skill-li"
+              :class="{
+                'react-li': skill.name === 'React',
+                'php-li': skill.name === 'Php',
+              }"
             >
               <p class="skill-name" lang="en">{{ skill.name }}</p>
-
-              <div class="php-tab" v-if="skill.name === 'Php'">
-                <a href="http://cute01232.dothome.co.kr/" target="_blank">투두리스트 </a>
-                <a href="https://cute01233.dothome.co.kr/" target="_blank">게시판 만들기</a>
-                <a href="https://cute01234.dothome.co.kr/" target="_blank">PHP공부 리스트</a>
+              <div class="react-tab etc-skill-tab" v-if="skill.name === 'React'">
+                <a
+                  href="https://github.com/leekiwon31221213/reactStudy/tree/main/src"
+                  target="_blank"
+                  >리액트 공부
+                  <FontAwesomeIcon :icon="['fas', 'angle-down']" />
+                </a>
+              </div>
+              <div class="php-tab etc-skill-tab" v-if="skill.name === 'Php'">
+                <a href="http://cute01232.dothome.co.kr/" target="_blank"
+                  >투두리스트
+                  <FontAwesomeIcon :icon="['fas', 'angle-down']" />
+                </a>
+                <a href="https://cute01233.dothome.co.kr/" target="_blank"
+                  >게시판 만들기
+                  <FontAwesomeIcon :icon="['fas', 'angle-down']" />
+                </a>
+                <a href="https://cute01234.dothome.co.kr/" target="_blank"
+                  >PHP공부 리스트
+                  <FontAwesomeIcon :icon="['fas', 'angle-down']" />
+                </a>
               </div>
             </li>
           </ul>
@@ -256,7 +270,9 @@ export default {
 <style lang="scss">
 #skill {
   background-color: $sub-bg;
-
+  .fa-angle-down {
+    transform: rotate(-90deg);
+  }
   .skill__inner {
     width: 90%;
     margin: 0 auto;
@@ -317,10 +333,10 @@ export default {
           margin-bottom: 15px;
           display: flex;
           width: 100%;
-          &.php-li {
+          &.skill-li {
             display: flex;
             flex-direction: column;
-            .php-tab {
+            .etc-skill-tab {
               font-size: 1.3rem;
               width: 100%;
               display: flex;
