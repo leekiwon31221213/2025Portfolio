@@ -81,7 +81,7 @@
                   >게시판 만들기
                   <FontAwesomeIcon :icon="['fas', 'angle-down']" />
                 </a>
-                <a href="https://cute01234.dothome.co.kr/" target="_blank"
+                <a href="https://cute012345.dothome.co.kr/" target="_blank"
                   >PHP공부 리스트
                   <FontAwesomeIcon :icon="['fas', 'angle-down']" />
                 </a>
