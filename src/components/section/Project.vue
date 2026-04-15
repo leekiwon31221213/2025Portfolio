@@ -265,7 +265,9 @@ export default {
     },
     goGsttDetail(project) {
       if (project.name === 'GSTT') {
-        this.$router.push({ path: '/gstt-detail' })
+        this.$router.push('/gstt-detail').then(() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+        })
       }
     },
   },
