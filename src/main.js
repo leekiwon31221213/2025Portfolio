@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import router from './router'
 
 /* 폰트어썸 */
 // Font Awesome core
@@ -16,4 +17,5 @@ library.add(faBars, faXmark, faAngleDown)
 /* 폰트어썸 끝 */
 const app = createApp(App)
 app.component('FontAwesomeIcon', FontAwesomeIcon)
+app.use(router)
 app.mount('#app')

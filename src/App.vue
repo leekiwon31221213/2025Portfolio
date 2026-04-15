@@ -4,6 +4,7 @@
       <Loading v-if="isLoading" @finished="onLoaded"></Loading>
 
       <div v-else>
+         
         <Header></Header>
         <Info></Info>
         <About></About>

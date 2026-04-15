@@ -71,6 +71,10 @@
                 {{ project.tabletTxt }}
                 <img :src="project.icon" alt="arrow icon" class="btn-icon" />
               </button>
+
+              <button type="button" class="project-btn glass" @click="goGsttDetail(project)">
+                {{ project.detail }}
+              </button>
             </div>
           </li>
         </ul>
@@ -91,12 +95,12 @@ export default {
       project: [
         {
           img: '/assets/image/project/gstt_app.png',
-          alt: 'gstt 하이브리드앱',
+          alt: 'gstt 하이브리드앱(개발중)',
           name: 'gstt 하이브리드앱',
           dec: '외국인 근로자 통번역 강의 하이브리드앱',
           hashTag: ['브릿지 개발', '디자인'],
-          google: '',
-          apple: '',
+          google: '#none',
+          apple: '#none',
           icon: '/assets/image/project/arrow_right_icon.svg',
         },
         {
@@ -108,7 +112,9 @@ export default {
           pcTxt: 'pc View',
           moTxt: 'mo View',
           tabletTxt: 'tablet View',
+          detail: '자세히 보기',
           link: 'https://gstt.co.kr/index.asp',
+          detailLink: '#none',
           icon: '/assets/image/project/arrow_right_icon.svg',
         },
         {
@@ -256,6 +262,11 @@ export default {
     openTabletWin(url) {
       const features = 'scrollbars=no,width=800,height=1200,top=100,left=100'
       window.open(url, 'win', features)
+    },
+    goGsttDetail(project) {
+      if (project.name === 'GSTT') {
+        this.$router.push({ path: '/gstt-detail' })
+      }
     },
   },
 }
