@@ -14,15 +14,26 @@
 
 <script setup>
 import { ref } from 'vue'
+import { onMounted } from 'vue'
 import Loading from './components/loading/Loading'
 import Header from './components/header/Header'
-
 import Footer from './components/footer/Footer'
 
 const isLoading = ref(true)
 const onLoaded = () => {
   isLoading.value = false
 }
+
+onMounted(()=>{
+  const isFirstVisit = sessionStorage.getItem('isFirstVisit')
+   if (!isFirstVisit) {
+    // 처음이면 기록 남김
+    sessionStorage.setItem('isFirstVisit', 'true')
+  } else {
+    // 처음이 아니면 바로 로딩 끔
+    isLoading.value = false
+  }
+})
 </script>
 <style lang="scss">
 body {
