@@ -72,9 +72,9 @@
                 <img :src="project.icon" alt="arrow icon" class="btn-icon" />
               </button>
 
-              <button type="button" class="project-btn glass" @click="goGsttDetail(project)">
+              <RouterLink to="/gstt-detail" class="project-btn glass">
                 {{ project.detail }}
-              </button>
+              </RouterLink>
             </div>
           </li>
         </ul>
@@ -86,6 +86,7 @@
 <script>
 import { Pagination, A11y } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/vue'
+import { RouterLink } from 'vue-router'
 
 import 'swiper/css'
 
@@ -95,8 +96,8 @@ export default {
       project: [
         {
           img: '/assets/image/project/gstt_app.png',
-          alt: 'gstt 하이브리드앱(개발중)',
-          name: 'gstt 하이브리드앱',
+          alt: 'GSTT 하이브리드앱(개발중)',
+          name: 'GSTT 하이브리드앱',
           dec: '외국인 근로자 통번역 강의 하이브리드앱',
           hashTag: ['브릿지 개발', '디자인'],
           google: '#none',
@@ -244,6 +245,7 @@ export default {
   components: {
     Swiper,
     SwiperSlide,
+    RouterLink,
   },
   setup() {
     const onSwiper = (swiper) => {}
@@ -262,13 +264,6 @@ export default {
     openTabletWin(url) {
       const features = 'scrollbars=no,width=800,height=1200,top=100,left=100'
       window.open(url, 'win', features)
-    },
-    goGsttDetail(project) {
-      if (project.name === 'GSTT') {
-        this.$router.push('/gstt-detail').then(() => {
-          window.scrollTo({ top: 0, behavior: 'smooth' })
-        })
-      }
     },
   },
 }
