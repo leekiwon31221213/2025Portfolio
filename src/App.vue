@@ -2,17 +2,12 @@
   <div class="wrap" id="portFolioContainer">
     <transition name="fade">
       <Loading v-if="isLoading" @finished="onLoaded"></Loading>
-  <router-view v-else></router-view>
-      <!-- <div v-else>
-        
+
+      <div v-else>
         <Header></Header>
-        <Info></Info>
-        <About></About>
-        <Career></Career>
-        <Skill></Skill>
-        <Project></Project>
+        <router-view></router-view>
         <Footer></Footer>
-      </div> -->
+      </div>
     </transition>
   </div>
 </template>
@@ -21,11 +16,7 @@
 import { ref } from 'vue'
 import Loading from './components/loading/Loading'
 import Header from './components/header/Header'
-import Info from './components/section/MainIntro'
-import About from './components/section/About'
-import Career from './components/section/Career'
-import Skill from './components/section/Skill'
-import Project from './components/section/Project'
+
 import Footer from './components/footer/Footer'
 
 const isLoading = ref(true)

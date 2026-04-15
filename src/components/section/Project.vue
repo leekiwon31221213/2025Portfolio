@@ -45,7 +45,7 @@
 
             <div
               class="btn-box"
-              v-if="project.name === '프라뱅 하이브리드앱' || project.name === 'gstt 하이브리드앱'"
+              v-if="project.name === '프라뱅 하이브리드앱' || project.name === 'GSTT 하이브리드앱'"
             >
               <a :href="project.google || '#'" class="project-btn glass" target="_blank">
                 google Play
@@ -56,6 +56,7 @@
                 <img :src="project.icon" alt="arrow icon" class="btn-icon" />
               </a>
             </div>
+
             <div class="btn-box" v-else>
               <a :href="project.link || '#'" class="project-btn glass" target="_blank">
                 {{ project.pcTxt }}
@@ -72,7 +73,7 @@
                 <img :src="project.icon" alt="arrow icon" class="btn-icon" />
               </button>
 
-              <RouterLink to="/gstt-detail" class="project-btn glass">
+              <RouterLink to="/gstt-detail" class="project-btn glass" v-if="project.name === 'GSTT'">
                 {{ project.detail }}
               </RouterLink>
             </div>
