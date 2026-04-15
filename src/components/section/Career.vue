@@ -69,12 +69,22 @@ export default {
       ],
 
       career: [
+         {
+          logo: '/assets/image/career/esafe.jpg',
+          alt: '이세이프 로고',
+          companyName: '(주)이세이프',
+          business: '산업안전 교육 플랫품',
+          team: 'IT개발 · 프로/팀원 (2026.02 ~ 프리랜서 재직 중)',
+          work1: '외국인 근로자 대상 통번역 강의 웹 서비스 신규 구축 및 프론트엔드 개발',
+          work2:
+            '프론트엔드 개발 · 퍼블리싱 및 하이브리드 웹/앱 디자인, 브릿지 개발 · REST API 비동기 통신 기반 데이터 연동',
+        },
         {
           logo: '/assets/image/career/pravang_logo.jpg',
           alt: '프라뱅 로고',
           companyName: '(주)프라뱅',
           business: '블록체인 및 가상화폐 거래소 전문 개발사',
-          team: 'IT개발 · 주임/팀원 (2024.05 ~ 재직 중)',
+          team: 'IT개발 · 주임/팀원 (2024.05 ~ 2026.02)',
           work1: 'Java 및 Thymeleaf 기반 환경에서 블록체인 및 가상화폐 거래소 웹 유지보수',
           work2:
             '프론트엔드 개발 · 퍼블리싱 및 하이브리드 앱 기획·디자인/브릿지 개발 · REST API 비동기 통신 기반 데이터 연동',
