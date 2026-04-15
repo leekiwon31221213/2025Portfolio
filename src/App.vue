@@ -11,6 +11,7 @@
         <Career></Career>
         <Skill></Skill>
         <Project></Project>
+        <router-view></router-view>
         <Footer></Footer>
       </div>
     </transition>

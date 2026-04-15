@@ -2,6 +2,7 @@
   <header class="header">
     <!-- PC 메뉴 -->
     <nav v-if="!isMobile">
+      <button v-if="showBackButton" class="back-btn" @click="goBack" lang="en">Back</button>
       <ul>
         <li><button @click="scrollTo('about')" lang="en">About</button></li>
         <li><button @click="scrollTo('education')" lang="en">Career</button></li>
@@ -36,7 +37,20 @@ export default {
     }
   },
 
+  computed: {
+    showBackButton() {
+      return this.$route.path === '/gstt-detail'
+    },
+  },
   methods: {
+    // 뒤로가기
+    goBack() {
+      if (window.history.length > 1) {
+        this.$router.back()
+      } else {
+        this.$router.push({ path: '/' })
+      }
+    },
     // 스크롤 해당 섹션으로 이동
     scrollTo(id) {
       const section = document.getElementById(id)
@@ -155,6 +169,23 @@ header {
             animation: gradientMove 1s ease-in-out;
           }
         }
+      }
+    }
+
+    .back-btn {
+      margin-right: auto;
+      margin-left: 3rem;
+      background: none;
+      border: none;
+      color: $white;
+      font-size: 2.3rem;
+      cursor: pointer;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: $point;
+      }
+    }
       }
     }
   }
