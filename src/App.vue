@@ -1,45 +1,45 @@
 <template>
   <div class="wrap" id="portFolioContainer">
-    <transition name="fade">
-      <Loading v-if="isLoading" @finished="onLoaded"></Loading>
 
-      <div v-else>
-        <Header></Header>
-        <router-view></router-view>
-        <Footer></Footer>
-      </div>
+    <!-- 로딩 -->
+    <transition name="fade">
+      <Loading v-show="isLoading" @finished="onLoaded"></Loading>
     </transition>
+
+    <!-- 실제 페이지 -->
+    <div v-show="!isLoading">
+      <Header></Header>
+      <router-view></router-view>
+      <Footer></Footer>
+    </div>
+
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import { onMounted } from 'vue'
 import Loading from './components/loading/Loading'
 import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
 
-const isLoading = ref(true)
+// 처음 방문 여부 체크
+const isFirstVisit = sessionStorage.getItem('isFirstVisit')
+
+const isLoading = ref(!isFirstVisit)
+
 const onLoaded = () => {
   isLoading.value = false
-}
 
-onMounted(()=>{
-  const isFirstVisit = sessionStorage.getItem('isFirstVisit')
-   if (!isFirstVisit) {
-    // 처음이면 기록 남김
-    sessionStorage.setItem('isFirstVisit', 'true')
-  } else {
-    // 처음이 아니면 바로 로딩 끔
-    isLoading.value = false
-  }
-})
+  sessionStorage.setItem('isFirstVisit', 'true')
+}
 </script>
+
 <style lang="scss">
 body {
   background-color: $main-bg;
   color: $white;
 }
+
 :lang(ko) {
   font-family: $font-ko;
 }
@@ -47,10 +47,12 @@ body {
 :lang(en) {
   font-family: $font-en;
 }
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.8s ease;
 }
+
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
