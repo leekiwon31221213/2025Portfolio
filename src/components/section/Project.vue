@@ -43,7 +43,10 @@
               <span v-for="(tag, tagIndex) in project.hashTag" :key="tagIndex">#{{ tag }}</span>
             </div>
 
-            <div class="btn-box" v-if="project.name === '프라뱅 하이브리드앱'">
+            <div
+              class="btn-box"
+              v-if="project.name === '프라뱅 하이브리드앱' || project.name === 'gstt 하이브리드앱'"
+            >
               <a :href="project.google || '#'" class="project-btn glass" target="_blank">
                 google Play
                 <img :src="project.icon" alt="arrow icon" class="btn-icon" />
