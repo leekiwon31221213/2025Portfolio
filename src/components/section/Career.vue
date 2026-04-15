@@ -232,7 +232,7 @@ export default {
 
       $circleColor: $icon-bg1, $icon-bg2, $icon-bg3, $icon-bg4, $icon-bg5, $icon-bg6;
 
-      @for $i from 1 through 5 {
+      @for $i from 1 through 6 {
         &:nth-child(#{$i}) {
           @include glass(100%, 100%, 4px, 180%, 2rem, #fff);
           border-radius: 30px;
