@@ -87,6 +87,28 @@ export default {
     return {
       project: [
         {
+          img: '/assets/image/project/gstt_app.png',
+          alt: 'gstt 하이브리드앱',
+          name: 'gstt 하이브리드앱',
+          dec: '외국인 근로자 통번역 강의 하이브리드앱',
+          hashTag: ['브릿지 개발', '디자인'],
+          google: '',
+          apple: '',
+          icon: '/assets/image/project/arrow_right_icon.svg',
+        },
+        {
+          img: '/assets/image/project/gstt.png',
+          alt: 'GSTT',
+          name: 'GSTT',
+          dec: '외국인 근로자 통번역 강의 시스템',
+          hashTag: ['외국인 근로자', '통번역', 'Rest API', '반응형'],
+          pcTxt: 'pc View',
+          moTxt: 'mo View',
+          tabletTxt: 'tablet View',
+          link: 'https://gstt.co.kr/index.asp',
+          icon: '/assets/image/project/arrow_right_icon.svg',
+        },
+        {
           img: '/assets/image/project/pravang_app.png',
           alt: '프라뱅 하이브리드앱',
           name: '프라뱅 하이브리드앱',
