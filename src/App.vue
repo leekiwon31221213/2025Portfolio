@@ -2,18 +2,17 @@
   <div class="wrap" id="portFolioContainer">
     <transition name="fade">
       <Loading v-if="isLoading" @finished="onLoaded"></Loading>
-
-      <div v-else>
-         
+  <router-view v-else></router-view>
+      <!-- <div v-else>
+        
         <Header></Header>
         <Info></Info>
         <About></About>
         <Career></Career>
         <Skill></Skill>
         <Project></Project>
-        <router-view></router-view>
         <Footer></Footer>
-      </div>
+      </div> -->
     </transition>
   </div>
 </template>

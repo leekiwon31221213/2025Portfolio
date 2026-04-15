@@ -182,13 +182,10 @@ header {
       cursor: pointer;
       transition: color 0.3s ease;
 
-      &:hover {
-        color: $point;
-      }
+    
     }
       }
     }
-  }
 
   &::before {
     content: '';
@@ -263,7 +260,6 @@ header {
       }
     }
   }
-}
 
 @keyframes gradientMove {
   from {

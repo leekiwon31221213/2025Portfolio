@@ -115,7 +115,6 @@ export default {
           tabletTxt: 'tablet View',
           detail: '자세히 보기',
           link: 'https://gstt.co.kr/index.asp',
-          detailLink: '#none',
           icon: '/assets/image/project/arrow_right_icon.svg',
         },
         {
