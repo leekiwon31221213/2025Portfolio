@@ -1,5 +1,5 @@
 <template>
-  <h2>GSTTDETail.vue입니다</h2>
+  <h2>디테일 페이지 만드는중 (쉬엄쉬엄..)</h2>
 </template>
 
 <script>

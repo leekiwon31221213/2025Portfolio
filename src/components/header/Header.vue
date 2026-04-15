@@ -171,21 +171,7 @@ header {
         }
       }
     }
-
-    .back-btn {
-      margin-right: auto;
-      margin-left: 3rem;
-      background: none;
-      border: none;
-      color: $white;
-      font-size: 2.3rem;
-      cursor: pointer;
-      transition: color 0.3s ease;
-
-    
-    }
-      }
-    }
+  }
 
   &::before {
     content: '';
@@ -260,6 +246,21 @@ header {
       }
     }
   }
+  .back-btn{
+    color:#fff;
+    border-radius: 10px;
+    border:1px solid $border;
+    width: 110px;
+    height: 40px;
+    transition: 0.25s;
+    font-size: 1.5rem;
+    font-weight: 600;
+    &:hover{
+      background-color:#fff ;
+      color:#333;
+    }
+  }
+}
 
 @keyframes gradientMove {
   from {
