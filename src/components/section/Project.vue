@@ -45,7 +45,10 @@
 
             <div
               class="btn-box"
-              v-if="project.name === '프라뱅 하이브리드앱' || project.name === 'GSTT 하이브리드앱'"
+              v-if="
+                project.name === '프라뱅 하이브리드앱' ||
+                project.name === 'GSTT 하이브리드앱(개발중)'
+              "
             >
               <a :href="project.google || '#'" class="project-btn glass" target="_blank">
                 google Play
@@ -73,7 +76,11 @@
                 <img :src="project.icon" alt="arrow icon" class="btn-icon" />
               </button>
 
-              <RouterLink to="/gstt-detail" class="project-btn glass" v-if="project.name === 'GSTT'">
+              <RouterLink
+                to="/gstt-detail"
+                class="project-btn glass"
+                v-if="project.name === 'GSTT'"
+              >
                 {{ project.detail }}
               </RouterLink>
             </div>
@@ -98,7 +105,7 @@ export default {
         {
           img: '/assets/image/project/gstt_app.png',
           alt: 'GSTT 하이브리드앱(개발중)',
-          name: 'GSTT 하이브리드앱',
+          name: 'GSTT 하이브리드앱(개발중)',
           dec: '외국인 근로자 통번역 강의 하이브리드앱',
           hashTag: ['브릿지 개발', '디자인'],
           google: '#none',
