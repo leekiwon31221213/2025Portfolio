@@ -45,19 +45,31 @@
 
             <div
               class="btn-box"
-              v-if="
-                project.name === '프라뱅 하이브리드앱' ||
-                project.name === 'GSTT 하이브리드앱(개발중)'
-              "
+              v-if="project.name === '프라뱅 하이브리드앱' || project.name === 'GSTT 하이브리드앱'"
             >
               <a :href="project.google || '#'" class="project-btn glass" target="_blank">
                 google Play
                 <img :src="project.icon" alt="arrow icon" class="btn-icon" />
               </a>
-              <a :href="project.apple || '#'" class="project-btn glass" target="_blank">
+              <a
+                v-if="project.apple && project.apple.startsWith('http')"
+                :href="project.apple"
+                class="project-btn glass"
+                target="_blank"
+              >
                 apple Store
                 <img :src="project.icon" alt="arrow icon" class="btn-icon" />
               </a>
+
+              <button
+                v-else
+                type="button"
+                class="project-btn glass"
+                @click="openAppleAlert(project.apple)"
+              >
+                apple Store
+                <img :src="project.icon" alt="arrow icon" class="btn-icon" />
+              </button>
             </div>
 
             <div class="btn-box" v-else>
@@ -104,12 +116,12 @@ export default {
       project: [
         {
           img: '/assets/image/project/gstt_app.png',
-          alt: 'GSTT 하이브리드앱(개발중)',
-          name: 'GSTT 하이브리드앱(개발중)',
+          alt: 'GSTT 하이브리드앱',
+          name: 'GSTT 하이브리드앱',
           dec: '외국인 근로자 통번역 강의 하이브리드앱',
           hashTag: ['브릿지 개발', '디자인'],
-          google: '#none',
-          apple: '#none',
+          google: 'https://play.google.com/store/apps/details?id=kr.co.gstt.app',
+          apple: '아직 미지원 앱입니다',
           icon: '/assets/image/project/arrow_right_icon.svg',
         },
         {
@@ -271,6 +283,9 @@ export default {
     openTabletWin(url) {
       const features = 'scrollbars=no,width=800,height=1200,top=100,left=100'
       window.open(url, 'win', features)
+    },
+    openAppleAlert(message) {
+      alert(message)
     },
   },
 }
