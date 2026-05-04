@@ -115,6 +115,18 @@ export default {
     return {
       project: [
         {
+          img: '/assets/image/project/esafe_pr.png',
+          alt: '이세이프 회사소개',
+          name: '이세이프 회사소개(개발중)',
+          dec: '회사소개 페이지 ',
+          hashTag: ['리액트', '디자인', '기여도 100%'],
+          pcTxt: 'pc View',
+          moTxt: 'mo View',
+          tabletTxt: 'tablet View',
+          link: 'http://home.esafe.co.kr/',
+          icon: '/assets/image/project/arrow_right_icon.svg',
+        },
+        {
           img: '/assets/image/project/gstt_app.png',
           alt: 'GSTT 하이브리드앱',
           name: 'GSTT 하이브리드앱',
