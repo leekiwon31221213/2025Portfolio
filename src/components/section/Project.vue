@@ -115,7 +115,7 @@ export default {
     return {
       project: [
         {
-          img: '/src/assets/image/project/esafe_pr.png',
+          img: '/assets/image/project/esafe_pr.png',
           alt: '이세이프 회사소개',
           name: '이세이프 회사소개(개발중)',
           dec: '회사소개 페이지 ',
