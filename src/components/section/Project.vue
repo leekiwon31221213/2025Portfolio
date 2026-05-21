@@ -230,7 +230,7 @@ export default {
           pcTxt: 'pc View',
           moTxt: 'mo View',
           tabletTxt: 'tablet View',
-          link: 'https://dakistore.co.kr/',
+          link: 'https://vintnewyorkstore.com/index.html',
           icon: '/assets/image/project/arrow_right_icon.svg',
         },
         {

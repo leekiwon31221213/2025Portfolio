@@ -53,6 +53,9 @@
 </template>
 
 <script>
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
 export default {
   data() {
     return {
@@ -140,11 +143,121 @@ export default {
     },
   },
 
+  mounted() {
+    gsap.registerPlugin(ScrollTrigger)
+    this.$nextTick(() => {
+      this.initAnimations()
+    })
+  },
+
+  beforeDestroy() {
+    ScrollTrigger.getAll().forEach((st) => st.kill())
+  },
+
   methods: {
+    // 경력 카드 찾기
+    getCareerItems() {
+      return document.querySelectorAll('.career__inner > li')
+    },
+
+    // 학력, 경력 카드 찾기
+    getAllItems() {
+      return document.querySelectorAll('.education__inner > li, .career__inner > li')
+    },
+
+    // 제목 찾기
+    getSectionTitles() {
+      return document.querySelectorAll('#education h1, #career h1')
+    },
+
+    // 스크롤 자리 저장
+    getScrollAnchorInfo() {
+      const items = this.getCareerItems()
+      const anchor = items[items.length - 1]
+
+      if (!anchor) {
+        return null
+      }
+
+      return {
+        element: anchor,
+        top: anchor.getBoundingClientRect().top,
+      }
+    },
+
+    // 스크롤 자리 다시 맞추기
+    restoreScrollAnchor(scrollAnchorInfo) {
+      if (!scrollAnchorInfo || !scrollAnchorInfo.element) {
+        return
+      }
+
+      const nextTop = scrollAnchorInfo.element.getBoundingClientRect().top
+      const moveY = nextTop - scrollAnchorInfo.top
+
+      if (moveY !== 0) {
+        window.scrollBy(0, moveY)
+      }
+    },
+
+    initAnimations() {
+      this.getSectionTitles().forEach((title) => {
+        gsap.fromTo(
+          title,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: title,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse',
+            },
+          },
+        )
+      })
+      this.animateNewItems()
+    },
+
+    animateNewItems() {
+      const items = this.getAllItems()
+      items.forEach((item) => {
+        if (item.dataset.gsapInit) return
+        item.dataset.gsapInit = 'true'
+        gsap.set(item, { opacity: 0, y: 40 })
+        gsap.fromTo(
+          item,
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: item,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse',
+              onLeaveBack: () => gsap.set(item, { opacity: 0, y: 40 }),
+            },
+          },
+        )
+      })
+    },
+
     loadMore() {
-      // console.log('더 보기 클릭됨')
       if (this.visibledCount < this.career.length) {
+        const scrollAnchorInfo = this.getScrollAnchorInfo()
         this.visibledCount += 2
+        this.$nextTick(() => {
+          this.animateNewItems()
+          const savedY = window.pageYOffset
+          ScrollTrigger.refresh()
+          requestAnimationFrame(() => {
+            this.restoreScrollAnchor(scrollAnchorInfo)
+            window.scrollTo(0, Math.max(savedY, window.pageYOffset))
+          })
+        })
       }
     },
   },

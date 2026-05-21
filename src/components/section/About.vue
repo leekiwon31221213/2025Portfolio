@@ -105,67 +105,84 @@ export default {
     }
   },
 
+  methods: {
+    // 모바일 확인
+    isMobileAbout() {
+      return window.innerWidth <= 768
+    },
+  },
+
   mounted() {
     gsap.registerPlugin(ScrollTrigger)
 
-    // 이미지 로딩 이후 계산 정확히 하기
     const afterImagesLoaded = () =>
       new Promise((resolve) => {
         const imgs = Array.from(this.$el.querySelectorAll('img'))
         if (imgs.length === 0) return resolve()
         let loaded = 0
+        const done = () => { if (++loaded === imgs.length) resolve() }
         imgs.forEach((img) => {
-          if (img.complete) {
-            loaded++
-            if (loaded === imgs.length) resolve()
-          } else {
-            img.addEventListener('load', () => {
-              loaded++
-              if (loaded === imgs.length) resolve()
-            })
-            img.addEventListener('error', () => {
-              loaded++
-              if (loaded === imgs.length) resolve()
-            })
+          if (img.complete) done()
+          else {
+            img.addEventListener('load', done)
+            img.addEventListener('error', done)
           }
         })
       })
 
-    const revealPerCard = (selector, startFn) => {
-      const cards = Array.from(this.$el.querySelectorAll(selector))
-      if (!cards.length) return
-      gsap.set(cards, { opacity: 0, y: 40 })
-
-      cards.forEach((card, idx) => {
-        gsap.to(card, {
-          opacity: 1,
-          y: 0,
-          ease: 'power2.out',
-          duration: 0.6,
-          scrollTrigger: {
-            trigger: card,
-            start: startFn(idx),
-            end: 'bottom 60%',
-            toggleActions: 'play none none reverse',
-          },
-        })
-      })
-    }
-
     this.$nextTick(async () => {
       await afterImagesLoaded()
 
-      revealPerCard('.setting-card .reveal', () => 'top 80%')
+      // 섹션 진입 시 카드 1→2→3→4 순차 자동 재생
+      const allCards = [
+        ...Array.from(this.$el.querySelectorAll('.setting-card .reveal')),
+        ...Array.from(this.$el.querySelectorAll('.about-cards .reveal')),
+      ]
 
-      ScrollTrigger.matchMedia({
-        '(min-width: 1025px)': () => {
-          const pxGap = 140
-          revealPerCard('.about-cards .reveal', (idx) => `top+=${idx * pxGap} 80%`)
-        },
-        '(max-width: 1024px)': () => {
-          revealPerCard('.about-cards .reveal', () => 'top 80%')
-        },
-      })
+      gsap.set(allCards, { opacity: 0, y: 40 })
+
+      if (this.isMobileAbout()) {
+        allCards.forEach((card) => {
+          gsap.fromTo(
+            card,
+            { opacity: 0, y: 40 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.6,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: card,
+                start: 'top 80%',
+                toggleActions: 'play none none reverse',
+                onLeaveBack: () => {
+                  gsap.set(card, { opacity: 0, y: 40 })
+                },
+              },
+            },
+          )
+        })
+      } else {
+        const tl = gsap.timeline({ paused: true })
+        allCards.forEach((card, i) => {
+          tl.fromTo(
+            card,
+            { opacity: 0, y: 40 },
+            { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
+            i * 0.18,
+          )
+        })
+
+        ScrollTrigger.create({
+          trigger: '#about',
+          start: 'top 65%',
+          onEnter: () => tl.play(),
+          onLeaveBack: () => {
+            tl.pause(0)
+            gsap.set(allCards, { opacity: 0, y: 40 })
+          },
+        })
+      }
 
       ScrollTrigger.refresh()
     })

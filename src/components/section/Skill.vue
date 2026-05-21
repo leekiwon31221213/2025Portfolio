@@ -139,19 +139,14 @@ export default {
   },
 
   mounted() {
-    // GSAP 플러그인 등록
     gsap.registerPlugin(ScrollTrigger)
 
-    // 이미지 로드 후 실행
     const afterImagesLoaded = () =>
       new Promise((resolve) => {
         const imgs = Array.from(this.$el.querySelectorAll('#skill img'))
         if (imgs.length === 0) return resolve()
         let loaded = 0
-        const done = () => {
-          loaded++
-          if (loaded === imgs.length) resolve()
-        }
+        const done = () => { if (++loaded === imgs.length) resolve() }
         imgs.forEach((img) => {
           if (img.complete) done()
           else {
@@ -161,100 +156,86 @@ export default {
         })
       })
 
-    // 스킬바 채우기
-    const animateBars = (bars) => {
-      bars.forEach((bar) => {
-        const target = bar.style.getPropertyValue('--target-width') || '0%'
-        gsap.fromTo(bar, { width: 0 }, { width: target, duration: 2, ease: 'power2.out' })
-      })
-    }
-
-    // 스킬바 초기화
-    const resetBars = (bars) => {
-      bars.forEach((bar) => gsap.set(bar, { width: 0 }))
-    }
-
-    // 카드별 개별 트리거 (카드 + 내부 li + 스킬바 동작)
-    const revealPerCard = (selector, startFn) => {
-      const cards = Array.from(this.$el.querySelectorAll(selector))
-      if (!cards.length) return
-
-      // ★ 초기 상태: 섹션 위에 있을 때는 카드/내부 li 모두 숨김
-      gsap.set(cards, { opacity: 0, y: 40 })
-      cards.forEach((card) => {
-        const innerLis = card.querySelectorAll('.skill-list > li')
-        gsap.set(innerLis, { opacity: 0, y: 20 })
-      })
-
-      cards.forEach((card, idx) => {
-        const bars = card.querySelectorAll('.skill-bar')
-        const innerLis = card.querySelectorAll('.skill-list > li')
-
-        // 카드 페이드업 + 내부 li 순차 등장 + 스킬바 재생
-        gsap.fromTo(
-          card,
-          { opacity: 0, y: 40 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: card,
-              start: startFn(idx),
-              end: 'bottom 60%',
-              toggleActions: 'play none none reverse', // 위로 가면 다시 숨김
-              onEnter: () => {
-                // 내부 li 순차 등장
-                gsap.to(innerLis, {
-                  opacity: 1,
-                  y: 0,
-                  duration: 0.5,
-                  ease: 'power2.out',
-                  stagger: 0.05,
-                })
-                // 스킬바 재생
-                animateBars(bars)
-              },
-              onEnterBack: () => {
-                // 다시 내려올 때도 동일하게 실행
-                gsap.to(innerLis, {
-                  opacity: 1,
-                  y: 0,
-                  duration: 0.5,
-                  ease: 'power2.out',
-                  stagger: 0.05,
-                })
-                animateBars(bars)
-              },
-              onLeaveBack: () => {
-                // 섹션 '위'로 벗어나면 전부 초기화(안 보이게 + 바 0%)
-                gsap.set(card, { opacity: 0, y: 40 })
-                gsap.set(innerLis, { opacity: 0, y: 20 })
-                resetBars(bars)
-              },
-            },
-          },
-        )
-      })
-    }
-
-    // 실행
     this.$nextTick(async () => {
       await afterImagesLoaded()
 
+      const cards = Array.from(
+        this.$el.querySelectorAll('#skill .skills-box .skill__inner.reveal'),
+      )
+
+      // 초기 숨김
+      gsap.set(cards, { opacity: 0, y: 60 })
+      cards.forEach((card) => {
+        gsap.set(card.querySelectorAll('.skill-list > li'), { opacity: 0, y: 20 })
+        gsap.set(card.querySelectorAll('.skill-bar'), { width: 0 })
+      })
+
       ScrollTrigger.matchMedia({
-        // PC: 카드 간 오프셋으로 ‘차례대로’
+        // PC: 섹션 핀 + 스크롤에 맞춰 카드 순차 등장
         '(min-width: 1025px)': () => {
-          const pxGap = 120
-          revealPerCard(
-            '#skill .skills-box .skill__inner.reveal',
-            (idx) => `top+=${idx * pxGap} 60%`,
-          )
+          const cardDuration = 0.8
+          const gap = 0.4
+          const tl = gsap.timeline()
+
+          cards.forEach((card, i) => {
+            const bars = card.querySelectorAll('.skill-bar')
+            const innerLis = card.querySelectorAll('.skill-list > li')
+            const t = i * (cardDuration + gap)
+
+            tl.fromTo(card, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, t)
+            if (innerLis.length) {
+              tl.fromTo(innerLis, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.04, ease: 'power2.out' }, t + 0.15)
+            }
+            bars.forEach((bar) => {
+              const target = bar.style.getPropertyValue('--target-width') || '0%'
+              tl.fromTo(bar, { width: 0 }, { width: target, duration: 0.6, ease: 'power2.out' }, t + 0.15)
+            })
+          })
+
+          ScrollTrigger.create({
+            trigger: '#skill',
+            pin: true,
+            start: 'top top',
+            end: `+=${cards.length * 700}`,
+            animation: tl,
+            scrub: 1,
+          })
         },
-        // 태블릿/모바일: 뷰포트 진입 시 즉시
+
+        // 태블릿/모바일: 뷰포트 진입 시 개별 등장
         '(max-width: 1024px)': () => {
-          revealPerCard('#skill .skills-box .skill__inner.reveal', () => 'top 80%')
+          cards.forEach((card) => {
+            const bars = card.querySelectorAll('.skill-bar')
+            const innerLis = card.querySelectorAll('.skill-list > li')
+
+            gsap.fromTo(card, { opacity: 0, y: 40 }, {
+              opacity: 1, y: 0, duration: 0.5, ease: 'power2.out',
+              scrollTrigger: {
+                trigger: card,
+                start: 'top 80%',
+                toggleActions: 'play none none reverse',
+                onEnter: () => {
+                  gsap.to(innerLis, { opacity: 1, y: 0, duration: 0.5, stagger: 0.05, ease: 'power2.out' })
+                  bars.forEach((bar) => {
+                    const target = bar.style.getPropertyValue('--target-width') || '0%'
+                    gsap.fromTo(bar, { width: 0 }, { width: target, duration: 2, ease: 'power2.out' })
+                  })
+                },
+                onEnterBack: () => {
+                  gsap.to(innerLis, { opacity: 1, y: 0, duration: 0.5, stagger: 0.05, ease: 'power2.out' })
+                  bars.forEach((bar) => {
+                    const target = bar.style.getPropertyValue('--target-width') || '0%'
+                    gsap.fromTo(bar, { width: 0 }, { width: target, duration: 2, ease: 'power2.out' })
+                  })
+                },
+                onLeaveBack: () => {
+                  gsap.set(card, { opacity: 0, y: 40 })
+                  gsap.set(innerLis, { opacity: 0, y: 20 })
+                  bars.forEach((bar) => gsap.set(bar, { width: 0 }))
+                },
+              },
+            })
+          })
         },
       })
 
@@ -452,7 +433,7 @@ export default {
   }
 
   .glass {
-    @include glass(100%, 485px, 4px, 180%, 2rem, #fff);
+    @include glass(100%, stretch, 4px, 180%, 2rem, #fff);
     border-radius: 30px;
     padding: 3.5rem 3rem;
   }
