@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kiwon2025portfolio.netlify.app/sitemap.xml

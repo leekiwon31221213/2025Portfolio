@@ -3,11 +3,11 @@
 
     <!-- 로딩 -->
     <transition name="fade">
-      <Loading v-show="isLoading" @finished="onLoaded"></Loading>
+      <Loading v-if="isLoading" @finished="onLoaded"></Loading>
     </transition>
 
     <!-- 실제 페이지 -->
-    <div v-show="!isLoading">
+    <div v-if="!isLoading">
       <Header></Header>
       <router-view></router-view>
       <Footer></Footer>

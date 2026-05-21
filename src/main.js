@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import { applySeo } from './utils/seo'
 
 /* 폰트어썸 */
 // Font Awesome core
@@ -18,4 +19,10 @@ library.add(faBars, faXmark, faAngleDown)
 const app = createApp(App)
 app.component('FontAwesomeIcon', FontAwesomeIcon)
 app.use(router)
+
+//  페이지 SEO 적용
+router.afterEach((to) => {
+  applySeo(to.meta)
+})
+
 app.mount('#app')
