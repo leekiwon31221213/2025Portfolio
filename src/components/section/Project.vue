@@ -332,7 +332,6 @@ export default {
     .project-img {
       width: 50rem;
       border-radius: 2rem;
-      height: 443px;
       @media (max-width: 1024px) {
         width: clamp(40rem, 52.083vw, 50rem);
       }

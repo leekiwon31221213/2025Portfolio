@@ -110,6 +110,8 @@ export default {
           { name: 'Html', level: 90, type: 'markup' },
           { name: 'Css/Scss', level: 90, type: 'style' },
           { name: 'Js & jQ', level: 75, type: 'programming' },
+          { name: 'React', level: 70, type: 'framework' },
+          { name: 'TypeScript', level: 50, type: 'programming' },
           { name: 'Vue', level: 70, type: 'framework' },
           { name: 'Seo', level: 60, type: 'concept' },
           { name: 'Semantic', level: 65, type: 'concept' },
