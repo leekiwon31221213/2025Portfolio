@@ -32,12 +32,8 @@
         <p>
           {{ career.work1 }} <br />
           {{ career.work2 }}
-          <template v-if="career.work3">
-            <br />{{ career.work3 }}
-          </template>
-          <template v-if="career.work4">
-            <br />{{ career.work4 }}
-          </template>
+          <template v-if="career.work3"> <br />{{ career.work3 }} </template>
+          <template v-if="career.work4"> <br />{{ career.work4 }} </template>
         </p>
       </li>
     </ul>
