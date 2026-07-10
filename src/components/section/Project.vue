@@ -117,7 +117,7 @@ export default {
         {
           img: '/assets/image/project/esafe_pr.png',
           alt: '이세이프 회사소개',
-          name: '이세이프 회사소개(개발중)',
+          name: '이세이프 회사소개',
           dec: '회사소개 페이지 ',
           hashTag: ['리액트', '디자인', '기여도 100%'],
           pcTxt: 'pc View',
