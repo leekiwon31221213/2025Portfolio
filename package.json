@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "type-check": "tsc --noEmit",
+    "build": "tsc --noEmit && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -20,16 +21,16 @@
     "vue-router": "^5.0.4"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^6.0.1",
+    "@vitejs/plugin-vue-jsx": "^5.1.6",
     "eslint": "^9.33.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-vue": "^10.4.0",
     "prettier": "^3.6.2",
     "sass": "^1.99.0",
+    "typescript": "~5.9.3",
     "vite": "^7.1.2",
     "vite-plugin-svgr": "^4.5.0",
-    "vite-plugin-vue-devtools": "^8.0.0",
     "vite-svg-loader": "^5.1.0"
   }
 }

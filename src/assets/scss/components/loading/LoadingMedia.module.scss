@@ -1,0 +1,7 @@
+@media (max-width: 768px) {
+  :global .intro-text-box li h2 {
+    font-size: clamp(2rem, 3.636vw, 2.2rem);
+  }
+}
+
+.root {}

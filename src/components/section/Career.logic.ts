@@ -1,58 +1,9 @@
-<template>
-  <section id="education" class="section3">
-    <h1>Education</h1>
+import type { ComponentOptions } from 'vue'
 
-    <ul class="education__inner">
-      <li v-for="(education, index) in education" :key="index" class="glass">
-        <div class="img-box">
-          <img :src="education.logo" :alt="education.alt" />
-        </div>
-        <div class="educatio-business-box">
-          <h3>{{ education.edu }}</h3>
-          <p>{{ education.span }}</p>
-        </div>
-        <p class="team-txt">{{ education.study }}</p>
-      </li>
-    </ul>
-  </section>
-
-  <section id="career" class="section4">
-    <h1>Career</h1>
-
-    <ul class="career__inner">
-      <li v-for="(career, index) in displayedCareers" :key="index" class="glass">
-        <div class="img-box" :class="career.alt === '증산클라비어' ? 'jc' : ''">
-          <img :src="career.logo" :alt="career.alt" />
-        </div>
-        <div class="company-business-box">
-          <h3>{{ career.companyName }}</h3>
-          <p>{{ career.business }}</p>
-        </div>
-        <p class="team-txt">{{ career.team }}</p>
-        <p>
-          {{ career.work1 }} <br />
-          {{ career.work2 }}
-          <template v-if="career.work3"> <br />{{ career.work3 }} </template>
-          <template v-if="career.work4"> <br />{{ career.work4 }} </template>
-        </p>
-      </li>
-    </ul>
-
-    <div class="btn-box">
-      <button type="button" @click="loadMore()" id="more-btn">
-        더 보기
-
-        <FontAwesomeIcon :icon="['fas', 'angle-down']" />
-      </button>
-    </div>
-  </section>
-</template>
-
-<script>
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-export default {
+const CareerLogic: ComponentOptions = {
   data() {
     return {
       visibledCount: 2,
@@ -153,17 +104,17 @@ export default {
   methods: {
     // 경력 카드 찾기
     getCareerItems() {
-      return document.querySelectorAll('.career__inner > li')
+      return document.querySelectorAll<HTMLElement>('.career__inner > li')
     },
 
     // 학력, 경력 카드 찾기
     getAllItems() {
-      return document.querySelectorAll('.education__inner > li, .career__inner > li')
+      return document.querySelectorAll<HTMLElement>('.education__inner > li, .career__inner > li')
     },
 
     // 제목 찾기
     getSectionTitles() {
-      return document.querySelectorAll('#education h1, #career h1')
+      return document.querySelectorAll<HTMLElement>('#education h1, #career h1')
     },
 
     // 스크롤 자리 저장
@@ -182,7 +133,7 @@ export default {
     },
 
     // 스크롤 자리 다시 맞추기
-    restoreScrollAnchor(scrollAnchorInfo) {
+    restoreScrollAnchor(scrollAnchorInfo: { element: HTMLElement; top: number } | null) {
       if (!scrollAnchorInfo || !scrollAnchorInfo.element) {
         return
       }
@@ -196,7 +147,7 @@ export default {
     },
 
     initAnimations() {
-      this.getSectionTitles().forEach((title) => {
+      this.getSectionTitles().forEach((title: HTMLElement) => {
         gsap.fromTo(
           title,
           { opacity: 0, y: 30 },
@@ -218,7 +169,7 @@ export default {
 
     animateNewItems() {
       const items = this.getAllItems()
-      items.forEach((item) => {
+      items.forEach((item: HTMLElement) => {
         if (item.dataset.gsapInit) return
         item.dataset.gsapInit = 'true'
         gsap.set(item, { opacity: 0, y: 40 })
@@ -258,197 +209,5 @@ export default {
     },
   },
 }
-</script>
 
-<style lang="scss">
-#career,
-#education {
-  h1 {
-    padding: 145px 0 35px 0;
-    text-align: center;
-    margin: 0 auto;
-    font-size: clamp(5rem, 4.883vw, 8rem);
-    font-weight: 600;
-    letter-spacing: 5px;
-    @media (max-width: 1024px) {
-      font-size: clamp(3rem, 3.906vw, 5rem);
-    }
-    @media (max-width: 768px) {
-      font-size: clamp(2.4rem, 4.364vw, 3rem);
-    }
-  }
-  #career {
-    h1 {
-      @media (max-width: 550px) {
-        padding: clamp(60px, 16.667vw, 145px) 0 35px 0;
-      }
-    }
-  }
-  .career__inner,
-  .education__inner {
-    position: relative;
-    width: 90%;
-    margin: 0 auto 120px;
-
-    &::before {
-      content: '';
-      display: inline-block;
-      width: 0.1rem;
-      height: 100%;
-      background: linear-gradient(0deg, #818cf8, #c084fc, #60a5fa);
-      position: absolute;
-      top: 20px;
-      left: -23px;
-      @media (max-width: 768px) {
-        display: none;
-      }
-    }
-
-    li {
-      p {
-        color: $dec;
-        font-size: clamp(1.6rem, 1.563vw, 1.8rem);
-        font-weight: 400;
-        line-height: 1.4;
-        @media (max-width: 768px) {
-          font-size: clamp(1.4rem, 2.545vw, 1.6rem);
-        }
-      }
-      .img-box {
-        img {
-          border-radius: 6px;
-          @media (max-width: 1024px) {
-            width: clamp(40px, 5.208vw, 59px);
-          }
-        }
-        &.jc {
-          img {
-            width: 59px;
-            @media (max-width: 1024px) {
-              width: clamp(40px, 5.208vw, 59px);
-            }
-          }
-        }
-      }
-      .company-business-box,
-      .educatio-business-box {
-        display: flex;
-        flex-wrap: wrap;
-        h3 {
-          font-size: clamp(1.9rem, 1.855vw, 2.1rem);
-          font-weight: 600;
-          margin-right: 1rem;
-          @media (max-width: 768px) {
-            font-size: clamp(1.6rem, 2.909vw, 1.9rem);
-          }
-        }
-
-        margin: 1.2rem 0 1rem 0;
-      }
-
-      $circleColor: $icon-bg1, $icon-bg2, $icon-bg3, $icon-bg4, $icon-bg5, $icon-bg6;
-
-      @for $i from 1 through 6 {
-        &:nth-child(#{$i}) {
-          @include glass(100%, 100%, 4px, 180%, 2rem, #fff);
-          border-radius: 30px;
-          align-items: flex-start;
-          justify-content: unset;
-          flex-direction: column;
-          margin: 2rem;
-          padding: 4rem 3rem;
-          @media (max-width: 768px) {
-            margin: 0 0 2rem 0;
-            &:last-child {
-              margin-bottom: 0;
-            }
-          }
-
-          &::before {
-            content: '';
-            display: inline-block;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            background-color: nth($circleColor, $i);
-            position: absolute;
-            left: -55px;
-            top: 0;
-            @media (max-width: 1024px) {
-              width: 20px;
-              height: 20px;
-              left: -52px;
-            }
-            @media (max-width: 768px) {
-              display: none;
-            }
-          }
-          &:last-child {
-            margin-bottom: 0;
-          }
-        }
-      }
-
-      .team-txt {
-        margin-bottom: 1.5rem;
-      }
-    }
-  }
-  .btn-box {
-    width: 90%;
-    display: flex;
-    justify-content: center;
-    margin: 0 auto 120px;
-    @media (max-width: 768px) {
-      margin: 0 auto clamp(100px, 13.333vw, 120px);
-    }
-    #more-btn {
-      color: #fff;
-      max-width: 225px;
-      width: 100%;
-      padding: 2rem;
-      border-radius: 3rem;
-      border: 1px solid $border;
-      font-size: 1.7rem;
-      transition: 0.3s ease-in-out;
-      font-weight: 600;
-      @media (max-width: 768px) {
-        max-width: clamp(180px, 32.727vw, 225px);
-        padding: 1.5rem;
-        font-size: 1.55rem;
-      }
-
-      &:hover {
-        border: unset;
-        background-color: #fff;
-        color: #333;
-        .fa-angle-down {
-          animation: arrow_down 1s infinite ease-in-out;
-        }
-      }
-    }
-  }
-}
-#education {
-  .education__inner {
-    margin: 0 auto;
-    .img-box {
-      img {
-        width: 59px;
-      }
-    }
-  }
-}
-
-@keyframes arrow_down {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(2.5px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
-}
-</style>
+export default CareerLogic

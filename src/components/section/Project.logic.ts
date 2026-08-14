@@ -1,116 +1,12 @@
-<template>
-  <section id="project" class="section5">
-    <h1>Project</h1>
-    <p class="dec">다양한 프로젝트를 경험하며 쌓아온 결과물을 소개합니다.</p>
+import type { ComponentOptions } from 'vue'
 
-    <Swiper
-      :modules="modules"
-      :slides-per-view="3"
-      :loop="true"
-      @swiper="onSwiper"
-      @slideChange="onSlideChange"
-      id="project-swiper"
-      :breakpoints="{
-        0: {
-          slidesPerView: 1,
-          spaceBetween: 20,
-        },
-        550: {
-          slidesPerView: 2,
-          spaceBetween: 30,
-        },
-        768: {
-          slidesPerView: 2,
-          spaceBetween: 30,
-        },
-        1024: {
-          slidesPerView: 2,
-          spaceBetween: 80,
-        },
-        1025: {
-          slidesPerView: 3,
-          spaceBetween: 80,
-        },
-      }"
-    >
-      <SwiperSlide v-for="(project, index) in project" :key="index">
-        <ul class="project-list">
-          <li>
-            <img :src="project.img" :alt="project.alt" class="project-img" />
-            <h3>{{ project.name }}</h3>
-            <p>{{ project.dec }}</p>
-            <div class="hashtags">
-              <span v-for="(tag, tagIndex) in project.hashTag" :key="tagIndex">#{{ tag }}</span>
-            </div>
-
-            <div
-              class="btn-box"
-              v-if="project.name === '프라뱅 하이브리드앱' || project.name === 'GSTT 하이브리드앱'"
-            >
-              <a :href="project.google || '#'" class="project-btn glass" target="_blank">
-                google Play
-                <img :src="project.icon" alt="arrow icon" class="btn-icon" />
-              </a>
-              <a
-                v-if="project.apple && project.apple.startsWith('http')"
-                :href="project.apple"
-                class="project-btn glass"
-                target="_blank"
-              >
-                apple Store
-                <img :src="project.icon" alt="arrow icon" class="btn-icon" />
-              </a>
-
-              <button
-                v-else
-                type="button"
-                class="project-btn glass"
-                @click="openAppleAlert(project.apple)"
-              >
-                apple Store
-                <img :src="project.icon" alt="arrow icon" class="btn-icon" />
-              </button>
-            </div>
-
-            <div class="btn-box" v-else>
-              <a :href="project.link || '#'" class="project-btn glass" target="_blank">
-                {{ project.pcTxt }}
-                <img :src="project.icon" alt="arrow icon" class="btn-icon" />
-              </a>
-
-              <button type="button" class="project-btn glass" @click="openMoWin(project.link)">
-                {{ project.moTxt }}
-                <img :src="project.icon" alt="arrow icon" class="btn-icon" />
-              </button>
-
-              <button type="button" class="project-btn glass" @click="openTabletWin(project.link)">
-                {{ project.tabletTxt }}
-                <img :src="project.icon" alt="arrow icon" class="btn-icon" />
-              </button>
-
-              <RouterLink
-                to="/gstt-detail"
-                class="project-btn glass"
-                v-if="project.name === 'GSTT'"
-              >
-                {{ project.detail }}
-              </RouterLink>
-            </div>
-          </li>
-        </ul>
-      </SwiperSlide>
-    </Swiper>
-  </section>
-</template>
-
-<script>
 import { Pagination, A11y } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { RouterLink } from 'vue-router'
 
 import 'swiper/css'
 
-export default {
+const ProjectLogic: ComponentOptions = {
   data() {
     return {
       project: [
@@ -279,7 +175,7 @@ export default {
     RouterLink,
   },
   setup() {
-    const onSwiper = (swiper) => {}
+    const onSwiper = (swiper: unknown) => {}
     const onSlideChange = () => {}
     return {
       onSwiper,
@@ -288,167 +184,18 @@ export default {
     }
   },
   methods: {
-    openMoWin(url) {
+    openMoWin(url?: string) {
       const features = 'scrollbars=no,width=450,height=900,top=100,left=100'
       window.open(url, 'win', features)
     },
-    openTabletWin(url) {
+    openTabletWin(url?: string) {
       const features = 'scrollbars=no,width=800,height=1200,top=100,left=100'
       window.open(url, 'win', features)
     },
-    openAppleAlert(message) {
+    openAppleAlert(message?: string) {
       alert(message)
     },
   },
 }
-</script>
 
-<style lang="scss">
-#project {
-  h1 {
-    padding: 145px 0 35px 0;
-    text-align: center;
-    margin: 0 auto;
-    font-size: clamp(5rem, 4.883vw, 8rem);
-    font-weight: 600;
-    letter-spacing: 5px;
-    @media (max-width: 1024px) {
-      font-size: clamp(3rem, 3.906vw, 5rem);
-    }
-  }
-  .dec {
-    color: $dec;
-    text-align: center;
-    font-size: clamp(1.6rem, 1.563vw, 1.8rem);
-    width: 90%;
-    margin: 0 auto 7rem auto;
-    @media (max-width: 550px) {
-      font-size: clamp(1.4rem, 3.889vw, 1.6rem);
-    }
-  }
-  #project-swiper {
-    width: 90%;
-    margin: 0 auto 14rem;
-    .project-img {
-      width: 50rem;
-      border-radius: 2rem;
-      @media (max-width: 1024px) {
-        width: clamp(40rem, 52.083vw, 50rem);
-      }
-
-      @media (max-width: 768px) {
-        width: clamp(33rem, 60vw, 40rem);
-      }
-      @media (max-width: 550px) {
-        width: clamp(29rem, 80.556vw, 33rem);
-      }
-    }
-
-    .project-list {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      list-style: none;
-      width: 580px;
-      @media (max-width: 1024px) {
-        width: unset;
-      }
-      @media (max-width: 768px) {
-        width: 90%;
-      }
-      @media (max-width: 550px) {
-        width: 100%;
-      }
-      li {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-        @media (max-width: 550px) {
-          align-items: center;
-        }
-
-        h3 {
-          margin: 4rem 0 1rem;
-          font-size: clamp(1.8rem, 1.758vw, 2.1rem);
-          font-weight: 600;
-        }
-        p {
-          color: $dec;
-          font-weight: 400;
-          font-size: clamp(1.6rem, 1.563vw, 1.8rem);
-          @media (max-width: 550px) {
-            text-align: center;
-          }
-        }
-        .hashtags {
-          display: flex;
-          gap: 1rem;
-          margin: 2rem 0 3rem;
-          @media (max-width: 768px) {
-            flex-direction: column;
-            width: 90%;
-          }
-
-          span {
-            border: 1px solid $border;
-            padding: 1rem;
-            border-radius: 6px;
-            font-size: 1.5rem;
-          }
-        }
-        .btn-box {
-          display: flex;
-          width: 100%;
-          @media (max-width: 550px) {
-            justify-content: center;
-          }
-        }
-        .project-btn {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          color: #fff;
-          width: calc(100% / 3);
-          &.glass {
-            width: fit-content;
-            height: 40px;
-            line-height: 40px;
-            font-size: 1.5rem;
-            margin-right: 1rem;
-            @media (max-width: 1024px) {
-              font-size: clamp(1.3rem, 2.364vw, 1.5rem);
-            }
-            @media (max-width: 768px) {
-              padding: 0.9rem clamp(1rem, 1.818vw, 1.6rem);
-            }
-          }
-        }
-
-        .btn-icon {
-          width: 1.5rem;
-          height: 1.5rem;
-        }
-      }
-    }
-  }
-  #project-swiper .swiper-wrapper {
-    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1) !important;
-  }
-
-  .swiper-slide {
-    @media (min-width: 1025px) {
-      width: clamp(520px, 50.781vw, 560px) !important;
-    }
-    @media (max-width: 1024px) {
-      width: clamp(430px, 55.99vw, 520px) !important;
-    }
-    @media (max-width: 768px) {
-      width: clamp(365px, 66.364vw, 430px) !important;
-    }
-    @media (max-width: 550px) {
-      width: 100% !important;
-    }
-  }
-}
-</style>
+export default ProjectLogic

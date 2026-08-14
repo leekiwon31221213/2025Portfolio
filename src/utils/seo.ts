@@ -1,4 +1,13 @@
-const defaultSeo = {
+import type { RouteMeta } from 'vue-router'
+
+type SeoData = {
+  title: string
+  description: string
+  canonical: string
+  image: string
+}
+
+const defaultSeo: SeoData = {
   title: '프론트엔드 개발자 이기원 포트폴리오',
   description:
     '프론트엔드 개발자 이기원의 2025 포트폴리오입니다. 웹 퍼블리싱과 프론트엔드 프로젝트, 경력, 기술, 협업 경험을 한눈에 볼 수 있습니다.',
@@ -7,12 +16,12 @@ const defaultSeo = {
 }
 
 //  메타 태그 찾기
-const getMetaElement = (selector) => {
-  return document.head.querySelector(selector)
+const getMetaElement = (selector: string) => {
+  return document.head.querySelector<HTMLMetaElement>(selector)
 }
 
 //  메타 태그 만들기
-const createMetaElement = (type, key, value) => {
+const createMetaElement = (type: string, key: string, value: string) => {
   const metaElement = document.createElement('meta')
 
   metaElement.setAttribute(type, key)
@@ -24,7 +33,7 @@ const createMetaElement = (type, key, value) => {
 }
 
 //  메타 태그 중복 지우기
-const removeDuplicateMetaElements = (selector) => {
+const removeDuplicateMetaElements = (selector: string) => {
   const metaElements = document.head.querySelectorAll(selector)
 
   metaElements.forEach((metaElement, index) => {
@@ -35,7 +44,7 @@ const removeDuplicateMetaElements = (selector) => {
 }
 
 //  메타 태그 넣기
-const setMetaContent = (type, key, value) => {
+const setMetaContent = (type: string, key: string, value: string) => {
   const selector = `meta[${type}="${key}"]`
   const metaElement = getMetaElement(selector) || createMetaElement(type, key, value)
 
@@ -43,12 +52,12 @@ const setMetaContent = (type, key, value) => {
 }
 
 //  링크 태그 찾기
-const getLinkElement = (relValue) => {
-  return document.head.querySelector(`link[rel="${relValue}"]`)
+const getLinkElement = (relValue: string) => {
+  return document.head.querySelector<HTMLLinkElement>(`link[rel="${relValue}"]`)
 }
 
 //  링크 태그 중복 지우기
-const removeDuplicateLinkElements = (selector) => {
+const removeDuplicateLinkElements = (selector: string) => {
   const linkElements = document.head.querySelectorAll(selector)
 
   linkElements.forEach((linkElement, index) => {
@@ -59,7 +68,7 @@ const removeDuplicateLinkElements = (selector) => {
 }
 
 //  링크 태그 넣기
-const setLinkHref = (relValue, hrefValue) => {
+const setLinkHref = (relValue: string, hrefValue: string) => {
   const linkElement = getLinkElement(relValue) || document.createElement('link')
 
   linkElement.setAttribute('rel', relValue)
@@ -85,11 +94,13 @@ const cleanupSeoElements = () => {
 }
 
 //  페이지 SEO 넣기
-export const applySeo = (routeMeta = {}) => {
-  const title = routeMeta.title || defaultSeo.title
-  const description = routeMeta.description || defaultSeo.description
-  const canonical = routeMeta.canonical || defaultSeo.canonical
-  const image = routeMeta.image || defaultSeo.image
+export const applySeo = (routeMeta: RouteMeta = {}) => {
+  const title = typeof routeMeta.title === 'string' ? routeMeta.title : defaultSeo.title
+  const description =
+    typeof routeMeta.description === 'string' ? routeMeta.description : defaultSeo.description
+  const canonical =
+    typeof routeMeta.canonical === 'string' ? routeMeta.canonical : defaultSeo.canonical
+  const image = typeof routeMeta.image === 'string' ? routeMeta.image : defaultSeo.image
 
   cleanupSeoElements()
 

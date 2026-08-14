@@ -1,0 +1,189 @@
+:global #skill {
+  background-color: #030712;
+}
+
+:global #skill .fa-angle-down {
+  transform: rotate(-90deg);
+}
+
+:global #skill .skill__inner {
+  width: 90%;
+  margin: 0 auto;
+  padding-bottom: 25rem;
+}
+
+:global #skill h1 {
+  padding: 145px 0 35px 0;
+  text-align: center;
+  margin: 0 auto;
+  font-size: clamp(5rem, 4.883vw, 8rem);
+  font-weight: 600;
+  letter-spacing: 5px;
+}
+
+:global #skill p.desc {
+  text-align: center;
+  line-height: clamp(3rem, 2.93vw, 3.5rem);
+  font-size: clamp(1.6rem, 1.563vw, 1.8rem);
+  color: #9ca3af;
+  font-weight: 200;
+  margin-bottom: 12.8rem;
+}
+
+:global #skill .skills-box {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 2rem;
+}
+
+:global #skill .skills-box li {
+  display: flex;
+  width: 25%;
+  align-items: flex-start;
+}
+
+:global #skill .skills-box .skill__inner .skill-list {
+  width: 100%;
+}
+
+:global #skill .skills-box .skill__inner .skill-list > li {
+  margin-bottom: 15px;
+  display: flex;
+  width: 100%;
+}
+
+:global #skill .skills-box .skill__inner .skill-list > li.skill-li {
+  display: flex;
+  flex-direction: column;
+}
+
+:global #skill .skills-box .skill__inner .skill-list > li.skill-li .etc-skill-tab {
+  font-size: 1.3rem;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+:global #skill .skills-box .skill__inner .skill-list > li.skill-li .etc-skill-tab a {
+  padding: 1rem;
+  border: 1px solid #bbbbbb;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+:global #skill .skills-box .skill__inner .skill-list > li:first-child {
+  flex-direction: column;
+}
+
+:global #skill .skills-box .skill__inner .skill-list > li:first-child h3 {
+  font-size: clamp(1.8rem, 1.758vw, 2.1rem);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+:global #skill .skills-box .skill__inner .skill-list > li:first-child .icon-box {
+  padding: 1.3rem;
+  border-radius: 0.8rem;
+  margin-bottom: 1.5rem;
+  width: clamp(50px, 4.883vw, 60px);
+  height: clamp(50px, 4.883vw, 60px);
+  display: flex;
+  justify-content: center;
+}
+
+:global #skill .skills-box .skill__inner .skill-list > li:first-child .icon-box.front {
+  background: linear-gradient(133deg, #faab89 0%, #f54a00 100%);
+}
+
+:global #skill .skills-box .skill__inner .skill-list > li:first-child .icon-box.design {
+  background: linear-gradient(133deg, #dfbfff 0%, #c084fc 100%);
+}
+
+:global #skill .skills-box .skill__inner .skill-list > li:first-child .icon-box.collaboration {
+  background: linear-gradient(133deg, #709cff 0%, #155dfc 100%);
+}
+
+:global #skill .skills-box .skill__inner .skill-list > li:first-child .icon-box.etc {
+  background: linear-gradient(133deg, #2f54ce 0%, #9071ff 100%);
+}
+
+:global #skill .skills-box .skill__inner .skill-list > li .skill-name {
+  font-weight: 200;
+  margin-bottom: 1rem;
+  width: 200px;
+  color: #9ca3af;
+  font-size: clamp(1.5rem, 1.465vw, 1.7rem);
+}
+
+:global #skill .skills-box .skill__inner .skill-list > li .skill-level {
+  background: rgba(51, 51, 51, 0.4392156863);
+  border-radius: 1rem;
+  overflow: hidden;
+  height: 20px;
+  display: flex;
+  width: 100%;
+}
+
+:global #skill .skills-box .skill__inner .skill-list > li .skill-level .skill-bar {
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #ff9966, #822d30);
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 5px;
+  color: #fff;
+}
+
+:global #skill .skills-box .skill__inner .skill-list > li .skill-level .skill-bar .skill-text {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+:global #skill .skills-box .skill__inner.design-skill .skill-list .skill-name, :global #skill .skills-box .skill__inner.collaboration-skill .skill-list .skill-name, :global #skill .skills-box .skill__inner.etc-skill .skill-list .skill-name {
+  width: 100%;
+  background-color: #1e2939;
+  padding: 0.9rem 1.8rem;
+  border-radius: 1rem;
+}
+
+:global #skill .glass {
+  width: 100%;
+  height: stretch;
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(4px) saturate(180%);
+  -webkit-backdrop-filter: blur(4px) saturate(180%);
+  box-shadow: -2px -2px 2px rgba(255, 255, 255, 0.2), 6px 10px 24px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.22);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.6rem;
+  border-radius: 80px;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  border-radius: 30px;
+  padding: 3.5rem 3rem;
+}
+
+@keyframes :global(fillBar) {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--target-width);
+  }
+}
+
+:global #skill .skill__inner.run .skill-bar {
+  animation: fillBar 2.5s ease-in-out;
+}
+
+:global .reveal {
+  opacity: 0;
+  transform: translateY(40px);
+}

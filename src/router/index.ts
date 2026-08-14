@@ -1,22 +1,22 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 
 // 페이지 컴포넌트 가져오기
 import GsttDetail from '/src/views/gstt/GsttDetail'
 import Home from '/src/views/Home'
 
 // 라우터 목록
-const routes = [
+const routes: RouteRecordRaw[] = [
   {
-      path: '/',
-      name: 'Home',
-      component: Home,
-      meta: {
-        title: '프론트엔드 개발자 이기원 포트폴리오',
-        description:
-          '프론트엔드 개발자 이기원의 2025 포트폴리오입니다. 웹 퍼블리싱과 프론트엔드 프로젝트, 경력, 기술, 협업 경험을 한눈에 볼 수 있습니다.',
-        canonical: 'https://kiwon2025portfolio.netlify.app/',
-      },
+    path: '/',
+    name: 'Home',
+    component: Home,
+    meta: {
+      title: '프론트엔드 개발자 이기원 포트폴리오',
+      description:
+        '프론트엔드 개발자 이기원의 2025 포트폴리오입니다. 웹 퍼블리싱과 프론트엔드 프로젝트, 경력, 기술, 협업 경험을 한눈에 볼 수 있습니다.',
+      canonical: 'https://kiwon2025portfolio.netlify.app/',
     },
+  },
   {
     path: '/gstt-detail',
     name: 'GsttDetail',

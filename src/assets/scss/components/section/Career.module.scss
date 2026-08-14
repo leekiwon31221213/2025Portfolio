@@ -1,0 +1,446 @@
+:global #career h1,
+:global #education h1 {
+  padding: 145px 0 35px 0;
+  text-align: center;
+  margin: 0 auto;
+  font-size: clamp(5rem, 4.883vw, 8rem);
+  font-weight: 600;
+  letter-spacing: 5px;
+}
+
+:global #career .career__inner,
+:global #career .education__inner,
+:global #education .career__inner,
+:global #education .education__inner {
+  position: relative;
+  width: 90%;
+  margin: 0 auto 120px;
+}
+
+:global #career .career__inner::before,
+:global #career .education__inner::before,
+:global #education .career__inner::before,
+:global #education .education__inner::before {
+  content: "";
+  display: inline-block;
+  width: 0.1rem;
+  height: 100%;
+  background: linear-gradient(0deg, #818cf8, #c084fc, #60a5fa);
+  position: absolute;
+  top: 20px;
+  left: -23px;
+}
+
+:global #career .career__inner li p,
+:global #career .education__inner li p,
+:global #education .career__inner li p,
+:global #education .education__inner li p {
+  color: #9ca3af;
+  font-size: clamp(1.6rem, 1.563vw, 1.8rem);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+:global #career .career__inner li .img-box img,
+:global #career .education__inner li .img-box img,
+:global #education .career__inner li .img-box img,
+:global #education .education__inner li .img-box img {
+  border-radius: 6px;
+}
+
+:global #career .career__inner li .img-box.jc img,
+:global #career .education__inner li .img-box.jc img,
+:global #education .career__inner li .img-box.jc img,
+:global #education .education__inner li .img-box.jc img {
+  width: 59px;
+}
+
+:global #career .career__inner li .company-business-box,
+:global #career .career__inner li .educatio-business-box,
+:global #career .education__inner li .company-business-box,
+:global #career .education__inner li .educatio-business-box,
+:global #education .career__inner li .company-business-box,
+:global #education .career__inner li .educatio-business-box,
+:global #education .education__inner li .company-business-box,
+:global #education .education__inner li .educatio-business-box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+:global #career .career__inner li .company-business-box h3,
+:global #career .career__inner li .educatio-business-box h3,
+:global #career .education__inner li .company-business-box h3,
+:global #career .education__inner li .educatio-business-box h3,
+:global #education .career__inner li .company-business-box h3,
+:global #education .career__inner li .educatio-business-box h3,
+:global #education .education__inner li .company-business-box h3,
+:global #education .education__inner li .educatio-business-box h3 {
+  font-size: clamp(1.9rem, 1.855vw, 2.1rem);
+  font-weight: 600;
+  margin-right: 1rem;
+}
+
+:global #career .career__inner li .company-business-box,
+:global #career .career__inner li .educatio-business-box,
+:global #career .education__inner li .company-business-box,
+:global #career .education__inner li .educatio-business-box,
+:global #education .career__inner li .company-business-box,
+:global #education .career__inner li .educatio-business-box,
+:global #education .education__inner li .company-business-box,
+:global #education .education__inner li .educatio-business-box {
+  margin: 1.2rem 0 1rem 0;
+}
+
+:global #career .career__inner li:nth-child(1),
+:global #career .education__inner li:nth-child(1),
+:global #education .career__inner li:nth-child(1),
+:global #education .education__inner li:nth-child(1) {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(4px) saturate(180%);
+  -webkit-backdrop-filter: blur(4px) saturate(180%);
+  box-shadow: -2px -2px 2px rgba(255, 255, 255, 0.2), 6px 10px 24px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.22);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.6rem;
+  border-radius: 80px;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  border-radius: 30px;
+  align-items: flex-start;
+  justify-content: unset;
+  flex-direction: column;
+  margin: 2rem;
+  padding: 4rem 3rem;
+}
+
+:global #career .career__inner li:nth-child(1)::before,
+:global #career .education__inner li:nth-child(1)::before,
+:global #education .career__inner li:nth-child(1)::before,
+:global #education .education__inner li:nth-child(1)::before {
+  content: "";
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #155dfc;
+  position: absolute;
+  left: -55px;
+  top: 0;
+}
+
+:global #career .career__inner li:nth-child(1):last-child,
+:global #career .education__inner li:nth-child(1):last-child,
+:global #education .career__inner li:nth-child(1):last-child,
+:global #education .education__inner li:nth-child(1):last-child {
+  margin-bottom: 0;
+}
+
+:global #career .career__inner li:nth-child(2),
+:global #career .education__inner li:nth-child(2),
+:global #education .career__inner li:nth-child(2),
+:global #education .education__inner li:nth-child(2) {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(4px) saturate(180%);
+  -webkit-backdrop-filter: blur(4px) saturate(180%);
+  box-shadow: -2px -2px 2px rgba(255, 255, 255, 0.2), 6px 10px 24px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.22);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.6rem;
+  border-radius: 80px;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  border-radius: 30px;
+  align-items: flex-start;
+  justify-content: unset;
+  flex-direction: column;
+  margin: 2rem;
+  padding: 4rem 3rem;
+}
+
+:global #career .career__inner li:nth-child(2)::before,
+:global #career .education__inner li:nth-child(2)::before,
+:global #education .career__inner li:nth-child(2)::before,
+:global #education .education__inner li:nth-child(2)::before {
+  content: "";
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #9810fa;
+  position: absolute;
+  left: -55px;
+  top: 0;
+}
+
+:global #career .career__inner li:nth-child(2):last-child,
+:global #career .education__inner li:nth-child(2):last-child,
+:global #education .career__inner li:nth-child(2):last-child,
+:global #education .education__inner li:nth-child(2):last-child {
+  margin-bottom: 0;
+}
+
+:global #career .career__inner li:nth-child(3),
+:global #career .education__inner li:nth-child(3),
+:global #education .career__inner li:nth-child(3),
+:global #education .education__inner li:nth-child(3) {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(4px) saturate(180%);
+  -webkit-backdrop-filter: blur(4px) saturate(180%);
+  box-shadow: -2px -2px 2px rgba(255, 255, 255, 0.2), 6px 10px 24px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.22);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.6rem;
+  border-radius: 80px;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  border-radius: 30px;
+  align-items: flex-start;
+  justify-content: unset;
+  flex-direction: column;
+  margin: 2rem;
+  padding: 4rem 3rem;
+}
+
+:global #career .career__inner li:nth-child(3)::before,
+:global #career .education__inner li:nth-child(3)::before,
+:global #education .career__inner li:nth-child(3)::before,
+:global #education .education__inner li:nth-child(3)::before {
+  content: "";
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #00a63e;
+  position: absolute;
+  left: -55px;
+  top: 0;
+}
+
+:global #career .career__inner li:nth-child(3):last-child,
+:global #career .education__inner li:nth-child(3):last-child,
+:global #education .career__inner li:nth-child(3):last-child,
+:global #education .education__inner li:nth-child(3):last-child {
+  margin-bottom: 0;
+}
+
+:global #career .career__inner li:nth-child(4),
+:global #career .education__inner li:nth-child(4),
+:global #education .career__inner li:nth-child(4),
+:global #education .education__inner li:nth-child(4) {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(4px) saturate(180%);
+  -webkit-backdrop-filter: blur(4px) saturate(180%);
+  box-shadow: -2px -2px 2px rgba(255, 255, 255, 0.2), 6px 10px 24px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.22);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.6rem;
+  border-radius: 80px;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  border-radius: 30px;
+  align-items: flex-start;
+  justify-content: unset;
+  flex-direction: column;
+  margin: 2rem;
+  padding: 4rem 3rem;
+}
+
+:global #career .career__inner li:nth-child(4)::before,
+:global #career .education__inner li:nth-child(4)::before,
+:global #education .career__inner li:nth-child(4)::before,
+:global #education .education__inner li:nth-child(4)::before {
+  content: "";
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #f54a00;
+  position: absolute;
+  left: -55px;
+  top: 0;
+}
+
+:global #career .career__inner li:nth-child(4):last-child,
+:global #career .education__inner li:nth-child(4):last-child,
+:global #education .career__inner li:nth-child(4):last-child,
+:global #education .education__inner li:nth-child(4):last-child {
+  margin-bottom: 0;
+}
+
+:global #career .career__inner li:nth-child(5),
+:global #career .education__inner li:nth-child(5),
+:global #education .career__inner li:nth-child(5),
+:global #education .education__inner li:nth-child(5) {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(4px) saturate(180%);
+  -webkit-backdrop-filter: blur(4px) saturate(180%);
+  box-shadow: -2px -2px 2px rgba(255, 255, 255, 0.2), 6px 10px 24px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.22);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.6rem;
+  border-radius: 80px;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  border-radius: 30px;
+  align-items: flex-start;
+  justify-content: unset;
+  flex-direction: column;
+  margin: 2rem;
+  padding: 4rem 3rem;
+}
+
+:global #career .career__inner li:nth-child(5)::before,
+:global #career .education__inner li:nth-child(5)::before,
+:global #education .career__inner li:nth-child(5)::before,
+:global #education .education__inner li:nth-child(5)::before {
+  content: "";
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #d5f36c;
+  position: absolute;
+  left: -55px;
+  top: 0;
+}
+
+:global #career .career__inner li:nth-child(5):last-child,
+:global #career .education__inner li:nth-child(5):last-child,
+:global #education .career__inner li:nth-child(5):last-child,
+:global #education .education__inner li:nth-child(5):last-child {
+  margin-bottom: 0;
+}
+
+:global #career .career__inner li:nth-child(6),
+:global #career .education__inner li:nth-child(6),
+:global #education .career__inner li:nth-child(6),
+:global #education .education__inner li:nth-child(6) {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(4px) saturate(180%);
+  -webkit-backdrop-filter: blur(4px) saturate(180%);
+  box-shadow: -2px -2px 2px rgba(255, 255, 255, 0.2), 6px 10px 24px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.22);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.6rem;
+  border-radius: 80px;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  border-radius: 30px;
+  align-items: flex-start;
+  justify-content: unset;
+  flex-direction: column;
+  margin: 2rem;
+  padding: 4rem 3rem;
+}
+
+:global #career .career__inner li:nth-child(6)::before,
+:global #career .education__inner li:nth-child(6)::before,
+:global #education .career__inner li:nth-child(6)::before,
+:global #education .education__inner li:nth-child(6)::before {
+  content: "";
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #f3b16c;
+  position: absolute;
+  left: -55px;
+  top: 0;
+}
+
+:global #career .career__inner li:nth-child(6):last-child,
+:global #career .education__inner li:nth-child(6):last-child,
+:global #education .career__inner li:nth-child(6):last-child,
+:global #education .education__inner li:nth-child(6):last-child {
+  margin-bottom: 0;
+}
+
+:global #career .career__inner li .team-txt,
+:global #career .education__inner li .team-txt,
+:global #education .career__inner li .team-txt,
+:global #education .education__inner li .team-txt {
+  margin-bottom: 1.5rem;
+}
+
+:global #career .btn-box,
+:global #education .btn-box {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 120px;
+}
+
+:global #career .btn-box #more-btn,
+:global #education .btn-box #more-btn {
+  color: #fff;
+  max-width: 225px;
+  width: 100%;
+  padding: 2rem;
+  border-radius: 3rem;
+  border: 1px solid #bbbbbb;
+  font-size: 1.7rem;
+  transition: 0.3s ease-in-out;
+  font-weight: 600;
+}
+
+:global #career .btn-box #more-btn:hover,
+:global #education .btn-box #more-btn:hover {
+  border: unset;
+  background-color: #fff;
+  color: #333;
+}
+
+:global #career .btn-box #more-btn:hover .fa-angle-down,
+:global #education .btn-box #more-btn:hover .fa-angle-down {
+  animation: arrow_down 1s infinite ease-in-out;
+}
+
+:global #education .education__inner {
+  margin: 0 auto;
+}
+
+:global #education .education__inner .img-box img {
+  width: 59px;
+}
+
+@keyframes :global(arrow_down) {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(2.5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

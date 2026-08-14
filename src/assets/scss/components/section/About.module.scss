@@ -1,0 +1,161 @@
+:global #about {
+  background-color: #030712;
+}
+
+:global #about.section2 .section__inner {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  padding: 0 0 250px;
+  margin: 0 auto;
+}
+
+:global #about.section2 .section__inner .about-content-tie {
+  margin-bottom: 5.5rem;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+:global #about.section2 .section__inner .about-content-tie .about-content {
+  letter-spacing: 2px;
+  line-height: clamp(3rem, 2.93vw, 4rem);
+  margin-right: 3rem;
+  width: 212.7659574468%;
+}
+
+:global #about.section2 .section__inner .about-content-tie .about-content.pc {
+  display: block;
+}
+
+:global #about.section2 .section__inner .about-content-tie .about-content.mo {
+  display: none;
+}
+
+:global #about.section2 .section__inner .about-content-tie .about-content h2 {
+  font-size: clamp(2.4rem, 2.344vw, 3rem);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+:global #about.section2 .section__inner .about-content-tie .about-content p {
+  font-size: clamp(1.8rem, 1.758vw, 2.3rem);
+  color: #9ca3af;
+  font-weight: 200;
+}
+
+:global #about.section2 .section__inner .about-content-tie .about-content p strong {
+  color: #ffffff;
+  font-size: clamp(2.1rem, 2.051vw, 2.6rem);
+  font-weight: 600;
+}
+
+:global #about.section2 .section__inner .about-content-tie .setting-card {
+  width: 100%;
+}
+
+:global #about.section2 .section__inner .about-content-tie .setting-card li h3 {
+  font-size: clamp(1.9rem, 1.855vw, 2.1rem);
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+:global #about.section2 .section__inner .about-content-tie .setting-card li p {
+  font-size: clamp(1.6rem, 1.563vw, 1.8rem);
+  font-weight: 200;
+  color: #9ca3af;
+  line-height: clamp(20px, 1.953vw, 25px);
+}
+
+:global #about.section2 .section__inner .about-content-tie .setting-card li .img-box {
+  background-color: #155dfc;
+  margin-bottom: 2.5rem;
+}
+
+:global #about.section2 .section__inner .about-cards {
+  display: flex;
+  justify-content: space-between;
+}
+
+:global #about.section2 .section__inner .about-cards li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 30px;
+}
+
+:global #about.section2 .section__inner .about-cards li:last-child {
+  margin-right: 0;
+}
+
+:global #about.section2 .section__inner .about-cards li h3 {
+  font-size: clamp(1.9rem, 1.855vw, 2.1rem);
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+:global #about.section2 .section__inner .about-cards li p {
+  font-size: clamp(1.6rem, 1.563vw, 1.8rem);
+  font-weight: 200;
+  color: #9ca3af;
+  line-height: clamp(20px, 1.953vw, 25px);
+}
+
+:global #about.section2 .section__inner .about-cards li:nth-child(1) .img-box {
+  background-color: #9810fa;
+  margin-bottom: 2.5rem;
+}
+
+:global #about.section2 .section__inner .about-cards li:nth-child(2) .img-box {
+  background-color: #00a63e;
+  margin-bottom: 2.5rem;
+}
+
+:global #about.section2 .section__inner .about-cards li:nth-child(3) .img-box {
+  background-color: #f54a00;
+  margin-bottom: 2.5rem;
+}
+
+:global #about.section2 h1 {
+  width: 90%;
+  padding: 145px 0 100px;
+  text-align: center;
+  margin: 0 auto;
+  font-size: clamp(5rem, 4.883vw, 8rem);
+  font-weight: 600;
+  letter-spacing: 5px;
+}
+
+:global #about .glass {
+  width: 550px;
+  height: 268px;
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(4px) saturate(180%);
+  -webkit-backdrop-filter: blur(4px) saturate(180%);
+  box-shadow: -2px -2px 2px rgba(255, 255, 255, 0.2), 6px 10px 24px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.22);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.6rem;
+  border-radius: 80px;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.2px;
+  border-radius: 30px;
+  padding-left: 3rem;
+}
+
+:global #about .img-box {
+  width: clamp(6rem, 5.859vw, 7rem);
+  height: clamp(6rem, 5.859vw, 7rem);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+:global .reveal {
+  opacity: 0;
+  transform: translateY(40px);
+}

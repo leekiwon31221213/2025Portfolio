@@ -1,0 +1,96 @@
+:global #project h1 {
+  padding: 145px 0 35px 0;
+  text-align: center;
+  margin: 0 auto;
+  font-size: clamp(5rem, 4.883vw, 8rem);
+  font-weight: 600;
+  letter-spacing: 5px;
+}
+
+:global #project .dec {
+  color: #9ca3af;
+  text-align: center;
+  font-size: clamp(1.6rem, 1.563vw, 1.8rem);
+  width: 90%;
+  margin: 0 auto 7rem auto;
+}
+
+:global #project #project-swiper {
+  width: 90%;
+  margin: 0 auto 14rem;
+}
+
+:global #project #project-swiper .project-img {
+  width: 50rem;
+  border-radius: 2rem;
+}
+
+:global #project #project-swiper .project-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+  width: 580px;
+}
+
+:global #project #project-swiper .project-list li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+:global #project #project-swiper .project-list li h3 {
+  margin: 4rem 0 1rem;
+  font-size: clamp(1.8rem, 1.758vw, 2.1rem);
+  font-weight: 600;
+}
+
+:global #project #project-swiper .project-list li p {
+  color: #9ca3af;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 1.563vw, 1.8rem);
+}
+
+:global #project #project-swiper .project-list li .hashtags {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem 0 3rem;
+}
+
+:global #project #project-swiper .project-list li .hashtags span {
+  border: 1px solid #bbbbbb;
+  padding: 1rem;
+  border-radius: 6px;
+  font-size: 1.5rem;
+}
+
+:global #project #project-swiper .project-list li .btn-box {
+  display: flex;
+  width: 100%;
+}
+
+:global #project #project-swiper .project-list li .project-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #fff;
+  width: 33.3333333333%;
+}
+
+:global #project #project-swiper .project-list li .project-btn.glass {
+  width: fit-content;
+  height: 40px;
+  line-height: 40px;
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+:global #project #project-swiper .project-list li .btn-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+:global #project #project-swiper .swiper-wrapper {
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1) !important;
+}

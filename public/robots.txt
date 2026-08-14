@@ -1,3 +1,6 @@
+# 모든 검색 로봇에 전체 페이지 수집 허용
 User-agent: *
 Allow: /
+Disallow:
+
 Sitemap: https://kiwon2025portfolio.netlify.app/sitemap.xml

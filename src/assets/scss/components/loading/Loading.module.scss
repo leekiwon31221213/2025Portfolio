@@ -1,0 +1,63 @@
+:global .intro-text-box {
+  position: relative;
+  top: 45%;
+  z-index: 8;
+  color: #333;
+  text-align: center;
+}
+
+:global .intro-text-box li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+:global .intro-text-box li h2 {
+  font-size: clamp(2.2rem, 2.865vw, 2.4rem);
+  font-weight: 600;
+  color: #ffffff;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to right, #818cf8, #c084fc, #60a5fa);
+}
+
+:global .intro-text-box li p {
+  margin-top: 1rem;
+  font-size: clamp(1.4rem, 3.889vw, 1.6rem);
+}
+
+:global .loading {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 6;
+}
+
+:global .loading .progress {
+  position: relative;
+  top: 50%;
+  width: 90%;
+  height: 6px;
+  background: #eee;
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+:global .loading .progress .bar {
+  width: 0%;
+  height: 100%;
+  background: #333;
+  animation: loading 3s linear forwards;
+}
+
+@keyframes :global(loading) {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
