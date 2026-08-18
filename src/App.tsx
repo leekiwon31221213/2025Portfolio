@@ -1,5 +1,5 @@
 import { ref, Transition, type ComponentOptions, type DefineComponent } from 'vue'
-import { RouterView } from 'vue-router'
+import { RouterView, useRoute } from 'vue-router'
 
 import Footer from './components/footer/Footer'
 import Header from './components/header/Header'
@@ -11,6 +11,8 @@ import mediaStyles from '/assets/scss/app/AppMedia.module.scss'
 const App: ComponentOptions = {
   name: 'App',
   setup() {
+    const route = useRoute()
+
     // 처음 방문 여부 체크
     const isFirstVisit = sessionStorage.getItem('isFirstVisit')
     const isLoading = ref(!isFirstVisit)
@@ -29,7 +31,7 @@ const App: ComponentOptions = {
           <section>
             <Header></Header>
             <RouterView></RouterView>
-            <Footer></Footer>
+            {route.path !== '/gstt-detail' ? <Footer></Footer> : null}
           </section>
         ) : null}
       </main>

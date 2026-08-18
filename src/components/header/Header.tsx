@@ -21,6 +21,13 @@ const Header: ComponentOptions = {
   methods: {
     // 뒤로가기
     goBack() {
+      const removeNavigationGuard = this.$router.afterEach(() => {
+        setTimeout(() => {
+          window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+        }, 0)
+        removeNavigationGuard()
+      })
+
       if (window.history.length > 1) {
         this.$router.back()
       } else {
@@ -102,11 +109,12 @@ const Header: ComponentOptions = {
 
     return (
       <header class={`${styles['portfolio-header']} ${styles['header']}`}>
-        {!this.isMobile ? (
+        {this.showBackButton ? (
           <nav>
-            {this.showBackButton ? (
-              <button class={`${styles['back-btn']}`} onClick={this.goBack} lang="en">Back</button>
-            ) : null}
+            <button class={`${styles['back-btn']}`} onClick={this.goBack} lang="en">Back</button>
+          </nav>
+        ) : !this.isMobile ? (
+          <nav>
             <ul>
               {menuItems.map((item) => (
                 <li key={item.id}>
