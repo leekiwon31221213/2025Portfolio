@@ -7,6 +7,7 @@ import Loading from './components/loading/Loading'
 import styles from '/assets/scss/app/App.module.scss'
 import mediaStyles from '/assets/scss/app/AppMedia.module.scss'
 
+
 const App: ComponentOptions = {
   name: 'App',
   setup() {
@@ -20,7 +21,7 @@ const App: ComponentOptions = {
     }
 
     return () => (
-      <main class={[styles.root, mediaStyles.root, 'wrap']} id="portFolioContainer">
+      <main class={`${styles['portfolio-app']} ${mediaStyles['portfolio-app']} ${styles['root']} ${mediaStyles['root']}`} id="portFolioContainer">
         <Transition name="fade">
           {isLoading.value ? <Loading {...{ onFinished: onLoaded }}></Loading> : null}
         </Transition>

@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App'
 import router from './router'
 import { applySeo } from './utils/seo'
+import '/assets/scss/common/global.scss'
 
 /* 폰트어썸 */
 // Font Awesome core

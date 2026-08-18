@@ -9,6 +9,7 @@ import 'swiper/css'
 const ProjectLogic: ComponentOptions = {
   data() {
     return {
+      modules: [Pagination, A11y],
       project: [
         {
           img: '/assets/image/project/esafe_pr.png',
@@ -27,7 +28,7 @@ const ProjectLogic: ComponentOptions = {
           alt: 'GSTT 하이브리드앱',
           name: 'GSTT 하이브리드앱',
           dec: '외국인 근로자 통번역 강의 하이브리드앱',
-          hashTag: ['브릿지 개발', '디자인'],
+          hashTag: ['브릿지 개발', '디자인', '플러터 앱 빌드', '앱 배포'],
           google: 'https://play.google.com/store/apps/details?id=kr.co.gstt.app',
           apple: '아직 미지원 앱입니다',
           icon: '/assets/image/project/arrow_right_icon.svg',
@@ -174,16 +175,9 @@ const ProjectLogic: ComponentOptions = {
     SwiperSlide,
     RouterLink,
   },
-  setup() {
-    const onSwiper = (swiper: unknown) => {}
-    const onSlideChange = () => {}
-    return {
-      onSwiper,
-      onSlideChange,
-      modules: [Pagination, A11y],
-    }
-  },
   methods: {
+    onSwiper(swiper: unknown) {},
+    onSlideChange() {},
     openMoWin(url?: string) {
       const features = 'scrollbars=no,width=450,height=900,top=100,left=100'
       window.open(url, 'win', features)

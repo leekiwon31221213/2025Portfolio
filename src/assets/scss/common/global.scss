@@ -1,0 +1,22 @@
+body {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+:lang(ko) {
+  font-family: "Pretendard Variable", sans-serif;
+}
+
+:lang(en) {
+  font-family: "Roboto", sans-serif;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.8s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}

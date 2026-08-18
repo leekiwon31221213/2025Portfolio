@@ -1,8 +1,8 @@
-:global #about {
+:global(#about).about-page {
   background-color: #030712;
 }
 
-:global #about.section2 .section__inner {
+:global(#about).about-page.section2 .section__inner {
   display: flex;
   flex-direction: column;
   width: 90%;
@@ -10,113 +10,113 @@
   margin: 0 auto;
 }
 
-:global #about.section2 .section__inner .about-content-tie {
+:global(#about).about-page.section2 .section__inner .about-content-tie {
   margin-bottom: 5.5rem;
   display: flex;
   width: 100%;
   justify-content: space-between;
 }
 
-:global #about.section2 .section__inner .about-content-tie .about-content {
+:global(#about).about-page.section2 .section__inner .about-content-tie .about-content {
   letter-spacing: 2px;
   line-height: clamp(3rem, 2.93vw, 4rem);
   margin-right: 3rem;
   width: 212.7659574468%;
 }
 
-:global #about.section2 .section__inner .about-content-tie .about-content.pc {
+:global(#about).about-page.section2 .section__inner .about-content-tie .about-content.pc {
   display: block;
 }
 
-:global #about.section2 .section__inner .about-content-tie .about-content.mo {
+:global(#about).about-page.section2 .section__inner .about-content-tie .about-content.mo {
   display: none;
 }
 
-:global #about.section2 .section__inner .about-content-tie .about-content h2 {
+:global(#about).about-page.section2 .section__inner .about-content-tie .about-content h2 {
   font-size: clamp(2.4rem, 2.344vw, 3rem);
   margin-bottom: 1rem;
   font-weight: 600;
 }
 
-:global #about.section2 .section__inner .about-content-tie .about-content p {
+:global(#about).about-page.section2 .section__inner .about-content-tie .about-content p {
   font-size: clamp(1.8rem, 1.758vw, 2.3rem);
   color: #9ca3af;
   font-weight: 200;
 }
 
-:global #about.section2 .section__inner .about-content-tie .about-content p strong {
+:global(#about).about-page.section2 .section__inner .about-content-tie .about-content p strong {
   color: #ffffff;
   font-size: clamp(2.1rem, 2.051vw, 2.6rem);
   font-weight: 600;
 }
 
-:global #about.section2 .section__inner .about-content-tie .setting-card {
+:global(#about).about-page.section2 .section__inner .about-content-tie .setting-card {
   width: 100%;
 }
 
-:global #about.section2 .section__inner .about-content-tie .setting-card li h3 {
+:global(#about).about-page.section2 .section__inner .about-content-tie .setting-card li h3 {
   font-size: clamp(1.9rem, 1.855vw, 2.1rem);
   font-weight: 600;
   margin-bottom: 2rem;
 }
 
-:global #about.section2 .section__inner .about-content-tie .setting-card li p {
+:global(#about).about-page.section2 .section__inner .about-content-tie .setting-card li p {
   font-size: clamp(1.6rem, 1.563vw, 1.8rem);
   font-weight: 200;
   color: #9ca3af;
   line-height: clamp(20px, 1.953vw, 25px);
 }
 
-:global #about.section2 .section__inner .about-content-tie .setting-card li .img-box {
+:global(#about).about-page.section2 .section__inner .about-content-tie .setting-card li .img-box {
   background-color: #155dfc;
   margin-bottom: 2.5rem;
 }
 
-:global #about.section2 .section__inner .about-cards {
+:global(#about).about-page.section2 .section__inner .about-cards {
   display: flex;
   justify-content: space-between;
 }
 
-:global #about.section2 .section__inner .about-cards li {
+:global(#about).about-page.section2 .section__inner .about-cards li {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-right: 30px;
 }
 
-:global #about.section2 .section__inner .about-cards li:last-child {
+:global(#about).about-page.section2 .section__inner .about-cards li:last-child {
   margin-right: 0;
 }
 
-:global #about.section2 .section__inner .about-cards li h3 {
+:global(#about).about-page.section2 .section__inner .about-cards li h3 {
   font-size: clamp(1.9rem, 1.855vw, 2.1rem);
   font-weight: 600;
   margin-bottom: 2rem;
 }
 
-:global #about.section2 .section__inner .about-cards li p {
+:global(#about).about-page.section2 .section__inner .about-cards li p {
   font-size: clamp(1.6rem, 1.563vw, 1.8rem);
   font-weight: 200;
   color: #9ca3af;
   line-height: clamp(20px, 1.953vw, 25px);
 }
 
-:global #about.section2 .section__inner .about-cards li:nth-child(1) .img-box {
+:global(#about).about-page.section2 .section__inner .about-cards li:nth-child(1) .img-box {
   background-color: #9810fa;
   margin-bottom: 2.5rem;
 }
 
-:global #about.section2 .section__inner .about-cards li:nth-child(2) .img-box {
+:global(#about).about-page.section2 .section__inner .about-cards li:nth-child(2) .img-box {
   background-color: #00a63e;
   margin-bottom: 2.5rem;
 }
 
-:global #about.section2 .section__inner .about-cards li:nth-child(3) .img-box {
+:global(#about).about-page.section2 .section__inner .about-cards li:nth-child(3) .img-box {
   background-color: #f54a00;
   margin-bottom: 2.5rem;
 }
 
-:global #about.section2 h1 {
+:global(#about).about-page.section2 h1 {
   width: 90%;
   padding: 145px 0 100px;
   text-align: center;
@@ -126,7 +126,7 @@
   letter-spacing: 5px;
 }
 
-:global #about .glass {
+:global(#about).about-page .glass {
   width: 550px;
   height: 268px;
   background: rgba(255, 255, 255, 0.01);
@@ -146,7 +146,7 @@
   padding-left: 3rem;
 }
 
-:global #about .img-box {
+:global(#about).about-page .img-box {
   width: clamp(6rem, 5.859vw, 7rem);
   height: clamp(6rem, 5.859vw, 7rem);
   border-radius: 18px;
@@ -155,7 +155,7 @@
   justify-content: center;
 }
 
-:global .reveal {
+.reveal {
   opacity: 0;
   transform: translateY(40px);
 }

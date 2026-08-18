@@ -1,5 +1,5 @@
-:global #career h1,
-:global #education h1 {
+:global(#career).career-page h1,
+:global(#education).career-page h1 {
   padding: 145px 0 35px 0;
   text-align: center;
   margin: 0 auto;
@@ -8,19 +8,19 @@
   letter-spacing: 5px;
 }
 
-:global #career .career__inner,
-:global #career .education__inner,
-:global #education .career__inner,
-:global #education .education__inner {
+:global(#career).career-page .career__inner,
+:global(#career).career-page .education__inner,
+:global(#education).career-page .career__inner,
+:global(#education).career-page .education__inner {
   position: relative;
   width: 90%;
   margin: 0 auto 120px;
 }
 
-:global #career .career__inner::before,
-:global #career .education__inner::before,
-:global #education .career__inner::before,
-:global #education .education__inner::before {
+:global(#career).career-page .career__inner::before,
+:global(#career).career-page .education__inner::before,
+:global(#education).career-page .career__inner::before,
+:global(#education).career-page .education__inner::before {
   content: "";
   display: inline-block;
   width: 0.1rem;
@@ -31,70 +31,70 @@
   left: -23px;
 }
 
-:global #career .career__inner li p,
-:global #career .education__inner li p,
-:global #education .career__inner li p,
-:global #education .education__inner li p {
+:global(#career).career-page .career__inner li p,
+:global(#career).career-page .education__inner li p,
+:global(#education).career-page .career__inner li p,
+:global(#education).career-page .education__inner li p {
   color: #9ca3af;
   font-size: clamp(1.6rem, 1.563vw, 1.8rem);
   font-weight: 400;
   line-height: 1.4;
 }
 
-:global #career .career__inner li .img-box img,
-:global #career .education__inner li .img-box img,
-:global #education .career__inner li .img-box img,
-:global #education .education__inner li .img-box img {
+:global(#career).career-page .career__inner li .img-box img,
+:global(#career).career-page .education__inner li .img-box img,
+:global(#education).career-page .career__inner li .img-box img,
+:global(#education).career-page .education__inner li .img-box img {
   border-radius: 6px;
 }
 
-:global #career .career__inner li .img-box.jc img,
-:global #career .education__inner li .img-box.jc img,
-:global #education .career__inner li .img-box.jc img,
-:global #education .education__inner li .img-box.jc img {
+:global(#career).career-page .career__inner li .img-box.jc img,
+:global(#career).career-page .education__inner li .img-box.jc img,
+:global(#education).career-page .career__inner li .img-box.jc img,
+:global(#education).career-page .education__inner li .img-box.jc img {
   width: 59px;
 }
 
-:global #career .career__inner li .company-business-box,
-:global #career .career__inner li .educatio-business-box,
-:global #career .education__inner li .company-business-box,
-:global #career .education__inner li .educatio-business-box,
-:global #education .career__inner li .company-business-box,
-:global #education .career__inner li .educatio-business-box,
-:global #education .education__inner li .company-business-box,
-:global #education .education__inner li .educatio-business-box {
+:global(#career).career-page .career__inner li .company-business-box,
+:global(#career).career-page .career__inner li .educatio-business-box,
+:global(#career).career-page .education__inner li .company-business-box,
+:global(#career).career-page .education__inner li .educatio-business-box,
+:global(#education).career-page .career__inner li .company-business-box,
+:global(#education).career-page .career__inner li .educatio-business-box,
+:global(#education).career-page .education__inner li .company-business-box,
+:global(#education).career-page .education__inner li .educatio-business-box {
   display: flex;
   flex-wrap: wrap;
 }
 
-:global #career .career__inner li .company-business-box h3,
-:global #career .career__inner li .educatio-business-box h3,
-:global #career .education__inner li .company-business-box h3,
-:global #career .education__inner li .educatio-business-box h3,
-:global #education .career__inner li .company-business-box h3,
-:global #education .career__inner li .educatio-business-box h3,
-:global #education .education__inner li .company-business-box h3,
-:global #education .education__inner li .educatio-business-box h3 {
+:global(#career).career-page .career__inner li .company-business-box h3,
+:global(#career).career-page .career__inner li .educatio-business-box h3,
+:global(#career).career-page .education__inner li .company-business-box h3,
+:global(#career).career-page .education__inner li .educatio-business-box h3,
+:global(#education).career-page .career__inner li .company-business-box h3,
+:global(#education).career-page .career__inner li .educatio-business-box h3,
+:global(#education).career-page .education__inner li .company-business-box h3,
+:global(#education).career-page .education__inner li .educatio-business-box h3 {
   font-size: clamp(1.9rem, 1.855vw, 2.1rem);
   font-weight: 600;
   margin-right: 1rem;
 }
 
-:global #career .career__inner li .company-business-box,
-:global #career .career__inner li .educatio-business-box,
-:global #career .education__inner li .company-business-box,
-:global #career .education__inner li .educatio-business-box,
-:global #education .career__inner li .company-business-box,
-:global #education .career__inner li .educatio-business-box,
-:global #education .education__inner li .company-business-box,
-:global #education .education__inner li .educatio-business-box {
+:global(#career).career-page .career__inner li .company-business-box,
+:global(#career).career-page .career__inner li .educatio-business-box,
+:global(#career).career-page .education__inner li .company-business-box,
+:global(#career).career-page .education__inner li .educatio-business-box,
+:global(#education).career-page .career__inner li .company-business-box,
+:global(#education).career-page .career__inner li .educatio-business-box,
+:global(#education).career-page .education__inner li .company-business-box,
+:global(#education).career-page .education__inner li .educatio-business-box {
   margin: 1.2rem 0 1rem 0;
 }
 
-:global #career .career__inner li:nth-child(1),
-:global #career .education__inner li:nth-child(1),
-:global #education .career__inner li:nth-child(1),
-:global #education .education__inner li:nth-child(1) {
+:global(#career).career-page .career__inner li:nth-child(1),
+:global(#career).career-page .education__inner li:nth-child(1),
+:global(#education).career-page .career__inner li:nth-child(1),
+:global(#education).career-page .education__inner li:nth-child(1) {
   width: 100%;
   height: 100%;
   background: rgba(255, 255, 255, 0.01);
@@ -118,10 +118,10 @@
   padding: 4rem 3rem;
 }
 
-:global #career .career__inner li:nth-child(1)::before,
-:global #career .education__inner li:nth-child(1)::before,
-:global #education .career__inner li:nth-child(1)::before,
-:global #education .education__inner li:nth-child(1)::before {
+:global(#career).career-page .career__inner li:nth-child(1)::before,
+:global(#career).career-page .education__inner li:nth-child(1)::before,
+:global(#education).career-page .career__inner li:nth-child(1)::before,
+:global(#education).career-page .education__inner li:nth-child(1)::before {
   content: "";
   display: inline-block;
   width: 25px;
@@ -133,17 +133,17 @@
   top: 0;
 }
 
-:global #career .career__inner li:nth-child(1):last-child,
-:global #career .education__inner li:nth-child(1):last-child,
-:global #education .career__inner li:nth-child(1):last-child,
-:global #education .education__inner li:nth-child(1):last-child {
+:global(#career).career-page .career__inner li:nth-child(1):last-child,
+:global(#career).career-page .education__inner li:nth-child(1):last-child,
+:global(#education).career-page .career__inner li:nth-child(1):last-child,
+:global(#education).career-page .education__inner li:nth-child(1):last-child {
   margin-bottom: 0;
 }
 
-:global #career .career__inner li:nth-child(2),
-:global #career .education__inner li:nth-child(2),
-:global #education .career__inner li:nth-child(2),
-:global #education .education__inner li:nth-child(2) {
+:global(#career).career-page .career__inner li:nth-child(2),
+:global(#career).career-page .education__inner li:nth-child(2),
+:global(#education).career-page .career__inner li:nth-child(2),
+:global(#education).career-page .education__inner li:nth-child(2) {
   width: 100%;
   height: 100%;
   background: rgba(255, 255, 255, 0.01);
@@ -167,10 +167,10 @@
   padding: 4rem 3rem;
 }
 
-:global #career .career__inner li:nth-child(2)::before,
-:global #career .education__inner li:nth-child(2)::before,
-:global #education .career__inner li:nth-child(2)::before,
-:global #education .education__inner li:nth-child(2)::before {
+:global(#career).career-page .career__inner li:nth-child(2)::before,
+:global(#career).career-page .education__inner li:nth-child(2)::before,
+:global(#education).career-page .career__inner li:nth-child(2)::before,
+:global(#education).career-page .education__inner li:nth-child(2)::before {
   content: "";
   display: inline-block;
   width: 25px;
@@ -182,17 +182,17 @@
   top: 0;
 }
 
-:global #career .career__inner li:nth-child(2):last-child,
-:global #career .education__inner li:nth-child(2):last-child,
-:global #education .career__inner li:nth-child(2):last-child,
-:global #education .education__inner li:nth-child(2):last-child {
+:global(#career).career-page .career__inner li:nth-child(2):last-child,
+:global(#career).career-page .education__inner li:nth-child(2):last-child,
+:global(#education).career-page .career__inner li:nth-child(2):last-child,
+:global(#education).career-page .education__inner li:nth-child(2):last-child {
   margin-bottom: 0;
 }
 
-:global #career .career__inner li:nth-child(3),
-:global #career .education__inner li:nth-child(3),
-:global #education .career__inner li:nth-child(3),
-:global #education .education__inner li:nth-child(3) {
+:global(#career).career-page .career__inner li:nth-child(3),
+:global(#career).career-page .education__inner li:nth-child(3),
+:global(#education).career-page .career__inner li:nth-child(3),
+:global(#education).career-page .education__inner li:nth-child(3) {
   width: 100%;
   height: 100%;
   background: rgba(255, 255, 255, 0.01);
@@ -216,10 +216,10 @@
   padding: 4rem 3rem;
 }
 
-:global #career .career__inner li:nth-child(3)::before,
-:global #career .education__inner li:nth-child(3)::before,
-:global #education .career__inner li:nth-child(3)::before,
-:global #education .education__inner li:nth-child(3)::before {
+:global(#career).career-page .career__inner li:nth-child(3)::before,
+:global(#career).career-page .education__inner li:nth-child(3)::before,
+:global(#education).career-page .career__inner li:nth-child(3)::before,
+:global(#education).career-page .education__inner li:nth-child(3)::before {
   content: "";
   display: inline-block;
   width: 25px;
@@ -231,17 +231,17 @@
   top: 0;
 }
 
-:global #career .career__inner li:nth-child(3):last-child,
-:global #career .education__inner li:nth-child(3):last-child,
-:global #education .career__inner li:nth-child(3):last-child,
-:global #education .education__inner li:nth-child(3):last-child {
+:global(#career).career-page .career__inner li:nth-child(3):last-child,
+:global(#career).career-page .education__inner li:nth-child(3):last-child,
+:global(#education).career-page .career__inner li:nth-child(3):last-child,
+:global(#education).career-page .education__inner li:nth-child(3):last-child {
   margin-bottom: 0;
 }
 
-:global #career .career__inner li:nth-child(4),
-:global #career .education__inner li:nth-child(4),
-:global #education .career__inner li:nth-child(4),
-:global #education .education__inner li:nth-child(4) {
+:global(#career).career-page .career__inner li:nth-child(4),
+:global(#career).career-page .education__inner li:nth-child(4),
+:global(#education).career-page .career__inner li:nth-child(4),
+:global(#education).career-page .education__inner li:nth-child(4) {
   width: 100%;
   height: 100%;
   background: rgba(255, 255, 255, 0.01);
@@ -265,10 +265,10 @@
   padding: 4rem 3rem;
 }
 
-:global #career .career__inner li:nth-child(4)::before,
-:global #career .education__inner li:nth-child(4)::before,
-:global #education .career__inner li:nth-child(4)::before,
-:global #education .education__inner li:nth-child(4)::before {
+:global(#career).career-page .career__inner li:nth-child(4)::before,
+:global(#career).career-page .education__inner li:nth-child(4)::before,
+:global(#education).career-page .career__inner li:nth-child(4)::before,
+:global(#education).career-page .education__inner li:nth-child(4)::before {
   content: "";
   display: inline-block;
   width: 25px;
@@ -280,17 +280,17 @@
   top: 0;
 }
 
-:global #career .career__inner li:nth-child(4):last-child,
-:global #career .education__inner li:nth-child(4):last-child,
-:global #education .career__inner li:nth-child(4):last-child,
-:global #education .education__inner li:nth-child(4):last-child {
+:global(#career).career-page .career__inner li:nth-child(4):last-child,
+:global(#career).career-page .education__inner li:nth-child(4):last-child,
+:global(#education).career-page .career__inner li:nth-child(4):last-child,
+:global(#education).career-page .education__inner li:nth-child(4):last-child {
   margin-bottom: 0;
 }
 
-:global #career .career__inner li:nth-child(5),
-:global #career .education__inner li:nth-child(5),
-:global #education .career__inner li:nth-child(5),
-:global #education .education__inner li:nth-child(5) {
+:global(#career).career-page .career__inner li:nth-child(5),
+:global(#career).career-page .education__inner li:nth-child(5),
+:global(#education).career-page .career__inner li:nth-child(5),
+:global(#education).career-page .education__inner li:nth-child(5) {
   width: 100%;
   height: 100%;
   background: rgba(255, 255, 255, 0.01);
@@ -314,10 +314,10 @@
   padding: 4rem 3rem;
 }
 
-:global #career .career__inner li:nth-child(5)::before,
-:global #career .education__inner li:nth-child(5)::before,
-:global #education .career__inner li:nth-child(5)::before,
-:global #education .education__inner li:nth-child(5)::before {
+:global(#career).career-page .career__inner li:nth-child(5)::before,
+:global(#career).career-page .education__inner li:nth-child(5)::before,
+:global(#education).career-page .career__inner li:nth-child(5)::before,
+:global(#education).career-page .education__inner li:nth-child(5)::before {
   content: "";
   display: inline-block;
   width: 25px;
@@ -329,17 +329,17 @@
   top: 0;
 }
 
-:global #career .career__inner li:nth-child(5):last-child,
-:global #career .education__inner li:nth-child(5):last-child,
-:global #education .career__inner li:nth-child(5):last-child,
-:global #education .education__inner li:nth-child(5):last-child {
+:global(#career).career-page .career__inner li:nth-child(5):last-child,
+:global(#career).career-page .education__inner li:nth-child(5):last-child,
+:global(#education).career-page .career__inner li:nth-child(5):last-child,
+:global(#education).career-page .education__inner li:nth-child(5):last-child {
   margin-bottom: 0;
 }
 
-:global #career .career__inner li:nth-child(6),
-:global #career .education__inner li:nth-child(6),
-:global #education .career__inner li:nth-child(6),
-:global #education .education__inner li:nth-child(6) {
+:global(#career).career-page .career__inner li:nth-child(6),
+:global(#career).career-page .education__inner li:nth-child(6),
+:global(#education).career-page .career__inner li:nth-child(6),
+:global(#education).career-page .education__inner li:nth-child(6) {
   width: 100%;
   height: 100%;
   background: rgba(255, 255, 255, 0.01);
@@ -363,10 +363,10 @@
   padding: 4rem 3rem;
 }
 
-:global #career .career__inner li:nth-child(6)::before,
-:global #career .education__inner li:nth-child(6)::before,
-:global #education .career__inner li:nth-child(6)::before,
-:global #education .education__inner li:nth-child(6)::before {
+:global(#career).career-page .career__inner li:nth-child(6)::before,
+:global(#career).career-page .education__inner li:nth-child(6)::before,
+:global(#education).career-page .career__inner li:nth-child(6)::before,
+:global(#education).career-page .education__inner li:nth-child(6)::before {
   content: "";
   display: inline-block;
   width: 25px;
@@ -378,30 +378,30 @@
   top: 0;
 }
 
-:global #career .career__inner li:nth-child(6):last-child,
-:global #career .education__inner li:nth-child(6):last-child,
-:global #education .career__inner li:nth-child(6):last-child,
-:global #education .education__inner li:nth-child(6):last-child {
+:global(#career).career-page .career__inner li:nth-child(6):last-child,
+:global(#career).career-page .education__inner li:nth-child(6):last-child,
+:global(#education).career-page .career__inner li:nth-child(6):last-child,
+:global(#education).career-page .education__inner li:nth-child(6):last-child {
   margin-bottom: 0;
 }
 
-:global #career .career__inner li .team-txt,
-:global #career .education__inner li .team-txt,
-:global #education .career__inner li .team-txt,
-:global #education .education__inner li .team-txt {
+:global(#career).career-page .career__inner li .team-txt,
+:global(#career).career-page .education__inner li .team-txt,
+:global(#education).career-page .career__inner li .team-txt,
+:global(#education).career-page .education__inner li .team-txt {
   margin-bottom: 1.5rem;
 }
 
-:global #career .btn-box,
-:global #education .btn-box {
+:global(#career).career-page .btn-box,
+:global(#education).career-page .btn-box {
   width: 90%;
   display: flex;
   justify-content: center;
   margin: 0 auto 120px;
 }
 
-:global #career .btn-box #more-btn,
-:global #education .btn-box #more-btn {
+:global(#career).career-page .btn-box :global(#more-btn),
+:global(#education).career-page .btn-box :global(#more-btn) {
   color: #fff;
   max-width: 225px;
   width: 100%;
@@ -413,27 +413,27 @@
   font-weight: 600;
 }
 
-:global #career .btn-box #more-btn:hover,
-:global #education .btn-box #more-btn:hover {
+:global(#career).career-page .btn-box :global(#more-btn):hover,
+:global(#education).career-page .btn-box :global(#more-btn):hover {
   border: unset;
   background-color: #fff;
   color: #333;
 }
 
-:global #career .btn-box #more-btn:hover .fa-angle-down,
-:global #education .btn-box #more-btn:hover .fa-angle-down {
+:global(#career).career-page .btn-box :global(#more-btn):hover :global(.fa-angle-down),
+:global(#education).career-page .btn-box :global(#more-btn):hover :global(.fa-angle-down) {
   animation: arrow_down 1s infinite ease-in-out;
 }
 
-:global #education .education__inner {
+:global(#education).career-page .education__inner {
   margin: 0 auto;
 }
 
-:global #education .education__inner .img-box img {
+:global(#education).career-page .education__inner .img-box img {
   width: 59px;
 }
 
-@keyframes :global(arrow_down) {
+@keyframes arrow_down {
   0% {
     transform: translateY(0px);
   }

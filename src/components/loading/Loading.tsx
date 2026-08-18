@@ -11,6 +11,7 @@ import Typed from 'typed.js'
 import styles from '/assets/scss/components/loading/Loading.module.scss'
 import mediaStyles from '/assets/scss/components/loading/LoadingMedia.module.scss'
 
+
 const Loading: ComponentOptions = {
   name: 'Loading',
   emits: {
@@ -49,15 +50,15 @@ const Loading: ComponentOptions = {
     })
 
     return () => (
-      <section class={[styles.root, mediaStyles.root, 'loading']}>
-        <ul class="intro-text-box">
+      <section class={`${styles['loading-page']} ${mediaStyles['loading-page']} ${styles['loading']}`}>
+        <ul class={`${styles['intro-text-box']} ${mediaStyles['intro-text-box']}`}>
           <li>
             <h2 ref={el}></h2>
             <p>Vue.js로 만들어진 포트폴리오 입니다.</p>
           </li>
         </ul>
-        <section class="progress">
-          <div class="bar" ref={bar}></div>
+        <section class={`${styles['progress']}`}>
+          <div class={`${styles['bar']}`} ref={bar}></div>
         </section>
       </section>
     )

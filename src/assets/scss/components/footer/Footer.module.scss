@@ -1,23 +1,26 @@
-:global #footer {
+@use "../../mixin/glass_btn" as glass-btn;
+
+:global(#footer).portfolio-footer {
   position: relative;
   height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  isolation: isolate;
 }
 
-:global #footer img {
+:global(#footer).portfolio-footer img {
   width: 190px;
   margin-right: 2rem;
 }
 
-:global #footer .footer__inner {
+:global(#footer).portfolio-footer .footer__inner {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-:global #footer .footer__inner::before {
+:global(#footer).portfolio-footer .footer__inner::before {
   content: "";
   position: absolute;
   top: 0;
@@ -29,37 +32,39 @@
   z-index: -1;
 }
 
-:global #footer .footer__inner ul li {
+:global(#footer).portfolio-footer .footer__inner ul li {
   font-size: clamp(2.1rem, 2.734vw, 2.5rem);
   font-weight: 600;
 }
 
-:global #footer .footer__inner ul li.title {
+:global(#footer).portfolio-footer .footer__inner ul li.title {
   margin-bottom: 1rem;
 }
 
-:global #footer .footer__inner ul li.dec {
+:global(#footer).portfolio-footer .footer__inner ul li.dec {
   color: #9ca3af;
   font-size: clamp(1.6rem, 2.083vw, 1.7rem);
   font-weight: 400;
   line-height: 1.5;
 }
 
-:global #footer .footer__inner ul li.dec strong {
+:global(#footer).portfolio-footer .footer__inner ul li.dec strong {
   font-size: clamp(1.7rem, 2.214vw, 1.9rem);
   color: #fff;
 }
 
-:global #footer .footer__inner ul li.btn-box {
+:global(#footer).portfolio-footer .footer__inner ul li.btn-box {
   margin-top: 2rem;
 }
 
-:global #footer .footer__inner ul li.btn-box a:first-child {
+:global(#footer).portfolio-footer .footer__inner ul li.btn-box a:first-child {
   margin-right: 1.5rem;
 }
 
-:global #footer .footer__inner ul li.btn-box .glass {
-  height: 40px;
-  width: 180px;
-  font-size: clamp(1.5rem, 1.953vw, 1.6rem);
+:global(#footer).portfolio-footer .footer__inner ul li.btn-box .glass {
+  @include glass-btn.glass(
+    $width: 180px,
+    $height: 40px,
+    $font-size: clamp(1.5rem, 1.953vw, 1.6rem)
+  );
 }

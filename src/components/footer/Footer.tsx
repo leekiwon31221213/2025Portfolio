@@ -4,6 +4,7 @@ import profileImg from '/assets/image/profile_img.png'
 import styles from '/assets/scss/components/footer/Footer.module.scss'
 import mediaStyles from '/assets/scss/components/footer/FooterMedia.module.scss'
 
+
 const Footer: ComponentOptions = {
   name: 'Footer',
   data() {
@@ -17,16 +18,16 @@ const Footer: ComponentOptions = {
   },
   render() {
     return (
-      <footer id="footer" class={[styles.root, mediaStyles.root, 'footer-wrap']}>
-        <section class="footer__inner">
+      <footer id="footer" class={`${styles['portfolio-footer']} ${mediaStyles['portfolio-footer']}`}>
+        <section class={`${styles['footer__inner']} ${mediaStyles['footer__inner']}`}>
           <img src={profileImg} alt="프로필 이미지" />
           <ul>
-            <li class="title">{this.footer.title}</li>
-            <li class="dec" innerHTML={this.footer.dec}></li>
-            <li class="dec">{this.footer.copy}</li>
-            <li class="btn-box">
-              <a class="glass" href="mailto:cute02364@gmail.com">이메일 보내기</a>
-              <a class="glass" href="tel:01068650947">전화하기</a>
+            <li class={`${styles['title']}`}>{this.footer.title}</li>
+            <li class={`${styles['dec']} ${mediaStyles['dec']}`} innerHTML={this.footer.dec}></li>
+            <li class={`${styles['dec']} ${mediaStyles['dec']}`}>{this.footer.copy}</li>
+            <li class={`${styles['btn-box']} ${mediaStyles['btn-box']}`}>
+              <a class={`${styles['glass']} ${mediaStyles['glass']}`} href="mailto:cute02364@gmail.com">이메일 보내기</a>
+              <a class={`${styles['glass']} ${mediaStyles['glass']}`} href="tel:01068650947">전화하기</a>
             </li>
           </ul>
         </section>

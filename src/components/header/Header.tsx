@@ -4,6 +4,7 @@ import type { ComponentOptions, DefineComponent } from 'vue'
 import styles from '/assets/scss/components/header/Header.module.scss'
 import mediaStyles from '/assets/scss/components/header/HeaderMedia.module.scss'
 
+
 const Header: ComponentOptions = {
   name: 'Header',
   data() {
@@ -38,24 +39,24 @@ const Header: ComponentOptions = {
     },
     // 메뉴 열기
     menuOn() {
-      const menu = document.querySelector<HTMLElement>('.mo-menu__inner')!
-      const hamburger = document.querySelector<HTMLElement>('.mo-menu')!
-      menu.classList.add('active')
+      const menu = document.querySelector<HTMLElement>(`.${styles['mo-menu__inner']}`)!
+      const hamburger = document.querySelector<HTMLElement>(`.${styles['mo-menu']}`)!
+      menu.classList.add(styles.active)
       hamburger.style.display = 'none'
       document.body.style.overflow = 'hidden'
     },
     // 메뉴 닫기
     menuOff() {
-      const menu = document.querySelector<HTMLElement>('.mo-menu__inner')!
-      const hamburger = document.querySelector<HTMLElement>('.mo-menu')!
+      const menu = document.querySelector<HTMLElement>(`.${styles['mo-menu__inner']}`)!
+      const hamburger = document.querySelector<HTMLElement>(`.${styles['mo-menu']}`)!
       document.body.style.overflow = 'auto'
-      menu.classList.remove('active')
-      menu.classList.add('closing')
+      menu.classList.remove(styles.active)
+      menu.classList.add(styles.closing)
 
       menu.addEventListener(
         'animationend',
         () => {
-          menu.classList.remove('closing')
+          menu.classList.remove(styles.closing)
           hamburger.style.display = 'block'
         },
         { once: true },
@@ -63,18 +64,18 @@ const Header: ComponentOptions = {
     },
     // 스크롤 내렸을때 헤더
     scrollDown() {
-      const header = document.querySelector<HTMLElement>('.header')!
-      const hamburger = document.querySelector<HTMLElement>('.mo-menu')
+      const header = document.querySelector<HTMLElement>(`.${styles.header}`)!
+      const hamburger = document.querySelector<HTMLElement>(`.${styles['mo-menu']}`)
       const scrolled = window.scrollY > 100
 
       if (scrolled !== this.isScrolled) {
         this.isScrolled = scrolled
 
         if (this.isScrolled) {
-          header.classList.add('active')
+          header.classList.add(styles.active)
           if (hamburger) hamburger.style.color = '#fff'
         } else {
-          header.classList.remove('active')
+          header.classList.remove(styles.active)
           if (hamburger) hamburger.style.color = '#fff'
         }
       }
@@ -100,11 +101,11 @@ const Header: ComponentOptions = {
     ]
 
     return (
-      <header class={[styles.root, mediaStyles.root, 'header']}>
+      <header class={`${styles['portfolio-header']} ${styles['header']}`}>
         {!this.isMobile ? (
           <nav>
             {this.showBackButton ? (
-              <button class="back-btn" onClick={this.goBack} lang="en">Back</button>
+              <button class={`${styles['back-btn']}`} onClick={this.goBack} lang="en">Back</button>
             ) : null}
             <ul>
               {menuItems.map((item) => (
@@ -115,18 +116,18 @@ const Header: ComponentOptions = {
             </ul>
           </nav>
         ) : (
-          <nav class="mo-nav">
-            <span class="mo-menu" onClick={this.menuOn}>
+          <nav class={`${styles['mo-nav']}`}>
+            <span class={`${styles['mo-menu']}`} onClick={this.menuOn}>
               <FontAwesomeIcon icon="fa-solid fa-bars"></FontAwesomeIcon>
             </span>
-            <ul class="mo-menu__inner glass">
+            <ul class={`${styles['mo-menu__inner']} ${styles['glass']}`}>
               {menuItems.map((item) => (
                 <li key={item.id}>
                   <button onClick={() => this.scrollTo(item.id)} lang="en">{item.label}</button>
                 </li>
               ))}
               <li>
-                <span class="close-btn" onClick={this.menuOff}>
+                <span onClick={this.menuOff}>
                   <FontAwesomeIcon icon="fa-solid fa-xmark"></FontAwesomeIcon>
                 </span>
               </li>

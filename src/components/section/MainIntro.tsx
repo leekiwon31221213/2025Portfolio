@@ -4,6 +4,7 @@ import profileImg from '/assets/image/profile_img.png'
 import styles from '/assets/scss/components/section/MainIntro.module.scss'
 import mediaStyles from '/assets/scss/components/section/MainIntroMedia.module.scss'
 
+
 const MainIntro: ComponentOptions = {
   name: 'MainIntro',
   data() {
@@ -30,25 +31,25 @@ const MainIntro: ComponentOptions = {
   },
   render() {
     return (
-      <section class={[styles.root, mediaStyles.root, 'section1']} id="main-intro">
-        <section class="section__inner">
-          <ul class="section__inner-content">
+      <section class={`${styles['main-intro-page']} ${mediaStyles['main-intro-page']} ${styles['section1']} ${mediaStyles['section1']}`} id="main-intro">
+        <section class={`${styles['section__inner']} ${mediaStyles['section__inner']}`}>
+          <ul class={`${styles['section__inner-content']} ${mediaStyles['section__inner-content']}`}>
             <li>
               <h2 innerHTML={this.mainIntro.title}></h2>
               <p>{this.mainIntro.description}</p>
-              <section class="demo-wrap">
-                <button class="glass" lang="en" onClick={this.scrollToAbout}>About Me</button>
+              <section>
+                <button class={`${styles['glass']} ${mediaStyles['glass']}`} lang="en" onClick={this.scrollToAbout}>About Me</button>
               </section>
             </li>
-            <li class="img-box">
-              <section class="font-end-info-icon glass">
+            <li class={`${styles['img-box']} ${mediaStyles['img-box']}`}>
+              <section class={`${styles['font-end-info-icon']} ${mediaStyles['font-end-info-icon']} ${styles['glass']} ${mediaStyles['glass']}`}>
                 <span>Frontend Dev</span>
               </section>
-              <div class="dev-icon"></div>
-              <div class="circle">
+              <div class={`${styles['dev-icon']} ${mediaStyles['dev-icon']}`}></div>
+              <div class={`${styles['circle']} ${mediaStyles['circle']}`}>
                 <img src={profileImg} alt="프로필 이미지" />
               </div>
-              <div class="design-icon"></div>
+              <div class={`${styles['design-icon']} ${mediaStyles['design-icon']}`}></div>
             </li>
           </ul>
         </section>

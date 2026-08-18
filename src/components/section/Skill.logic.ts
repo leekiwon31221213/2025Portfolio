@@ -1,5 +1,7 @@
 import type { ComponentOptions } from 'vue'
 
+import styles from '/assets/scss/components/section/Skill.module.scss'
+
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -67,14 +69,23 @@ const SkillLogic: ComponentOptions = {
 
       const root = this.$el as HTMLElement
       const cards = Array.from(
-        root.querySelectorAll<HTMLElement>('#skill .skills-box .skill__inner.reveal'),
+        root.querySelectorAll<HTMLElement>(
+          `#skill .${styles['skills-box']} .${styles['skill__inner']}.${styles.reveal}`,
+        ),
       )
 
       // 초기 숨김
       gsap.set(cards, { opacity: 0, y: 60 })
       cards.forEach((card) => {
-        gsap.set(card.querySelectorAll('.skill-list > li'), { opacity: 0, y: 20 })
-        gsap.set(card.querySelectorAll('.skill-bar'), { width: 0 })
+        const innerLis = card.querySelectorAll(`.${styles['skill-list']} > li`)
+        const bars = card.querySelectorAll(`.${styles['skill-bar']}`)
+
+        if (innerLis.length > 0) {
+          gsap.set(innerLis, { opacity: 0, y: 20 })
+        }
+        if (bars.length > 0) {
+          gsap.set(bars, { width: 0 })
+        }
       })
 
       ScrollTrigger.matchMedia({
@@ -85,8 +96,8 @@ const SkillLogic: ComponentOptions = {
           const tl = gsap.timeline()
 
           cards.forEach((card, i) => {
-            const bars = card.querySelectorAll<HTMLElement>('.skill-bar')
-            const innerLis = card.querySelectorAll('.skill-list > li')
+            const bars = card.querySelectorAll<HTMLElement>(`.${styles['skill-bar']}`)
+            const innerLis = card.querySelectorAll(`.${styles['skill-list']} > li`)
             const t = i * (cardDuration + gap)
 
             tl.fromTo(card, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, t)
@@ -112,8 +123,8 @@ const SkillLogic: ComponentOptions = {
         // 태블릿/모바일: 뷰포트 진입 시 개별 등장
         '(max-width: 1024px)': () => {
           cards.forEach((card) => {
-            const bars = card.querySelectorAll<HTMLElement>('.skill-bar')
-            const innerLis = card.querySelectorAll('.skill-list > li')
+            const bars = card.querySelectorAll<HTMLElement>(`.${styles['skill-bar']}`)
+            const innerLis = card.querySelectorAll(`.${styles['skill-list']} > li`)
 
             gsap.fromTo(card, { opacity: 0, y: 40 }, {
               opacity: 1, y: 0, duration: 0.5, ease: 'power2.out',

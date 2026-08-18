@@ -1,10 +1,11 @@
-import type { ComponentOptions, DefineComponent } from 'vue'
+import { withCtx, type ComponentOptions, type DefineComponent } from 'vue'
 import { RouterLink } from 'vue-router'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 
 import ProjectLogic from './Project.logic'
 import styles from '/assets/scss/components/section/Project.module.scss'
 import mediaStyles from '/assets/scss/components/section/ProjectMedia.module.scss'
+
 
 type Project = {
   img: string
@@ -47,9 +48,9 @@ const ProjectComponent: ComponentOptions = {
     } = this as unknown as ProjectView
 
     return (
-      <section id="project" class={[styles.root, mediaStyles.root, 'section5']}>
+      <section id="project" class={`${styles['project-page']} ${mediaStyles['project-page']}`}>
         <h1>Project</h1>
-        <p class="dec">다양한 프로젝트를 경험하며 쌓아온 결과물을 소개합니다.</p>
+        <p class={`${styles['dec']} ${mediaStyles['dec']}`}>다양한 프로젝트를 경험하며 쌓아온 결과물을 소개합니다.</p>
         <Swiper
           modules={modules as never[]}
           slidesPerView={3}
@@ -64,66 +65,66 @@ const ProjectComponent: ComponentOptions = {
             1024: { slidesPerView: 2, spaceBetween: 80 },
             1025: { slidesPerView: 3, spaceBetween: 80 },
           }}
-        >
-          {project.map((project, index) => (
+          v-slots={{
+            default: withCtx(() => project.map((project, index) => (
             <SwiperSlide key={index}>
-              <ul class="project-list">
+              <ul class={`${styles['project-list']} ${mediaStyles['project-list']}`}>
                 <li>
-                  <img src={project.img} alt={project.alt} class="project-img" />
+                  <img src={project.img} alt={project.alt} class={`${styles['project-img']} ${mediaStyles['project-img']}`} />
                   <h3>{project.name}</h3>
                   <p>{project.dec}</p>
-                  <section class="hashtags">
+                  <section class={`${styles['hashtags']} ${mediaStyles['hashtags']}`}>
                     {project.hashTag.map((tag, tagIndex) => (
                       <span key={tagIndex}>#{tag}</span>
                     ))}
                   </section>
                   {project.name === '프라뱅 하이브리드앱' ||
                   project.name === 'GSTT 하이브리드앱' ? (
-                    <section class="btn-box">
-                      <a href={project.google || '#'} class="project-btn glass" target="_blank">
+                    <section class={`${styles['btn-box']} ${mediaStyles['btn-box']}`}>
+                      <a href={project.google || '#'} class={`${styles['project-btn']} ${mediaStyles['project-btn']} ${styles['glass']} ${mediaStyles['glass']}`} target="_blank">
                         google Play
-                        <img src={project.icon} alt="arrow icon" class="btn-icon" />
+                        <img src={project.icon} alt="arrow icon" class={`${styles['btn-icon']}`} />
                       </a>
                       {project.apple && project.apple.startsWith('http') ? (
-                        <a href={project.apple} class="project-btn glass" target="_blank">
+                        <a href={project.apple} class={`${styles['project-btn']} ${mediaStyles['project-btn']} ${styles['glass']} ${mediaStyles['glass']}`} target="_blank">
                           apple Store
-                          <img src={project.icon} alt="arrow icon" class="btn-icon" />
+                          <img src={project.icon} alt="arrow icon" class={`${styles['btn-icon']}`} />
                         </a>
                       ) : (
                         <button
                           type="button"
-                          class="project-btn glass"
+                          class={`${styles['project-btn']} ${mediaStyles['project-btn']} ${styles['glass']} ${mediaStyles['glass']}`}
                           onClick={() => openAppleAlert(project.apple)}
                         >
                           apple Store
-                          <img src={project.icon} alt="arrow icon" class="btn-icon" />
+                          <img src={project.icon} alt="arrow icon" class={`${styles['btn-icon']}`} />
                         </button>
                       )}
                     </section>
                   ) : (
-                    <section class="btn-box">
-                      <a href={project.link || '#'} class="project-btn glass" target="_blank">
+                    <section class={`${styles['btn-box']} ${mediaStyles['btn-box']}`}>
+                      <a href={project.link || '#'} class={`${styles['project-btn']} ${mediaStyles['project-btn']} ${styles['glass']} ${mediaStyles['glass']}`} target="_blank">
                         {project.pcTxt}
-                        <img src={project.icon} alt="arrow icon" class="btn-icon" />
+                        <img src={project.icon} alt="arrow icon" class={`${styles['btn-icon']}`} />
                       </a>
                       <button
                         type="button"
-                        class="project-btn glass"
+                        class={`${styles['project-btn']} ${mediaStyles['project-btn']} ${styles['glass']} ${mediaStyles['glass']}`}
                         onClick={() => openMoWin(project.link)}
                       >
                         {project.moTxt}
-                        <img src={project.icon} alt="arrow icon" class="btn-icon" />
+                        <img src={project.icon} alt="arrow icon" class={`${styles['btn-icon']}`} />
                       </button>
                       <button
                         type="button"
-                        class="project-btn glass"
+                        class={`${styles['project-btn']} ${mediaStyles['project-btn']} ${styles['glass']} ${mediaStyles['glass']}`}
                         onClick={() => openTabletWin(project.link)}
                       >
                         {project.tabletTxt}
-                        <img src={project.icon} alt="arrow icon" class="btn-icon" />
+                        <img src={project.icon} alt="arrow icon" class={`${styles['btn-icon']}`} />
                       </button>
                       {project.name === 'GSTT' ? (
-                        <RouterLink to="/gstt-detail" class="project-btn glass">
+                        <RouterLink to="/gstt-detail" class={`${styles['project-btn']} ${mediaStyles['project-btn']} ${styles['glass']} ${mediaStyles['glass']}`}>
                           {project.detail}
                         </RouterLink>
                       ) : null}
@@ -132,8 +133,9 @@ const ProjectComponent: ComponentOptions = {
                 </li>
               </ul>
             </SwiperSlide>
-          ))}
-        </Swiper>
+            ))),
+          }}
+        ></Swiper>
       </section>
     )
   },

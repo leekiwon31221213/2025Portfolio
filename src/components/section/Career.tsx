@@ -5,6 +5,7 @@ import CareerLogic from './Career.logic'
 import styles from '/assets/scss/components/section/Career.module.scss'
 import mediaStyles from '/assets/scss/components/section/CareerMedia.module.scss'
 
+
 type Education = {
   logo: string
   alt: string
@@ -39,36 +40,36 @@ const CareerComponent: ComponentOptions = {
 
     return (
       <>
-        <section id="education" class={[styles.root, mediaStyles.root, 'section3']}>
+        <section id="education" class={`${styles['career-page']} ${mediaStyles['career-page']}`}>
           <h1>Education</h1>
-          <ul class="education__inner">
+          <ul class={`${styles['education__inner']} ${mediaStyles['education__inner']}`}>
             {education.map((education, index) => (
-              <li key={index} class="glass">
-                <section class="img-box">
+              <li key={index}>
+                <section class={`${styles['img-box']} ${mediaStyles['img-box']}`}>
                   <img src={education.logo} alt={education.alt} />
                 </section>
-                <section class="educatio-business-box">
+                <section class={`${styles['educatio-business-box']} ${mediaStyles['educatio-business-box']}`}>
                   <h3>{education.edu}</h3>
                   <p>{education.span}</p>
                 </section>
-                <p class="team-txt">{education.study}</p>
+                <p class={`${styles['team-txt']}`}>{education.study}</p>
               </li>
             ))}
           </ul>
         </section>
-        <section id="career" class="section4">
+        <section id="career" class={`${styles['career-page']} ${mediaStyles['career-page']}`}>
           <h1>Career</h1>
-          <ul class="career__inner">
+          <ul class={`${styles['career__inner']} ${mediaStyles['career__inner']}`}>
             {displayedCareers.map((career, index) => (
-              <li key={index} class="glass">
-                <section class={['img-box', career.alt === '증산클라비어' ? 'jc' : '']}>
+              <li key={index}>
+                <section class={`${styles['img-box']} ${mediaStyles['img-box']} ${career.alt === '증산클라비어' ? `${styles['jc']} ${mediaStyles['jc']}` : ''}`}>
                   <img src={career.logo} alt={career.alt} />
                 </section>
-                <section class="company-business-box">
+                <section class={`${styles['company-business-box']} ${mediaStyles['company-business-box']}`}>
                   <h3>{career.companyName}</h3>
                   <p>{career.business}</p>
                 </section>
-                <p class="team-txt">{career.team}</p>
+                <p class={`${styles['team-txt']}`}>{career.team}</p>
                 <p>
                   {career.work1}<br />
                   {career.work2}
@@ -78,7 +79,7 @@ const CareerComponent: ComponentOptions = {
               </li>
             ))}
           </ul>
-          <section class="btn-box">
+          <section class={`${styles['btn-box']} ${mediaStyles['btn-box']}`}>
             <button type="button" onClick={loadMore} id="more-btn">
               더 보기
               <FontAwesomeIcon icon={['fas', 'angle-down']}></FontAwesomeIcon>

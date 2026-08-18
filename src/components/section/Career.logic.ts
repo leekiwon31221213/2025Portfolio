@@ -1,5 +1,7 @@
 import type { ComponentOptions } from 'vue'
 
+import styles from '/assets/scss/components/section/Career.module.scss'
+
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -104,12 +106,14 @@ const CareerLogic: ComponentOptions = {
   methods: {
     // 경력 카드 찾기
     getCareerItems() {
-      return document.querySelectorAll<HTMLElement>('.career__inner > li')
+      return document.querySelectorAll<HTMLElement>(`.${styles['career__inner']} > li`)
     },
 
     // 학력, 경력 카드 찾기
     getAllItems() {
-      return document.querySelectorAll<HTMLElement>('.education__inner > li, .career__inner > li')
+      return document.querySelectorAll<HTMLElement>(
+        `.${styles['education__inner']} > li, .${styles['career__inner']} > li`,
+      )
     },
 
     // 제목 찾기

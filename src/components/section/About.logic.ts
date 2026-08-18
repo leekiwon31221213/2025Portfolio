@@ -1,5 +1,7 @@
 import type { ComponentOptions } from 'vue'
 
+import styles from '/assets/scss/components/section/About.module.scss'
+
 // GSAP과 ScrollTrigger 가져오기
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -93,8 +95,12 @@ const AboutLogic: ComponentOptions = {
       // 섹션 진입 시 카드 1→2→3→4 순차 자동 재생
       const root = this.$el as HTMLElement
       const allCards = [
-        ...Array.from(root.querySelectorAll<HTMLElement>('.setting-card .reveal')),
-        ...Array.from(root.querySelectorAll<HTMLElement>('.about-cards .reveal')),
+        ...Array.from(
+          root.querySelectorAll<HTMLElement>(`.${styles['setting-card']} .${styles.reveal}`),
+        ),
+        ...Array.from(
+          root.querySelectorAll<HTMLElement>(`.${styles['about-cards']} .${styles.reveal}`),
+        ),
       ]
 
       gsap.set(allCards, { opacity: 0, y: 40 })

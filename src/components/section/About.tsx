@@ -4,6 +4,7 @@ import AboutLogic from './About.logic'
 import styles from '/assets/scss/components/section/About.module.scss'
 import mediaStyles from '/assets/scss/components/section/AboutMedia.module.scss'
 
+
 type AboutView = {
   about: {
     title: string
@@ -31,8 +32,8 @@ const About: ComponentOptions = {
     const { about, settingCard, userCard, optimizeCard, growthCard } = this as unknown as AboutView
 
     const renderCard = (card: Card, className: string) => (
-      <li class={`${className} glass reveal`}>
-        <section class="img-box">
+      <li class={`${styles[className] ?? ''} ${mediaStyles[className] ?? ''} ${styles['glass']} ${mediaStyles['glass'] ?? ''} ${styles['reveal']} ${mediaStyles['reveal'] ?? ''}`}>
+        <section class={`${styles['img-box']} ${mediaStyles['img-box']}`}>
           <img src={card.icon} alt={card.alt} />
         </section>
         <h3>{card.title}</h3>
@@ -41,21 +42,21 @@ const About: ComponentOptions = {
     )
 
     return (
-      <section id="about" class={[styles.root, mediaStyles.root, 'section2']}>
+      <section id="about" class={`${styles['about-page']} ${mediaStyles['about-page']} ${styles['section2']} ${mediaStyles['section2']}`}>
         <h1 lang="en">About Me</h1>
-        <article class="section__inner">
-          <section class="about-content-tie">
-            <section class="about-content pc">
+        <article class={`${styles['section__inner']} ${mediaStyles['section__inner']}`}>
+          <section class={`${styles['about-content-tie']} ${mediaStyles['about-content-tie']}`}>
+            <section class={`${styles['about-content']} ${mediaStyles['about-content']} ${styles['pc']} ${mediaStyles['pc']}`}>
               <h2>{about.title}</h2>
               <p innerHTML={about.description}></p>
             </section>
-            <section class="about-content mo">
+            <section class={`${styles['about-content']} ${mediaStyles['about-content']} ${styles['mo']} ${mediaStyles['mo']}`}>
               <h2 innerHTML={about.moTitle}></h2>
               <p innerHTML={about.moDesCription}></p>
             </section>
-            <ul class="setting-card glass">
-              <li class="reveal">
-                <section class="img-box">
+            <ul class={`${styles['setting-card']} ${mediaStyles['setting-card']} ${styles['glass']}`}>
+              <li class={`${styles['reveal']}`}>
+                <section class={`${styles['img-box']} ${mediaStyles['img-box']}`}>
                   <img src={settingCard.icon} alt={settingCard.alt} />
                 </section>
                 <h3>{settingCard.title}</h3>
@@ -63,7 +64,7 @@ const About: ComponentOptions = {
               </li>
             </ul>
           </section>
-          <ul class="about-cards">
+          <ul class={`${styles['about-cards']} ${mediaStyles['about-cards']}`}>
             {renderCard(userCard, 'user-card')}
             {renderCard(optimizeCard, 'optimize-card')}
             {renderCard(growthCard, 'growth-card')}

@@ -1,4 +1,4 @@
-:global .intro-text-box {
+.intro-text-box {
   position: relative;
   top: 45%;
   z-index: 8;
@@ -6,14 +6,14 @@
   text-align: center;
 }
 
-:global .intro-text-box li {
+.intro-text-box li {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-:global .intro-text-box li h2 {
+.intro-text-box li h2 {
   font-size: clamp(2.2rem, 2.865vw, 2.4rem);
   font-weight: 600;
   color: #ffffff;
@@ -22,12 +22,12 @@
   background-image: linear-gradient(to right, #818cf8, #c084fc, #60a5fa);
 }
 
-:global .intro-text-box li p {
+.intro-text-box li p {
   margin-top: 1rem;
   font-size: clamp(1.4rem, 3.889vw, 1.6rem);
 }
 
-:global .loading {
+.loading-page.loading {
   position: fixed;
   width: 100%;
   height: 100%;
@@ -35,7 +35,7 @@
   z-index: 6;
 }
 
-:global .loading .progress {
+.loading-page.loading .progress {
   position: relative;
   top: 50%;
   width: 90%;
@@ -46,14 +46,14 @@
   margin: 0 auto;
 }
 
-:global .loading .progress .bar {
+.loading-page.loading .progress .bar {
   width: 0%;
   height: 100%;
   background: #333;
   animation: loading 3s linear forwards;
 }
 
-@keyframes :global(loading) {
+@keyframes loading {
   from {
     width: 0%;
   }

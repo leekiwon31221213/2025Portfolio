@@ -1,149 +1,149 @@
 @media (max-width: 1024px) {
-  :global #about.section2 .section__inner {
+  :global(#about).about-page.section2 .section__inner {
     padding: 0 0 150px;
   }
 }
 
 @media (max-width: 768px) {
-  :global #about.section2 .section__inner {
+  :global(#about).about-page.section2 .section__inner {
     padding: 0 0 clamp(100px, 18.182vw, 150px);
   }
 }
 
 @media (max-width: 1024px) {
-  :global #about.section2 .section__inner .about-content-tie {
+  :global(#about).about-page.section2 .section__inner .about-content-tie {
     flex-direction: column;
   }
 }
 
 @media (max-width: 1024px) {
-  :global #about.section2 .section__inner .about-content-tie .about-content {
+  :global(#about).about-page.section2 .section__inner .about-content-tie .about-content {
     width: unset;
     margin-right: 0;
   }
 }
 
 @media (max-width: 1024px) {
-  :global #about.section2 .section__inner .about-content-tie .about-content.pc {
+  :global(#about).about-page.section2 .section__inner .about-content-tie .about-content.pc {
     display: none;
   }
 }
 
 @media (max-width: 1024px) {
-  :global #about.section2 .section__inner .about-content-tie .about-content.mo {
+  :global(#about).about-page.section2 .section__inner .about-content-tie .about-content.mo {
     display: block;
   }
 }
 
 @media (max-width: 1024px) {
-  :global #about.section2 .section__inner .about-content-tie .about-content h2 {
+  :global(#about).about-page.section2 .section__inner .about-content-tie .about-content h2 {
     text-align: center;
     margin-bottom: 2rem;
   }
 }
 
 @media (max-width: 768px) {
-  :global #about.section2 .section__inner .about-content-tie .about-content h2 {
+  :global(#about).about-page.section2 .section__inner .about-content-tie .about-content h2 {
     font-size: clamp(1.9rem, 3.455vw, 2.4rem);
   }
 }
 
 @media (max-width: 550px) {
-  :global #about.section2 .section__inner .about-content-tie .about-content h2 {
+  :global(#about).about-page.section2 .section__inner .about-content-tie .about-content h2 {
     font-size: clamp(1.7rem, 4.722vw, 1.9rem);
   }
 }
 
 @media (max-width: 1024px) {
-  :global #about.section2 .section__inner .about-content-tie .about-content p {
+  :global(#about).about-page.section2 .section__inner .about-content-tie .about-content p {
     margin-bottom: 3rem;
     text-align: center;
   }
 }
 
 @media (max-width: 768px) {
-  :global #about.section2 .section__inner .about-content-tie .about-content p {
+  :global(#about).about-page.section2 .section__inner .about-content-tie .about-content p {
     font-size: clamp(1.6rem, 2.909vw, 1.8rem);
   }
 }
 
 @media (max-width: 550px) {
-  :global #about.section2 .section__inner .about-content-tie .about-content p {
+  :global(#about).about-page.section2 .section__inner .about-content-tie .about-content p {
     font-size: clamp(1.4rem, 3.889vw, 1.6rem);
   }
 }
 
 @media (max-width: 768px) {
-  :global #about.section2 .section__inner .about-content-tie .about-content p strong {
+  :global(#about).about-page.section2 .section__inner .about-content-tie .about-content p strong {
     font-size: clamp(1.8rem, 3.273vw, 2.1rem);
   }
 }
 
 @media (max-width: 550px) {
-  :global #about.section2 .section__inner .about-content-tie .about-content p strong {
+  :global(#about).about-page.section2 .section__inner .about-content-tie .about-content p strong {
     font-size: clamp(1.5rem, 4.167vw, 1.8rem);
   }
 }
 
 @media (max-width: 1024px) {
-  :global #about.section2 .section__inner .about-content-tie .setting-card li {
+  :global(#about).about-page.section2 .section__inner .about-content-tie .setting-card li {
     width: 100%;
   }
 }
 
 @media (max-width: 550px) {
-  :global #about.section2 .section__inner .about-content-tie .setting-card li h3 {
+  :global(#about).about-page.section2 .section__inner .about-content-tie .setting-card li h3 {
     font-size: clamp(1.7rem, 4.722vw, 1.9rem);
   }
 }
 
 @media (max-width: 550px) {
-  :global #about.section2 .section__inner .about-content-tie .setting-card li p {
+  :global(#about).about-page.section2 .section__inner .about-content-tie .setting-card li p {
     font-size: clamp(1.5rem, 4.167vw, 1.6rem);
   }
 }
 
 @media (max-width: 1024px) {
-  :global #about.section2 .section__inner .about-cards {
+  :global(#about).about-page.section2 .section__inner .about-cards {
     flex-direction: column;
   }
 }
 
 @media (max-width: 1024px) {
-  :global #about.section2 .section__inner .about-cards li {
+  :global(#about).about-page.section2 .section__inner .about-cards li {
     width: 100%;
     margin-bottom: 5rem;
   }
 }
 
 @media (max-width: 550px) {
-  :global #about.section2 .section__inner .about-cards li h3 {
+  :global(#about).about-page.section2 .section__inner .about-cards li h3 {
     font-size: clamp(1.7rem, 4.722vw, 1.9rem);
   }
 }
 
 @media (max-width: 550px) {
-  :global #about.section2 .section__inner .about-cards li p {
+  :global(#about).about-page.section2 .section__inner .about-cards li p {
     font-size: clamp(1.5rem, 4.167vw, 1.6rem);
   }
 }
 
 @media (max-width: 1024px) {
-  :global #about.section2 h1 {
+  :global(#about).about-page.section2 h1 {
     font-size: clamp(3rem, 3.906vw, 5rem);
     padding-bottom: 3rem;
   }
 }
 
 @media (max-width: 768px) {
-  :global #about.section2 h1 {
+  :global(#about).about-page.section2 h1 {
     padding: 145px 0 clamp(45px, 8.182vw, 100px);
     font-size: clamp(2.4rem, 4.364vw, 3rem);
   }
 }
 
 @media (max-width: 768px) {
-  :global #about .img-box {
+  :global(#about).about-page .img-box {
     width: clamp(5rem, 9.091vw, 6rem);
     height: clamp(5rem, 9.091vw, 6rem);
     border-radius: clamp(8px, 2.222vw, 18px);
@@ -151,14 +151,14 @@
 }
 
 @media (max-width: 768px) and (max-width: 550px) {
-  :global #about .img-box {
+  :global(#about).about-page .img-box {
     width: clamp(4rem, 11.111vw, 5rem);
     height: clamp(4rem, 11.111vw, 5rem);
   }
 }
 
 @media (max-width: 768px) {
-  :global #about .img-box img {
+  :global(#about).about-page .img-box img {
     width: clamp(20px, 3.636vw, 27px);
   }
 }

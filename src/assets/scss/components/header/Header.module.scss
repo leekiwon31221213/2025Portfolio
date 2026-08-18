@@ -1,4 +1,4 @@
-:global header {
+.portfolio-header.header {
   position: sticky;
   top: 0;
   height: 85px;
@@ -6,14 +6,14 @@
   z-index: 3;
 }
 
-:global header nav {
+.portfolio-header.header nav {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   height: inherit;
 }
 
-:global header nav ul {
+.portfolio-header.header nav ul {
   display: flex;
   width: 100%;
   text-align: right;
@@ -22,24 +22,24 @@
   z-index: 5;
 }
 
-:global header nav ul li {
+.portfolio-header.header nav ul li {
   display: flex;
   justify-content: flex-end;
   margin-right: 5rem;
 }
 
-:global header nav ul li:last-child {
+.portfolio-header.header nav ul li:last-child {
   margin-right: 0;
 }
 
-:global header nav ul li button {
+.portfolio-header.header nav ul li button {
   color: #ffffff;
   -webkit-text-fill-color: #ffffff;
   font-size: 2.3rem;
   transition: -webkit-text-fill-color 3s ease-in-out;
 }
 
-:global header nav ul li button:hover {
+.portfolio-header.header nav ul li button:hover {
   background-image: linear-gradient(to right, #818cf8, #c084fc, #60a5fa);
   background-size: 200% 100%;
   background-position: 0% 0;
@@ -48,7 +48,7 @@
   animation: gradientMove 1s ease-in-out;
 }
 
-:global header::before {
+.portfolio-header.header::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -58,15 +58,15 @@
   -webkit-backdrop-filter: blur(12px) saturate(120%);
 }
 
-:global header.active::before {
+.portfolio-header.header.active::before {
   animation: glassIn 0.3s ease forwards;
 }
 
-:global header:not(.active)::before {
+.portfolio-header.header:not(.active)::before {
   animation: glassOut 0.3s ease forwards;
 }
 
-:global header .mo-nav {
+.portfolio-header.header .mo-nav {
   width: 95%;
   margin: 0 auto;
   font-size: 2.5rem;
@@ -74,7 +74,7 @@
   z-index: 2;
 }
 
-:global header .mo-nav .mo-menu__inner {
+.portfolio-header.header .mo-nav .mo-menu__inner {
   position: fixed;
   flex-direction: column;
   top: 0;
@@ -84,7 +84,7 @@
   opacity: 0;
 }
 
-:global header .mo-nav .mo-menu__inner.glass {
+.portfolio-header.header .mo-nav .mo-menu__inner.glass {
   width: 100%;
   height: 100%;
   background: rgba(255, 255, 255, 0.01);
@@ -106,39 +106,39 @@
   align-items: flex-end;
 }
 
-:global header .mo-nav .mo-menu__inner.active {
+.portfolio-header.header .mo-nav .mo-menu__inner.active {
   visibility: visible;
   opacity: 1;
   animation: menuOpen 0.3s forwards;
 }
 
-:global header .mo-nav .mo-menu__inner.closing {
+.portfolio-header.header .mo-nav .mo-menu__inner.closing {
   visibility: visible;
   opacity: 1;
   animation: menuClose 0.3s forwards;
 }
 
-:global header .mo-nav .mo-menu__inner li {
+.portfolio-header.header .mo-nav .mo-menu__inner li {
   font-size: 2.8rem;
   margin-bottom: 2rem;
 }
 
-:global header .mo-nav .mo-menu__inner li button {
+.portfolio-header.header .mo-nav .mo-menu__inner li button {
   text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-:global header .mo-nav .mo-menu__inner li:last-child {
+.portfolio-header.header .mo-nav .mo-menu__inner li:last-child {
   margin-bottom: 0;
 }
 
-:global header .mo-nav .mo-menu__inner li .fa-xmark {
+.portfolio-header.header .mo-nav .mo-menu__inner li :global(.fa-xmark) {
   position: absolute;
   right: 30px;
   top: 30px;
   font-size: 2rem;
 }
 
-:global header .back-btn {
+.portfolio-header.header .back-btn {
   color: #fff;
   border-radius: 10px;
   border: 1px solid #bbbbbb;
@@ -149,12 +149,20 @@
   font-weight: 600;
 }
 
-:global header .back-btn:hover {
+.portfolio-header.header .back-btn:hover {
   background-color: #fff;
   color: #333;
 }
 
-@keyframes :global(gradientMove) {
+.portfolio-header.header {
+  --header-module: 1;
+}
+
+.mo-menu {
+  --header-menu-module: 1;
+}
+
+@keyframes gradientMove {
   from {
     background-position: 0% 0;
   }
@@ -163,7 +171,7 @@
   }
 }
 
-@keyframes :global(menuOpen) {
+@keyframes menuOpen {
   0% {
     right: -100%;
   }
@@ -172,7 +180,7 @@
   }
 }
 
-@keyframes :global(menuClose) {
+@keyframes menuClose {
   0% {
     right: 0;
   }
@@ -181,7 +189,7 @@
   }
 }
 
-@keyframes :global(glassIn) {
+@keyframes glassIn {
   from {
     opacity: 0;
   }
@@ -190,7 +198,7 @@
   }
 }
 
-@keyframes :global(glassOut) {
+@keyframes glassOut {
   from {
     opacity: 1;
   }
