@@ -37,6 +37,8 @@ const ProjectComponent: ComponentOptions = {
   name: 'Project',
   extends: ProjectLogic,
   render() {
+    const showGsttDetail = false
+
     const {
       project,
       modules,
@@ -123,7 +125,7 @@ const ProjectComponent: ComponentOptions = {
                         {project.tabletTxt}
                         <img src={project.icon} alt="arrow icon" class={`${styles['btn-icon']}`} />
                       </button>
-                      {project.name === 'GSTT' ? (
+                      {showGsttDetail && project.name === 'GSTT' ? (
                         <RouterLink to="/gstt-detail" class={`${styles['project-btn']} ${mediaStyles['project-btn']} ${styles['glass']} ${mediaStyles['glass']}`}>
                           {project.detail}
                         </RouterLink>
