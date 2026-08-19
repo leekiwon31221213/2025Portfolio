@@ -12,7 +12,7 @@ const Footer: ComponentOptions = {
       footer: {
         title: '역량 있는 웹퍼블리셔 & 프론트엔드 개발자를 찾고 계신가요?',
         dec: `꼼꼼하고 끈기 있는 성격을 가진 <strong>이기원</strong>입니다.</br>다양한 경험과 탐구를 통해 <strong>발전하는 웹퍼블리셔 & 프론트엔드 개발자</strong>가 되겠습니다.`,
-        copy: '© 2025 by LeeKiWon. All rights reserved.',
+        copy: '© 2026 by LeeKiWon. All rights reserved.',
       },
     }
   },

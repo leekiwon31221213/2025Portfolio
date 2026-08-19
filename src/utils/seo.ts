@@ -8,9 +8,9 @@ type SeoData = {
 }
 
 const defaultSeo: SeoData = {
-  title: '프론트엔드 개발자 이기원 포트폴리오',
+  title: '프론트엔드 개발자 이기원 포트폴리오 | React · Vue · 웹 퍼블리셔',
   description:
-    '프론트엔드 개발자 이기원의 2025 포트폴리오입니다. 웹 퍼블리싱과 프론트엔드 프로젝트, 경력, 기술, 협업 경험을 한눈에 볼 수 있습니다.',
+    '프론트엔드 개발자 이기원의 2026 포트폴리오입니다. 웹 퍼블리싱과 프론트엔드 프로젝트, 경력, 기술, 협업 경험을 한눈에 볼 수 있습니다.',
   canonical: 'https://kiwon2025portfolio.netlify.app/',
   image: 'https://kiwon2025portfolio.netlify.app/og.jpg',
 }

@@ -29,7 +29,7 @@ const Loading: ComponentOptions = {
       }
 
       typed = new Typed(el.value, {
-        strings: ['2025 LEE KIWON PORTFOLIO'],
+        strings: ['2026 LEE KIWON PORTFOLIO'],
         typeSpeed: 60,
         loop: false,
         smartBackspace: false,
