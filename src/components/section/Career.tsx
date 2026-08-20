@@ -1,4 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import type { ComponentOptions, DefineComponent } from 'vue'
 
 import CareerLogic from './Career.logic'
@@ -26,67 +25,72 @@ type Career = {
   work4?: string
 }
 
+type Journey = {
+  logo: string
+  alt: string
+  type: string
+  title: string
+  period: string
+  description: Array<string | undefined>
+}
+
 type CareerView = {
-  education: Education[]
-  displayedCareers: Career[]
-  loadMore: () => void
+  journey: Journey[]
 }
 
 const CareerComponent: ComponentOptions = {
   name: 'Career',
   extends: CareerLogic,
   render() {
-    const { education, displayedCareers, loadMore } = this as unknown as CareerView
+    const { journey } = this as unknown as CareerView
 
     return (
-      <>
-        <section id="education" class={`${styles['career-page']} ${mediaStyles['career-page']}`}>
-          <h1>Education</h1>
-          <ul class={`${styles['education__inner']} ${mediaStyles['education__inner']}`}>
-            {education.map((education, index) => (
+      <section id="journey" class={`${styles['career-page']} ${mediaStyles['career-page']}`}>
+        <section class={`${styles['journey-heading']} ${mediaStyles['journey-heading']}`}>
+          <p>2014 — NOW</p>
+          <h1>My Journey</h1>
+          <span>배움에서 실무까지, 지금의 프론트엔드 개발자가 되기까지의 여정입니다.</span>
+        </section>
+        <section class={`${styles['timeline-wrap']} ${mediaStyles['timeline-wrap']}`}>
+          <svg class={`${styles['timeline-line']} ${styles['desktop-line']} ${mediaStyles['timeline-line']} ${mediaStyles['desktop-line']}`} viewBox="0 0 1200 1000" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="journeyLineGradient" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#818cf8"></stop>
+                <stop offset="50%" stop-color="#c084fc"></stop>
+                <stop offset="100%" stop-color="#60a5fa"></stop>
+              </linearGradient>
+            </defs>
+            <path class={styles['timeline-line-bg']} d="M600 50 C470 85 470 145 600 180 C730 215 730 275 600 310 C470 345 470 405 600 440 C730 475 730 535 600 570 C470 605 470 665 600 700 C730 735 730 795 600 830 C470 865 470 925 600 960"></path>
+            <path class={styles['timeline-line-progress']} d="M600 50 C470 85 470 145 600 180 C730 215 730 275 600 310 C470 345 470 405 600 440 C730 475 730 535 600 570 C470 605 470 665 600 700 C730 735 730 795 600 830 C470 865 470 925 600 960" stroke="url(#journeyLineGradient)"></path>
+          </svg>
+          <svg class={`${styles['timeline-line']} ${styles['mobile-line']} ${mediaStyles['timeline-line']} ${mediaStyles['mobile-line']}`} viewBox="0 0 40 1000" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="journeyMobileLineGradient" x1="0" y1="1" x2="0" y2="0">
+                <stop offset="0%" stop-color="#818cf8"></stop>
+                <stop offset="50%" stop-color="#c084fc"></stop>
+                <stop offset="100%" stop-color="#60a5fa"></stop>
+              </linearGradient>
+            </defs>
+            <path class={styles['timeline-line-bg']} d="M20 20 L20 980"></path>
+            <path class={styles['timeline-line-progress']} d="M20 20 L20 980" stroke="url(#journeyMobileLineGradient)"></path>
+          </svg>
+          <ol class={`${styles['journey__inner']} ${mediaStyles['journey__inner']}`}>
+            {journey.map((item, index) => (
               <li key={index}>
-                <section class={`${styles['img-box']} ${mediaStyles['img-box']}`}>
-                  <img src={education.logo} alt={education.alt} />
+                <span class={`${styles['journey-type']} ${mediaStyles['journey-type']}`}>{item.type}</span>
+                <section class={`${styles['img-box']} ${mediaStyles['img-box']} ${item.alt === '증산클라비어' ? `${styles['jc']} ${mediaStyles['jc']}` : ''}`}>
+                  <img src={item.logo} alt={item.alt}></img>
                 </section>
-                <section class={`${styles['educatio-business-box']} ${mediaStyles['educatio-business-box']}`}>
-                  <h3>{education.edu}</h3>
-                  <p>{education.span}</p>
-                </section>
-                <p class={`${styles['team-txt']}`}>{education.study}</p>
+                <h2>{item.title}</h2>
+                <strong>{item.period}</strong>
+                {item.description.filter(Boolean).map((description, descriptionIndex) => (
+                  <p key={descriptionIndex}>{description}</p>
+                ))}
               </li>
             ))}
-          </ul>
+          </ol>
         </section>
-        <section id="career" class={`${styles['career-page']} ${mediaStyles['career-page']}`}>
-          <h1>Career</h1>
-          <ul class={`${styles['career__inner']} ${mediaStyles['career__inner']}`}>
-            {displayedCareers.map((career, index) => (
-              <li key={index}>
-                <section class={`${styles['img-box']} ${mediaStyles['img-box']} ${career.alt === '증산클라비어' ? `${styles['jc']} ${mediaStyles['jc']}` : ''}`}>
-                  <img src={career.logo} alt={career.alt} />
-                </section>
-                <section class={`${styles['company-business-box']} ${mediaStyles['company-business-box']}`}>
-                  <h3>{career.companyName}</h3>
-                  <p>{career.business}</p>
-                </section>
-                <p class={`${styles['team-txt']}`}>{career.team}</p>
-                <p>
-                  {career.work1}<br />
-                  {career.work2}
-                  {career.work3 ? <><br />{career.work3}</> : null}
-                  {career.work4 ? <><br />{career.work4}</> : null}
-                </p>
-              </li>
-            ))}
-          </ul>
-          <section class={`${styles['btn-box']} ${mediaStyles['btn-box']}`}>
-            <button type="button" onClick={loadMore} id="more-btn">
-              더 보기
-              <FontAwesomeIcon icon={['fas', 'angle-down']}></FontAwesomeIcon>
-            </button>
-          </section>
-        </section>
-      </>
+      </section>
     )
   },
 }

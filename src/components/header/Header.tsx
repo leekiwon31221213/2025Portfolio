@@ -19,6 +19,13 @@ const Header: ComponentOptions = {
     },
   },
   methods: {
+    // 768px 이하 화면을 모바일 UI로 전환합니다.
+    checkMobile() {
+      const userAgent = navigator.userAgent.toLowerCase()
+      const isMobileDevice = /iphone|ipad|ipod|android/.test(userAgent)
+      this.isMobile = window.matchMedia('(max-width: 768px)').matches || isMobileDevice
+    },
+
     // 뒤로가기
     goBack() {
       const removeNavigationGuard = this.$router.afterEach(() => {
@@ -90,19 +97,20 @@ const Header: ComponentOptions = {
   },
   // 모바일 감지 + 스크롤 이벤트
   mounted() {
-    const userAgent = navigator.userAgent.toLowerCase()
-    this.isMobile = /iphone|ipad|ipod|android/.test(userAgent)
+    this.checkMobile()
 
     window.addEventListener('scroll', this.scrollDown, { passive: true })
+    window.addEventListener('resize', this.checkMobile)
     this.scrollDown()
   },
   beforeUnmount() {
     window.removeEventListener('scroll', this.scrollDown)
+    window.removeEventListener('resize', this.checkMobile)
   },
   render() {
     const menuItems = [
       { id: 'about', label: 'About' },
-      { id: 'education', label: 'Career' },
+      { id: 'journey', label: 'Journey' },
       { id: 'skill', label: 'Skill' },
       { id: 'project', label: 'Project' },
     ]

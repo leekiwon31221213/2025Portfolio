@@ -9,6 +9,8 @@ const CareerLogic: ComponentOptions = {
   data() {
     return {
       visibledCount: 2,
+      lineTimelines: [] as gsap.core.Timeline[],
+      lineMedia: null as gsap.MatchMedia | null,
       education: [
         {
           logo: '/assets/image/career/ez_logo.jpg',
@@ -87,6 +89,74 @@ const CareerLogic: ComponentOptions = {
     }
   },
   computed: {
+    // 학력과 경력을 시작 시점 순서로 합칩니다.
+    journey() {
+      return [
+        {
+          ...this.education[1],
+          type: 'Education',
+          title: this.education[1].edu,
+          period: this.education[1].span,
+          description: [this.education[1].study],
+        },
+        {
+          ...this.career[5],
+          type: 'Career',
+          title: this.career[5].companyName,
+          period: this.career[5].team,
+          description: [this.career[5].business, this.career[5].work1],
+        },
+        {
+          ...this.career[4],
+          type: 'Career',
+          title: this.career[4].companyName,
+          period: this.career[4].team,
+          description: [this.career[4].business, this.career[4].work1],
+        },
+        {
+          ...this.education[0],
+          type: 'Education',
+          title: this.education[0].edu,
+          period: this.education[0].span,
+          description: [this.education[0].study],
+        },
+        {
+          ...this.career[3],
+          type: 'Career',
+          title: this.career[3].companyName,
+          period: this.career[3].team,
+          description: [this.career[3].business, this.career[3].work1, this.career[3].work2],
+        },
+        {
+          ...this.career[2],
+          type: 'Career',
+          title: this.career[2].companyName,
+          period: this.career[2].team,
+          description: [this.career[2].business, this.career[2].work1, this.career[2].work2],
+        },
+        {
+          ...this.career[1],
+          type: 'Career',
+          title: this.career[1].companyName,
+          period: this.career[1].team,
+          description: [this.career[1].business, this.career[1].work1, this.career[1].work2],
+        },
+        {
+          ...this.career[0],
+          type: 'Career',
+          title: this.career[0].companyName,
+          period: this.career[0].team,
+          description: [
+            this.career[0].business,
+            this.career[0].work1,
+            this.career[0].work2,
+            this.career[0].work3,
+            this.career[0].work4,
+          ],
+        },
+      ]
+    },
+
     displayedCareers() {
       return this.career.slice(0, this.visibledCount)
     },
@@ -101,6 +171,11 @@ const CareerLogic: ComponentOptions = {
 
   beforeDestroy() {
     ScrollTrigger.getAll().forEach((st) => st.kill())
+  },
+
+  beforeUnmount() {
+    this.lineTimelines.forEach((timeline: gsap.core.Timeline) => timeline.kill())
+    this.lineMedia?.revert()
   },
 
   methods: {
@@ -118,7 +193,7 @@ const CareerLogic: ComponentOptions = {
 
     // 제목 찾기
     getSectionTitles() {
-      return document.querySelectorAll<HTMLElement>('#education h1, #career h1')
+      return document.querySelectorAll<HTMLElement>('#education h1, #career h1, #journey h1')
     },
 
     // 스크롤 자리 저장
@@ -168,7 +243,114 @@ const CareerLogic: ComponentOptions = {
           },
         )
       })
-      this.animateNewItems()
+      this.initLineAnimations()
+    },
+
+    // SVG 선이 카드 위치에 도착할 때 내용을 순서대로 보여줍니다.
+    initLineAnimations() {
+      this.lineTimelines.forEach((timeline: gsap.core.Timeline) => timeline.kill())
+      this.lineTimelines = []
+      this.lineMedia?.revert()
+      this.lineMedia = gsap.matchMedia()
+
+      this.lineMedia.add('(min-width: 769px)', () => {
+        this.createLineAnimations(`.${styles['desktop-line']}`, false)
+      })
+
+      this.lineMedia.add('(max-width: 768px)', () => {
+        this.createLineAnimations(`.${styles['desktop-line']}`, false)
+      })
+    },
+
+    // 현재 화면에 보이는 SVG 경로로 타임라인을 만듭니다.
+    createLineAnimations(lineSelector: string, isMobile: boolean) {
+
+      document.querySelectorAll<HTMLElement>(`.${styles['timeline-wrap']}`).forEach((timelineWrap) => {
+        const line = timelineWrap.querySelector<SVGSVGElement>(lineSelector)
+        const path = line?.querySelector<SVGPathElement>(`.${styles['timeline-line-progress']}`)
+        const items = timelineWrap.querySelectorAll<HTMLElement>('li')
+
+        if (!line || !path || items.length === 0) return
+
+        this.setTimelinePath(timelineWrap, line, items, isMobile)
+
+        const totalLength = path.getTotalLength()
+
+        gsap.set(path, {
+          strokeDasharray: totalLength,
+          strokeDashoffset: totalLength,
+        })
+        gsap.set(items, { opacity: 0, y: 35 })
+
+        const timeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: timelineWrap,
+            start: isMobile ? 'top 78%' : 'top 72%',
+            end: isMobile ? 'bottom 88%' : 'bottom 72%',
+            scrub: isMobile ? 0.45 : 0.8,
+            invalidateOnRefresh: true,
+            onRefreshInit: () => {
+              this.setTimelinePath(timelineWrap, line, items, isMobile)
+              const refreshedLength = path.getTotalLength()
+              gsap.set(path, { strokeDasharray: refreshedLength })
+            },
+          },
+        })
+
+        timeline.to(path, { strokeDashoffset: 0, duration: 1, ease: 'none' }, 0)
+
+        items.forEach((item: HTMLElement, index: number) => {
+          const arrivalPoint = items.length === 1 ? 0 : index / (items.length - 1)
+          timeline.to(item, { opacity: 1, y: 0, duration: 0.14, ease: 'none' }, arrivalPoint)
+        })
+
+        this.lineTimelines.push(timeline)
+      })
+    },
+
+    // 실제 카드의 before 위치를 지나도록 SVG 경로를 만듭니다.
+    setTimelinePath(
+      timelineWrap: HTMLElement,
+      line: SVGSVGElement,
+      items: NodeListOf<HTMLElement>,
+      isMobile: boolean,
+    ) {
+      const timelineRect = timelineWrap.getBoundingClientRect()
+      const lineWidth = isMobile ? 40 : timelineWrap.clientWidth
+      const lineHeight = timelineWrap.clientHeight
+      const points = Array.from(items).map((item) => {
+        if (isMobile) {
+          return {
+            x: 20,
+            y: item.offsetTop + 28,
+          }
+        }
+
+        const itemRect = item.getBoundingClientRect()
+        const markerStyle = window.getComputedStyle(item, '::before')
+        const markerLeft = Number.parseFloat(markerStyle.left) || 0
+        const markerTop = Number.parseFloat(markerStyle.top) || 0
+
+        return {
+          x: itemRect.left - timelineRect.left + markerLeft,
+          y: itemRect.top - timelineRect.top + markerTop,
+        }
+      })
+
+      if (points.length === 0) return
+
+      let pathData = `M${points[0].x} ${points[0].y}`
+
+      points.slice(1).forEach((point, index) => {
+        const previousPoint = points[index]
+        const middleY = previousPoint.y + (point.y - previousPoint.y) / 2
+        pathData += ` C${previousPoint.x} ${middleY} ${point.x} ${middleY} ${point.x} ${point.y}`
+      })
+
+      line.setAttribute('viewBox', `0 0 ${lineWidth} ${lineHeight}`)
+      line.querySelectorAll<SVGPathElement>('path').forEach((timelinePath) => {
+        timelinePath.setAttribute('d', pathData)
+      })
     },
 
     animateNewItems() {
@@ -201,7 +383,7 @@ const CareerLogic: ComponentOptions = {
         const scrollAnchorInfo = this.getScrollAnchorInfo()
         this.visibledCount += 2
         this.$nextTick(() => {
-          this.animateNewItems()
+          this.initLineAnimations()
           const savedY = window.pageYOffset
           ScrollTrigger.refresh()
           requestAnimationFrame(() => {

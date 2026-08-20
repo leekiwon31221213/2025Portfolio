@@ -17,6 +17,54 @@
   margin: 0 auto 120px;
 }
 
+:global(#career).career-page .timeline-wrap,
+:global(#education).career-page .timeline-wrap {
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+}
+
+:global(#career).career-page .timeline-wrap .career__inner,
+:global(#education).career-page .timeline-wrap .education__inner {
+  width: 100%;
+}
+
+:global(#career).career-page .timeline-line,
+:global(#education).career-page .timeline-line {
+  position: absolute;
+  top: 2rem;
+  left: -3.5rem;
+  width: 2.4rem;
+  height: calc(100% - 12rem);
+  overflow: visible;
+}
+
+:global(#career).career-page .timeline-line-bg,
+:global(#education).career-page .timeline-line-bg,
+:global(#career).career-page .timeline-line-progress,
+:global(#education).career-page .timeline-line-progress {
+  fill: none;
+  stroke-linecap: round;
+}
+
+:global(#career).career-page .timeline-line-bg,
+:global(#education).career-page .timeline-line-bg {
+  stroke: rgba(255, 255, 255, 0.12);
+  stroke-width: 2;
+}
+
+:global(#career).career-page .timeline-line-progress,
+:global(#education).career-page .timeline-line-progress {
+  stroke-width: 4;
+  filter: drop-shadow(0 0 7px rgba(129, 140, 248, 0.75));
+}
+
+:global(#career).career-page .career__inner li::before,
+:global(#education).career-page .education__inner li::before {
+  z-index: 1;
+  box-shadow: 0 0 0 0.6rem rgba(129, 140, 248, 0.1);
+}
+
 :global(#career).career-page .career__inner::before,
 :global(#career).career-page .education__inner::before,
 :global(#education).career-page .career__inner::before,
@@ -29,6 +77,7 @@
   position: absolute;
   top: 20px;
   left: -23px;
+  display: none;
 }
 
 :global(#career).career-page .career__inner li p,
@@ -443,4 +492,310 @@
   100% {
     transform: translateY(0px);
   }
+}
+
+:global(#education).career-page .timeline-wrap {
+  height: 80rem;
+  margin-bottom: 10rem;
+}
+
+:global(#career).career-page .timeline-wrap {
+  height: 180rem;
+  margin-bottom: 8rem;
+}
+
+:global(#career).career-page .timeline-line,
+:global(#education).career-page .timeline-line {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+:global(#career).career-page .mobile-line,
+:global(#education).career-page .mobile-line {
+  display: none;
+}
+
+:global(#career).career-page .timeline-marker,
+:global(#education).career-page .timeline-marker {
+  fill: #ffffff;
+  stroke: #818cf8;
+  stroke-width: 5;
+  filter: drop-shadow(0 0 8px rgba(192, 132, 252, 0.85));
+}
+
+:global(#career).career-page .timeline-wrap .career__inner,
+:global(#education).career-page .timeline-wrap .education__inner {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+:global(#career).career-page .timeline-wrap .career__inner > li:is(:nth-child(1), :nth-child(2), :nth-child(3), :nth-child(4), :nth-child(5), :nth-child(6)),
+:global(#education).career-page .timeline-wrap .education__inner > li:is(:nth-child(1), :nth-child(2)) {
+  position: absolute;
+  z-index: 1;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 2.2rem;
+  border-radius: 2rem;
+}
+
+:global(#education).career-page .timeline-wrap .education__inner > li:is(:nth-child(1), :nth-child(2)) {
+  width: 40%;
+}
+
+:global(#education).career-page .education__inner > li:nth-child(1) {
+  top: 2%;
+  left: 2%;
+}
+
+:global(#education).career-page .education__inner > li:nth-child(2) {
+  top: 69%;
+  right: 1%;
+}
+
+:global(#career).career-page .timeline-wrap .career__inner > li:is(:nth-child(1), :nth-child(2), :nth-child(3), :nth-child(4), :nth-child(5), :nth-child(6)) {
+  width: 40%;
+  min-height: 22rem;
+}
+
+:global(#career).career-page .career__inner > li:nth-child(1) {
+  top: 0;
+  left: 2%;
+}
+
+:global(#career).career-page .career__inner > li:nth-child(2) {
+  top: 14%;
+  right: 2%;
+}
+
+:global(#career).career-page .career__inner > li:nth-child(3) {
+  top: 32%;
+  left: 2%;
+}
+
+:global(#career).career-page .career__inner > li:nth-child(4) {
+  top: 50%;
+  right: 2%;
+}
+
+:global(#career).career-page .career__inner > li:nth-child(5) {
+  top: 68%;
+  left: 2%;
+}
+
+:global(#career).career-page .career__inner > li:nth-child(6) {
+  top: 84%;
+  right: 2%;
+}
+
+:global(#career).career-page .career__inner li::before,
+:global(#education).career-page .education__inner li::before {
+  display: none;
+}
+
+:global(#journey).career-page {
+  padding-top: 14rem;
+  overflow: hidden;
+}
+
+:global(#journey).career-page .journey-heading {
+  width: 90%;
+  margin: 0 auto 6rem;
+  text-align: center;
+}
+
+:global(#journey).career-page .journey-heading > p {
+  margin-bottom: 1.2rem;
+  color: #818cf8;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+}
+
+:global(#journey).career-page .journey-heading h1 {
+  font-size: clamp(5rem, 4.883vw, 8rem);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+:global(#journey).career-page .journey-heading > span {
+  display: block;
+  margin-top: 1.5rem;
+  color: #9ca3af;
+  font-size: clamp(1.5rem, 1.563vw, 1.8rem);
+}
+
+:global(#journey).career-page .timeline-wrap {
+  position: relative;
+  width: 90%;
+  height: 280rem;
+  margin: 0 auto 10rem;
+}
+
+:global(#journey).career-page .timeline-line {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+:global(#journey).career-page .mobile-line {
+  display: none;
+}
+
+:global(#journey).career-page .timeline-line-bg,
+:global(#journey).career-page .timeline-line-progress {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+:global(#journey).career-page .timeline-line-bg {
+  stroke: rgba(255, 255, 255, 0.12);
+  stroke-width: 2;
+}
+
+:global(#journey).career-page .timeline-line-progress {
+  stroke-width: 5;
+  filter: drop-shadow(0 0 8px rgba(129, 140, 248, 0.8));
+}
+
+:global(#journey).career-page .timeline-marker {
+  fill: #ffffff;
+  stroke: #818cf8;
+  stroke-width: 5;
+  filter: drop-shadow(0 0 8px rgba(192, 132, 252, 0.85));
+}
+
+:global(#journey).career-page .journey__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+:global(#journey).career-page .journey__inner > li {
+  position: absolute;
+  z-index: 1;
+  width: 40%;
+  padding: 2.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2.4rem;
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow: -2px -2px 2px rgba(255, 255, 255, 0.12), 6px 10px 24px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+:global(#journey).career-page .journey__inner > li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0.4rem solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  box-shadow: 0 0 0 0.7rem rgba(129, 140, 248, 0.1);
+  transform: translate(-50%, -50%);
+}
+
+:global(#journey).career-page .journey__inner > li::after {
+  display: none;
+}
+
+:global(#journey).career-page .journey__inner > li:nth-child(odd)::before {
+  right: auto;
+  left: 0;
+}
+
+:global(#journey).career-page .journey__inner > li:nth-child(even)::before {
+  left: 0;
+}
+
+:global(#journey).career-page .journey__inner > li:nth-child(1)::before {
+  background-color: #155dfc;
+}
+
+:global(#journey).career-page .journey__inner > li:nth-child(2)::before {
+  background-color: #9810fa;
+}
+
+:global(#journey).career-page .journey__inner > li:nth-child(3)::before {
+  background-color: #00a63e;
+}
+
+:global(#journey).career-page .journey__inner > li:nth-child(4)::before {
+  background-color: #f54a00;
+}
+
+:global(#journey).career-page .journey__inner > li:nth-child(5)::before {
+  background-color: #d5f36c;
+}
+
+:global(#journey).career-page .journey__inner > li:nth-child(6)::before {
+  background-color: #f3b16c;
+}
+
+:global(#journey).career-page .journey__inner > li:nth-child(7)::before {
+  background-color: #60a5fa;
+}
+
+:global(#journey).career-page .journey__inner > li:nth-child(8)::before {
+  background-color: #c084fc;
+}
+
+:global(#journey).career-page .journey__inner > li:nth-child(1) { top: 1%; left: 2%; }
+:global(#journey).career-page .journey__inner > li:nth-child(2) { top: 13%; right: 2%; }
+:global(#journey).career-page .journey__inner > li:nth-child(3) { top: 26%; left: 2%; }
+:global(#journey).career-page .journey__inner > li:nth-child(4) { top: 39%; right: 2%; }
+:global(#journey).career-page .journey__inner > li:nth-child(5) { top: 52%; left: 2%; }
+:global(#journey).career-page .journey__inner > li:nth-child(6) { top: 65%; right: 2%; }
+:global(#journey).career-page .journey__inner > li:nth-child(7) { top: 77%; left: 2%; }
+:global(#journey).career-page .journey__inner > li:nth-child(8) { top: 88%; right: 2%; }
+
+:global(#journey).career-page .journey-type {
+  display: inline-block;
+  margin-bottom: 1.6rem;
+  padding: 0.7rem 1.2rem;
+  border-radius: 2rem;
+  background: rgba(129, 140, 248, 0.14);
+  color: #a5b4fc;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+:global(#journey).career-page .journey__inner .img-box img {
+  width: 5.9rem;
+  border-radius: 0.6rem;
+}
+
+:global(#journey).career-page .journey__inner .img-box.jc img {
+  width: 5.9rem;
+}
+
+:global(#journey).career-page .journey__inner h2 {
+  margin-top: 1.4rem;
+  font-size: clamp(2rem, 1.855vw, 2.4rem);
+  font-weight: 600;
+}
+
+:global(#journey).career-page .journey__inner strong {
+  display: block;
+  margin: 0.8rem 0 1.5rem;
+  color: #c4c8d2;
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+:global(#journey).career-page .journey__inner p {
+  margin-top: 0.7rem;
+  color: #9ca3af;
+  font-size: clamp(1.4rem, 1.367vw, 1.6rem);
+  line-height: 1.5;
 }
