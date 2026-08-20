@@ -45,7 +45,7 @@ const CareerLogic: ComponentOptions = {
           alt: '프라뱅 로고',
           companyName: '(주)프라뱅',
           business: '블록체인 및 가상화폐 거래소 전문 개발사',
-          team: 'IT개발 · 주임/팀원 (2024.05 ~ 2026.02)',
+          team: 'IT개발 · 주임/팀원 (2024.05 ~ 2026.02 / 1년 10개월)',
           work1: 'Java 및 Thymeleaf 기반 환경에서 블록체인 및 가상화폐 거래소 웹 유지보수',
           work2:
             '프론트엔드 개발 · 퍼블리싱 및 하이브리드 앱 기획·디자인/브릿지 개발 · REST API 비동기 통신 기반 데이터 연동',
@@ -264,48 +264,49 @@ const CareerLogic: ComponentOptions = {
 
     // 현재 화면에 보이는 SVG 경로로 타임라인을 만듭니다.
     createLineAnimations(lineSelector: string, isMobile: boolean) {
+      document
+        .querySelectorAll<HTMLElement>(`.${styles['timeline-wrap']}`)
+        .forEach((timelineWrap) => {
+          const line = timelineWrap.querySelector<SVGSVGElement>(lineSelector)
+          const path = line?.querySelector<SVGPathElement>(`.${styles['timeline-line-progress']}`)
+          const items = timelineWrap.querySelectorAll<HTMLElement>('li')
 
-      document.querySelectorAll<HTMLElement>(`.${styles['timeline-wrap']}`).forEach((timelineWrap) => {
-        const line = timelineWrap.querySelector<SVGSVGElement>(lineSelector)
-        const path = line?.querySelector<SVGPathElement>(`.${styles['timeline-line-progress']}`)
-        const items = timelineWrap.querySelectorAll<HTMLElement>('li')
+          if (!line || !path || items.length === 0) return
 
-        if (!line || !path || items.length === 0) return
+          this.setTimelinePath(timelineWrap, line, items, isMobile)
 
-        this.setTimelinePath(timelineWrap, line, items, isMobile)
+          const totalLength = path.getTotalLength()
 
-        const totalLength = path.getTotalLength()
+          gsap.set(path, {
+            strokeDasharray: totalLength,
+            strokeDashoffset: totalLength,
+          })
+          gsap.set(items, { opacity: 0, y: 35 })
 
-        gsap.set(path, {
-          strokeDasharray: totalLength,
-          strokeDashoffset: totalLength,
-        })
-        gsap.set(items, { opacity: 0, y: 35 })
-
-        const timeline = gsap.timeline({
-          scrollTrigger: {
-            trigger: timelineWrap,
-            start: isMobile ? 'top 78%' : 'top 72%',
-            end: isMobile ? 'bottom 88%' : 'bottom 72%',
-            scrub: isMobile ? 0.45 : 0.8,
-            invalidateOnRefresh: true,
-            onRefreshInit: () => {
-              this.setTimelinePath(timelineWrap, line, items, isMobile)
-              const refreshedLength = path.getTotalLength()
-              gsap.set(path, { strokeDasharray: refreshedLength })
+          const timeline = gsap.timeline({
+            scrollTrigger: {
+              trigger: timelineWrap,
+              start: isMobile ? 'top 78%' : 'top 72%',
+              end: isMobile ? 'bottom 88%' : 'bottom 72%',
+              scrub: isMobile ? 0.45 : 0.8,
+              invalidateOnRefresh: true,
+              onRefreshInit: () => {
+                this.setTimelinePath(timelineWrap, line, items, isMobile)
+                const refreshedLength = path.getTotalLength()
+                gsap.set(path, { strokeDasharray: refreshedLength })
+              },
             },
-          },
+          })
+
+          timeline.to(path, { strokeDashoffset: 0, duration: 1, ease: 'none' }, 0)
+
+          items.forEach((item: HTMLElement, index: number) => {
+            const arrivalPoint = items.length === 1 ? 0 : index / (items.length - 1)
+            timeline.to(item, { opacity: 1, y: 0, duration: 0.14, ease: 'none' }, arrivalPoint)
+          })
+
+          this.lineTimelines.push(timeline)
         })
-
-        timeline.to(path, { strokeDashoffset: 0, duration: 1, ease: 'none' }, 0)
-
-        items.forEach((item: HTMLElement, index: number) => {
-          const arrivalPoint = items.length === 1 ? 0 : index / (items.length - 1)
-          timeline.to(item, { opacity: 1, y: 0, duration: 0.14, ease: 'none' }, arrivalPoint)
-        })
-
-        this.lineTimelines.push(timeline)
-      })
     },
 
     // 실제 카드의 before 위치를 지나도록 SVG 경로를 만듭니다.

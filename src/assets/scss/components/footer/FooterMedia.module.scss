@@ -1,43 +1,37 @@
 @media (max-width: 1024px) {
-  :global(#footer).portfolio-footer img {
-    margin-right: unset;
-    margin-bottom: 3rem;
-    width: clamp(150px, 27.273vw, 190px);
-  }
-}
+  :global(#footer).portfolio-footer {
+    img {
+      width: clamp(150px, 27.273vw, 190px);
+      margin-right: 0;
+      margin-bottom: 3rem;
+    }
 
-@media (max-width: 1024px) {
-  :global(#footer).portfolio-footer .footer__inner {
-    flex-direction: column;
-    text-align: center;
-    width: 90%;
-    margin: 0 auto;
+    .footer__inner {
+      flex-direction: column;
+      width: 90%;
+      margin: 0 auto;
+      text-align: center;
+    }
   }
 }
 
 @media (max-width: 768px) {
-  :global(#footer).portfolio-footer .footer__inner ul li {
+  :global(#footer).portfolio-footer .footer__inner li {
     font-size: clamp(1.8rem, 3.273vw, 2.1rem);
-  }
-}
 
-@media (max-width: 768px) {
-  :global(#footer).portfolio-footer .footer__inner ul li.dec {
-    font-size: clamp(1.4rem, 2.545vw, 1.6rem);
-  }
-}
+    &.dec {
+      font-size: clamp(1.4rem, 2.545vw, 1.6rem);
 
-@media (max-width: 768px) {
-  :global(#footer).portfolio-footer .footer__inner ul li.dec strong {
-    font-size: clamp(1.5rem, 2.727vw, 1.7rem);
+      strong {
+        font-size: clamp(1.5rem, 2.727vw, 1.7rem);
+      }
+    }
   }
 }
 
 @media (max-width: 550px) {
-  :global(#footer).portfolio-footer .footer__inner ul li.btn-box .glass {
+  :global(#footer).portfolio-footer .footer__inner .btn-box .glass {
     width: clamp(120px, 33.333vw, 180px);
     font-size: clamp(1.4rem, 3.889vw, 1.5rem);
   }
 }
-
-.root {}

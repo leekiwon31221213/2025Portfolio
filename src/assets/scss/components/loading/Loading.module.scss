@@ -4,42 +4,36 @@
   z-index: 1000;
   overflow: hidden;
   background: #ffffff;
-}
 
-.wave-canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
+  .wave-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
 
-.water-fill {
-  x: 0;
-  y: 0;
-  fill: url('#waterGradient');
-}
+  .water-fill {
+    x: 0;
+    y: 0;
+    fill: url('#waterGradient');
+  }
 
-.intro-title {
-  font-size: clamp(3.2rem, 5.556vw, 8rem);
-  font-weight: 800;
-  letter-spacing: 0.08em;
-}
+  .intro-title {
+    font-size: clamp(3.2rem, 5.556vw, 8rem);
+    font-weight: 800;
+    letter-spacing: 0.08em;
 
-.intro-title-dark {
-  fill: #111827;
-}
+    &-dark { fill: #111827; }
+    &-light { fill: #ffffff; }
+  }
 
-.intro-title-light {
-  fill: #ffffff;
-}
+  .bubble {
+    fill: rgba(255, 255, 255, 0.18);
+    stroke: rgba(255, 255, 255, 0.65);
+    stroke-width: 2px;
 
-.bubble {
-  fill: rgba(255, 255, 255, 0.18);
-  stroke: rgba(255, 255, 255, 0.65);
-  stroke-width: 2px;
-}
-
-.bubble-2,
-.bubble-4 {
-  fill: rgba(255, 255, 255, 0.1);
-  stroke-width: 3px;
+    &:is(.bubble-2, .bubble-4) {
+      fill: rgba(255, 255, 255, 0.1);
+      stroke-width: 3px;
+    }
+  }
 }

@@ -1,49 +1,29 @@
 @media (max-width: 1024px) {
-  :global(#skill).skill-page .skill__inner {
-    padding-bottom: clamp(15rem, 19.531vw, 25rem);
-  }
-}
+  :global(#skill).skill-page {
+    .skill__inner { padding-bottom: clamp(15rem, 19.531vw, 25rem); }
+    h1 { font-size: clamp(3rem, 3.906vw, 5rem); }
+    p.desc { margin-bottom: clamp(6rem, 7.813vw, 12.8rem); }
 
-@media (max-width: 1024px) {
-  :global(#skill).skill-page h1 {
-    font-size: clamp(3rem, 3.906vw, 5rem);
-  }
-}
+    .skills-box {
+      flex-direction: column;
+      gap: 5rem;
 
-@media (max-width: 768px) {
-  :global(#skill).skill-page h1 {
-    font-size: clamp(2.4rem, 4.364vw, 3rem);
-  }
-}
+      li { width: 100%; }
 
-@media (max-width: 1024px) {
-  :global(#skill).skill-page p.desc {
-    margin-bottom: clamp(6rem, 7.813vw, 12.8rem);
+      .skill__inner:is(.design-skill, .collaboration-skill) { height: 300px; }
+    }
   }
 }
 
 @media (max-width: 768px) {
-  :global(#skill).skill-page p.desc {
-    font-size: clamp(1.4rem, 2.545vw, 1.6rem);
-  }
-}
+  :global(#skill).skill-page {
+    h1 { font-size: clamp(2.4rem, 4.364vw, 3rem); }
+    p.desc { font-size: clamp(1.4rem, 2.545vw, 1.6rem); }
 
-@media (max-width: 1024px) {
-  :global(#skill).skill-page .skills-box {
-    flex-direction: column;
-    gap: 5rem;
-  }
-}
-
-@media (max-width: 1024px) {
-  :global(#skill).skill-page .skills-box li {
-    width: 100%;
-  }
-}
-
-@media (max-width: 768px) {
-  :global(#skill).skill-page .skills-box .skill__inner .skill-list > li:first-child h3 {
-    font-size: clamp(1.6rem, 2.909vw, 1.8rem);
+    .skills-box .skill__inner .skill-list > li {
+      &:first-child h3 { font-size: clamp(1.6rem, 2.909vw, 1.8rem); }
+      .skill-name { font-size: clamp(1.4rem, 2.545vw, 1.5rem); }
+    }
   }
 }
 
@@ -53,17 +33,3 @@
     height: clamp(4rem, 11.111vw, 5rem);
   }
 }
-
-@media (max-width: 768px) {
-  :global(#skill).skill-page .skills-box .skill__inner .skill-list > li .skill-name {
-    font-size: clamp(1.4rem, 2.545vw, 1.5rem);
-  }
-}
-
-@media (max-width: 1024px) {
-  :global(#skill).skill-page .skills-box .skill__inner.design-skill, :global(#skill).skill-page .skills-box .skill__inner.collaboration-skill {
-    height: 300px;
-  }
-}
-
-.root {}
