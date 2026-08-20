@@ -1,17 +1,11 @@
-import {
-  nextTick,
-  onBeforeUnmount,
-  onMounted,
-  ref,
-  type SetupContext,
-} from 'vue'
+import { nextTick, onBeforeUnmount, onMounted, ref, type SetupContext } from 'vue'
 
 const CANVAS_WIDTH = 1440
 const CANVAS_HEIGHT = 900
-const WAVE_DURATION = 4800
+const WAVE_DURATION = 2800
 const WAVE_POINT_GAP = 36
 
-// SVG 파도와 물방울 애니메이션을 실행한다.
+// SVG 파도와 물방울 애니메이션
 export const useLoadingWave = (emit: SetupContext['emit']) => {
   const loadingPage = ref<HTMLElement | null>(null)
   const wavePath = ref<SVGPathElement | null>(null)
@@ -30,7 +24,7 @@ export const useLoadingWave = (emit: SetupContext['emit']) => {
     { x: 0.88, radius: 30, delay: 0.42, speed: 0.0038, sway: 46 },
   ]
 
-  // SVG 크기를 실제 화면 크기와 맞춘다.
+  // 화면 크기에 맞춰 SVG 크기 조정
   const measureCanvas = () => {
     if (!loadingPage.value) {
       return
@@ -47,7 +41,7 @@ export const useLoadingWave = (emit: SetupContext['emit']) => {
     waterFill?.setAttribute('height', `${canvasHeight}`)
   }
 
-  // 매 프레임 수면 path와 물방울 위치를 갱신한다.
+  // 프레임마다 수면과 물방울 위치 갱신
   const drawWave = (time: number) => {
     if (!wavePath.value) {
       return
@@ -77,7 +71,10 @@ export const useLoadingWave = (emit: SetupContext['emit']) => {
         return
       }
 
-      const bubbleProgress = Math.max(0, Math.min((progress - bubble.delay) / (1 - bubble.delay), 1))
+      const bubbleProgress = Math.max(
+        0,
+        Math.min((progress - bubble.delay) / (1 - bubble.delay), 1),
+      )
       const x = canvasWidth * bubble.x + Math.sin(time * bubble.speed + index) * bubble.sway
       const y = canvasHeight + bubble.radius - bubbleProgress * (canvasHeight + bubble.radius * 2)
       const opacity = bubbleProgress > 0 && bubbleProgress < 0.98 ? 1 : 0
@@ -96,7 +93,7 @@ export const useLoadingWave = (emit: SetupContext['emit']) => {
     finishIntro()
   }
 
-  // 인트로 애니메이션을 처음부터 다시 실행한다.
+  // 인트로 애니메이션 재실행
   const replayIntro = () => {
     cancelAnimationFrame(animationFrameId)
     measureCanvas()
@@ -104,7 +101,7 @@ export const useLoadingWave = (emit: SetupContext['emit']) => {
     animationFrameId = requestAnimationFrame(drawWave)
   }
 
-  // 인트로를 닫고 포트폴리오를 표시한다.
+  // 인트로 종료 후 포트폴리오 표시
   const finishIntro = () => {
     emit('finished')
   }

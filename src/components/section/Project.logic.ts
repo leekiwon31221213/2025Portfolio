@@ -176,7 +176,7 @@ const ProjectLogic: ComponentOptions = {
   },
 
   computed: {
-    // 원본 프로젝트를 복제해 끊김 없는 목록을 만듭니다.
+    // 원본 프로젝트 복제로 무한 목록 생성
     loopProjects() {
       const indexedProjects = this.project.map((project: unknown, originalIndex: number) => ({
         project,
@@ -200,13 +200,13 @@ const ProjectLogic: ComponentOptions = {
   },
 
   methods: {
-    // 갤러리 너비를 한 번 계산하고 애니메이션을 시작
+    // 갤러리 너비 계산 후 애니메이션 시작
     initInfiniteGallery() {
       this.measureGallery()
       this.animationFrameId = requestAnimationFrame(this.updateGallery)
     },
 
-    // 복제되기 전 원본 카드 묶음의 너비를 저장
+    // 원본 카드 묶음 너비 저장
     measureGallery() {
       const track = this.$refs.galleryTrack as HTMLElement | undefined
 
@@ -226,7 +226,7 @@ const ProjectLogic: ComponentOptions = {
       this.normalizeGalleryPosition()
     },
 
-    // 한 개의 프레임 루프로 자동 이동과 관성을 처리
+    // 단일 프레임 루프로 자동 이동과 관성 처리
     updateGallery() {
       const track = this.$refs.galleryTrack as HTMLElement | undefined
 
@@ -242,7 +242,7 @@ const ProjectLogic: ComponentOptions = {
       this.animationFrameId = requestAnimationFrame(this.updateGallery)
     },
 
-    // 트랙 위치를 원본 카드 너비 안에서 반복시킵니다.
+    // 원본 카드 너비 안에서 트랙 위치 반복
     normalizeGalleryPosition() {
       if (this.galleryLoopWidth <= 0) return
 
@@ -264,7 +264,7 @@ const ProjectLogic: ComponentOptions = {
       this.galleryVelocity = Math.max(-1.8, Math.min(1.8, this.galleryVelocity))
     },
 
-    // 마우스와 터치 드래그를 시작
+    // 마우스와 터치 드래그 시작
     handlePointerDown(event: PointerEvent) {
       if (event.button !== 0) return
 
@@ -287,7 +287,7 @@ const ProjectLogic: ComponentOptions = {
       this.galleryVelocity = 0
     },
 
-    // 포인터 이동 거리만큼 트랙을 이동
+    // 포인터 이동 거리만큼 트랙 이동
     handlePointerMove(event: PointerEvent) {
       if (!this.isGalleryDragging || this.isInteractivePress) return
 
@@ -304,7 +304,7 @@ const ProjectLogic: ComponentOptions = {
       this.wasGalleryDragged = this.dragDistance > 8
     },
 
-    // 드래그가 끝나면 현재 속도에서 자동 속도로 서서히 돌아갑니다.
+    // 드래그 종료 후 자동 이동 속도 복원
     handlePointerUp(event: PointerEvent) {
       if (!this.isGalleryDragging) return
 
@@ -321,7 +321,7 @@ const ProjectLogic: ComponentOptions = {
       this.isGalleryDragging = false
     },
 
-    // 드래그 직후 링크가 잘못 눌리는 것을 막습니다.
+    // 드래그 직후 링크 오작동 방지
     handleGalleryClick(event: MouseEvent) {
       if (!this.wasGalleryDragged) return
 

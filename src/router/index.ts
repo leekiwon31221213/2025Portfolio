@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 
-// 페이지 컴포넌트 가져오기
+// 페이지 컴포넌트 불러오기
 import GsttDetail from '/src/views/gstt/GsttDetail'
 import Home from '/src/views/Home'
 

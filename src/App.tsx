@@ -13,7 +13,7 @@ const App: ComponentOptions = {
   setup() {
     const route = useRoute()
 
-    // 처음 방문 여부 체크
+    // 처음 방문 여부 확인
     const isFirstVisit = import.meta.env.DEV ? null : sessionStorage.getItem('isFirstVisit')
     const isLoading = ref(!isFirstVisit)
 

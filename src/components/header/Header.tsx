@@ -18,7 +18,7 @@ const Header: ComponentOptions = {
     },
   },
   methods: {
-    // 768px 이하 화면을 모바일 UI로 전환
+    // 768px 이하 모바일 UI 전환
     checkMobile() {
       const userAgent = navigator.userAgent.toLowerCase()
       const isMobileDevice = /iphone|ipad|ipod|android/.test(userAgent)
@@ -40,7 +40,7 @@ const Header: ComponentOptions = {
         this.$router.push({ path: '/' })
       }
     },
-    // 스크롤 해당 섹션으로 이동
+    // 해당 섹션으로 이동
     scrollTo(id: string) {
       const section = document.getElementById(id)
       if (section) {
@@ -75,7 +75,7 @@ const Header: ComponentOptions = {
         { once: true },
       )
     },
-    // 스크롤 내렸을때 헤더
+    // 스크롤 후 헤더 스타일
     scrollDown() {
       const header = document.querySelector<HTMLElement>(`.${styles.header}`)!
       const hamburger = document.querySelector<HTMLElement>(`.${styles['mo-menu']}`)
@@ -94,7 +94,7 @@ const Header: ComponentOptions = {
       }
     },
   },
-  // 모바일 감지 + 스크롤 이벤트
+  // 모바일 감지 및 스크롤 이벤트
   mounted() {
     this.checkMobile()
 

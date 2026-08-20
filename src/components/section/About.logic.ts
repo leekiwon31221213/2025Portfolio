@@ -2,7 +2,7 @@ import type { ComponentOptions } from 'vue'
 
 import styles from '/assets/scss/components/section/About.module.scss'
 
-// GSAP과 ScrollTrigger 가져오기
+// GSAP과 ScrollTrigger 설정
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -94,7 +94,7 @@ const AboutLogic: ComponentOptions = {
     this.$nextTick(async () => {
       await afterImagesLoaded()
 
-      // 섹션 진입 시 카드 1→2→3→4 순차 자동 재생
+      // 섹션 진입 후 카드 순차 재생
       const root = this.$el as HTMLElement
       const allCards = [
         ...Array.from(

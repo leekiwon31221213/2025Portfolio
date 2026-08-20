@@ -89,7 +89,7 @@ const CareerLogic: ComponentOptions = {
     }
   },
   computed: {
-    // 학력과 경력을 시작 시점 순서로 합칩니다.
+    // 학력과 경력을 시작일 순으로 정렬
     journey() {
       return [
         {
@@ -184,7 +184,7 @@ const CareerLogic: ComponentOptions = {
       return document.querySelectorAll<HTMLElement>(`.${styles['career__inner']} > li`)
     },
 
-    // 학력, 경력 카드 찾기
+    // 학력 및 경력 카드 찾기
     getAllItems() {
       return document.querySelectorAll<HTMLElement>(
         `.${styles['education__inner']} > li, .${styles['career__inner']} > li`,
@@ -211,7 +211,7 @@ const CareerLogic: ComponentOptions = {
       }
     },
 
-    // 스크롤 자리 다시 맞추기
+    // 스크롤 위치 복원
     restoreScrollAnchor(scrollAnchorInfo: { element: HTMLElement; top: number } | null) {
       if (!scrollAnchorInfo || !scrollAnchorInfo.element) {
         return
@@ -246,7 +246,7 @@ const CareerLogic: ComponentOptions = {
       this.initLineAnimations()
     },
 
-    // SVG 선이 카드 위치에 도착할 때 내용을 순서대로 보여줍니다.
+    // SVG 선 도착에 맞춰 카드 순차 표시
     initLineAnimations() {
       this.lineTimelines.forEach((timeline: gsap.core.Timeline) => timeline.kill())
       this.lineTimelines = []
@@ -262,7 +262,7 @@ const CareerLogic: ComponentOptions = {
       })
     },
 
-    // 현재 화면에 보이는 SVG 경로로 타임라인을 만듭니다.
+    // 현재 화면의 SVG 경로로 타임라인 생성
     createLineAnimations(lineSelector: string, isMobile: boolean) {
       document
         .querySelectorAll<HTMLElement>(`.${styles['timeline-wrap']}`)
@@ -309,7 +309,7 @@ const CareerLogic: ComponentOptions = {
         })
     },
 
-    // 실제 카드의 before 위치를 지나도록 SVG 경로를 만듭니다.
+    // 카드 표시점에 맞춰 SVG 경로 생성
     setTimelinePath(
       timelineWrap: HTMLElement,
       line: SVGSVGElement,

@@ -15,12 +15,12 @@ const defaultSeo: SeoData = {
   image: 'https://kiwon2025portfolio.netlify.app/og.jpg',
 }
 
-//  메타 태그 찾기
+// 메타 태그 검색
 const getMetaElement = (selector: string) => {
   return document.head.querySelector<HTMLMetaElement>(selector)
 }
 
-//  메타 태그 만들기
+// 메타 태그 생성
 const createMetaElement = (type: string, key: string, value: string) => {
   const metaElement = document.createElement('meta')
 
@@ -32,7 +32,7 @@ const createMetaElement = (type: string, key: string, value: string) => {
   return metaElement
 }
 
-//  메타 태그 중복 지우기
+// 메타 태그 중복 제거
 const removeDuplicateMetaElements = (selector: string) => {
   const metaElements = document.head.querySelectorAll(selector)
 
@@ -43,7 +43,7 @@ const removeDuplicateMetaElements = (selector: string) => {
   })
 }
 
-//  메타 태그 넣기
+// 메타 태그 추가
 const setMetaContent = (type: string, key: string, value: string) => {
   const selector = `meta[${type}="${key}"]`
   const metaElement = getMetaElement(selector) || createMetaElement(type, key, value)
@@ -51,12 +51,12 @@ const setMetaContent = (type: string, key: string, value: string) => {
   metaElement.setAttribute('content', value)
 }
 
-//  링크 태그 찾기
+// 링크 태그 검색
 const getLinkElement = (relValue: string) => {
   return document.head.querySelector<HTMLLinkElement>(`link[rel="${relValue}"]`)
 }
 
-//  링크 태그 중복 지우기
+// 링크 태그 중복 제거
 const removeDuplicateLinkElements = (selector: string) => {
   const linkElements = document.head.querySelectorAll(selector)
 
@@ -67,7 +67,7 @@ const removeDuplicateLinkElements = (selector: string) => {
   })
 }
 
-//  링크 태그 넣기
+// 링크 태그 추가
 const setLinkHref = (relValue: string, hrefValue: string) => {
   const linkElement = getLinkElement(relValue) || document.createElement('link')
 
@@ -79,7 +79,7 @@ const setLinkHref = (relValue: string, hrefValue: string) => {
   }
 }
 
-//  SEO 태그 정리하기
+// SEO 태그 정리
 const cleanupSeoElements = () => {
   removeDuplicateMetaElements('meta[name="description"]')
   removeDuplicateMetaElements('meta[name="robots"]')
@@ -93,7 +93,7 @@ const cleanupSeoElements = () => {
   removeDuplicateLinkElements('link[rel="canonical"]')
 }
 
-//  페이지 SEO 넣기
+// 페이지별 SEO 적용
 export const applySeo = (routeMeta: RouteMeta = {}) => {
   const title = typeof routeMeta.title === 'string' ? routeMeta.title : defaultSeo.title
   const description =

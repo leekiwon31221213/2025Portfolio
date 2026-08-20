@@ -161,7 +161,7 @@ const SkillLogic: ComponentOptions = {
     })
   },
 
-  // 정리
+  // 이벤트와 애니메이션 정리
   beforeDestroy() {
     ScrollTrigger.getAll().forEach((st) => st.kill())
   },

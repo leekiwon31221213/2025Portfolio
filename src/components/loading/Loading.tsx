@@ -10,12 +10,7 @@ const Loading: ComponentOptions = {
     finished: () => true,
   },
   setup(_, { emit }: SetupContext) {
-    const {
-      bubbleElements,
-      loadingPage,
-      setBubbleRef,
-      wavePath,
-    } = useLoadingWave(emit)
+    const { bubbleElements, loadingPage, setBubbleRef, wavePath } = useLoadingWave(emit)
 
     return () => (
       <section
@@ -29,7 +24,6 @@ const Loading: ComponentOptions = {
           role="img"
           aria-labelledby="introTitle"
         >
-          <title id="introTitle">그라데이션 파도가 차오르는 포트폴리오 인트로</title>
           <defs>
             <linearGradient id="waterGradient" x1="0%" y1="50%" x2="100%" y2="50%">
               <stop offset="0%" stop-color="#818cf8"></stop>
@@ -48,8 +42,12 @@ const Loading: ComponentOptions = {
             dominant-baseline="middle"
             class={`${styles['intro-title']} ${mediaStyles['intro-title']} ${styles['intro-title-dark']}`}
           >
-            <tspan x="50%" dy="-0.65em">2026 LEE KIWON</tspan>
-            <tspan x="50%" dy="1.3em">PORTFOLIO</tspan>
+            <tspan x="50%" dy="-0.65em">
+              2026 LEE KIWON
+            </tspan>
+            <tspan x="50%" dy="1.3em">
+              PORTFOLIO
+            </tspan>
           </text>
 
           <g clip-path="url(#waveClip)">
@@ -68,8 +66,12 @@ const Loading: ComponentOptions = {
               dominant-baseline="middle"
               class={`${styles['intro-title']} ${mediaStyles['intro-title']} ${styles['intro-title-light']}`}
             >
-              <tspan x="50%" dy="-0.65em">2026 LEE KIWON</tspan>
-              <tspan x="50%" dy="1.3em">PORTFOLIO</tspan>
+              <tspan x="50%" dy="-0.65em">
+                2026 LEE KIWON
+              </tspan>
+              <tspan x="50%" dy="1.3em">
+                PORTFOLIO
+              </tspan>
             </text>
           </g>
         </svg>
