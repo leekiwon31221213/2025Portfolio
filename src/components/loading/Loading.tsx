@@ -1,16 +1,8 @@
-import {
-  onBeforeUnmount,
-  onMounted,
-  ref,
-  type ComponentOptions,
-  type DefineComponent,
-  type SetupContext,
-} from 'vue'
-import Typed from 'typed.js'
+import type { ComponentOptions, DefineComponent, SetupContext } from 'vue'
 
+import { useLoadingWave } from './Loading.logic'
 import styles from '/assets/scss/components/loading/Loading.module.scss'
 import mediaStyles from '/assets/scss/components/loading/LoadingMedia.module.scss'
-
 
 const Loading: ComponentOptions = {
   name: 'Loading',
@@ -18,48 +10,69 @@ const Loading: ComponentOptions = {
     finished: () => true,
   },
   setup(_, { emit }: SetupContext) {
-    // Vue의 라이프사이클 훅과 반응형 참조(ref) 불러오기
-    const el = ref<HTMLElement | null>(null)
-    const bar = ref<HTMLElement | null>(null)
-    let typed: Typed | null = null
-
-    onMounted(() => {
-      if (!el.value) {
-        return
-      }
-
-      typed = new Typed(el.value, {
-        strings: ['2026 LEE KIWON PORTFOLIO'],
-        typeSpeed: 60,
-        loop: false,
-        smartBackspace: false,
-        showCursor: false,
-      })
-
-      // 3초 후 로딩 끝 알림
-      setTimeout(() => {
-        typed && typed.destroy()
-        emit('finished')
-      }, 3000)
-    })
-
-    // 컴포넌트가 사라지기 직전에 실행될 정리 작업
-    onBeforeUnmount(() => {
-      // typed.js 인스턴스가 있으면 메모리 누수 방지를 위해 파괴(destroy)
-      typed && typed.destroy()
-    })
+    const {
+      bubbleElements,
+      loadingPage,
+      setBubbleRef,
+      wavePath,
+    } = useLoadingWave(emit)
 
     return () => (
-      <section class={`${styles['loading-page']} ${mediaStyles['loading-page']} ${styles['loading']}`}>
-        <ul class={`${styles['intro-text-box']} ${mediaStyles['intro-text-box']}`}>
-          <li>
-            <h2 ref={el}></h2>
-            <p>Vue.js로 만들어진 포트폴리오 입니다.</p>
-          </li>
-        </ul>
-        <section class={`${styles['progress']}`}>
-          <div class={`${styles['bar']}`} ref={bar}></div>
-        </section>
+      <section
+        ref={loadingPage}
+        class={`${styles['loading-page']} ${mediaStyles['loading-page']}`}
+        aria-label="포트폴리오 인트로"
+      >
+        <svg
+          class={`${styles['wave-canvas']} ${mediaStyles['wave-canvas']}`}
+          xmlns="http://www.w3.org/2000/svg"
+          role="img"
+          aria-labelledby="introTitle"
+        >
+          <title id="introTitle">그라데이션 파도가 차오르는 포트폴리오 인트로</title>
+          <defs>
+            <linearGradient id="waterGradient" x1="0%" y1="50%" x2="100%" y2="50%">
+              <stop offset="0%" stop-color="#818cf8"></stop>
+              <stop offset="50%" stop-color="#c084fc"></stop>
+              <stop offset="100%" stop-color="#60a5fa"></stop>
+            </linearGradient>
+            <clipPath id="waveClip" clipPathUnits="userSpaceOnUse">
+              <path ref={wavePath}></path>
+            </clipPath>
+          </defs>
+
+          <text
+            x="50%"
+            y="50%"
+            text-anchor="middle"
+            dominant-baseline="middle"
+            class={`${styles['intro-title']} ${mediaStyles['intro-title']} ${styles['intro-title-dark']}`}
+          >
+            <tspan x="50%" dy="-0.65em">2026 LEE KIWON</tspan>
+            <tspan x="50%" dy="1.3em">PORTFOLIO</tspan>
+          </text>
+
+          <g clip-path="url(#waveClip)">
+            <rect class={styles['water-fill']}></rect>
+            {bubbleElements.map((_, index) => (
+              <circle
+                key={index}
+                ref={(element) => setBubbleRef(element as SVGCircleElement | null, index)}
+                class={`${styles['bubble']} ${styles[`bubble-${index + 1}`]}`}
+              ></circle>
+            ))}
+            <text
+              x="50%"
+              y="50%"
+              text-anchor="middle"
+              dominant-baseline="middle"
+              class={`${styles['intro-title']} ${mediaStyles['intro-title']} ${styles['intro-title-light']}`}
+            >
+              <tspan x="50%" dy="-0.65em">2026 LEE KIWON</tspan>
+              <tspan x="50%" dy="1.3em">PORTFOLIO</tspan>
+            </text>
+          </g>
+        </svg>
       </section>
     )
   },

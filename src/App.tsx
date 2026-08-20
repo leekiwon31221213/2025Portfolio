@@ -14,12 +14,15 @@ const App: ComponentOptions = {
     const route = useRoute()
 
     // 처음 방문 여부 체크
-    const isFirstVisit = sessionStorage.getItem('isFirstVisit')
+    const isFirstVisit = import.meta.env.DEV ? null : sessionStorage.getItem('isFirstVisit')
     const isLoading = ref(!isFirstVisit)
 
     const onLoaded = () => {
       isLoading.value = false
-      sessionStorage.setItem('isFirstVisit', 'true')
+
+      if (!import.meta.env.DEV) {
+        sessionStorage.setItem('isFirstVisit', 'true')
+      }
     }
 
     return () => (

@@ -27,7 +27,7 @@ const AboutLogic: ComponentOptions = {
         프론트엔드 개발자로 성장했습니다. 
         단순한 마크업을 넘어  
         <strong>인터랙티브한 웹 경험</strong>을 만들고,  
-        누구나 쉽게 사용할 수 있는 환경을 추구합니다. 
+        누구나 쉽게 사용할 수 있는 환경을 추구 
         매일 배우고 적용하며  
         더 나은 개발자로 나아가고 있습니다.
         `,
@@ -36,14 +36,14 @@ const AboutLogic: ComponentOptions = {
         icon: '/assets/image/about/setting_icon.svg',
         title: '프론트엔드 경험 설계',
         description:
-          '사용자 인터페이스와 경험을 세심하게 설계하여, 직관적이고 반응성이 뛰어난 웹 환경을 구현합니다.',
+          '사용자 인터페이스와 경험을 세심하게 설계하여, 직관적이고 반응성이 뛰어난 웹 환경을 구현',
         alt: '경험설계 아이콘',
       },
       userCard: {
         icon: '/assets/image/about/user_icon.svg',
         title: '사용자 중심',
         description:
-          '사용자의 관점에서 생각하고, 문제를 해결할 수 있는 최적의 솔루션을 만드는 것을 최우선으로 합니다.',
+          '사용자의 관점에서 생각하고, 문제를 해결할 수 있는 최적의 솔루션을 만드는 것을 최우선으로 ',
         alt: '사용자 중심 아이콘',
       },
       optimizeCard: {
@@ -57,7 +57,7 @@ const AboutLogic: ComponentOptions = {
         icon: '/assets/image/about/growth_icon.svg',
         title: '지속적인 성장',
         description:
-          '끊임없이 변화하는 기술과 트렌드를 따라가며, 새로운 도구와 방법을 학습하고 프로젝트에 적극 반영합니다.',
+          '끊임없이 변화하는 기술과 트렌드를 따라가며, 새로운 도구와 방법을 학습하고 프로젝트에 적극 반영',
         alt: '지속적인 성장 아이콘',
       },
     }
@@ -79,7 +79,9 @@ const AboutLogic: ComponentOptions = {
         const imgs = Array.from(root.querySelectorAll<HTMLImageElement>('img'))
         if (imgs.length === 0) return resolve()
         let loaded = 0
-        const done = () => { if (++loaded === imgs.length) resolve() }
+        const done = () => {
+          if (++loaded === imgs.length) resolve()
+        }
         imgs.forEach((img) => {
           if (img.complete) done()
           else {

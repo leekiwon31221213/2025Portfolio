@@ -1,110 +1,66 @@
 @media (max-width: 1024px) {
-  :global(#project).project-page h1 {
-    font-size: clamp(3rem, 3.906vw, 5rem);
+  :global(#project).project-page .project-track {
+    gap: 2.4rem;
   }
-}
 
-@media (max-width: 550px) {
-  :global(#project).project-page .dec {
-    font-size: clamp(1.4rem, 3.889vw, 1.6rem);
+  :global(#project).project-page .project-card {
+    flex-basis: clamp(34rem, 42vw, 43rem);
+    width: clamp(34rem, 42vw, 43rem);
+    padding: 1.8rem;
   }
-}
 
-@media (max-width: 1024px) {
-  :global(#project).project-page :global(#project-swiper) .project-img {
-    width: clamp(40rem, 52.083vw, 50rem);
-  }
-}
-
-@media (max-width: 768px) {
-  :global(#project).project-page :global(#project-swiper) .project-img {
-    width: clamp(33rem, 60vw, 40rem);
-  }
-}
-
-@media (max-width: 550px) {
-  :global(#project).project-page :global(#project-swiper) .project-img {
-    width: clamp(29rem, 80.556vw, 33rem);
-  }
-}
-
-@media (max-width: 1024px) {
-  :global(#project).project-page :global(#project-swiper) .project-list {
-    width: unset;
+  :global(#project).project-page .project-img {
   }
 }
 
 @media (max-width: 768px) {
-  :global(#project).project-page :global(#project-swiper) .project-list {
-    width: 90%;
+  :global(#project).project-page {
+    padding-bottom: 10rem;
+  }
+
+  :global(#project).project-page .project-track {
+    gap: 2rem;
+  }
+
+  :global(#project).project-page .project-card {
+    flex-basis: 55vw;
+    width: 55vw;
+    padding: 1.6rem;
+    border-radius: 2rem;
+  }
+
+  :global(#project).project-page .project-img {
+    border-radius: 1.4rem;
+  }
+
+  :global(#project).project-page .hashtags {
+    margin-bottom: 2.4rem;
   }
 }
 
 @media (max-width: 550px) {
-  :global(#project).project-page :global(#project-swiper) .project-list {
+  :global(#project).project-page .project-track {
+    gap: 1.6rem;
+  }
+
+  :global(#project).project-page .project-card {
+    flex-basis: 72vw;
+    width: 72vw;
+    padding: 1.4rem;
+    border-radius: 1.8rem;
+  }
+
+  :global(#project).project-page .project-img {
+    border-radius: 1.2rem;
+  }
+
+  :global(#project).project-page .btn-box {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  :global(#project).project-page .project-btn.glass {
     width: 100%;
   }
 }
-
-@media (max-width: 550px) {
-  :global(#project).project-page :global(#project-swiper) .project-list li {
-    align-items: center;
-  }
-}
-
-@media (max-width: 550px) {
-  :global(#project).project-page :global(#project-swiper) .project-list li p {
-    text-align: center;
-  }
-}
-
-@media (max-width: 768px) {
-  :global(#project).project-page :global(#project-swiper) .project-list li .hashtags {
-    flex-direction: column;
-    width: 90%;
-  }
-}
-
-@media (max-width: 550px) {
-  :global(#project).project-page :global(#project-swiper) .project-list li .btn-box {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 1024px) {
-  :global(#project).project-page :global(#project-swiper) .project-list li .project-btn.glass {
-    font-size: clamp(1.3rem, 2.364vw, 1.5rem);
-  }
-}
-
-@media (max-width: 768px) {
-  :global(#project).project-page :global(#project-swiper) .project-list li .project-btn.glass {
-    padding: 0.9rem clamp(1rem, 1.818vw, 1.6rem);
-  }
-}
-
-@media (min-width: 1025px) {
-  :global(#project).project-page :global(.swiper-slide) {
-    width: clamp(520px, 50.781vw, 560px) !important;
-  }
-}
-
-@media (max-width: 1024px) {
-  :global(#project).project-page :global(.swiper-slide) {
-    width: clamp(430px, 55.99vw, 520px) !important;
-  }
-}
-
-@media (max-width: 768px) {
-  :global(#project).project-page :global(.swiper-slide) {
-    width: clamp(365px, 66.364vw, 430px) !important;
-  }
-}
-
-@media (max-width: 550px) {
-  :global(#project).project-page :global(.swiper-slide) {
-    width: 100% !important;
-  }
-}
-
-.root {}

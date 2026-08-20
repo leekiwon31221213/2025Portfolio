@@ -1,63 +1,45 @@
-.intro-text-box {
-  position: relative;
-  top: 45%;
-  z-index: 8;
-  color: #333;
-  text-align: center;
-}
-
-.intro-text-box li {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.intro-text-box li h2 {
-  font-size: clamp(2.2rem, 2.865vw, 2.4rem);
-  font-weight: 600;
-  color: #ffffff;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-image: linear-gradient(to right, #818cf8, #c084fc, #60a5fa);
-}
-
-.intro-text-box li p {
-  margin-top: 1rem;
-  font-size: clamp(1.4rem, 3.889vw, 1.6rem);
-}
-
-.loading-page.loading {
+.loading-page {
   position: fixed;
+  inset: 0;
+  z-index: 1000;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.wave-canvas {
+  display: block;
   width: 100%;
   height: 100%;
-  background: #fff;
-  z-index: 6;
 }
 
-.loading-page.loading .progress {
-  position: relative;
-  top: 50%;
-  width: 90%;
-  height: 6px;
-  background: #eee;
-  border-radius: 3px;
-  overflow: hidden;
-  margin: 0 auto;
+.water-fill {
+  x: 0;
+  y: 0;
+  fill: url('#waterGradient');
 }
 
-.loading-page.loading .progress .bar {
-  width: 0%;
-  height: 100%;
-  background: #333;
-  animation: loading 3s linear forwards;
+.intro-title {
+  font-size: clamp(3.2rem, 5.556vw, 8rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
 }
 
-@keyframes loading {
-  from {
-    width: 0%;
-  }
-  to {
-    width: 100%;
-  }
+.intro-title-dark {
+  fill: #111827;
+}
+
+.intro-title-light {
+  fill: #ffffff;
+}
+
+.bubble {
+  fill: rgba(255, 255, 255, 0.18);
+  stroke: rgba(255, 255, 255, 0.65);
+  stroke-width: 2px;
+}
+
+.bubble-2,
+.bubble-4 {
+  fill: rgba(255, 255, 255, 0.1);
+  stroke-width: 3px;
 }

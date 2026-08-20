@@ -1,15 +1,19 @@
 import type { ComponentOptions } from 'vue'
 
-import { Pagination, A11y } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import { RouterLink } from 'vue-router'
-
-import 'swiper/css'
-
 const ProjectLogic: ComponentOptions = {
   data() {
     return {
-      modules: [Pagination, A11y],
+      animationFrameId: 0,
+      galleryPosition: 0,
+      galleryVelocity: -0.45,
+      galleryAutoSpeed: -0.45,
+      galleryLoopWidth: 0,
+      isGalleryDragging: false,
+      isInteractivePress: false,
+      lastPointerX: 0,
+      lastPointerTime: 0,
+      dragDistance: 0,
+      wasGalleryDragged: false,
       project: [
         {
           img: '/assets/image/project/esafe_pr.png',
@@ -170,14 +174,162 @@ const ProjectLogic: ComponentOptions = {
       ],
     }
   },
-  components: {
-    Swiper,
-    SwiperSlide,
-    RouterLink,
+
+  computed: {
+    // 원본 프로젝트를 복제해 끊김 없는 목록을 만듭니다.
+    loopProjects() {
+      const indexedProjects = this.project.map((project: unknown, originalIndex: number) => ({
+        project,
+        originalIndex,
+      }))
+
+      return [...indexedProjects, ...indexedProjects]
+    },
   },
+
+  mounted() {
+    this.$nextTick(() => {
+      this.initInfiniteGallery()
+    })
+    window.addEventListener('resize', this.measureGallery)
+  },
+
+  beforeUnmount() {
+    cancelAnimationFrame(this.animationFrameId)
+    window.removeEventListener('resize', this.measureGallery)
+  },
+
   methods: {
-    onSwiper(swiper: unknown) {},
-    onSlideChange() {},
+    // 갤러리 너비를 한 번 계산하고 애니메이션을 시작
+    initInfiniteGallery() {
+      this.measureGallery()
+      this.animationFrameId = requestAnimationFrame(this.updateGallery)
+    },
+
+    // 복제되기 전 원본 카드 묶음의 너비를 저장
+    measureGallery() {
+      const track = this.$refs.galleryTrack as HTMLElement | undefined
+
+      if (!track) return
+
+      const previousLoopWidth = this.galleryLoopWidth
+      const firstCard = track.children[0] as HTMLElement | undefined
+      const firstCopiedCard = track.children[this.project.length] as HTMLElement | undefined
+      const nextLoopWidth =
+        firstCard && firstCopiedCard ? firstCopiedCard.offsetLeft - firstCard.offsetLeft : 0
+
+      if (previousLoopWidth > 0 && nextLoopWidth > 0) {
+        this.galleryPosition = (this.galleryPosition / previousLoopWidth) * nextLoopWidth
+      }
+
+      this.galleryLoopWidth = nextLoopWidth
+      this.normalizeGalleryPosition()
+    },
+
+    // 한 개의 프레임 루프로 자동 이동과 관성을 처리
+    updateGallery() {
+      const track = this.$refs.galleryTrack as HTMLElement | undefined
+
+      if (!track) return
+
+      if (!this.isGalleryDragging) {
+        this.galleryVelocity += (this.galleryAutoSpeed - this.galleryVelocity) * 0.025
+        this.galleryPosition += this.galleryVelocity
+      }
+
+      this.normalizeGalleryPosition()
+      track.style.transform = `translate3d(${this.galleryPosition}px, 0, 0)`
+      this.animationFrameId = requestAnimationFrame(this.updateGallery)
+    },
+
+    // 트랙 위치를 원본 카드 너비 안에서 반복시킵니다.
+    normalizeGalleryPosition() {
+      if (this.galleryLoopWidth <= 0) return
+
+      while (this.galleryPosition <= -this.galleryLoopWidth) {
+        this.galleryPosition += this.galleryLoopWidth
+      }
+
+      while (this.galleryPosition > 0) {
+        this.galleryPosition -= this.galleryLoopWidth
+      }
+    },
+
+    // 세로 휠 방향을 가로 이동 속도에 반영
+    handleWheel(event: WheelEvent) {
+      const wheelAmount =
+        Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY
+      const wheelInfluence = Math.max(-0.45, Math.min(0.45, wheelAmount * 0.002))
+      this.galleryVelocity -= wheelInfluence
+      this.galleryVelocity = Math.max(-1.8, Math.min(1.8, this.galleryVelocity))
+    },
+
+    // 마우스와 터치 드래그를 시작
+    handlePointerDown(event: PointerEvent) {
+      if (event.button !== 0) return
+
+      this.wasGalleryDragged = false
+      const target = event.target as HTMLElement
+
+      if (target.closest('a, button')) {
+        this.isInteractivePress = true
+        this.isGalleryDragging = true
+        this.galleryVelocity = 0
+        return
+      }
+
+      const viewport = this.$refs.galleryViewport as HTMLElement | undefined
+      viewport?.setPointerCapture(event.pointerId)
+      this.isGalleryDragging = true
+      this.lastPointerX = event.clientX
+      this.lastPointerTime = performance.now()
+      this.dragDistance = 0
+      this.galleryVelocity = 0
+    },
+
+    // 포인터 이동 거리만큼 트랙을 이동
+    handlePointerMove(event: PointerEvent) {
+      if (!this.isGalleryDragging || this.isInteractivePress) return
+
+      const now = performance.now()
+      const moveX = event.clientX - this.lastPointerX
+      const elapsedTime = Math.max(1, now - this.lastPointerTime)
+
+      this.galleryPosition += moveX
+      this.galleryVelocity = (moveX / elapsedTime) * 16
+      this.galleryVelocity = Math.max(-12, Math.min(12, this.galleryVelocity))
+      this.dragDistance += Math.abs(moveX)
+      this.lastPointerX = event.clientX
+      this.lastPointerTime = now
+      this.wasGalleryDragged = this.dragDistance > 8
+    },
+
+    // 드래그가 끝나면 현재 속도에서 자동 속도로 서서히 돌아갑니다.
+    handlePointerUp(event: PointerEvent) {
+      if (!this.isGalleryDragging) return
+
+      if (this.isInteractivePress) {
+        this.isInteractivePress = false
+        this.isGalleryDragging = false
+        return
+      }
+
+      const viewport = this.$refs.galleryViewport as HTMLElement | undefined
+      if (viewport?.hasPointerCapture(event.pointerId)) {
+        viewport.releasePointerCapture(event.pointerId)
+      }
+      this.isGalleryDragging = false
+    },
+
+    // 드래그 직후 링크가 잘못 눌리는 것을 막습니다.
+    handleGalleryClick(event: MouseEvent) {
+      if (!this.wasGalleryDragged) return
+
+      event.preventDefault()
+      event.stopPropagation()
+      this.wasGalleryDragged = false
+    },
+
     openMoWin(url?: string) {
       const features = 'scrollbars=no,width=450,height=900,top=100,left=100'
       window.open(url, 'win', features)

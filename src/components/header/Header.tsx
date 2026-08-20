@@ -4,7 +4,6 @@ import type { ComponentOptions, DefineComponent } from 'vue'
 import styles from '/assets/scss/components/header/Header.module.scss'
 import mediaStyles from '/assets/scss/components/header/HeaderMedia.module.scss'
 
-
 const Header: ComponentOptions = {
   name: 'Header',
   data() {
@@ -19,7 +18,7 @@ const Header: ComponentOptions = {
     },
   },
   methods: {
-    // 768px 이하 화면을 모바일 UI로 전환합니다.
+    // 768px 이하 화면을 모바일 UI로 전환
     checkMobile() {
       const userAgent = navigator.userAgent.toLowerCase()
       const isMobileDevice = /iphone|ipad|ipod|android/.test(userAgent)
@@ -119,14 +118,18 @@ const Header: ComponentOptions = {
       <header class={`${styles['portfolio-header']} ${styles['header']}`}>
         {this.showBackButton ? (
           <nav>
-            <button class={`${styles['back-btn']}`} onClick={this.goBack} lang="en">Back</button>
+            <button class={`${styles['back-btn']}`} onClick={this.goBack} lang="en">
+              Back
+            </button>
           </nav>
         ) : !this.isMobile ? (
           <nav>
             <ul>
               {menuItems.map((item) => (
                 <li key={item.id}>
-                  <button onClick={() => this.scrollTo(item.id)} lang="en">{item.label}</button>
+                  <button onClick={() => this.scrollTo(item.id)} lang="en">
+                    {item.label}
+                  </button>
                 </li>
               ))}
             </ul>
@@ -139,7 +142,9 @@ const Header: ComponentOptions = {
             <ul class={`${styles['mo-menu__inner']} ${styles['glass']}`}>
               {menuItems.map((item) => (
                 <li key={item.id}>
-                  <button onClick={() => this.scrollTo(item.id)} lang="en">{item.label}</button>
+                  <button onClick={() => this.scrollTo(item.id)} lang="en">
+                    {item.label}
+                  </button>
                 </li>
               ))}
               <li>

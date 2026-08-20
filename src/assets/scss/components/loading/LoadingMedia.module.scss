@@ -1,7 +1,5 @@
 @media (max-width: 768px) {
-  .loading-page .intro-text-box li h2 {
-    font-size: clamp(2rem, 3.636vw, 2.2rem);
+  .intro-title {
+    letter-spacing: 0.05em;
   }
 }
-
-.root {}

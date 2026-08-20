@@ -37,8 +37,7 @@
 
 @media (max-width: 1024px) {
   :global(#about).about-page.section2 .section__inner .about-content-tie .about-content h2 {
-    text-align: center;
-    margin-bottom: 2rem;
+    display: none;
   }
 }
 
@@ -131,13 +130,13 @@
 @media (max-width: 1024px) {
   :global(#about).about-page.section2 h1 {
     font-size: clamp(3rem, 3.906vw, 5rem);
-    padding-bottom: 3rem;
+    padding-bottom: 5rem;
   }
 }
 
 @media (max-width: 768px) {
   :global(#about).about-page.section2 h1 {
-    padding: 145px 0 clamp(45px, 8.182vw, 100px);
+    padding: 145px 0 5rem;
     font-size: clamp(2.4rem, 4.364vw, 3rem);
   }
 }

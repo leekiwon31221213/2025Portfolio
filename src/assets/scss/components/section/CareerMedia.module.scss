@@ -251,14 +251,46 @@
     border-radius: 1.9rem;
   }
 
-  :global(#journey).career-page .journey__inner > li:nth-child(1) { top: 1%; right: auto; left: 1%; }
-  :global(#journey).career-page .journey__inner > li:nth-child(2) { top: 13%; right: 1%; left: auto; }
-  :global(#journey).career-page .journey__inner > li:nth-child(3) { top: 26%; right: auto; left: 1%; }
-  :global(#journey).career-page .journey__inner > li:nth-child(4) { top: 39%; right: 1%; left: auto; }
-  :global(#journey).career-page .journey__inner > li:nth-child(5) { top: 52%; right: auto; left: 1%; }
-  :global(#journey).career-page .journey__inner > li:nth-child(6) { top: 65%; right: 1%; left: auto; }
-  :global(#journey).career-page .journey__inner > li:nth-child(7) { top: 77%; right: auto; left: 1%; }
-  :global(#journey).career-page .journey__inner > li:nth-child(8) { top: 88%; right: 1%; left: auto; }
+  :global(#journey).career-page .journey__inner > li:nth-child(1) {
+    top: 1%;
+    right: auto;
+    left: 1%;
+  }
+  :global(#journey).career-page .journey__inner > li:nth-child(2) {
+    top: 13%;
+    right: 1%;
+    left: auto;
+  }
+  :global(#journey).career-page .journey__inner > li:nth-child(3) {
+    top: 26%;
+    right: auto;
+    left: 1%;
+  }
+  :global(#journey).career-page .journey__inner > li:nth-child(4) {
+    top: 39%;
+    right: 1%;
+    left: auto;
+  }
+  :global(#journey).career-page .journey__inner > li:nth-child(5) {
+    top: 52%;
+    right: auto;
+    left: 1%;
+  }
+  :global(#journey).career-page .journey__inner > li:nth-child(6) {
+    top: 65%;
+    right: 1%;
+    left: auto;
+  }
+  :global(#journey).career-page .journey__inner > li:nth-child(7) {
+    top: 77%;
+    right: auto;
+    left: 1%;
+  }
+  :global(#journey).career-page .journey__inner > li:nth-child(8) {
+    top: 88%;
+    right: 1%;
+    left: auto;
+  }
 
   :global(#journey).career-page .journey__inner > li::before,
   :global(#journey).career-page .journey__inner > li:nth-child(odd)::before,
@@ -604,7 +636,8 @@
   }
 }
 
-.root {}
+.root {
+}
 
 @media (max-width: 550px) {
   :global(#journey).career-page {
@@ -673,8 +706,21 @@
     padding-left: 6rem;
   }
 
-  :global(#career).career-page .timeline-wrap .career__inner > li:is(:nth-child(1), :nth-child(2), :nth-child(3), :nth-child(4), :nth-child(5), :nth-child(6)),
-  :global(#education).career-page .timeline-wrap .education__inner > li:is(:nth-child(1), :nth-child(2)) {
+  :global(#career).career-page
+    .timeline-wrap
+    .career__inner
+    > li:is(
+      :nth-child(1),
+      :nth-child(2),
+      :nth-child(3),
+      :nth-child(4),
+      :nth-child(5),
+      :nth-child(6)
+    ),
+  :global(#education).career-page
+    .timeline-wrap
+    .education__inner
+    > li:is(:nth-child(1), :nth-child(2)) {
     position: relative;
     top: auto;
     right: auto;
@@ -697,8 +743,26 @@
 }
 
 @media (max-width: 768px) {
-  :global(#career).career-page .career__inner li:is(:nth-child(1), :nth-child(2), :nth-child(3), :nth-child(4), :nth-child(5), :nth-child(6))::before,
-  :global(#education).career-page .education__inner li:is(:nth-child(1), :nth-child(2), :nth-child(3), :nth-child(4), :nth-child(5), :nth-child(6))::before {
+  :global(#career).career-page
+    .career__inner
+    li:is(
+      :nth-child(1),
+      :nth-child(2),
+      :nth-child(3),
+      :nth-child(4),
+      :nth-child(5),
+      :nth-child(6)
+    )::before,
+  :global(#education).career-page
+    .education__inner
+    li:is(
+      :nth-child(1),
+      :nth-child(2),
+      :nth-child(3),
+      :nth-child(4),
+      :nth-child(5),
+      :nth-child(6)
+    )::before {
     display: none;
   }
 }
@@ -817,14 +881,46 @@
     padding: 2rem;
   }
 
-  :global(#journey).career-page .journey__inner > li:nth-child(1) { top: 1%; right: auto; left: 2%; }
-  :global(#journey).career-page .journey__inner > li:nth-child(2) { top: 13%; right: 2%; left: auto; }
-  :global(#journey).career-page .journey__inner > li:nth-child(3) { top: 26%; right: auto; left: 2%; }
-  :global(#journey).career-page .journey__inner > li:nth-child(4) { top: 39%; right: 2%; left: auto; }
-  :global(#journey).career-page .journey__inner > li:nth-child(5) { top: 52%; right: auto; left: 2%; }
-  :global(#journey).career-page .journey__inner > li:nth-child(6) { top: 65%; right: 2%; left: auto; }
-  :global(#journey).career-page .journey__inner > li:nth-child(7) { top: 77%; right: auto; left: 2%; }
-  :global(#journey).career-page .journey__inner > li:nth-child(8) { top: 88%; right: 2%; left: auto; }
+  :global(#journey).career-page .journey__inner > li:nth-child(1) {
+    top: 1%;
+    right: auto;
+    left: 2%;
+  }
+  :global(#journey).career-page .journey__inner > li:nth-child(2) {
+    top: 13%;
+    right: 2%;
+    left: auto;
+  }
+  :global(#journey).career-page .journey__inner > li:nth-child(3) {
+    top: 26%;
+    right: auto;
+    left: 2%;
+  }
+  :global(#journey).career-page .journey__inner > li:nth-child(4) {
+    top: 39%;
+    right: 2%;
+    left: auto;
+  }
+  :global(#journey).career-page .journey__inner > li:nth-child(5) {
+    top: 52%;
+    right: auto;
+    left: 2%;
+  }
+  :global(#journey).career-page .journey__inner > li:nth-child(6) {
+    top: 65%;
+    right: 2%;
+    left: auto;
+  }
+  :global(#journey).career-page .journey__inner > li:nth-child(7) {
+    top: 77%;
+    right: auto;
+    left: 2%;
+  }
+  :global(#journey).career-page .journey__inner > li:nth-child(8) {
+    top: 88%;
+    right: 2%;
+    left: auto;
+  }
 
   :global(#journey).career-page .journey__inner > li::before,
   :global(#journey).career-page .journey__inner > li:nth-child(odd)::before,
