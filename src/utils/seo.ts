@@ -1,18 +1,18 @@
-import type { RouteMeta } from 'vue-router'
-
-type SeoData = {
-  title: string
-  description: string
-  canonical: string
-  image: string
+export type SeoData = {
+  title?: string
+  description?: string
+  canonical?: string
+  image?: string
+  robots?: string
 }
 
-const defaultSeo: SeoData = {
-  title: '프론트엔드 개발자 이기원 포트폴리오 | React · Vue · 웹 퍼블리셔',
+const defaultSeo: Required<SeoData> = {
+  title: '프론트엔드 개발자 이기원 | React 포트폴리오 · 웹퍼블리셔',
   description:
-    '프론트엔드 개발자 이기원의 2026 포트폴리오입니다. 웹 퍼블리싱과 프론트엔드 프로젝트, 경력, 기술, 협업 경험을 한눈에 볼 수 있습니다.',
+    '프론트엔드 개발자 이기원의 React 포트폴리오입니다. React와 TypeScript 기반 프론트엔드 프로젝트, 웹 퍼블리싱 및 반응형 웹 경험을 소개합니다.',
   canonical: 'https://kiwon2025portfolio.netlify.app/',
   image: 'https://kiwon2025portfolio.netlify.app/og.jpg',
+  robots: 'index, follow, max-image-preview:large, max-snippet:-1',
 }
 
 // 메타 태그 검색
@@ -94,20 +94,21 @@ const cleanupSeoElements = () => {
 }
 
 // 페이지별 SEO 적용
-export const applySeo = (routeMeta: RouteMeta = {}) => {
+export const applySeo = (routeMeta: SeoData = {}) => {
   const title = typeof routeMeta.title === 'string' ? routeMeta.title : defaultSeo.title
   const description =
     typeof routeMeta.description === 'string' ? routeMeta.description : defaultSeo.description
   const canonical =
     typeof routeMeta.canonical === 'string' ? routeMeta.canonical : defaultSeo.canonical
   const image = typeof routeMeta.image === 'string' ? routeMeta.image : defaultSeo.image
+  const robots = typeof routeMeta.robots === 'string' ? routeMeta.robots : defaultSeo.robots
 
   cleanupSeoElements()
 
   document.title = title
 
   setMetaContent('name', 'description', description)
-  setMetaContent('name', 'robots', 'index, follow')
+  setMetaContent('name', 'robots', robots)
   setMetaContent('property', 'og:title', title)
   setMetaContent('property', 'og:description', description)
   setMetaContent('property', 'og:url', canonical)

@@ -1,9 +1,8 @@
 import { defineConfig } from 'vite'
-import vueJsx from '@vitejs/plugin-vue-jsx'
-import svgLoader from 'vite-svg-loader'
+import react from '@vitejs/plugin-react'
 import path from 'path'
-export default defineConfig({
-  plugins: [vueJsx(), svgLoader()],
+export default defineConfig(({ command }) => ({
+  plugins: [react()],
 
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.scss', '.css', '.png', '.jpg', '.jpeg', '.svg'],
@@ -13,6 +12,9 @@ export default defineConfig({
   },
 
   css: {
+    modules: {
+      generateScopedName: command === 'build' ? '_[hash:base64:7]' : '[local]',
+    },
     preprocessorOptions: {
       scss: {
         additionalData: `
@@ -22,4 +24,4 @@ export default defineConfig({
       },
     },
   },
-})
+}))

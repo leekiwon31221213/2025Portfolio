@@ -2,7 +2,7 @@
   background-color: #030712;
 
   &.section2 {
-    h1 {
+    > h2 {
       width: 90%;
       padding: 145px 0 100px;
       margin: 0 auto;
@@ -34,7 +34,7 @@
           &.pc { display: block; }
           &.mo { display: none; }
 
-          h2 {
+          h3 {
             margin-bottom: 1rem;
             font-size: clamp(2.4rem, 2.344vw, 3rem);
             font-weight: 600;

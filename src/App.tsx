@@ -1,45 +1,65 @@
-import { ref, Transition, type ComponentOptions, type DefineComponent } from 'vue'
-import { RouterView, useRoute } from 'vue-router'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
 import Footer from './components/footer/Footer'
 import Header from './components/header/Header'
 import Loading from './components/loading/Loading'
+import PortfolioRoutes, { routeSeo } from './router'
+import { applySeo } from './utils/seo'
 import styles from '/assets/scss/app/App.module.scss'
 import mediaStyles from '/assets/scss/app/AppMedia.module.scss'
 
+const App = () => {
+  const location = useLocation()
+  const isFirstVisit = import.meta.env.DEV ? null : sessionStorage.getItem('isFirstVisit')
+  const [isLoading, setIsLoading] = useState(!isFirstVisit)
+  const [isLoadingLeaving, setIsLoadingLeaving] = useState(false)
+  const loadingTimer = useRef<number | null>(null)
 
-const App: ComponentOptions = {
-  name: 'App',
-  setup() {
-    const route = useRoute()
+  const onLoaded = useCallback(() => {
+    setIsLoadingLeaving(true)
 
-    // 처음 방문 여부 확인
-    const isFirstVisit = import.meta.env.DEV ? null : sessionStorage.getItem('isFirstVisit')
-    const isLoading = ref(!isFirstVisit)
+    loadingTimer.current = window.setTimeout(() => {
+      setIsLoading(false)
+    }, 800)
 
-    const onLoaded = () => {
-      isLoading.value = false
+    if (!import.meta.env.DEV) {
+      sessionStorage.setItem('isFirstVisit', 'true')
+    }
+  }, [])
 
-      if (!import.meta.env.DEV) {
-        sessionStorage.setItem('isFirstVisit', 'true')
+  useEffect(() => {
+    applySeo(routeSeo[location.pathname] ?? routeSeo['/'])
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  }, [location.pathname])
+
+  useEffect(() => {
+    return () => {
+      if (loadingTimer.current) {
+        window.clearTimeout(loadingTimer.current)
       }
     }
+  }, [])
 
-    return () => (
-      <main class={`${styles['portfolio-app']} ${mediaStyles['portfolio-app']} ${styles['root']} ${mediaStyles['root']}`} id="portFolioContainer">
-        <Transition name="fade">
-          {isLoading.value ? <Loading {...{ onFinished: onLoaded }}></Loading> : null}
-        </Transition>
-        {!isLoading.value ? (
-          <section>
-            <Header></Header>
-            <RouterView></RouterView>
-            {route.path !== '/gstt-detail' ? <Footer></Footer> : null}
-          </section>
-        ) : null}
-      </main>
-    )
-  },
+  return (
+    <div
+      className={`${styles['portfolio-app']} ${mediaStyles['portfolio-app']} ${styles['root']} ${mediaStyles['root']}`}
+      id="portFolioContainer"
+    >
+      {isLoading ? (
+        <section className={isLoadingLeaving ? 'fade-leave-active fade-leave-to' : ''}>
+          <Loading onFinished={onLoaded}></Loading>
+        </section>
+      ) : null}
+      <section>
+        <Header></Header>
+        <main aria-busy={isLoading}>
+          <PortfolioRoutes></PortfolioRoutes>
+        </main>
+        {location.pathname !== '/gstt-detail' ? <Footer></Footer> : null}
+      </section>
+    </div>
+  )
 }
 
-export default App as DefineComponent
+export default App

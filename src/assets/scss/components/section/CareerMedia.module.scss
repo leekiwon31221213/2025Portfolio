@@ -114,7 +114,7 @@
       margin-bottom: 4.5rem;
       text-align: left;
 
-      h1 { font-size: clamp(3rem, 9vw, 4.6rem); }
+      h2 { font-size: clamp(3rem, 9vw, 4.6rem); }
       > span { line-height: 1.5; }
     }
 
@@ -165,7 +165,7 @@
         &::after { display: none; }
       }
 
-      h2 { font-size: 2rem; }
+      h3 { font-size: 2rem; }
       strong { font-size: 1.4rem; }
 
       .img-box img { width: 5.4rem; }

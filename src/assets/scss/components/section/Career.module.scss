@@ -250,7 +250,7 @@ $journey-colors: #155dfc, #9810fa, #00a63e, #f54a00, #d5f36c, #f3b16c, #60a5fa, 
       letter-spacing: 0.3em;
     }
 
-    h1 {
+    h2 {
       font-size: clamp(5rem, 4.883vw, 8rem);
       font-weight: 600;
       letter-spacing: 0.03em;
@@ -362,7 +362,7 @@ $journey-colors: #155dfc, #9810fa, #00a63e, #f54a00, #d5f36c, #f3b16c, #60a5fa, 
       &.jc img { width: 5.9rem; }
     }
 
-    h2 {
+    h3 {
       margin-top: 1.4rem;
       font-size: clamp(2rem, 1.855vw, 2.4rem);
       font-weight: 600;
