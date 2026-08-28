@@ -18,6 +18,7 @@ const Loading = ({ onFinished }: LoadingProps) => {
       <svg
         className={`${styles['wave-canvas']} ${mediaStyles['wave-canvas']}`}
         xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
         role="img"
         aria-labelledby="introTitle"
       >

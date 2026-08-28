@@ -17,11 +17,15 @@ const App = () => {
   const loadingTimer = useRef<number | null>(null)
 
   const onLoaded = useCallback(() => {
-    setIsLoadingLeaving(true)
+    setIsLoadingLeaving((alreadyLeaving) => {
+      if (alreadyLeaving) return alreadyLeaving
 
-    loadingTimer.current = window.setTimeout(() => {
-      setIsLoading(false)
-    }, 800)
+      loadingTimer.current = window.setTimeout(() => {
+        setIsLoading(false)
+      }, 800)
+
+      return true
+    })
 
     if (!import.meta.env.DEV) {
       sessionStorage.setItem('isFirstVisit', 'true')
@@ -40,6 +44,28 @@ const App = () => {
       }
     }
   }, [])
+
+  useEffect(() => {
+    document.documentElement.style.overflow = isLoading ? 'hidden' : ''
+    document.body.style.overflow = isLoading ? 'hidden' : ''
+
+    return () => {
+      document.documentElement.style.overflow = ''
+      document.body.style.overflow = ''
+    }
+  }, [isLoading])
+
+  // 백그라운드 탭 등으로 인트로 애니메이션의 requestAnimationFrame이 멈춰도
+  // 스크롤 잠금이 영구히 풀리지 않는 상황을 막기 위한 안전장치
+  useEffect(() => {
+    if (!isLoading) return
+
+    const failsafeTimer = window.setTimeout(onLoaded, 6000)
+
+    return () => {
+      window.clearTimeout(failsafeTimer)
+    }
+  }, [isLoading, onLoaded])
 
   return (
     <div
