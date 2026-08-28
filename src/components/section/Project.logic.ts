@@ -1,4 +1,12 @@
-import { useEffect, useMemo, useRef, type MouseEvent, type PointerEvent, type WheelEvent } from 'react'
+import { useEffect, useMemo, type RefObject } from 'react'
+
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+import styles from '/assets/scss/components/section/Project.module.scss'
+
+// 프로젝트 전환 시 스테이지 배경으로 순환 적용되는 색상 (인터랙션 전용, 프로젝트 데이터와 무관)
+const STAGE_COLORS = ['#030712', '#0f1029', '#170f2e', '#081a33']
 
 export type ProjectItem = {
   img: string
@@ -13,26 +21,38 @@ export type ProjectItem = {
   link?: string
   google?: string
   apple?: string
+  responsiveMessage?: string
   icon: string
 }
 
-const ProjectLogic = () => {
-  const animationFrameId = useRef(0)
-  const galleryPosition = useRef(0)
-  const galleryVelocity = useRef(-0.45)
-  const galleryAutoSpeed = useRef(-0.45)
-  const galleryLoopWidth = useRef(0)
-  const isGalleryDragging = useRef(false)
-  const isInteractivePress = useRef(false)
-  const lastPointerX = useRef(0)
-  const lastPointerTime = useRef(0)
-  const dragDistance = useRef(0)
-  const wasGalleryDragged = useRef(false)
-  const galleryTrack = useRef<HTMLUListElement | null>(null)
-  const galleryViewport = useRef<HTMLElement | null>(null)
-
+const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
   const project = useMemo<ProjectItem[]>(
     () => [
+      {
+        img: '/assets/image/project/stock_news.png',
+        alt: 'Stock News 주식 뉴스 다이제스트 서비스',
+        name: 'Stock News(스톡 뉴스)',
+        dec: '미국 주식 유니버스를 SEC 데이터로 시딩하고, 관심종목의 매일 뉴스 다이제스트를 이메일로 발송하는 서비스',
+        hashTag: ['React', 'TypeScript', '사이드 프로젝트', '디자인+프론트 엔드'],
+        pcTxt: 'pc View',
+        moTxt: 'mo View',
+        tabletTxt: 'tablet View',
+        link: 'https://stockmailnews.duckdns.org/',
+        responsiveMessage: '반응형 화면은 현재 개발 중입니다.',
+        icon: '/assets/image/project/arrow_right_icon.svg',
+      },
+      {
+        img: '/assets/image/project/ai_risk.png',
+        alt: 'AI 위험성평가 업무 전산화 시스템',
+        name: 'AI 위험성평가',
+        dec: '사업장의 위험요인 등록부터 평가·개선까지 관리하고, AI가 위험도 등급을 예측하며 평가폼 분석 결과를 음성으로 안내하는 시스템',
+        hashTag: ['React', 'TypeScript', 'ASP 마이그레이션'],
+        pcTxt: 'pc View',
+        moTxt: 'mo View',
+        tabletTxt: 'tablet View',
+        link: 'https://www.safelabs.or.kr/',
+        icon: '/assets/image/project/arrow_right_icon.svg',
+      },
       {
         img: '/assets/image/project/esafe_pr.png',
         alt: '이세이프 회사소개',
@@ -190,133 +210,6 @@ const ProjectLogic = () => {
     [],
   )
 
-  // 원본 프로젝트 복제로 무한 목록 생성
-  const loopProjects = useMemo(() => {
-    const indexedProjects = project.map((projectItem, originalIndex) => ({
-      project: projectItem,
-      originalIndex,
-    }))
-    return [...indexedProjects, ...indexedProjects]
-  }, [project])
-
-  // 원본 카드 너비 안에서 트랙 위치 반복
-  const normalizeGalleryPosition = () => {
-    if (galleryLoopWidth.current <= 0) return
-    while (galleryPosition.current <= -galleryLoopWidth.current) {
-      galleryPosition.current += galleryLoopWidth.current
-    }
-    while (galleryPosition.current > 0) {
-      galleryPosition.current -= galleryLoopWidth.current
-    }
-  }
-
-  // 원본 카드 묶음 너비 저장
-  const measureGallery = () => {
-    const track = galleryTrack.current
-    if (!track) return
-
-    const previousLoopWidth = galleryLoopWidth.current
-    const firstCard = track.children[0] as HTMLElement | undefined
-    const firstCopiedCard = track.children[project.length] as HTMLElement | undefined
-    const nextLoopWidth =
-      firstCard && firstCopiedCard ? firstCopiedCard.offsetLeft - firstCard.offsetLeft : 0
-
-    if (previousLoopWidth > 0 && nextLoopWidth > 0) {
-      galleryPosition.current = (galleryPosition.current / previousLoopWidth) * nextLoopWidth
-    }
-    galleryLoopWidth.current = nextLoopWidth
-    normalizeGalleryPosition()
-  }
-
-  // 단일 프레임 루프로 자동 이동과 관성 처리
-  const updateGallery = () => {
-    const track = galleryTrack.current
-    if (!track) return
-
-    if (!isGalleryDragging.current) {
-      galleryVelocity.current +=
-        (galleryAutoSpeed.current - galleryVelocity.current) * 0.025
-      galleryPosition.current += galleryVelocity.current
-    }
-    normalizeGalleryPosition()
-    track.style.transform = `translate3d(${galleryPosition.current}px, 0, 0)`
-    animationFrameId.current = requestAnimationFrame(updateGallery)
-  }
-
-  // 갤러리 너비 계산 후 애니메이션 시작
-  const initInfiniteGallery = () => {
-    measureGallery()
-    animationFrameId.current = requestAnimationFrame(updateGallery)
-  }
-
-  // 세로 휠 방향을 가로 이동 속도에 반영
-  const handleWheel = (event: WheelEvent<HTMLElement>) => {
-    const wheelAmount =
-      Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY
-    const wheelInfluence = Math.max(-0.45, Math.min(0.45, wheelAmount * 0.002))
-    galleryVelocity.current -= wheelInfluence
-    galleryVelocity.current = Math.max(-1.8, Math.min(1.8, galleryVelocity.current))
-  }
-
-  // 마우스와 터치 드래그 시작
-  const handlePointerDown = (event: PointerEvent<HTMLElement>) => {
-    if (event.button !== 0) return
-    wasGalleryDragged.current = false
-    const target = event.target as HTMLElement
-
-    if (target.closest('a, button')) {
-      isInteractivePress.current = true
-      isGalleryDragging.current = true
-      galleryVelocity.current = 0
-      return
-    }
-
-    galleryViewport.current?.setPointerCapture(event.pointerId)
-    isGalleryDragging.current = true
-    lastPointerX.current = event.clientX
-    lastPointerTime.current = performance.now()
-    dragDistance.current = 0
-    galleryVelocity.current = 0
-  }
-
-  // 포인터 이동 거리만큼 트랙 이동
-  const handlePointerMove = (event: PointerEvent<HTMLElement>) => {
-    if (!isGalleryDragging.current || isInteractivePress.current) return
-    const now = performance.now()
-    const moveX = event.clientX - lastPointerX.current
-    const elapsedTime = Math.max(1, now - lastPointerTime.current)
-
-    galleryPosition.current += moveX
-    galleryVelocity.current = Math.max(-12, Math.min(12, (moveX / elapsedTime) * 16))
-    dragDistance.current += Math.abs(moveX)
-    lastPointerX.current = event.clientX
-    lastPointerTime.current = now
-    wasGalleryDragged.current = dragDistance.current > 8
-  }
-
-  // 드래그 종료 후 자동 이동 속도 복원
-  const handlePointerUp = (event: PointerEvent<HTMLElement>) => {
-    if (!isGalleryDragging.current) return
-    if (isInteractivePress.current) {
-      isInteractivePress.current = false
-      isGalleryDragging.current = false
-      return
-    }
-
-    if (galleryViewport.current?.hasPointerCapture(event.pointerId)) {
-      galleryViewport.current.releasePointerCapture(event.pointerId)
-    }
-    isGalleryDragging.current = false
-  }
-
-  // 드래그 직후 링크 오작동 방지
-  const handleGalleryClick = (event: MouseEvent<HTMLElement>) => {
-    if (!wasGalleryDragged.current) return
-    event.preventDefault()
-    event.stopPropagation()
-    wasGalleryDragged.current = false
-  }
-
   const openMoWin = (url?: string) => {
     window.open(url, 'win', 'scrollbars=no,width=450,height=900,top=100,left=100')
   }
@@ -327,25 +220,208 @@ const ProjectLogic = () => {
     alert(message)
   }
 
+  // 프로젝트 캔버스: 스크롤 진행에 따라 프로젝트가 하나씩 전시되듯 전환되는 GSAP ScrollTrigger 인터랙션
   useEffect(() => {
-    const frameId = requestAnimationFrame(initInfiniteGallery)
-    window.addEventListener('resize', measureGallery)
-    return () => {
-      cancelAnimationFrame(frameId)
-      cancelAnimationFrame(animationFrameId.current)
-      window.removeEventListener('resize', measureGallery)
+    gsap.registerPlugin(ScrollTrigger)
+    const root = rootRef.current
+    if (!root) return
+
+    const cardEls = Array.from(root.querySelectorAll<HTMLElement>(`.${styles['project-card']}`))
+    // 카드별 제목(마스크 안 h3)과 설명/버튼/기술스택 fade 대상들을 미리 캐싱
+    const cardMeta = cardEls.map((card) => {
+      const titleEl = card.querySelector<HTMLElement>(`.${styles['project-title-mask']} h3`)
+      const descEl = card.querySelector<HTMLElement>(`.${styles['project-desc']}`)
+      const btnEls = Array.from(card.querySelectorAll<HTMLElement>(`.${styles['project-btn']}`))
+      // stack-label(해쉬태그)은 인터랙션 미적용 고정 텍스트
+      const tagEls = Array.from(card.querySelectorAll<HTMLElement>(`.${styles['hashtags']} li`))
+      const fadeEls = [descEl, ...btnEls, ...tagEls].filter(Boolean) as HTMLElement[]
+      return { titleEl, fadeEls }
+    })
+    const canvasEl = root.querySelector<HTMLElement>(`.${styles['project-canvas']}`)
+    const stageEl = root.querySelector<HTMLElement>(`.${styles['project-stage']}`)
+    const marqueeEl = root.querySelector<HTMLElement>(`.${styles['stage-marquee']}`)
+    const progressFillEl = root.querySelector<HTMLElement>(`.${styles['stage-progress-fill']}`)
+    const floatAEl = root.querySelector<HTMLElement>(`.${styles['float-a']}`)
+    const orbitEl = root.querySelector<HTMLElement>(`.${styles['stage-orbit']}`)
+
+    if (!canvasEl || !stageEl || cardEls.length === 0) return
+
+    // 스티키 스테이지 안에서 프로젝트가 전시되듯 전환된다 (모든 뷰포트 공통)
+    const buildCanvasInteractions = () => {
+      let activeIndex = 0
+      const xDistance = Math.min(170, window.innerWidth * 0.14)
+
+      // 현재 이미지와 다음 이미지만 먼저 불러와 전환 시 빈 화면을 방지한다
+      const prepareProjectImage = (projectIndex: number) => {
+        const image = cardEls[projectIndex]?.querySelector<HTMLImageElement>('img')
+        if (image) image.loading = 'eager'
+      }
+
+      prepareProjectImage(0)
+      prepareProjectImage(1)
+      gsap.set(cardEls, { autoAlpha: 0, zIndex: 1 })
+      gsap.set(cardEls[0], { autoAlpha: 1, zIndex: 2 })
+      gsap.set(stageEl, { backgroundColor: STAGE_COLORS[0] })
+      if (progressFillEl) gsap.set(progressFillEl, { scaleX: 0 })
+
+      // 스크롤 방향에 따라 다음/이전 프로젝트 이미지가 좌우로 진입하며 중앙 정렬된다
+      const activateCard = (nextIndex: number) => {
+        if (nextIndex === activeIndex) return
+        prepareProjectImage(nextIndex)
+        prepareProjectImage(nextIndex + 1)
+        prepareProjectImage(nextIndex - 1)
+        const outgoing = cardEls[activeIndex]
+        const incoming = cardEls[nextIndex]
+        const outgoingImg = outgoing.querySelector<HTMLElement>(`.${styles['project-img']}`)
+        const incomingImg = incoming.querySelector<HTMLElement>(`.${styles['project-img']}`)
+        const outgoingMeta = cardMeta[activeIndex]
+        const incomingMeta = cardMeta[nextIndex]
+
+        // 방향이 바뀔 때 이전 tween과 충돌하지 않도록 정리
+        gsap.killTweensOf(
+          [
+            outgoingImg,
+            incomingImg,
+            outgoingMeta.titleEl,
+            incomingMeta.titleEl,
+            ...outgoingMeta.fadeEls,
+            ...incomingMeta.fadeEls,
+          ].filter(Boolean) as HTMLElement[],
+        )
+        gsap.killTweensOf(cardEls)
+        gsap.set(cardEls.filter((card) => card !== incoming && card !== outgoing), {
+          autoAlpha: 0,
+          zIndex: 1,
+        })
+
+        // 아래로 스크롤하면 오른쪽, 위로 스크롤하면 왼쪽에서 진입한다
+        const startX = nextIndex > activeIndex ? xDistance : -xDistance
+
+        gsap.set(incoming, { zIndex: 2 })
+        gsap.set(outgoing, { zIndex: 1 })
+        gsap.set(incoming, { autoAlpha: 1 })
+        gsap.to(outgoing, { autoAlpha: 0, duration: 0.4, ease: 'power1.out' })
+
+        if (incomingImg) {
+          gsap.fromTo(
+            incomingImg,
+            { x: startX, scale: 0.97 },
+            { x: 0, scale: 1, duration: 0.8, ease: 'power4.out' },
+          )
+        }
+
+        // 제목 전환: 기존 제목이 위로 빠지고, 새 제목이 아래에서 올라온다
+        const titleTimeline = gsap.timeline()
+        if (outgoingMeta.titleEl) {
+          titleTimeline.to(
+            outgoingMeta.titleEl,
+            { yPercent: -120, duration: 0.5, ease: 'power4.out' },
+            0,
+          )
+        }
+        if (incomingMeta.titleEl) {
+          titleTimeline
+            .set(incomingMeta.titleEl, { yPercent: 120 }, 0)
+            .to(incomingMeta.titleEl, { yPercent: 0, duration: 0.6, ease: 'power4.out' }, 0.15)
+        }
+
+        // 설명 / 기술스택 전환: 살짝 fade-up + stagger
+        if (outgoingMeta.fadeEls.length) {
+          gsap.to(outgoingMeta.fadeEls, { opacity: 0, duration: 0.25, ease: 'power1.out' })
+        }
+        if (incomingMeta.fadeEls.length) {
+          gsap.fromTo(
+            incomingMeta.fadeEls,
+            { opacity: 0, y: 18 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.5,
+              ease: 'power2.out',
+              stagger: 0.06,
+              delay: 0.2,
+            },
+          )
+        }
+
+        // 프로젝트 전환에 맞춘 배경 컬러 transition
+        gsap.to(stageEl, {
+          backgroundColor: STAGE_COLORS[nextIndex % STAGE_COLORS.length],
+          duration: 0.7,
+          ease: 'power1.out',
+          overwrite: 'auto',
+        })
+
+        activeIndex = nextIndex
+      }
+
+      // 캔버스 높이와 같은 기준으로 프로젝트 인덱스를 계산한다
+      ScrollTrigger.create({
+        trigger: canvasEl,
+        start: 'top top',
+        end: 'bottom bottom',
+        refreshPriority: -1,
+        scrub: 1,
+        onUpdate: (self) => {
+          const index = Math.min(cardEls.length - 1, Math.floor(self.progress * cardEls.length))
+          if (index !== activeIndex) activateCard(index)
+          if (progressFillEl) gsap.set(progressFillEl, { scaleX: self.progress })
+          if (orbitEl) gsap.set(orbitEl, { rotation: self.progress * 720 })
+        },
+      })
+
+      // 배경 대형 타이포가 스크롤과 반대 방향으로 천천히 이동
+      if (marqueeEl) {
+        gsap.to(marqueeEl, {
+          xPercent: -24,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: canvasEl,
+            start: 'top top',
+            end: 'bottom bottom',
+            refreshPriority: -1,
+            scrub: 1.2,
+          },
+        })
+      }
+
+      if (floatAEl) {
+        gsap.to(floatAEl, {
+          y: 100,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: canvasEl,
+            start: 'top top',
+            end: 'bottom bottom',
+            refreshPriority: -1,
+            scrub: 1.3,
+          },
+        })
+      }
     }
-  }, [])
+
+    buildCanvasInteractions()
+
+    ScrollTrigger.refresh()
+
+    // 웹폰트 로드 등으로 레이아웃이 늦게 확정되는 경우를 대비한 위치 재계산
+    let cancelled = false
+    document.fonts?.ready
+      .then(() => {
+        if (!cancelled) ScrollTrigger.refresh()
+      })
+      .catch(() => undefined)
+
+    return () => {
+      cancelled = true
+      ScrollTrigger.getAll().forEach((trigger) => {
+        if (trigger.trigger && root.contains(trigger.trigger)) trigger.kill()
+      })
+    }
+  }, [rootRef])
 
   return {
-    loopProjects,
-    galleryTrack,
-    galleryViewport,
-    handleWheel,
-    handlePointerDown,
-    handlePointerMove,
-    handlePointerUp,
-    handleGalleryClick,
+    project,
     openMoWin,
     openTabletWin,
     openAppleAlert,

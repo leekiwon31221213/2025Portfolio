@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Temp browser profile (headless preview sessions)
+.tmp-chrome-project/

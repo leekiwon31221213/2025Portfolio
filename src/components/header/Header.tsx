@@ -100,14 +100,14 @@ const Header = () => {
 
   const menuItems = [
     { id: 'about', label: 'About' },
-    { id: 'journey', label: 'Journey' },
+    { id: 'journey', label: 'Career' },
     { id: 'skill', label: 'Skill' },
     { id: 'project', label: 'Project' },
   ]
 
   return (
     <header
-      className={`${styles['portfolio-header']} ${styles['header']} ${isScrolled ? styles.active : ''}`}
+      className={`${styles['portfolio-header']} ${styles['header']} ${mediaStyles['portfolio-header']} ${mediaStyles['header']} ${isScrolled ? styles.active : ''}`}
     >
       {showBackButton ? (
         <nav>
