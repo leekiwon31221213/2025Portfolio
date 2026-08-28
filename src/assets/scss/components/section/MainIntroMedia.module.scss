@@ -2,9 +2,11 @@
   .main-intro-page.section1 .section__inner {
     h1 {
       text-align: center;
-      font-size: clamp(2.4rem, 3.125vw, 3rem);
+      font-size: clamp(2.4rem, 3.125vw, 2.8rem);
 
-      strong { font-size: clamp(3rem, 3.906vw, 5rem); }
+      strong {
+        font-size: clamp(3rem, 3.906vw, 4rem);
+      }
     }
 
     p {
@@ -27,9 +29,15 @@
         display: initial;
         margin-bottom: 5rem;
 
-        .font-end-info-icon { left: -50px; }
-        .dev-icon { top: 0; }
-        .design-icon { left: -50px; }
+        .font-end-info-icon {
+          left: -50px;
+        }
+        .dev-icon {
+          top: 0;
+        }
+        .design-icon {
+          left: -50px;
+        }
       }
     }
   }
@@ -40,10 +48,14 @@
     h1 {
       font-size: clamp(2rem, 3.636vw, 2.4rem);
 
-      strong { font-size: clamp(2.4rem, 4.364vw, 3rem); }
+      strong {
+        font-size: clamp(2.4rem, 4.364vw, 3rem);
+      }
     }
 
-    p { font-size: clamp(1.6rem, 2.909vw, 1.8rem); }
+    p {
+      font-size: clamp(1.6rem, 2.909vw, 1.8rem);
+    }
 
     .section__inner-content {
       margin: clamp(100px, 18.182vw, 165px) 0;
@@ -90,6 +102,8 @@
       font-size: clamp(1.4rem, 3.889vw, 1.6rem);
     }
 
-    span::before { left: clamp(13px, 3.611vw, 20px); }
+    span::before {
+      left: clamp(13px, 3.611vw, 20px);
+    }
   }
 }

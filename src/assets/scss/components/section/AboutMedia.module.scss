@@ -3,7 +3,7 @@
     &.section2 {
       > h2 {
         padding-bottom: 5rem;
-        font-size: clamp(3rem, 3.906vw, 5rem);
+        font-size: clamp(3rem, 3.906vw, 4rem);
       }
 
       .section__inner {
@@ -16,9 +16,15 @@
             width: auto;
             margin-right: 0;
 
-            &.pc { display: none; }
-            &.mo { display: block; }
-            h3 { display: none; }
+            &.pc {
+              display: none;
+            }
+            &.mo {
+              display: block;
+            }
+            h3 {
+              display: none;
+            }
 
             p {
               margin-bottom: 3rem;
@@ -26,7 +32,9 @@
             }
           }
 
-          .setting-card li { width: 100%; }
+          .setting-card li {
+            width: 100%;
+          }
         }
 
         .about-cards {
@@ -54,12 +62,16 @@
         padding-bottom: clamp(100px, 18.182vw, 150px);
 
         .about-content-tie .about-content {
-          h3 { font-size: clamp(1.9rem, 3.455vw, 2.4rem); }
+          h3 {
+            font-size: clamp(1.9rem, 3.455vw, 2.4rem);
+          }
 
           p {
             font-size: clamp(1.6rem, 2.909vw, 1.8rem);
 
-            strong { font-size: clamp(1.8rem, 3.273vw, 2.1rem); }
+            strong {
+              font-size: clamp(1.8rem, 3.273vw, 2.1rem);
+            }
           }
         }
       }
@@ -70,7 +82,9 @@
       height: clamp(5rem, 9.091vw, 6rem);
       border-radius: clamp(8px, 2.222vw, 18px);
 
-      img { width: clamp(20px, 3.636vw, 27px); }
+      img {
+        width: clamp(20px, 3.636vw, 27px);
+      }
     }
   }
 }
@@ -80,24 +94,36 @@
     &.section2 .section__inner {
       .about-content-tie {
         .about-content {
-          h3 { font-size: clamp(1.7rem, 4.722vw, 1.9rem); }
+          h3 {
+            font-size: clamp(1.7rem, 4.722vw, 1.9rem);
+          }
 
           p {
             font-size: clamp(1.4rem, 3.889vw, 1.6rem);
 
-            strong { font-size: clamp(1.5rem, 4.167vw, 1.8rem); }
+            strong {
+              font-size: clamp(1.5rem, 4.167vw, 1.8rem);
+            }
           }
         }
 
         .setting-card li {
-          h3 { font-size: clamp(1.7rem, 4.722vw, 1.9rem); }
-          p { font-size: clamp(1.5rem, 4.167vw, 1.6rem); }
+          h3 {
+            font-size: clamp(1.7rem, 4.722vw, 1.9rem);
+          }
+          p {
+            font-size: clamp(1.5rem, 4.167vw, 1.6rem);
+          }
         }
       }
 
       .about-cards li {
-        h3 { font-size: clamp(1.7rem, 4.722vw, 1.9rem); }
-        p { font-size: clamp(1.5rem, 4.167vw, 1.6rem); }
+        h3 {
+          font-size: clamp(1.7rem, 4.722vw, 1.9rem);
+        }
+        p {
+          font-size: clamp(1.5rem, 4.167vw, 1.6rem);
+        }
       }
     }
 

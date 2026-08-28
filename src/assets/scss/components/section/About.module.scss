@@ -7,7 +7,7 @@
       padding: 145px 0 100px;
       margin: 0 auto;
       text-align: center;
-      font-size: clamp(5rem, 4.883vw, 8rem);
+      font-size: clamp(4rem, 3.9063vw, 5.5rem);
       font-weight: 600;
       letter-spacing: 5px;
     }
@@ -31,8 +31,12 @@
           letter-spacing: 2px;
           line-height: clamp(3rem, 2.93vw, 4rem);
 
-          &.pc { display: block; }
-          &.mo { display: none; }
+          &.pc {
+            display: block;
+          }
+          &.mo {
+            display: none;
+          }
 
           h3 {
             margin-bottom: 1rem;
@@ -88,7 +92,9 @@
           align-items: flex-start;
           margin-right: 30px;
 
-          &:last-child { margin-right: 0; }
+          &:last-child {
+            margin-right: 0;
+          }
 
           h3 {
             margin-bottom: 2rem;
@@ -123,7 +129,11 @@
     padding: 0.9rem 1.6rem 0.9rem 3rem;
     border-radius: 30px;
     background: rgba(255, 255, 255, 0.01);
-    box-shadow: -2px -2px 2px rgba(255, 255, 255, 0.2), 6px 10px 24px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.22);
+    box-shadow:
+      -2px -2px 2px rgba(255, 255, 255, 0.2),
+      6px 10px 24px rgba(0, 0, 0, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.22);
     color: #fff;
     font-size: 2rem;
     font-weight: 300;

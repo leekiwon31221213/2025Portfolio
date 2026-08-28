@@ -1,7 +1,9 @@
 :global(#skill).skill-page {
   background-color: #030712;
 
-  :global(.fa-angle-down) { transform: rotate(-90deg); }
+  :global(.fa-angle-down) {
+    transform: rotate(-90deg);
+  }
 
   .skill__inner {
     width: 90%;
@@ -13,7 +15,7 @@
     padding: 145px 0 35px;
     margin: 0 auto;
     text-align: center;
-    font-size: clamp(5rem, 4.883vw, 8rem);
+    font-size: clamp(4rem, 3.9063vw, 5.5rem);
     font-weight: 600;
     letter-spacing: 5px;
   }
@@ -85,10 +87,18 @@
               margin-bottom: 1.5rem;
               border-radius: 0.8rem;
 
-              &.front { background: linear-gradient(133deg, #faab89 0%, #f54a00 100%); }
-              &.design { background: linear-gradient(133deg, #dfbfff 0%, #c084fc 100%); }
-              &.collaboration { background: linear-gradient(133deg, #709cff 0%, #155dfc 100%); }
-              &.etc { background: linear-gradient(133deg, #2f54ce 0%, #9071ff 100%); }
+              &.front {
+                background: linear-gradient(133deg, #faab89 0%, #f54a00 100%);
+              }
+              &.design {
+                background: linear-gradient(133deg, #dfbfff 0%, #c084fc 100%);
+              }
+              &.collaboration {
+                background: linear-gradient(133deg, #709cff 0%, #155dfc 100%);
+              }
+              &.etc {
+                background: linear-gradient(133deg, #2f54ce 0%, #9071ff 100%);
+              }
             }
           }
 
@@ -135,7 +145,9 @@
         background-color: #1e2939;
       }
 
-      &.run .skill-bar { animation: fillBar 2.5s ease-in-out; }
+      &.run .skill-bar {
+        animation: fillBar 2.5s ease-in-out;
+      }
     }
   }
 
@@ -148,7 +160,11 @@
     padding: 3.5rem 3rem;
     border-radius: 30px;
     background: rgba(255, 255, 255, 0.01);
-    box-shadow: -2px -2px 2px rgba(255, 255, 255, 0.2), 6px 10px 24px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.22);
+    box-shadow:
+      -2px -2px 2px rgba(255, 255, 255, 0.2),
+      6px 10px 24px rgba(0, 0, 0, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.22);
     color: #fff;
     font-size: 2rem;
     font-weight: 300;
@@ -159,8 +175,12 @@
 }
 
 @keyframes fillBar {
-  from { width: 0; }
-  to { width: var(--target-width); }
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--target-width);
+  }
 }
 
 .reveal {

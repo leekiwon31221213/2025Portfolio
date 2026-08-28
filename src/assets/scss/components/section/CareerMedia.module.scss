@@ -1,12 +1,23 @@
 @media (max-width: 1024px) {
   :global(#career).career-page,
   :global(#education).career-page {
-    h1 { font-size: clamp(3rem, 3.906vw, 5rem); }
+    h1 {
+      font-size: clamp(3rem, 3.906vw, 4rem);
+    }
 
     :is(.career__inner, .education__inner) li {
-      .img-box img { width: clamp(40px, 5.208vw, 59px); }
+      .img-box img {
+        width: clamp(40px, 5.208vw, 59px);
+      }
 
-      &:is(:nth-child(1), :nth-child(2), :nth-child(3), :nth-child(4), :nth-child(5), :nth-child(6))::before {
+      &:is(
+          :nth-child(1),
+          :nth-child(2),
+          :nth-child(3),
+          :nth-child(4),
+          :nth-child(5),
+          :nth-child(6)
+        )::before {
         left: -52px;
         width: 20px;
         height: 20px;
@@ -25,7 +36,9 @@
       height: 310rem;
     }
 
-    .timeline-line-progress { stroke-width: 4; }
+    .timeline-line-progress {
+      stroke-width: 4;
+    }
 
     .journey__inner {
       > li {
@@ -47,7 +60,9 @@
 @media (max-width: 768px) {
   :global(#career).career-page,
   :global(#education).career-page {
-    h1 { font-size: clamp(2.4rem, 4.364vw, 3rem); }
+    h1 {
+      font-size: clamp(2.4rem, 4.364vw, 3rem);
+    }
 
     .timeline-wrap {
       width: calc(100% - 2rem);
@@ -58,7 +73,14 @@
         height: auto;
         padding-left: 6rem;
 
-        > li:is(:nth-child(1), :nth-child(2), :nth-child(3), :nth-child(4), :nth-child(5), :nth-child(6)) {
+        > li:is(
+            :nth-child(1),
+            :nth-child(2),
+            :nth-child(3),
+            :nth-child(4),
+            :nth-child(5),
+            :nth-child(6)
+          ) {
           position: relative;
           top: auto;
           right: auto;
@@ -68,12 +90,16 @@
           padding: 2rem;
           margin: 0 0 3rem;
 
-          &:last-child { margin-bottom: 0; }
+          &:last-child {
+            margin-bottom: 0;
+          }
         }
       }
     }
 
-    .desktop-line { display: none; }
+    .desktop-line {
+      display: none;
+    }
 
     .mobile-line {
       position: absolute;
@@ -86,13 +112,17 @@
     }
 
     :is(.career__inner, .education__inner) li {
-      p { font-size: clamp(1.4rem, 2.545vw, 1.6rem); }
+      p {
+        font-size: clamp(1.4rem, 2.545vw, 1.6rem);
+      }
 
       :is(.company-business-box, .educatio-business-box) h3 {
         font-size: clamp(1.6rem, 2.909vw, 1.9rem);
       }
 
-      &::before { display: none; }
+      &::before {
+        display: none;
+      }
     }
 
     .btn-box {
@@ -114,8 +144,12 @@
       margin-bottom: 4.5rem;
       text-align: left;
 
-      h2 { font-size: clamp(3rem, 9vw, 4.6rem); }
-      > span { line-height: 1.5; }
+      h2 {
+        font-size: clamp(2.4rem, 4.364vw, 3rem);
+      }
+      > span {
+        line-height: 1.5;
+      }
     }
 
     .timeline-wrap {
@@ -132,7 +166,9 @@
       height: 100%;
     }
 
-    .mobile-line { display: none; }
+    .mobile-line {
+      display: none;
+    }
 
     .journey__inner {
       position: relative;
@@ -146,14 +182,46 @@
         padding: 2rem;
         margin: 0;
 
-        &:nth-child(1) { top: 1%; right: auto; left: 2%; }
-        &:nth-child(2) { top: 13%; right: 2%; left: auto; }
-        &:nth-child(3) { top: 26%; right: auto; left: 2%; }
-        &:nth-child(4) { top: 39%; right: 2%; left: auto; }
-        &:nth-child(5) { top: 52%; right: auto; left: 2%; }
-        &:nth-child(6) { top: 65%; right: 2%; left: auto; }
-        &:nth-child(7) { top: 77%; right: auto; left: 2%; }
-        &:nth-child(8) { top: 88%; right: 2%; left: auto; }
+        &:nth-child(1) {
+          top: 1%;
+          right: auto;
+          left: 2%;
+        }
+        &:nth-child(2) {
+          top: 13%;
+          right: 2%;
+          left: auto;
+        }
+        &:nth-child(3) {
+          top: 26%;
+          right: auto;
+          left: 2%;
+        }
+        &:nth-child(4) {
+          top: 39%;
+          right: 2%;
+          left: auto;
+        }
+        &:nth-child(5) {
+          top: 52%;
+          right: auto;
+          left: 2%;
+        }
+        &:nth-child(6) {
+          top: 65%;
+          right: 2%;
+          left: auto;
+        }
+        &:nth-child(7) {
+          top: 77%;
+          right: auto;
+          left: 2%;
+        }
+        &:nth-child(8) {
+          top: 88%;
+          right: 2%;
+          left: auto;
+        }
 
         &::before {
           top: 0;
@@ -162,13 +230,21 @@
           transform: translate(-50%, -50%);
         }
 
-        &::after { display: none; }
+        &::after {
+          display: none;
+        }
       }
 
-      h3 { font-size: 2rem; }
-      strong { font-size: 1.4rem; }
+      h3 {
+        font-size: 2rem;
+      }
+      strong {
+        font-size: 1.4rem;
+      }
 
-      .img-box img { width: 5.4rem; }
+      .img-box img {
+        width: 5.4rem;
+      }
     }
   }
 }
@@ -195,8 +271,12 @@
         padding: 1.4rem;
         border-radius: 1.6rem;
 
-        &:is(:nth-child(1), :nth-child(3), :nth-child(5), :nth-child(7)) { left: 0; }
-        &:is(:nth-child(2), :nth-child(4), :nth-child(6), :nth-child(8)) { right: 0; }
+        &:is(:nth-child(1), :nth-child(3), :nth-child(5), :nth-child(7)) {
+          left: 0;
+        }
+        &:is(:nth-child(2), :nth-child(4), :nth-child(6), :nth-child(8)) {
+          right: 0;
+        }
 
         &::before {
           width: 2rem;
@@ -206,7 +286,9 @@
         }
       }
 
-      .img-box img { width: 5rem; }
+      .img-box img {
+        width: 5rem;
+      }
     }
   }
 }
