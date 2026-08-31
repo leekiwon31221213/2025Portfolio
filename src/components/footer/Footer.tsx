@@ -1,4 +1,4 @@
-import profileImg from '/assets/image/profile_img.png'
+import profileImg from '/assets/image/profile_img.webp'
 import styles from '/assets/scss/components/footer/Footer.module.scss'
 import mediaStyles from '/assets/scss/components/footer/FooterMedia.module.scss'
 
