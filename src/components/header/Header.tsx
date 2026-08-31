@@ -184,9 +184,14 @@ const Header = () => {
         </nav>
       ) : (
         <nav className={styles['mo-nav']}>
-          <span className={styles['mo-menu']} onClick={menuOn}>
+          <button
+            type="button"
+            className={styles['mo-menu']}
+            onClick={menuOn}
+            aria-label="메뉴 열기"
+          >
             <FontAwesomeIcon icon={faBars}></FontAwesomeIcon>
-          </span>
+          </button>
           <ul className={`${styles['mo-menu__inner']} ${styles['glass']}`}>
             {menuItems.map((item) => (
               <li key={item.id}>
@@ -196,9 +201,9 @@ const Header = () => {
               </li>
             ))}
             <li>
-              <span onClick={menuOff}>
+              <button type="button" onClick={menuOff} aria-label="메뉴 닫기">
                 <FontAwesomeIcon icon={faXmark}></FontAwesomeIcon>
-              </span>
+              </button>
             </li>
           </ul>
         </nav>

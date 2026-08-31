@@ -77,13 +77,13 @@ const App = () => {
           <Loading onFinished={onLoaded}></Loading>
         </section>
       ) : null}
-      <section>
+      <div>
         <Header></Header>
         <main aria-busy={isLoading}>
           <PortfolioRoutes></PortfolioRoutes>
         </main>
         {location.pathname !== '/gstt-detail' ? <Footer></Footer> : null}
-      </section>
+      </div>
     </div>
   )
 }
