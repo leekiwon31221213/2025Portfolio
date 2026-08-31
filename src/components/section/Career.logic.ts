@@ -90,7 +90,7 @@ const CareerLogic = (rootRef: RefObject<HTMLElement | null>) => {
   )
 
   // 학력과 경력을 시작일 순으로 정렬
-  const journey = useMemo(
+  const careerTimeline = useMemo(
     () => [
       {
         ...education[1],
@@ -167,7 +167,7 @@ const CareerLogic = (rootRef: RefObject<HTMLElement | null>) => {
 
   // 제목 찾기
   const getSectionTitles = () => {
-    return rootRef.current?.querySelectorAll<HTMLElement>('#journey h2') ?? []
+    return rootRef.current?.querySelectorAll<HTMLElement>('#career h2') ?? []
   }
 
   // 스크롤 자리 저장
@@ -250,7 +250,10 @@ const CareerLogic = (rootRef: RefObject<HTMLElement | null>) => {
             onRefreshInit: () => {
               setTimelinePath(timelineWrap, line, items, isMobile)
               const refreshedLength = path.getTotalLength()
-              gsap.set(path, { strokeDasharray: refreshedLength })
+              gsap.set(path, {
+                strokeDasharray: refreshedLength,
+                strokeDashoffset: refreshedLength,
+              })
             },
           },
         })
@@ -322,15 +325,33 @@ const CareerLogic = (rootRef: RefObject<HTMLElement | null>) => {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
-    const animationFrameId = requestAnimationFrame(initAnimations)
+    let resizeAnimationFrameId = 0
+    const animationFrameId = requestAnimationFrame(() => {
+      initAnimations()
+      ScrollTrigger.refresh()
+    })
+
+    // 화면 크기가 바뀌면 라인 위치를 다시 계산
+    const refreshLineAnimations = () => {
+      cancelAnimationFrame(resizeAnimationFrameId)
+      resizeAnimationFrameId = requestAnimationFrame(() => {
+        initLineAnimations()
+        ScrollTrigger.refresh()
+      })
+    }
+
+    window.addEventListener('resize', refreshLineAnimations)
+
     return () => {
       cancelAnimationFrame(animationFrameId)
+      cancelAnimationFrame(resizeAnimationFrameId)
+      window.removeEventListener('resize', refreshLineAnimations)
       lineTimelines.current.forEach((timeline) => timeline.kill())
       lineMedia.current?.revert()
     }
   }, [])
 
-  return { journey, displayedCareers, loadMore }
+  return { careerTimeline, displayedCareers, loadMore }
 }
 
 export default CareerLogic

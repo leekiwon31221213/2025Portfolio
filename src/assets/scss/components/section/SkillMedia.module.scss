@@ -1,8 +1,5 @@
 @media (max-width: 1024px) {
   :global(#skill).skill-page {
-    .skill__inner {
-      padding-bottom: clamp(15rem, 19.531vw, 25rem);
-    }
     h2 {
       font-size: clamp(3rem, 3.906vw, 4rem);
     }
@@ -11,8 +8,7 @@
     }
 
     .skills-box {
-      flex-direction: column;
-      gap: 5rem;
+      @include flex-col(space-evenly, stretch, 3rem);
 
       li {
         width: 100%;

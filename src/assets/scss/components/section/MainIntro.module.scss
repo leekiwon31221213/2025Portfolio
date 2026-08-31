@@ -28,13 +28,12 @@
     }
 
     .section__inner-content {
-      display: flex;
-      justify-content: space-between;
+      @include flex(space-between);
       margin: 165px 0;
 
       .img-box {
+        @include flex;
         position: relative;
-        display: flex;
 
         .circle {
           position: relative;
@@ -124,9 +123,7 @@
 }
 
 .glass {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-inline(center, center);
   width: 220px;
   height: 60px;
   padding: 0.9rem 1.6rem;

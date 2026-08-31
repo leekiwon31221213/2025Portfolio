@@ -25,22 +25,18 @@
   }
 
   nav {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    @include flex(flex-end, center);
     height: inherit;
 
     ul {
+      @include flex(flex-end);
       z-index: 5;
-      display: flex;
-      justify-content: flex-end;
       width: 100%;
       margin: 0 3rem;
       text-align: right;
 
       li {
-        display: flex;
-        justify-content: flex-end;
+        @include flex(flex-end);
         margin-right: 5rem;
 
         &:last-child {
@@ -77,16 +73,12 @@
       position: fixed;
       top: 0;
       right: -100%;
-      flex-direction: column;
       margin: 0;
       visibility: hidden;
       opacity: 0;
 
       &.glass {
-        display: inline-flex;
-        flex-direction: column;
-        align-items: flex-end;
-        justify-content: flex-start;
+        @include flex-col-inline(flex-start, flex-end);
         width: 100%;
         height: 100%;
         padding: 10rem 0 0;

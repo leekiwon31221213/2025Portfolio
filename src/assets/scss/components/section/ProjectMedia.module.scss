@@ -18,12 +18,11 @@
 
     .project-card {
       display: block;
-      @include flex-col(center);
+      @include flex-col(center, stretch, 2.5rem);
       top: 8rem;
       bottom: 6rem;
       height: auto;
       transform: none;
-      gap: 2.5rem;
     }
 
     .project-img {
@@ -55,7 +54,7 @@
     }
 
     .project-btn.btn-mobile-only {
-      display: flex;
+      @include flex(center, center, 0.5rem);
     }
 
     .project-btn.glass.btn-mobile-only {
@@ -64,9 +63,9 @@
     }
 
     .project-stack {
+      @include flex-col(center, flex-start);
       order: 3;
       align-self: stretch;
-      align-items: flex-start;
       padding-top: 0;
       text-align: left;
     }
@@ -76,8 +75,7 @@
     }
 
     .hashtags {
-      flex-direction: row;
-      gap: 0.6rem 1.2rem;
+      @include flex-row(null, flex-end, 0.6rem 1.2rem);
     }
   }
 }
@@ -90,9 +88,9 @@
     }
 
     .project-card {
+      @include flex-col(center, stretch, 2rem);
       top: 7rem;
       bottom: 5rem;
-      gap: 2rem;
     }
 
     .project-info h3 {
@@ -143,7 +141,7 @@
     }
 
     .btn-box {
-      gap: 0.8rem;
+      @include flex(null, null, 0.8rem);
     }
 
     .project-btn {

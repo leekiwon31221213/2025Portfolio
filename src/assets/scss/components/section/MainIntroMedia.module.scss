@@ -15,14 +15,10 @@
     }
 
     .section__inner-content {
-      flex-direction: column-reverse;
-      align-items: center;
-      justify-content: normal;
+      @include flex-col-reverse(normal, center);
 
       li:first-child {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        @include flex-col(null, center, null);
       }
 
       .img-box {

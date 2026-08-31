@@ -6,15 +6,15 @@ import mediaStyles from '/assets/scss/components/section/CareerMedia.module.scss
 
 const Career = () => {
   const rootRef = useRef<HTMLElement | null>(null)
-  const { journey } = CareerLogic(rootRef)
+  const { careerTimeline } = CareerLogic(rootRef)
 
   return (
     <section
       ref={rootRef}
-      id="journey"
+      id="career"
       className={`${styles['career-page']} ${mediaStyles['career-page']}`}
     >
-      <section className={`${styles['journey-heading']} ${mediaStyles['journey-heading']}`}>
+      <section className={`${styles['career-heading']} ${mediaStyles['career-heading']}`}>
         <p>2014 — NOW</p>
         <h2 lang="ko">경력</h2>
         <span>배움에서 실무까지, 지금의 프론트엔드 개발자가 되기까지의 여정</span>
@@ -27,7 +27,7 @@ const Career = () => {
           aria-hidden="true"
         >
           <defs>
-            <linearGradient id="journeyLineGradient" x1="0" y1="1" x2="0" y2="0">
+            <linearGradient id="careerLineGradient" x1="0" y1="1" x2="0" y2="0">
               <stop offset="0%" stopColor="#818cf8"></stop>
               <stop offset="50%" stopColor="#c084fc"></stop>
               <stop offset="100%" stopColor="#60a5fa"></stop>
@@ -40,7 +40,7 @@ const Career = () => {
           <path
             className={styles['timeline-line-progress']}
             d="M600 50 C470 85 470 145 600 180 C730 215 730 275 600 310 C470 345 470 405 600 440 C730 475 730 535 600 570 C470 605 470 665 600 700 C730 735 730 795 600 830 C470 865 470 925 600 960"
-            stroke="url(#journeyLineGradient)"
+            stroke="url(#careerLineGradient)"
           ></path>
         </svg>
         <svg
@@ -50,7 +50,7 @@ const Career = () => {
           aria-hidden="true"
         >
           <defs>
-            <linearGradient id="journeyMobileLineGradient" x1="0" y1="1" x2="0" y2="0">
+            <linearGradient id="careerMobileLineGradient" x1="0" y1="1" x2="0" y2="0">
               <stop offset="0%" stopColor="#818cf8"></stop>
               <stop offset="50%" stopColor="#c084fc"></stop>
               <stop offset="100%" stopColor="#60a5fa"></stop>
@@ -60,11 +60,11 @@ const Career = () => {
           <path
             className={styles['timeline-line-progress']}
             d="M20 20 L20 980"
-            stroke="url(#journeyMobileLineGradient)"
+            stroke="url(#careerMobileLineGradient)"
           ></path>
         </svg>
-        <ol className={`${styles['journey__inner']} ${mediaStyles['journey__inner']}`}>
-          {journey.map((item, index) => (
+        <ol className={`${styles['career-timeline__inner']} ${mediaStyles['career-timeline__inner']}`}>
+          {careerTimeline.map((item, index) => (
             <li key={index}>
               <section
                 className={`${styles['img-box']} ${mediaStyles['img-box']} ${

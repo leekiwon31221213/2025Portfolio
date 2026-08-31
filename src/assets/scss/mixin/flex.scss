@@ -34,3 +34,27 @@
     }
   }
 }
+
+// inline-flex 레이아웃
+@mixin flex-inline($jc: flex-start, $ai: stretch, $gap: 0) {
+  @include flex($jc, $ai, $gap);
+  display: inline-flex;
+}
+
+// inline-flex 세로 레이아웃
+@mixin flex-col-inline($jc: flex-start, $ai: stretch, $gap: 0) {
+  @include flex-col($jc, $ai, $gap);
+  display: inline-flex;
+}
+
+// 역순 세로 레이아웃
+@mixin flex-col-reverse($jc: flex-start, $ai: stretch, $gap: 0) {
+  @include flex($jc, $ai, $gap);
+  flex-direction: column-reverse;
+}
+
+// 가로 레이아웃 방향 초기화
+@mixin flex-row($jc: flex-start, $ai: stretch, $gap: 0) {
+  @include flex($jc, $ai, $gap);
+  flex-direction: row;
+}

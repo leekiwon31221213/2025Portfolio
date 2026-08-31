@@ -7,14 +7,14 @@
     }
 
     .footer__inner {
-      flex-direction: column;
+      @include flex-col(center, center);
       width: 90%;
       margin: 0 auto;
       text-align: center;
 
       li {
         &.btn-box {
-          justify-content: center;
+          @include flex(center, center, 20px);
         }
       }
     }

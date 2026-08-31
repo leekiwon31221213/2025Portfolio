@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 import styles from '/assets/scss/components/header/Header.module.scss'
 import mediaStyles from '/assets/scss/components/header/HeaderMedia.module.scss'
@@ -12,6 +13,36 @@ const Header = () => {
   const [isMobile, setIsMobile] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const showBackButton = location.pathname === '/gstt-detail'
+
+  // 지정한 위치까지 부드럽게 이동
+  const smoothScrollTo = (targetTop: number, duration: number) => {
+    return new Promise<void>((resolve) => {
+      const startTop = window.scrollY
+      const distance = targetTop - startTop
+      const startTime = performance.now()
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        window.scrollTo({ top: targetTop, left: 0, behavior: 'auto' })
+        resolve()
+        return
+      }
+
+      const moveScroll = (currentTime: number) => {
+        const progress = Math.min((currentTime - startTime) / duration, 1)
+        const easedProgress = 1 - Math.pow(1 - progress, 3)
+        window.scrollTo(0, startTop + distance * easedProgress)
+
+        if (progress < 1) {
+          requestAnimationFrame(moveScroll)
+          return
+        }
+
+        resolve()
+      }
+
+      requestAnimationFrame(moveScroll)
+    })
+  }
 
   // 768px 이하 모바일 UI 전환
   const checkMobile = () => {
@@ -34,10 +65,34 @@ const Header = () => {
   }
 
   // 해당 섹션으로 이동
-  const scrollTo = (id: string) => {
+  const scrollTo = async (id: string) => {
     const section = document.getElementById(id)
     if (section) {
-      section.scrollIntoView({ behavior: 'smooth' })
+      const skipSkillPin = id === 'project' && window.matchMedia('(min-width: 1025px)').matches
+
+      if (skipSkillPin) {
+        const skillSection = document.getElementById('skill')
+        const skillPin = ScrollTrigger.getAll().find(
+          (trigger) => trigger.trigger === skillSection && trigger.vars.pin,
+        )
+
+        if (skillPin && window.scrollY < skillPin.end) {
+          if (window.scrollY < skillPin.start) {
+            await smoothScrollTo(skillPin.start, 550)
+          }
+
+          // 화면이 고정된 pin 구간만 건너뛰기
+          window.scrollTo({ top: skillPin.end + 1, left: 0, behavior: 'auto' })
+          await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
+
+          const projectTop = section.getBoundingClientRect().top + window.scrollY
+          await smoothScrollTo(projectTop, 300)
+        } else {
+          section.scrollIntoView({ behavior: 'smooth' })
+        }
+      } else {
+        section.scrollIntoView({ behavior: 'smooth' })
+      }
     }
     if (isMobile) {
       menuOff()
@@ -100,7 +155,7 @@ const Header = () => {
 
   const menuItems = [
     { id: 'about', label: '소개' },
-    { id: 'journey', label: '경력' },
+    { id: 'career', label: '경력' },
     { id: 'skill', label: '기술' },
     { id: 'project', label: '프로젝트' },
   ]

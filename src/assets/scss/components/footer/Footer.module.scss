@@ -1,9 +1,6 @@
 :global(#footer).portfolio-footer {
+  @include flex-col(center, center);
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   height: 600px;
   isolation: isolate;
 
@@ -13,9 +10,7 @@
   }
 
   .footer__inner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex(center, center);
 
     ul {
       width: 100%;

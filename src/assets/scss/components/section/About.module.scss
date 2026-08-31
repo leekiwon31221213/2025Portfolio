@@ -13,8 +13,7 @@
     }
 
     .section__inner {
-      display: flex;
-      flex-direction: column;
+      @include flex-col;
       width: 90%;
       padding-bottom: 250px;
       margin: 0 auto;
@@ -24,7 +23,7 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 30px;
         width: 100%;
-        margin-bottom: 5.5rem;
+        margin-bottom: 2.5rem;
 
         .about-content {
           grid-column: span 2;
@@ -89,9 +88,7 @@
         gap: 30px;
 
         li {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
+          @include flex-col(null, flex-start, null);
 
           h3 {
             margin-bottom: 2rem;
@@ -118,9 +115,7 @@
   }
 
   .glass {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-inline(center, center);
     box-sizing: border-box;
     width: 100%;
     height: 268px;
@@ -141,9 +136,7 @@
   }
 
   .img-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex(center, center);
     width: clamp(6rem, 5.859vw, 7rem);
     height: clamp(6rem, 5.859vw, 7rem);
     border-radius: 18px;
