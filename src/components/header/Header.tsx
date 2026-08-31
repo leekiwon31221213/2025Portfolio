@@ -1,5 +1,4 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { Menu, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -190,7 +189,7 @@ const Header = () => {
             onClick={menuOn}
             aria-label="메뉴 열기"
           >
-            <FontAwesomeIcon icon={faBars}></FontAwesomeIcon>
+            <Menu aria-hidden="true"></Menu>
           </button>
           <ul className={`${styles['mo-menu__inner']} ${styles['glass']}`}>
             {menuItems.map((item) => (
@@ -201,8 +200,13 @@ const Header = () => {
               </li>
             ))}
             <li>
-              <button type="button" onClick={menuOff} aria-label="메뉴 닫기">
-                <FontAwesomeIcon icon={faXmark}></FontAwesomeIcon>
+              <button
+                type="button"
+                className={styles['mo-close']}
+                onClick={menuOff}
+                aria-label="메뉴 닫기"
+              >
+                <X aria-hidden="true"></X>
               </button>
             </li>
           </ul>
