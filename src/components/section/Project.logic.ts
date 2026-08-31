@@ -42,7 +42,7 @@ const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
   const project = useMemo<ProjectItem[]>(
     () => [
       {
-        img: '/assets/image/project/stock_news.png',
+        img: '/assets/image/project/stock_news.webp',
         alt: 'Stock News 주식 뉴스 다이제스트 서비스',
         name: 'Stock News(스톡 뉴스)',
         dec: '미국 주식 유니버스를 SEC 데이터로 시딩하고, 관심종목의 매일 뉴스 다이제스트를 이메일로 발송하는 서비스',
@@ -55,7 +55,7 @@ const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
         icon: '/assets/image/project/arrow_right_icon.svg',
       },
       {
-        img: '/assets/image/project/ai_risk.png',
+        img: '/assets/image/project/ai_risk.webp',
         alt: 'AI 위험성평가 업무 전산화 시스템',
         name: 'AI 위험성평가',
         dec: '사업장의 위험요인 등록부터 평가·개선까지 관리하고, AI가 위험도 등급을 예측하며 평가폼 분석 결과를 음성으로 안내하는 시스템',
@@ -67,7 +67,7 @@ const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
         icon: '/assets/image/project/arrow_right_icon.svg',
       },
       {
-        img: '/assets/image/project/esafe_pr.png',
+        img: '/assets/image/project/esafe_pr.webp',
         alt: '이세이프 회사소개',
         name: '이세이프 회사소개',
         dec: '회사소개 페이지 ',
@@ -79,7 +79,7 @@ const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
         icon: '/assets/image/project/arrow_right_icon.svg',
       },
       {
-        img: '/assets/image/project/gstt_app.png',
+        img: '/assets/image/project/gstt_app.webp',
         alt: 'GSTT 하이브리드앱',
         name: 'GSTT 하이브리드앱',
         dec: '외국인 근로자 통번역 강의 하이브리드앱',
@@ -89,7 +89,7 @@ const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
         icon: '/assets/image/project/arrow_right_icon.svg',
       },
       {
-        img: '/assets/image/project/gstt.png',
+        img: '/assets/image/project/gstt.webp',
         alt: 'GSTT',
         name: 'GSTT',
         dec: '외국인 근로자 통번역 강의 시스템',
@@ -102,7 +102,7 @@ const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
         icon: '/assets/image/project/arrow_right_icon.svg',
       },
       {
-        img: '/assets/image/project/pravang_app.png',
+        img: '/assets/image/project/pravang_app.webp',
         alt: '프라뱅 하이브리드앱',
         name: '프라뱅 하이브리드앱',
         dec: '웹기반으로 만들어진 하이브리드앱',
@@ -112,7 +112,7 @@ const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
         icon: '/assets/image/project/arrow_right_icon.svg',
       },
       {
-        img: '/assets/image/project/pravang_web.jpg',
+        img: '/assets/image/project/pravang_web.webp',
         alt: '프라뱅 반응형 웹',
         name: '프라뱅 반응형 웹',
         dec: 'Java 환경 블록체인 및 가상화폐 거래소 유지보수',
@@ -124,7 +124,7 @@ const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
         icon: '/assets/image/project/arrow_right_icon.svg',
       },
       {
-        img: '/assets/image/project/muskdas.png',
+        img: '/assets/image/project/muskdas.webp',
         alt: '무스크다스',
         name: '무스크다스',
         dec: '금거래소 ',
@@ -136,7 +136,7 @@ const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
         icon: '/assets/image/project/arrow_right_icon.svg',
       },
       {
-        img: '/assets/image/project/coincident.png',
+        img: '/assets/image/project/coincident.webp',
         alt: 'coincident 기업페이지',
         name: 'coincident 회사 소개페이지',
         dec: '기존 프로젝트 작업 후 Nuxt 구조로 마이그레이션 진행',
@@ -148,7 +148,7 @@ const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
         icon: '/assets/image/project/arrow_right_icon.svg',
       },
       {
-        img: '/assets/image/project/time.png',
+        img: '/assets/image/project/time.webp',
         alt: '시간을 건너는 편지',
         name: '시간을 건너는 편지',
         dec: '대학교 행사 이벤트 랜딩페이지',
@@ -160,7 +160,7 @@ const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
         icon: '/assets/image/project/arrow_right_icon.svg',
       },
       {
-        img: '/assets/image/project/vpn.png',
+        img: '/assets/image/project/vpn.webp',
         alt: 'VPN 구독 서비스',
         name: 'VPN 구독 서비스 ',
         dec: 'VPN 구독 서비스 프론트 개발',
@@ -172,7 +172,7 @@ const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
         icon: '/assets/image/project/arrow_right_icon.svg',
       },
       {
-        img: '/assets/image/project/daki.jpg',
+        img: '/assets/image/project/daki.webp',
         alt: '다키스토어',
         name: '다키스토어',
         dec: '카페 24 쇼핑몰 유지보수 및 개발',
@@ -184,7 +184,7 @@ const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
         icon: '/assets/image/project/arrow_right_icon.svg',
       },
       {
-        img: '/assets/image/project/lemon.jpg',
+        img: '/assets/image/project/lemon.webp',
         alt: '레몬 앱소개 페이지',
         name: '레몬 앱소개 페이지',
         dec: '웹기반으로 만들어진 하이브리드 앱',
@@ -196,7 +196,7 @@ const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
         icon: '/assets/image/project/arrow_right_icon.svg',
       },
       {
-        img: '/assets/image/project/jimsa.jpg',
+        img: '/assets/image/project/jimsa.webp',
         alt: '짐싸 이벤트 랜딩페이지',
         name: '짐싸 이벤트 랜딩페이지',
         dec: '반응형 이벤트 페이지',
@@ -208,7 +208,7 @@ const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
         icon: '/assets/image/project/arrow_right_icon.svg',
       },
       {
-        img: '/assets/image/project/bn.png',
+        img: '/assets/image/project/bn.webp',
         alt: '비엔시스템 서비스 페이지',
         name: '비엔시스템 서비스 리뉴얼',
         dec: '자사 서비스 페이지 리뉴얼',
