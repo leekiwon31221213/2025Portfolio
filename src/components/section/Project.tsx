@@ -2,7 +2,7 @@ import { useRef } from 'react'
 
 import { Link } from 'react-router-dom'
 
-import ProjectLogic from './Project.logic'
+import ProjectLogic, { createStageTitleText } from './Project.logic'
 import styles from '/assets/scss/components/section/Project.module.scss'
 import mediaStyles from '/assets/scss/components/section/ProjectMedia.module.scss'
 
@@ -10,6 +10,7 @@ const Project = () => {
   const showGsttDetail = false
   const rootRef = useRef<HTMLElement | null>(null)
   const { project, openMoWin, openTabletWin, openAppleAlert } = ProjectLogic(rootRef)
+  const stageTitleText = createStageTitleText(project[0]?.name)
 
   return (
     <section
@@ -18,7 +19,7 @@ const Project = () => {
       className={`${styles['project-page']} ${mediaStyles['project-page']}`}
       aria-labelledby="project-title"
     >
-      <h2 id="project-title">프론트엔드 포트폴리오</h2>
+      <h2 id="project-title" lang="ko">프로젝트</h2>
       <div className={mediaStyles['project-gallery']}>
         <div
           className={`${styles['project-canvas']} ${mediaStyles['project-canvas']}`}
@@ -29,12 +30,8 @@ const Project = () => {
               className={`${styles['stage-marquee']} ${mediaStyles['stage-marquee']}`}
               aria-hidden="true"
             >
-              {'Frontend Project '.repeat(4)}
+              {stageTitleText}
             </p>
-            <span
-              className={`${styles['float-a']} ${mediaStyles['float-a']}`}
-              aria-hidden="true"
-            ></span>
             <div
               className={`${styles['stage-orbit']} ${mediaStyles['stage-orbit']}`}
               aria-hidden="true"

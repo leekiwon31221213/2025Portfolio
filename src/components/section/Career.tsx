@@ -16,7 +16,7 @@ const Career = () => {
     >
       <section className={`${styles['journey-heading']} ${mediaStyles['journey-heading']}`}>
         <p>2014 — NOW</p>
-        <h2>Frontend Career</h2>
+        <h2 lang="ko">경력</h2>
         <span>배움에서 실무까지, 지금의 프론트엔드 개발자가 되기까지의 여정</span>
       </section>
       <section className={`${styles['timeline-wrap']} ${mediaStyles['timeline-wrap']}`}>
@@ -66,9 +66,6 @@ const Career = () => {
         <ol className={`${styles['journey__inner']} ${mediaStyles['journey__inner']}`}>
           {journey.map((item, index) => (
             <li key={index}>
-              <span className={`${styles['journey-type']} ${mediaStyles['journey-type']}`}>
-                {item.type}
-              </span>
               <section
                 className={`${styles['img-box']} ${mediaStyles['img-box']} ${
                   item.alt === '증산클라비어' ? `${styles['jc']} ${mediaStyles['jc']}` : ''

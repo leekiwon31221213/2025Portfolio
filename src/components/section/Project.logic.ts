@@ -25,6 +25,19 @@ export type ProjectItem = {
   icon: string
 }
 
+const MIN_STAGE_TITLE_LENGTH = 120
+
+// 짧은 프로젝트명도 마키 영역을 충분히 채우도록 반복 횟수 계산
+export const createStageTitleText = (title?: string | null) => {
+  const normalizedTitle = title?.trim()
+  if (!normalizedTitle) return ''
+
+  const titleLength = Array.from(normalizedTitle).length
+  const repeatCount = Math.max(4, Math.ceil(MIN_STAGE_TITLE_LENGTH / titleLength))
+
+  return `${normalizedTitle} `.repeat(repeatCount)
+}
+
 const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
   const project = useMemo<ProjectItem[]>(
     () => [
@@ -241,10 +254,16 @@ const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
     const stageEl = root.querySelector<HTMLElement>(`.${styles['project-stage']}`)
     const marqueeEl = root.querySelector<HTMLElement>(`.${styles['stage-marquee']}`)
     const progressFillEl = root.querySelector<HTMLElement>(`.${styles['stage-progress-fill']}`)
-    const floatAEl = root.querySelector<HTMLElement>(`.${styles['float-a']}`)
     const orbitEl = root.querySelector<HTMLElement>(`.${styles['stage-orbit']}`)
 
     if (!canvasEl || !stageEl || cardEls.length === 0) return
+
+    const marqueeMedia = gsap.matchMedia()
+
+    const updateStageTitle = (title?: string | null) => {
+      if (!marqueeEl || !title) return
+      marqueeEl.textContent = createStageTitleText(title)
+    }
 
     // 스티키 스테이지 안에서 프로젝트가 전시되듯 전환된다 (모든 뷰포트 공통)
     const buildCanvasInteractions = () => {
@@ -263,6 +282,7 @@ const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
       gsap.set(cardEls[0], { autoAlpha: 1, zIndex: 2 })
       gsap.set(stageEl, { backgroundColor: STAGE_COLORS[0] })
       if (progressFillEl) gsap.set(progressFillEl, { scaleX: 0 })
+      updateStageTitle(cardMeta[0]?.titleEl?.textContent)
 
       // 스크롤 방향에 따라 다음/이전 프로젝트 이미지가 좌우로 진입하며 중앙 정렬된다
       const activateCard = (nextIndex: number) => {
@@ -276,6 +296,7 @@ const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
         const incomingImg = incoming.querySelector<HTMLElement>(`.${styles['project-img']}`)
         const outgoingMeta = cardMeta[activeIndex]
         const incomingMeta = cardMeta[nextIndex]
+        updateStageTitle(incomingMeta.titleEl?.textContent)
 
         // 방향이 바뀔 때 이전 tween과 충돌하지 않도록 정리
         gsap.killTweensOf(
@@ -372,32 +393,37 @@ const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
 
       // 배경 대형 타이포가 스크롤과 반대 방향으로 천천히 이동
       if (marqueeEl) {
-        gsap.to(marqueeEl, {
-          xPercent: -24,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: canvasEl,
-            start: 'top top',
-            end: 'bottom bottom',
-            refreshPriority: -1,
-            scrub: 1.2,
-          },
+        marqueeMedia.add('(min-width: 1025px)', () => {
+          gsap.set(marqueeEl, { '--stage-marquee-x': '0%', '--stage-marquee-y': '0%' })
+          gsap.to(marqueeEl, {
+            '--stage-marquee-x': '-24%',
+            ease: 'none',
+            scrollTrigger: {
+              trigger: canvasEl,
+              start: 'top top',
+              end: 'bottom bottom',
+              refreshPriority: -1,
+              scrub: 1.2,
+            },
+          })
+        })
+
+        marqueeMedia.add('(max-width: 1024px)', () => {
+          gsap.set(marqueeEl, { '--stage-marquee-x': '0%', '--stage-marquee-y': '0vh' })
+          gsap.to(marqueeEl, {
+            '--stage-marquee-y': '24vh',
+            ease: 'none',
+            scrollTrigger: {
+              trigger: canvasEl,
+              start: 'top top',
+              end: 'bottom bottom',
+              refreshPriority: -1,
+              scrub: 1.2,
+            },
+          })
         })
       }
 
-      if (floatAEl) {
-        gsap.to(floatAEl, {
-          y: 100,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: canvasEl,
-            start: 'top top',
-            end: 'bottom bottom',
-            refreshPriority: -1,
-            scrub: 1.3,
-          },
-        })
-      }
     }
 
     buildCanvasInteractions()
@@ -414,6 +440,7 @@ const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
 
     return () => {
       cancelled = true
+      marqueeMedia.revert()
       ScrollTrigger.getAll().forEach((trigger) => {
         if (trigger.trigger && root.contains(trigger.trigger)) trigger.kill()
       })

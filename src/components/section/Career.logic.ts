@@ -94,56 +94,48 @@ const CareerLogic = (rootRef: RefObject<HTMLElement | null>) => {
     () => [
       {
         ...education[1],
-        type: 'Education',
         title: education[1].edu,
         period: education[1].span,
         description: [education[1].study],
       },
       {
         ...career[5],
-        type: 'Career',
         title: career[5].companyName,
         period: career[5].team,
         description: [career[5].business, career[5].work1],
       },
       {
         ...career[4],
-        type: 'Career',
         title: career[4].companyName,
         period: career[4].team,
         description: [career[4].business, career[4].work1],
       },
       {
         ...education[0],
-        type: 'Education',
         title: education[0].edu,
         period: education[0].span,
         description: [education[0].study],
       },
       {
         ...career[3],
-        type: 'Career',
         title: career[3].companyName,
         period: career[3].team,
         description: [career[3].business, career[3].work1, career[3].work2],
       },
       {
         ...career[2],
-        type: 'Career',
         title: career[2].companyName,
         period: career[2].team,
         description: [career[2].business, career[2].work1, career[2].work2],
       },
       {
         ...career[1],
-        type: 'Career',
         title: career[1].companyName,
         period: career[1].team,
         description: [career[1].business, career[1].work1, career[1].work2],
       },
       {
         ...career[0],
-        type: 'Career',
         title: career[0].companyName,
         period: career[0].team,
         description: [

@@ -46,10 +46,7 @@
 
       &.btn-box {
         margin-top: 2rem;
-
-        a:first-child {
-          margin-right: 1.5rem;
-        }
+        @include flex(null, center, 20px);
 
         .glass {
           @include glass($width: 180px, $height: 40px, $font-size: clamp(1.5rem, 1.953vw, 1.6rem));

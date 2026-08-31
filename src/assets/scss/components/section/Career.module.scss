@@ -311,7 +311,7 @@ $journey-colors: #155dfc, #9810fa, #00a63e, #f54a00, #d5f36c, #f3b16c, #60a5fa, 
     > p {
       margin-bottom: 1.2rem;
       color: #818cf8;
-      font-size: 1.4rem;
+      font-size: clamp(1.6rem, 1.563vw, 1.8rem);
       font-weight: 600;
       letter-spacing: 0.3em;
     }
@@ -326,7 +326,7 @@ $journey-colors: #155dfc, #9810fa, #00a63e, #f54a00, #d5f36c, #f3b16c, #60a5fa, 
       display: block;
       margin-top: 1.5rem;
       color: #9ca3af;
-      font-size: clamp(1.5rem, 1.563vw, 1.8rem);
+      font-size: clamp(1.8rem, 1.758vw, 2.3rem);
     }
   }
 
@@ -464,7 +464,7 @@ $journey-colors: #155dfc, #9810fa, #00a63e, #f54a00, #d5f36c, #f3b16c, #60a5fa, 
 
     h3 {
       margin-top: 1.4rem;
-      font-size: clamp(2rem, 1.855vw, 2.4rem);
+      font-size: clamp(1.9rem, 1.855vw, 2.1rem);
       font-weight: 600;
     }
 
@@ -472,29 +472,18 @@ $journey-colors: #155dfc, #9810fa, #00a63e, #f54a00, #d5f36c, #f3b16c, #60a5fa, 
       display: block;
       margin: 0.8rem 0 1.5rem;
       color: #c4c8d2;
-      font-size: 1.5rem;
+      font-size: clamp(1.6rem, 1.563vw, 1.8rem);
       line-height: 1.5;
     }
 
     p {
       margin-top: 0.7rem;
       color: #9ca3af;
-      font-size: clamp(1.4rem, 1.367vw, 1.6rem);
+      font-size: clamp(1.6rem, 1.563vw, 1.8rem);
       line-height: 1.5;
     }
   }
 
-  .journey-type {
-    display: inline-block;
-    padding: 0.7rem 1.2rem;
-    margin-bottom: 1.6rem;
-    border-radius: 2rem;
-    background: rgba(129, 140, 248, 0.14);
-    color: #a5b4fc;
-    font-size: 1.2rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-  }
 }
 
 @keyframes arrow_down {

@@ -99,10 +99,10 @@ const Header = () => {
   }, [])
 
   const menuItems = [
-    { id: 'about', label: 'About' },
-    { id: 'journey', label: 'Career' },
-    { id: 'skill', label: 'Skill' },
-    { id: 'project', label: 'Project' },
+    { id: 'about', label: '소개' },
+    { id: 'journey', label: '경력' },
+    { id: 'skill', label: '기술' },
+    { id: 'project', label: '프로젝트' },
   ]
 
   return (
@@ -120,7 +120,7 @@ const Header = () => {
           <ul>
             {menuItems.map((item) => (
               <li key={item.id}>
-                <button onClick={() => scrollTo(item.id)} lang="en">
+                <button onClick={() => scrollTo(item.id)} lang="ko">
                   {item.label}
                 </button>
               </li>
@@ -135,7 +135,7 @@ const Header = () => {
           <ul className={`${styles['mo-menu__inner']} ${styles['glass']}`}>
             {menuItems.map((item) => (
               <li key={item.id}>
-                <button onClick={() => scrollTo(item.id)} lang="en">
+                <button onClick={() => scrollTo(item.id)} lang="ko">
                   {item.label}
                 </button>
               </li>

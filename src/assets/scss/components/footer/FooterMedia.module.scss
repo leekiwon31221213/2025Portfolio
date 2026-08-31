@@ -11,6 +11,12 @@
       width: 90%;
       margin: 0 auto;
       text-align: center;
+
+      li {
+        &.btn-box {
+          justify-content: center;
+        }
+      }
     }
   }
 }

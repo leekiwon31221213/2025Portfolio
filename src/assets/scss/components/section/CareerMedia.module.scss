@@ -29,6 +29,10 @@
     .journey-heading {
       width: 92%;
       margin-bottom: 5.5rem;
+
+      h2 {
+        font-size: clamp(3rem, 3.906vw, 4rem);
+      }
     }
 
     .timeline-wrap {
@@ -147,7 +151,11 @@
       h2 {
         font-size: clamp(2.4rem, 4.364vw, 3rem);
       }
+      > p {
+        font-size: clamp(1.4rem, 2.545vw, 1.6rem);
+      }
       > span {
+        font-size: clamp(1.6rem, 2.909vw, 1.8rem);
         line-height: 1.5;
       }
     }
@@ -235,13 +243,6 @@
         }
       }
 
-      h3 {
-        font-size: 2rem;
-      }
-      strong {
-        font-size: 1.4rem;
-      }
-
       .img-box img {
         width: 5.4rem;
       }
@@ -256,6 +257,14 @@
     .journey-heading {
       width: calc(100% - 3rem);
       margin-bottom: 4rem;
+
+      > p {
+        font-size: clamp(1.4rem, 3.889vw, 1.6rem);
+      }
+
+      > span {
+        font-size: clamp(1.4rem, 3.889vw, 1.6rem);
+      }
     }
 
     .timeline-wrap {
@@ -266,6 +275,15 @@
     }
 
     .journey__inner {
+      h3 {
+        font-size: clamp(1.7rem, 4.722vw, 1.9rem);
+      }
+
+      strong,
+      p {
+        font-size: clamp(1.5rem, 4.167vw, 1.6rem);
+      }
+
       > li {
         width: min(72%, 23rem);
         padding: 1.4rem;

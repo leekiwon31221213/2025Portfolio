@@ -1,7 +1,14 @@
 @media (max-width: 1024px) {
   :global(#project).project-page {
+    > h2 {
+      font-size: clamp(3rem, 3.906vw, 4rem);
+    }
+
     .stage-marquee {
-      font-size: clamp(10rem, 17vw, 16rem);
+      left: 87%;
+      top: -5%;
+      --stage-marquee-rotate: 90deg;
+      font-size: clamp(3rem, 3.906vw, 4rem);
     }
 
     .stage-orbit {
@@ -16,7 +23,7 @@
       bottom: 6rem;
       height: auto;
       transform: none;
-      gap: 2.8rem;
+      gap: 2.5rem;
     }
 
     .project-img {
@@ -32,7 +39,6 @@
     }
 
     .project-info h3 {
-      font-size: clamp(2.2rem, 4vw, 2.8rem);
       margin-bottom: 1rem;
     }
 
@@ -52,7 +58,6 @@
       display: flex;
     }
 
-    // .project-btn.glass가 width:100%를 갖고 있어 명시도를 맞추기 위해 glass까지 포함
     .project-btn.glass.btn-mobile-only {
       flex: 0 0 auto;
       max-width: 150px;
@@ -79,20 +84,33 @@
 
 @media (max-width: 768px) {
   :global(#project).project-page {
+    > h2,
+    .stage-marquee {
+      font-size: clamp(2.4rem, 4.364vw, 3rem);
+    }
+
     .project-card {
       top: 7rem;
       bottom: 5rem;
-      gap: 1rem;
+      gap: 2rem;
     }
 
     .project-info h3 {
-      font-size: clamp(2rem, 6vw, 2.4rem);
+      font-size: clamp(1.9rem, 3.455vw, 2.4rem);
       margin-bottom: 0.8rem;
     }
 
     .project-desc {
-      font-size: 1.3rem;
+      font-size: clamp(1.6rem, 2.909vw, 1.8rem);
       line-height: 1.45;
+    }
+
+    .stage-progress-num,
+    .stack-label,
+    .hashtags li,
+    .project-btn,
+    .project-btn.glass {
+      font-size: clamp(1.4rem, 2.545vw, 1.6rem);
     }
 
     .btn-box {
@@ -103,13 +121,25 @@
 
 @media (max-width: 550px) {
   :global(#project).project-page {
+    .project-info h3 {
+      font-size: clamp(1.7rem, 4.722vw, 1.9rem);
+    }
+
+    .project-desc {
+      font-size: clamp(1.4rem, 3.889vw, 1.6rem);
+    }
+
+    .stack-label,
+    .hashtags li {
+      font-size: clamp(1.5rem, 4.167vw, 1.6rem);
+    }
+
     .project-card {
       top: 6rem;
       bottom: 4.5rem;
     }
-
-    .project-info h3 {
-      font-size: clamp(1.8rem, 7vw, 2.1rem);
+    .project-img {
+      width: 100%;
     }
 
     .btn-box {
@@ -119,10 +149,6 @@
     .project-btn {
       flex-basis: calc(50% - 0.4rem);
       padding: 0 0.6rem;
-
-      &.glass {
-        font-size: 1.3rem;
-      }
     }
   }
 }
