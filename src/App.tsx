@@ -22,7 +22,7 @@ const App = () => {
 
       loadingTimer.current = window.setTimeout(() => {
         setIsLoading(false)
-      }, 800)
+      }, 400)
 
       return true
     })
@@ -60,7 +60,7 @@ const App = () => {
   useEffect(() => {
     if (!isLoading) return
 
-    const failsafeTimer = window.setTimeout(onLoaded, 6000)
+    const failsafeTimer = window.setTimeout(onLoaded, 3500)
 
     return () => {
       window.clearTimeout(failsafeTimer)

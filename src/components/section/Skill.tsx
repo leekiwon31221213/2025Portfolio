@@ -27,7 +27,13 @@ const Skill = () => {
                 <section
                   className={`${styles['icon-box']} ${mediaStyles['icon-box']} ${styles['front']}`}
                 >
-                  <img src={front.icon} alt={front.alt} />
+                  <img
+                    src={front.icon}
+                    alt={front.alt}
+                    loading="lazy"
+                    fetchPriority="low"
+                    decoding="async"
+                  ></img>
                 </section>
                 <h3>{front.title}</h3>
               </li>
@@ -40,9 +46,7 @@ const Skill = () => {
                     <div
                       className={styles['skill-bar']}
                       style={{ '--target-width': `${skill.level}%` } as CSSProperties}
-                    >
-                      <span className={styles['skill-text']}>{skill.level}%</span>
-                    </div>
+                    ></div>
                   </section>
                 </li>
               ))}
@@ -56,7 +60,13 @@ const Skill = () => {
                 <section
                   className={`${styles['icon-box']} ${mediaStyles['icon-box']} ${styles['design']}`}
                 >
-                  <img src={design.icon} alt={design.alt} />
+                  <img
+                    src={design.icon}
+                    alt={design.alt}
+                    loading="lazy"
+                    fetchPriority="low"
+                    decoding="async"
+                  ></img>
                 </section>
                 <h3>{design.title}</h3>
               </li>
@@ -77,7 +87,13 @@ const Skill = () => {
                 <section
                   className={`${styles['icon-box']} ${mediaStyles['icon-box']} ${styles['collaboration']}`}
                 >
-                  <img src={collaboration.icon} alt={collaboration.alt} />
+                  <img
+                    src={collaboration.icon}
+                    alt={collaboration.alt}
+                    loading="lazy"
+                    fetchPriority="low"
+                    decoding="async"
+                  ></img>
                 </section>
                 <h3>{collaboration.title}</h3>
               </li>

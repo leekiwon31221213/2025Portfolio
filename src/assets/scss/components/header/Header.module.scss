@@ -4,8 +4,6 @@
   z-index: 3;
   height: 85px;
   border-bottom: 1px solid #bbbbbb;
-  --header-module: 1;
-
   &::before {
     content: "";
     position: absolute;

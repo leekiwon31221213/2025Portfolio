@@ -259,6 +259,7 @@ const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
     if (!canvasEl || !stageEl || cardEls.length === 0) return
 
     const marqueeMedia = gsap.matchMedia()
+    let projectImageObserver: IntersectionObserver | null = null
 
     const updateStageTitle = (title?: string | null) => {
       if (!marqueeEl || !title) return
@@ -273,11 +274,23 @@ const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
       // 현재 이미지와 다음 이미지만 먼저 불러와 전환 시 빈 화면을 방지한다
       const prepareProjectImage = (projectIndex: number) => {
         const image = cardEls[projectIndex]?.querySelector<HTMLImageElement>('img')
-        if (image) image.loading = 'eager'
+        if (image) {
+          image.loading = 'eager'
+          image.fetchPriority = 'high'
+        }
       }
 
-      prepareProjectImage(0)
-      prepareProjectImage(1)
+      projectImageObserver = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry.isIntersecting) return
+
+          prepareProjectImage(0)
+          prepareProjectImage(1)
+          projectImageObserver?.disconnect()
+        },
+        { rootMargin: '1200px 0px' },
+      )
+      projectImageObserver.observe(root)
       gsap.set(cardEls, { autoAlpha: 0, zIndex: 1 })
       gsap.set(cardEls[0], { autoAlpha: 1, zIndex: 2 })
       gsap.set(stageEl, { backgroundColor: STAGE_COLORS[0] })
@@ -440,6 +453,7 @@ const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
 
     return () => {
       cancelled = true
+      projectImageObserver?.disconnect()
       marqueeMedia.revert()
       ScrollTrigger.getAll().forEach((trigger) => {
         if (trigger.trigger && root.contains(trigger.trigger)) trigger.kill()

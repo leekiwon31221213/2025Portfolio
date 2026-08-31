@@ -1,7 +1,6 @@
 :global(#project).project-page {
   position: relative;
   overflow-x: clip;
-  padding-bottom: 0;
   background-color: #030712;
 
   > h2 {
@@ -9,8 +8,6 @@
     top: clamp(2.4rem, 4vw, 3.2rem);
     left: clamp(2.4rem, 4vw, 5.6rem);
     z-index: 7;
-    padding: 0;
-    margin: 0;
     font-size: clamp(4rem, 3.9063vw, 5.5rem);
     font-weight: 800;
     letter-spacing: 0.12rem;
@@ -55,9 +52,6 @@
     position: absolute;
     z-index: 1;
     pointer-events: none;
-  }
-
-  .float-b {
     top: 50%;
     left: 50%;
     width: 0.7rem;
@@ -121,7 +115,6 @@
     width: 100%;
     height: 100%;
     background-color: #ffffff;
-    background-image: none;
     transform: scaleX(0);
     transform-origin: left center;
   }

@@ -71,7 +71,13 @@ const Career = () => {
                   item.alt === '증산클라비어' ? `${styles['jc']} ${mediaStyles['jc']}` : ''
                 }`}
               >
-                <img src={item.logo} alt={item.alt}></img>
+                <img
+                  src={item.logo}
+                  alt={item.alt}
+                  loading="lazy"
+                  fetchPriority="low"
+                  decoding="async"
+                ></img>
               </section>
               <h3>{item.title}</h3>
               <strong>{item.period}</strong>

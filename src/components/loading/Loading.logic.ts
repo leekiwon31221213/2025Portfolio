@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 
 const CANVAS_WIDTH = 1440
 const CANVAS_HEIGHT = 900
-const WAVE_DURATION = 2800
+const WAVE_DURATION = 1800
 const WAVE_POINT_GAP = 36
 
 // SVG 파도와 물방울 애니메이션

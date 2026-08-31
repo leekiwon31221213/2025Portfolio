@@ -48,7 +48,13 @@ const MainIntro = () => {
             </section>
             <div className={`${styles['dev-icon']} ${mediaStyles['dev-icon']}`}></div>
             <div className={`${styles['circle']} ${mediaStyles['circle']}`}>
-              <img src={profileImg} alt="프론트엔드 개발자 이기원 프로필" />
+              <img
+                src={profileImg}
+                alt="프론트엔드 개발자 이기원 프로필"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+              ></img>
             </div>
             <div className={`${styles['design-icon']} ${mediaStyles['design-icon']}`}></div>
           </li>

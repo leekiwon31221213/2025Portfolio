@@ -151,8 +151,9 @@ const Project = () => {
                     <img
                       src={project.img}
                       alt={project.alt}
-                      loading={projectIndex === 0 ? 'eager' : 'lazy'}
-                      fetchPriority={projectIndex === 0 ? 'high' : 'auto'}
+                      loading="lazy"
+                      fetchPriority="low"
+                      decoding="async"
                     ></img>
                   </figure>
                   <aside className={`${styles['project-stack']} ${mediaStyles['project-stack']}`}>

@@ -20,7 +20,13 @@ const About = () => {
       className={`${styles[className] ?? ''} ${mediaStyles[className] ?? ''} ${styles['glass']} ${mediaStyles['glass'] ?? ''} ${styles['reveal']} ${mediaStyles['reveal'] ?? ''}`}
     >
       <section className={`${styles['img-box']} ${mediaStyles['img-box']}`}>
-        <img src={card.icon} alt={card.alt} />
+        <img
+          src={card.icon}
+          alt={card.alt}
+          loading="lazy"
+          fetchPriority="low"
+          decoding="async"
+        ></img>
       </section>
       <h3>{card.title}</h3>
       <p>{card.description}</p>
@@ -51,7 +57,13 @@ const About = () => {
           <ul className={`${styles['setting-card']} ${mediaStyles['setting-card']} ${styles['glass']}`}>
             <li className={styles['reveal']}>
               <section className={`${styles['img-box']} ${mediaStyles['img-box']}`}>
-                <img src={settingCard.icon} alt={settingCard.alt} />
+                <img
+                  src={settingCard.icon}
+                  alt={settingCard.alt}
+                  loading="lazy"
+                  fetchPriority="low"
+                  decoding="async"
+                ></img>
               </section>
               <h3>{settingCard.title}</h3>
               <p>{settingCard.description}</p>

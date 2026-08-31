@@ -3,10 +3,6 @@
     h2 {
       font-size: clamp(3rem, 3.906vw, 4rem);
     }
-    p.desc {
-      margin-bottom: clamp(6rem, 7.813vw, 12.8rem);
-    }
-
     .skills-box {
       @include flex-col(space-evenly, stretch, 3rem);
 
@@ -26,10 +22,6 @@
     h2 {
       font-size: clamp(2.4rem, 4.364vw, 3rem);
     }
-    p.desc {
-      font-size: clamp(1.4rem, 2.545vw, 1.6rem);
-    }
-
     .skills-box .skill__inner .skill-list > li {
       &:first-child h3 {
         font-size: clamp(1.6rem, 2.909vw, 1.8rem);

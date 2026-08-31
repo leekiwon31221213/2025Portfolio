@@ -15,7 +15,13 @@ const Footer = () => {
       className={`${styles['portfolio-footer']} ${mediaStyles['portfolio-footer']}`}
     >
       <section className={`${styles['footer__inner']} ${mediaStyles['footer__inner']}`}>
-        <img src={profileImg} alt="프론트엔드 개발자 이기원 프로필" />
+        <img
+          src={profileImg}
+          alt="프론트엔드 개발자 이기원 프로필"
+          loading="lazy"
+          fetchPriority="low"
+          decoding="async"
+        ></img>
         <ul>
           <li className={styles['title']}>{footer.title}</li>
           <li
