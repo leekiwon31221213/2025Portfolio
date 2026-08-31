@@ -14,18 +14,18 @@ const SkillLogic = (rootRef: RefObject<HTMLElement | null>) => {
     skills: [
       { name: 'Html', level: 90, type: 'markup' },
       { name: 'Css/Scss', level: 90, type: 'style' },
-      { name: 'Js & jQ', level: 75, type: 'programming' },
-      { name: 'React', level: 70, type: 'framework' },
-      { name: 'TypeScript', level: 50, type: 'programming' },
-      { name: 'Seo', level: 60, type: 'concept' },
-      { name: 'Semantic', level: 65, type: 'concept' },
+      { name: 'Js & jQ', level: 85, type: 'programming' },
+      { name: 'React', level: 70, type: 'library' },
+      { name: 'TypeScript', level: 60, type: 'programming' },
+      { name: 'Seo', level: 90, type: 'concept' },
+      { name: 'Semantic', level: 90, type: 'concept' },
     ],
   }
   const design = {
     title: 'Design',
     icon: '/assets/image/skill/design_icon.svg',
     alt: '',
-    skills: [{ name: 'Photoshop' }, { name: 'Figma' }],
+    skills: [{ name: 'Photoshop' }, { name: 'Figma' }, { name: 'Illustrator' }],
   }
   const collaboration = {
     title: 'Collaboration',
