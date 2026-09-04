@@ -74,6 +74,7 @@
 
     .hashtags {
       @include flex-row(null, flex-end, 0.6rem 1.2rem);
+      flex-wrap: wrap;
     }
   }
 }
