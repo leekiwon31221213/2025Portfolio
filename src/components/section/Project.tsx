@@ -106,11 +106,7 @@ const Project = () => {
                         <button
                           type="button"
                           className={`${styles['project-btn']} ${mediaStyles['project-btn']} ${styles['glass']} ${mediaStyles['glass']} ${styles['btn-desktop-only']} ${mediaStyles['btn-desktop-only']}`}
-                          onClick={() =>
-                            project.responsiveMessage
-                              ? openAppleAlert(project.responsiveMessage)
-                              : openTabletWin(project.link)
-                          }
+                          onClick={() => openTabletWin(project.link)}
                         >
                           {project.tabletTxt?.replace(' View', '')}
                           <img src={project.icon} alt="" className={styles['btn-icon']}></img>
@@ -118,11 +114,7 @@ const Project = () => {
                         <button
                           type="button"
                           className={`${styles['project-btn']} ${mediaStyles['project-btn']} ${styles['glass']} ${mediaStyles['glass']} ${styles['btn-desktop-only']} ${mediaStyles['btn-desktop-only']}`}
-                          onClick={() =>
-                            project.responsiveMessage
-                              ? openAppleAlert(project.responsiveMessage)
-                              : openMoWin(project.link)
-                          }
+                          onClick={() => openMoWin(project.link)}
                         >
                           {project.moTxt?.replace(' View', '')}
                           <img src={project.icon} alt="" className={styles['btn-icon']}></img>

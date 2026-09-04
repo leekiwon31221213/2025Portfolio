@@ -21,7 +21,6 @@ export type ProjectItem = {
   link?: string
   google?: string
   apple?: string
-  responsiveMessage?: string
   icon: string
 }
 
@@ -51,7 +50,6 @@ const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
         moTxt: 'mo View',
         tabletTxt: 'tablet View',
         link: 'https://stockmailnews.duckdns.org/',
-        responsiveMessage: '반응형 화면은 현재 개발 중입니다.',
         icon: '/assets/image/project/arrow_right_icon.svg',
       },
       {
@@ -323,10 +321,13 @@ const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
           ].filter(Boolean) as HTMLElement[],
         )
         gsap.killTweensOf(cardEls)
-        gsap.set(cardEls.filter((card) => card !== incoming && card !== outgoing), {
-          autoAlpha: 0,
-          zIndex: 1,
-        })
+        gsap.set(
+          cardEls.filter((card) => card !== incoming && card !== outgoing),
+          {
+            autoAlpha: 0,
+            zIndex: 1,
+          },
+        )
 
         // 아래로 스크롤하면 오른쪽, 위로 스크롤하면 왼쪽에서 진입한다
         const startX = nextIndex > activeIndex ? xDistance : -xDistance
@@ -436,7 +437,6 @@ const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
           })
         })
       }
-
     }
 
     buildCanvasInteractions()
