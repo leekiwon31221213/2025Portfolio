@@ -19,7 +19,9 @@ const Project = () => {
       className={`${styles['project-page']} ${mediaStyles['project-page']}`}
       aria-labelledby="project-title"
     >
-      <h2 id="project-title" lang="ko">프로젝트</h2>
+      <h2 id="project-title" lang="ko">
+        프로젝트
+      </h2>
       <div className={mediaStyles['project-gallery']}>
         <div
           className={`${styles['project-canvas']} ${mediaStyles['project-canvas']}`}
@@ -53,6 +55,12 @@ const Project = () => {
                       <h3>{project.name}</h3>
                     </div>
                     <p className={styles['project-desc']}>{project.dec}</p>
+                    {project.name === 'Stock News(스톡 뉴스)' && (
+                      <p className={styles['project-notice']}>
+                        북미 지역의 저사양 VM 서버를 사용하고 있어, 사이트 접속에 시간이 조금 걸릴
+                        수 있습니다.
+                      </p>
+                    )}
                     {project.name === '프라뱅 하이브리드앱' ||
                     project.name === 'GSTT 하이브리드앱' ? (
                       <nav

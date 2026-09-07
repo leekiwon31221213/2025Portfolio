@@ -199,6 +199,14 @@
     word-break: keep-all;
   }
 
+  .project-notice {
+    margin-top: 1.2rem;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 1.3rem;
+    line-height: 1.7;
+    word-break: keep-all;
+  }
+
   .project-stack {
     @include flex-col(center, flex-end);
     align-self: center;
