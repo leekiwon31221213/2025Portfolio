@@ -55,7 +55,7 @@ const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
         pcTxt: 'pc View',
         moTxt: 'mo View',
         tabletTxt: 'tablet View',
-        link: 'https://stockmailnews.duckdns.org/',
+        link: 'https://stocknews-home.duckdns.org/',
         icon: '/assets/image/project/arrow_right_icon.svg',
       },
       {
