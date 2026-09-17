@@ -61,6 +61,20 @@ const Project = () => {
                         수 있습니다.
                       </p>
                     )}
+                    {project.testAccount && (
+                      <dl className={`${styles['test-account']} ${mediaStyles['test-account']}`}>
+                        <div className={styles['test-account-item']}>
+                          <dt className={styles['test-account-label']}>테스트 아이디</dt>
+                          <dd className={styles['test-account-value']}>{project.testAccount.id}</dd>
+                        </div>
+                        <div className={styles['test-account-item']}>
+                          <dt className={styles['test-account-label']}>비밀번호</dt>
+                          <dd className={styles['test-account-value']}>
+                            {project.testAccount.password}
+                          </dd>
+                        </div>
+                      </dl>
+                    )}
                     {project.name === '프라뱅 하이브리드앱' ||
                     project.name === 'GSTT 하이브리드앱' ? (
                       <nav

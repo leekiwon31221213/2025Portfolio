@@ -21,6 +21,10 @@ export type ProjectItem = {
   link?: string
   google?: string
   apple?: string
+  testAccount?: {
+    id: string
+    password: string
+  }
   icon: string
 }
 
@@ -56,6 +60,10 @@ const ProjectLogic = (rootRef: RefObject<HTMLElement | null>) => {
         moTxt: 'mo View',
         tabletTxt: 'tablet View',
         link: 'https://stocknews-home.duckdns.org/',
+        testAccount: {
+          id: 'test@test.com',
+          password: 'test1234',
+        },
         icon: '/assets/image/project/arrow_right_icon.svg',
       },
       {
