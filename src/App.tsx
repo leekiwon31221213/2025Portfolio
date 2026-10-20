@@ -11,7 +11,10 @@ import mediaStyles from '/assets/scss/app/AppMedia.module.scss'
 
 const App = () => {
   const location = useLocation()
-  const isFirstVisit = import.meta.env.DEV ? null : sessionStorage.getItem('isFirstVisit')
+  const isFirstVisit =
+    import.meta.env.DEV || typeof window === 'undefined'
+      ? null
+      : sessionStorage.getItem('isFirstVisit')
   const [isLoading, setIsLoading] = useState(!isFirstVisit)
   const [isLoadingLeaving, setIsLoadingLeaving] = useState(false)
   const loadingTimer = useRef<number | null>(null)

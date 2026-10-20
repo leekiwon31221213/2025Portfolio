@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import reactCompiler from 'babel-plugin-react-compiler'
+import { vitePrerenderPlugin } from 'vite-prerender-plugin'
 import path from 'path'
 export default defineConfig(({ command }) => ({
   plugins: [
@@ -8,6 +9,10 @@ export default defineConfig(({ command }) => ({
       babel: {
         plugins: [reactCompiler],
       },
+    }),
+    vitePrerenderPlugin({
+      renderTarget: '#app',
+      prerenderScript: path.resolve(__dirname, 'src/prerender.tsx'),
     }),
   ],
 

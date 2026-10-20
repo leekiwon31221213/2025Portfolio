@@ -34,6 +34,7 @@
     "terser": "^5.51.2",
     "typescript": "~5.9.3",
     "vite": "^7.1.2",
-    "vite-plugin-svgr": "^4.5.0"
+    "vite-plugin-svgr": "^4.5.0",
+    "vite-prerender-plugin": "^0.5.14"
   }
 }
