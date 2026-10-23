@@ -13,13 +13,18 @@ import mediaStyles from '/assets/scss/app/AppMedia.module.scss'
 
 const App = () => {
   const location = useLocation()
-  const isFirstVisit =
-    import.meta.env.DEV || typeof window === 'undefined'
-      ? null
-      : sessionStorage.getItem('isFirstVisit')
-  const [isLoading, setIsLoading] = useState(!isFirstVisit)
+  const [isLoading, setIsLoading] = useState(true)
   const [isLoadingLeaving, setIsLoadingLeaving] = useState(false)
   const loadingTimer = useRef<number | null>(null)
+
+  useEffect(() => {
+    if (import.meta.env.DEV) return
+
+    const isFirstVisit = sessionStorage.getItem('isFirstVisit')
+    if (isFirstVisit) {
+      setIsLoading(false)
+    }
+  }, [])
 
   const onLoaded = useCallback(() => {
     setIsLoadingLeaving((alreadyLeaving) => {
