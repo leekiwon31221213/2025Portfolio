@@ -39,7 +39,7 @@ const About = () => {
       id="about"
       className={`${styles['about-page']} ${mediaStyles['about-page']} ${styles['section2']} ${mediaStyles['section2']}`}
     >
-      <h2 lang="ko">소개</h2>
+      <h2 lang="ko">프론트엔드 개발자 소개</h2>
       <article className={`${styles['section__inner']} ${mediaStyles['section__inner']}`}>
         <section className={`${styles['about-content-tie']} ${mediaStyles['about-content-tie']}`}>
           <section

@@ -16,8 +16,8 @@ const Career = () => {
     >
       <section className={`${styles['career-heading']} ${mediaStyles['career-heading']}`}>
         <p>2014 — NOW</p>
-        <h2 lang="ko">경력</h2>
-        <span>배움에서 실무까지, 지금의 프론트엔드 개발자가 되기까지의 여정</span>
+        <h2 lang="ko">학력 및 경력</h2>
+        <span>학업과 교육을 거쳐 프론트엔드 실무로 이어진 과정</span>
       </section>
       <section className={`${styles['timeline-wrap']} ${mediaStyles['timeline-wrap']}`}>
         <svg

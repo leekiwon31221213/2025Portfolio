@@ -1,0 +1,17 @@
+@media (max-width: 1024px) {
+  .custom-cursor {
+    display: none;
+  }
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  :global(body.custom-cursor-active),
+  :global(body.custom-cursor-active a),
+  :global(body.custom-cursor-active button) {
+    cursor: auto;
+  }
+
+  .custom-cursor {
+    display: none;
+  }
+}

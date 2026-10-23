@@ -17,7 +17,7 @@ const Skill = () => {
       className={`${styles['skill-page']} ${mediaStyles['skill-page']}`}
     >
       <section className={`${styles['skill__inner']} ${mediaStyles['skill__inner']}`}>
-        <h2 lang="ko">기술</h2>
+        <h2 lang="ko">프론트엔드 개발 기술</h2>
         <ul className={`${styles['skills-box']} ${mediaStyles['skills-box']}`}>
           <li
             className={`${styles['skill__inner']} ${mediaStyles['skill__inner']} ${styles['glass']} ${styles['reveal']}`}

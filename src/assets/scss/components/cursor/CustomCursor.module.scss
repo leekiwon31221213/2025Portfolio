@@ -1,0 +1,56 @@
+:global(body.custom-cursor-active),
+:global(body.custom-cursor-active a),
+:global(body.custom-cursor-active button) {
+  cursor: none;
+}
+
+.custom-cursor {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+
+  .cursor-dot,
+  .cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .cursor-dot {
+    width: 1rem;
+    height: 1rem;
+    background-color: #fff;
+    mix-blend-mode: difference;
+    transition: opacity 0.15s ease;
+  }
+
+  .cursor-ring {
+    width: 5.2rem;
+    height: 5.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    background-color: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(2px);
+    transition:
+      width 0.22s ease,
+      height 0.22s ease,
+      background-color 0.22s ease,
+      border-color 0.22s ease,
+      opacity 0.15s ease;
+
+    &[data-active='true'] {
+      width: 7.2rem;
+      height: 7.2rem;
+      border-color: rgba(192, 132, 252, 0.88);
+      background-color: rgba(129, 140, 248, 0.14);
+    }
+  }
+
+  .cursor-dot[data-visible='true'],
+  .cursor-ring[data-visible='true'] {
+    opacity: 1;
+  }
+}

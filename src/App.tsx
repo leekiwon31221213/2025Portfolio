@@ -2,6 +2,8 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
 import Footer from './components/footer/Footer'
+import PortfolioFloatingLinks from './components/floating/PortfolioFloatingLinks'
+import CustomCursor from './components/cursor/CustomCursor'
 import Header from './components/header/Header'
 import Loading from './components/loading/Loading'
 import PortfolioRoutes, { routeSeo } from './router'
@@ -63,7 +65,7 @@ const App = () => {
   useEffect(() => {
     if (!isLoading) return
 
-    const failsafeTimer = window.setTimeout(onLoaded, 3500)
+    const failsafeTimer = window.setTimeout(onLoaded, 1800)
 
     return () => {
       window.clearTimeout(failsafeTimer)
@@ -75,6 +77,7 @@ const App = () => {
       className={`${styles['portfolio-app']} ${mediaStyles['portfolio-app']} ${styles['root']} ${mediaStyles['root']}`}
       id="portFolioContainer"
     >
+      <CustomCursor></CustomCursor>
       {isLoading ? (
         <section className={isLoadingLeaving ? 'fade-leave-active fade-leave-to' : ''}>
           <Loading onFinished={onLoaded}></Loading>
@@ -85,6 +88,9 @@ const App = () => {
         <main aria-busy={isLoading}>
           <PortfolioRoutes></PortfolioRoutes>
         </main>
+        {location.pathname !== '/gstt-detail' ? (
+          <PortfolioFloatingLinks></PortfolioFloatingLinks>
+        ) : null}
         {location.pathname !== '/gstt-detail' ? <Footer></Footer> : null}
       </div>
     </div>

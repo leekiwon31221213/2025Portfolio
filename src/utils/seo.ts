@@ -7,9 +7,9 @@ export type SeoData = {
 }
 
 const defaultSeo: Required<SeoData> = {
-  title: '프론트엔드 개발자 이기원 | React 포트폴리오 · 웹퍼블리셔',
+  title: '프론트엔드 개발자·웹퍼블리셔 포트폴리오 | 이기원',
   description:
-    '프론트엔드 개발자 이기원의 React 포트폴리오입니다. React와 TypeScript 기반 프론트엔드 프로젝트, 웹 퍼블리싱 및 반응형 웹 경험을 소개합니다.',
+    'React와 TypeScript 기반 프론트엔드 개발자·웹퍼블리셔 포트폴리오입니다. 반응형 웹, 웹 접근성, UI 개발 및 웹퍼블리싱 실무 경험을 소개합니다.',
   canonical: 'https://kiwon2025portfolio.netlify.app/',
   image: 'https://kiwon2025portfolio.netlify.app/og.jpg',
   robots: 'index, follow, max-image-preview:large, max-snippet:-1',

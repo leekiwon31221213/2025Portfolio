@@ -20,7 +20,7 @@ const Project = () => {
       aria-labelledby="project-title"
     >
       <h2 id="project-title" lang="ko">
-        프로젝트
+        프론트엔드·웹퍼블리싱 포트폴리오
       </h2>
       <div className={mediaStyles['project-gallery']}>
         <div
