@@ -325,7 +325,9 @@ const CareerLogic = (rootRef: RefObject<HTMLElement | null>) => {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
+    ScrollTrigger.config({ ignoreMobileResize: true })
     let resizeAnimationFrameId = 0
+    let previousViewportWidth = window.innerWidth
     const animationFrameId = requestAnimationFrame(() => {
       initAnimations()
       ScrollTrigger.refresh()
@@ -333,6 +335,12 @@ const CareerLogic = (rootRef: RefObject<HTMLElement | null>) => {
 
     // 화면 크기가 바뀌면 라인 위치를 다시 계산
     const refreshLineAnimations = () => {
+      const currentViewportWidth = window.innerWidth
+
+      // 모바일 주소창이 열리고 닫힐 때 발생하는 높이 변화는 제외
+      if (currentViewportWidth === previousViewportWidth) return
+      previousViewportWidth = currentViewportWidth
+
       cancelAnimationFrame(resizeAnimationFrameId)
       resizeAnimationFrameId = requestAnimationFrame(() => {
         initLineAnimations()

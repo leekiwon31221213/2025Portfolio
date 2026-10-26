@@ -1,5 +1,13 @@
 @media (max-width: 1024px) {
   :global(#project).project-page {
+    .project-canvas {
+      min-height: calc(100svh + var(--project-count, 15) * 70svh);
+    }
+
+    .project-stage {
+      height: 100svh;
+    }
+
     > h2 {
       font-size: clamp(3rem, 3.906vw, 4rem);
     }
